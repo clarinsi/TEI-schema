@@ -1,6 +1,6 @@
 # TEI schema for [CLARIN.SI](http://www.clarin.si/)
 
-The preferred TEI schema for corpora deposited in the
+The preferred TEI schema for corpora (and dictionaries) deposited in the
 [CLARIN.SI repository](https://www.clarin.si/repository/xmlui/).
 
 * top directory contains the TEI ODD schema and example XML file
