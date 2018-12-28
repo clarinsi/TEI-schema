@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2018-10-09T12:46:54Z. .This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
+DTD generated from ODD source 2018-12-28T11:08:09Z. .This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
 TEI Edition: Version 3.4.0. Last updated on
 	23rd July 2018, revision 1fa0b54
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
@@ -67,6 +67,14 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
 
 <!-- predeclared classes -->
 
+<!ENTITY % tei_att.duration.w3c.attribute.dur '
+dur %teidata.duration.w3c;  #IMPLIED'>
+<!ENTITY % tei_att.duration.w3c.attributes '
+ %tei_att.duration.w3c.attribute.dur;'> 
+<!ENTITY % tei_att.duration.iso.attribute.dur-iso '
+dur-iso %teidata.duration.iso;  #IMPLIED'>
+<!ENTITY % tei_att.duration.iso.attributes '
+ %tei_att.duration.iso.attribute.dur-iso;'> 
 <!ENTITY % tei_att.global.responsibility.attribute.cert '
 cert %teidata.probCert;  #IMPLIED'>
 
@@ -128,7 +136,17 @@ change CDATA  #IMPLIED'>
 <!ENTITY % model.ptrLike.form_sequence "oRef, pRef"> 
 <!ENTITY % model.ptrLike.form_sequenceOptional "oRef?, pRef?"> 
 <!ENTITY % model.ptrLike.form_sequenceOptionalRepeatable "oRef*, pRef*"> 
-<!ENTITY % model.ptrLike.form_sequenceRepeatable "oRef+, pRef+"> 
+<!ENTITY % model.ptrLike.form_sequenceRepeatable "oRef+, pRef+"> <!ENTITY % tei_att.duration.attributes '%tei_att.duration.w3c.attributes;%tei_att.duration.iso.attributes;'> 
+<!ENTITY % model.global.spoken "pause |vocal |kinesic |incident |writing |shift"> 
+<!ENTITY % model.global.spoken_sequence "pause, vocal, kinesic, incident, writing, shift"> 
+<!ENTITY % model.global.spoken_sequenceOptional "pause?, vocal?, kinesic?, incident?, writing?, shift?"> 
+<!ENTITY % model.global.spoken_sequenceOptionalRepeatable "pause*, vocal*, kinesic*, incident*, writing*, shift*"> 
+<!ENTITY % model.global.spoken_sequenceRepeatable "pause+, vocal+, kinesic+, incident+, writing+, shift+"> 
+<!ENTITY % model.divPart.spoken "u |annotationBlock"> 
+<!ENTITY % model.divPart.spoken_sequence "u, annotationBlock"> 
+<!ENTITY % model.divPart.spoken_sequenceOptional "u?, annotationBlock?"> 
+<!ENTITY % model.divPart.spoken_sequenceOptionalRepeatable "u*, annotationBlock*"> 
+<!ENTITY % model.divPart.spoken_sequenceRepeatable "u+, annotationBlock+"> 
 <!ENTITY % tei_att.global.linking.attribute.corresp '
 corresp CDATA  #IMPLIED'>
 
@@ -307,6 +325,14 @@ sample (initial|medial|final|unknown|complete) "complete" '>
 status %teidata.enumerated;  "draft" '>
 <!ENTITY % tei_att.docStatus.attributes '
  %tei_att.docStatus.attribute.status;'> 
+<!ENTITY % tei_att.duration.w3c.attribute.dur '
+dur %teidata.duration.w3c;  #IMPLIED'>
+<!ENTITY % tei_att.duration.w3c.attributes '
+ %tei_att.duration.w3c.attribute.dur;'> 
+<!ENTITY % tei_att.duration.iso.attribute.dur-iso '
+dur-iso %teidata.duration.iso;  #IMPLIED'>
+<!ENTITY % tei_att.duration.iso.attributes '
+ %tei_att.duration.iso.attribute.dur-iso;'> 
 <!ENTITY % tei_att.global.responsibility.attribute.cert '
 cert %teidata.probCert;  #IMPLIED'>
 
@@ -500,7 +526,7 @@ start %teidata.pointer;  #IMPLIED'>
 
 <!ENTITY % tei_att.timed.attribute.end '
 end %teidata.pointer;  #IMPLIED'>
-<!ENTITY % tei_att.timed.attributes '
+<!ENTITY % tei_att.timed.attributes '%tei_att.duration.attributes;
  %tei_att.timed.attribute.start;
  %tei_att.timed.attribute.end;'> 
 <!ENTITY % tei_att.transcriptional.attribute.status '
@@ -711,11 +737,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.global.edit_sequenceOptional "gap?, addSpan?, damageSpan?, delSpan?, space?"> 
 <!ENTITY % model.global.edit_sequenceOptionalRepeatable "gap*, addSpan*, damageSpan*, delSpan*, space*"> 
 <!ENTITY % model.global.edit_sequenceRepeatable "gap+, addSpan+, damageSpan+, delSpan+, space+"> 
-<!ENTITY % model.divPart "%model.lLike; |%model.pLike; |lg |sp"> 
-<!ENTITY % model.divPart_sequence "%model.lLike;, %model.pLike;, lg, sp"> 
-<!ENTITY % model.divPart_sequenceOptional "%model.lLike;?, %model.pLike;?, lg?, sp?"> 
-<!ENTITY % model.divPart_sequenceOptionalRepeatable "%model.lLike;*, %model.pLike;*, lg*, sp*"> 
-<!ENTITY % model.divPart_sequenceRepeatable "%model.lLike;+, %model.pLike;+, lg+, sp+"> 
+<!ENTITY % model.divPart "%model.lLike; |%model.pLike; |lg |sp |%model.divPart.spoken;"> 
+<!ENTITY % model.divPart_sequence "%model.lLike;, %model.pLike;, lg, sp, %model.divPart.spoken;"> 
+<!ENTITY % model.divPart_sequenceOptional "%model.lLike;?, %model.pLike;?, lg?, sp?, %model.divPart.spoken;?"> 
+<!ENTITY % model.divPart_sequenceOptionalRepeatable "%model.lLike;*, %model.pLike;*, lg*, sp*, %model.divPart.spoken;*"> 
+<!ENTITY % model.divPart_sequenceRepeatable "%model.lLike;+, %model.pLike;+, lg+, sp+, %model.divPart.spoken;+"> 
 <!ENTITY % model.personLike ""> 
 <!ENTITY % model.personLike_sequence ""> 
 <!ENTITY % model.personLike_sequenceOptional ""> 
@@ -851,11 +877,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.nameLike_sequenceOptional "%model.nameLike.agent;?, rs?, idno?, lang?"> 
 <!ENTITY % model.nameLike_sequenceOptionalRepeatable "%model.nameLike.agent;*, rs*, idno*, lang*"> 
 <!ENTITY % model.nameLike_sequenceRepeatable "%model.nameLike.agent;+, rs+, idno+, lang+"> 
-<!ENTITY % model.global "%model.global.meta; |%model.milestoneLike; |%model.noteLike; |%model.global.edit; |metamark"> 
-<!ENTITY % model.global_sequence "%model.global.meta;, %model.milestoneLike;, %model.noteLike;, %model.global.edit;, metamark"> 
-<!ENTITY % model.global_sequenceOptional "%model.global.meta;?, %model.milestoneLike;?, %model.noteLike;?, %model.global.edit;?, metamark?"> 
-<!ENTITY % model.global_sequenceOptionalRepeatable "%model.global.meta;*, %model.milestoneLike;*, %model.noteLike;*, %model.global.edit;*, metamark*"> 
-<!ENTITY % model.global_sequenceRepeatable "%model.global.meta;+, %model.milestoneLike;+, %model.noteLike;+, %model.global.edit;+, metamark+"> 
+<!ENTITY % model.global "%model.global.meta; |%model.milestoneLike; |%model.noteLike; |%model.global.edit; |metamark |%model.global.spoken;"> 
+<!ENTITY % model.global_sequence "%model.global.meta;, %model.milestoneLike;, %model.noteLike;, %model.global.edit;, metamark, %model.global.spoken;"> 
+<!ENTITY % model.global_sequenceOptional "%model.global.meta;?, %model.milestoneLike;?, %model.noteLike;?, %model.global.edit;?, metamark?, %model.global.spoken;?"> 
+<!ENTITY % model.global_sequenceOptionalRepeatable "%model.global.meta;*, %model.milestoneLike;*, %model.noteLike;*, %model.global.edit;*, metamark*, %model.global.spoken;*"> 
+<!ENTITY % model.global_sequenceRepeatable "%model.global.meta;+, %model.milestoneLike;+, %model.noteLike;+, %model.global.edit;+, metamark+, %model.global.spoken;+"> 
 <!ENTITY % model.featureVal "%model.featureVal.complex; |%model.featureVal.single;"> 
 <!ENTITY % model.featureVal_sequence "%model.featureVal.complex;, %model.featureVal.single;"> 
 <!ENTITY % model.featureVal_sequenceOptional "%model.featureVal.complex;?, %model.featureVal.single;?"> 
@@ -926,16 +952,16 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.teiHeaderPart_sequenceOptional "encodingDesc?, profileDesc?, xenoData?"> 
 <!ENTITY % model.teiHeaderPart_sequenceOptionalRepeatable "encodingDesc*, profileDesc*, xenoData*"> 
 <!ENTITY % model.teiHeaderPart_sequenceRepeatable "encodingDesc+, profileDesc+, xenoData+"> 
-<!ENTITY % model.sourceDescPart ""> 
-<!ENTITY % model.sourceDescPart_sequence ""> 
-<!ENTITY % model.sourceDescPart_sequenceOptional ""> 
-<!ENTITY % model.sourceDescPart_sequenceOptionalRepeatable ""> 
-<!ENTITY % model.sourceDescPart_sequenceRepeatable ""> 
-<!ENTITY % model.encodingDescPart "schemaRef |projectDesc |samplingDecl |editorialDecl |tagsDecl |styleDefDecl |refsDecl |listPrefixDef |classDecl |geoDecl |appInfo |fsdDecl |charDecl"> 
-<!ENTITY % model.encodingDescPart_sequence "schemaRef, projectDesc, samplingDecl, editorialDecl, tagsDecl, styleDefDecl, refsDecl, listPrefixDef, classDecl, geoDecl, appInfo, fsdDecl, charDecl"> 
-<!ENTITY % model.encodingDescPart_sequenceOptional "schemaRef?, projectDesc?, samplingDecl?, editorialDecl?, tagsDecl?, styleDefDecl?, refsDecl?, listPrefixDef?, classDecl?, geoDecl?, appInfo?, fsdDecl?, charDecl?"> 
-<!ENTITY % model.encodingDescPart_sequenceOptionalRepeatable "schemaRef*, projectDesc*, samplingDecl*, editorialDecl*, tagsDecl*, styleDefDecl*, refsDecl*, listPrefixDef*, classDecl*, geoDecl*, appInfo*, fsdDecl*, charDecl*"> 
-<!ENTITY % model.encodingDescPart_sequenceRepeatable "schemaRef+, projectDesc+, samplingDecl+, editorialDecl+, tagsDecl+, styleDefDecl+, refsDecl+, listPrefixDef+, classDecl+, geoDecl+, appInfo+, fsdDecl+, charDecl+"> 
+<!ENTITY % model.sourceDescPart "scriptStmt |recordingStmt"> 
+<!ENTITY % model.sourceDescPart_sequence "scriptStmt, recordingStmt"> 
+<!ENTITY % model.sourceDescPart_sequenceOptional "scriptStmt?, recordingStmt?"> 
+<!ENTITY % model.sourceDescPart_sequenceOptionalRepeatable "scriptStmt*, recordingStmt*"> 
+<!ENTITY % model.sourceDescPart_sequenceRepeatable "scriptStmt+, recordingStmt+"> 
+<!ENTITY % model.encodingDescPart "schemaRef |projectDesc |samplingDecl |editorialDecl |tagsDecl |styleDefDecl |refsDecl |listPrefixDef |classDecl |geoDecl |appInfo |transcriptionDesc |fsdDecl |charDecl"> 
+<!ENTITY % model.encodingDescPart_sequence "schemaRef, projectDesc, samplingDecl, editorialDecl, tagsDecl, styleDefDecl, refsDecl, listPrefixDef, classDecl, geoDecl, appInfo, transcriptionDesc, fsdDecl, charDecl"> 
+<!ENTITY % model.encodingDescPart_sequenceOptional "schemaRef?, projectDesc?, samplingDecl?, editorialDecl?, tagsDecl?, styleDefDecl?, refsDecl?, listPrefixDef?, classDecl?, geoDecl?, appInfo?, transcriptionDesc?, fsdDecl?, charDecl?"> 
+<!ENTITY % model.encodingDescPart_sequenceOptionalRepeatable "schemaRef*, projectDesc*, samplingDecl*, editorialDecl*, tagsDecl*, styleDefDecl*, refsDecl*, listPrefixDef*, classDecl*, geoDecl*, appInfo*, transcriptionDesc*, fsdDecl*, charDecl*"> 
+<!ENTITY % model.encodingDescPart_sequenceRepeatable "schemaRef+, projectDesc+, samplingDecl+, editorialDecl+, tagsDecl+, styleDefDecl+, refsDecl+, listPrefixDef+, classDecl+, geoDecl+, appInfo+, transcriptionDesc+, fsdDecl+, charDecl+"> 
 <!ENTITY % model.editorialDeclPart "correction |normalization |quotation |hyphenation |segmentation |stdVals |interpretation |punctuation"> 
 <!ENTITY % model.editorialDeclPart_sequence "correction, normalization, quotation, hyphenation, segmentation, stdVals, interpretation, punctuation"> 
 <!ENTITY % model.editorialDeclPart_sequenceOptional "correction?, normalization?, quotation?, hyphenation?, segmentation?, stdVals?, interpretation?, punctuation?"> 
@@ -1092,7 +1118,22 @@ opt %teidata.truthValue;  "false" '>
 <!ENTITY % model.ptrLike.form_sequence "oRef, pRef"> 
 <!ENTITY % model.ptrLike.form_sequenceOptional "oRef?, pRef?"> 
 <!ENTITY % model.ptrLike.form_sequenceOptionalRepeatable "oRef*, pRef*"> 
-<!ENTITY % model.ptrLike.form_sequenceRepeatable "oRef+, pRef+"> 
+<!ENTITY % model.ptrLike.form_sequenceRepeatable "oRef+, pRef+"> <!ENTITY % tei_att.duration.attributes '%tei_att.duration.w3c.attributes;%tei_att.duration.iso.attributes;'> 
+<!ENTITY % model.global.spoken "pause |vocal |kinesic |incident |writing |shift"> 
+<!ENTITY % model.global.spoken_sequence "pause, vocal, kinesic, incident, writing, shift"> 
+<!ENTITY % model.global.spoken_sequenceOptional "pause?, vocal?, kinesic?, incident?, writing?, shift?"> 
+<!ENTITY % model.global.spoken_sequenceOptionalRepeatable "pause*, vocal*, kinesic*, incident*, writing*, shift*"> 
+<!ENTITY % model.global.spoken_sequenceRepeatable "pause+, vocal+, kinesic+, incident+, writing+, shift+"> 
+<!ENTITY % model.recordingPart "%model.dateLike; |media |respStmt |equipment |broadcast"> 
+<!ENTITY % model.recordingPart_sequence "%model.dateLike;, media, respStmt, equipment, broadcast"> 
+<!ENTITY % model.recordingPart_sequenceOptional "%model.dateLike;?, media?, respStmt?, equipment?, broadcast?"> 
+<!ENTITY % model.recordingPart_sequenceOptionalRepeatable "%model.dateLike;*, media*, respStmt*, equipment*, broadcast*"> 
+<!ENTITY % model.recordingPart_sequenceRepeatable "%model.dateLike;+, media+, respStmt+, equipment+, broadcast+"> 
+<!ENTITY % model.divPart.spoken "u |annotationBlock"> 
+<!ENTITY % model.divPart.spoken_sequence "u, annotationBlock"> 
+<!ENTITY % model.divPart.spoken_sequenceOptional "u?, annotationBlock?"> 
+<!ENTITY % model.divPart.spoken_sequenceOptionalRepeatable "u*, annotationBlock*"> 
+<!ENTITY % model.divPart.spoken_sequenceRepeatable "u+, annotationBlock+"> 
 <!ENTITY % tei_att.global.linking.attribute.corresp '
 corresp CDATA  #IMPLIED'>
 
@@ -1268,6 +1309,13 @@ mode (excl|incl) "excl"  >
 <!ATTLIST anchor
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
+<!--doc:groups together various annotations, e.g. for parallel interpretations of a spoken segment. [8.4.6. Analytic Coding] -->
+<!ELEMENT annotationBlock (u|spanGrp|%model.global.spoken;)*>
+<!ATTLIST annotationBlock xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST annotationBlock
+ %tei_att.ascribed.attributes;
+ %tei_att.timed.attributes;
+ %tei_att.global.attributes; >
 <!--doc:(application information) records information about an application which has edited the TEI file. [2.3.10. The Application Information Element] -->
 <!ELEMENT appInfo (%model.applicationLike;)+>
 <!ATTLIST appInfo xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1362,6 +1410,12 @@ encoding CDATA  #IMPLIED >
 <!ATTLIST body
  %tei_att.global.attributes;
  %tei_att.declaring.attributes; >
+<!--doc:describes a broadcast used as the source of a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
+<!ELEMENT broadcast ((%model.pLike;)+|%model.biblLike;|recording)>
+<!ATTLIST broadcast xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST broadcast
+ %tei_att.global.attributes;
+ %tei_att.declarable.attributes; >
 <!--doc:contains the primary statement of responsibility given for a work on its title page or at the head or end of the work. [4.2.2. Openers and Closers 4.5. Front Matter] -->
 <!ELEMENT byline (#PCDATA|%model.gLike;|%model.phrase;|docAuthor|%model.global;)*>
 <!ATTLIST byline xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1582,6 +1636,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST date
  %tei_att.global.attributes;
  %tei_att.datable.attributes;
+ %tei_att.duration.attributes;
  %tei_att.editLike.attributes;
  %tei_att.dimensions.attributes;
  %tei_att.typed.attributes; >
@@ -1752,6 +1807,12 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.entryLike.attributes;
  %tei_att.lexicographic.attributes;
  %tei_att.sortable.attributes; >
+<!--doc:provides technical details of the equipment and media used for an audio or video recording used as the source for a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
+<!ELEMENT equipment (%model.pLike;)+>
+<!ATTLIST equipment xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST equipment
+ %tei_att.global.attributes;
+ %tei_att.declarable.attributes; >
 <!--doc:(etymology) encloses the etymological information in a dictionary entry. [9.3.4. Etymological Information] -->
 <!ELEMENT etym (#PCDATA|%model.gLike;|%model.global;|%model.inter;|%model.phrase;|def|etym|gramGrp|lbl|usg|xr)*>
 <!ATTLIST etym xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2045,6 +2106,14 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST imprint xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST imprint
  %tei_att.global.attributes; >
+<!--doc:marks any phenomenon or occurrence, not necessarily vocalized or communicative, for example incidental noises or other events affecting communication. [8.3.3. Vocal, Kinesic, Incident] -->
+<!ELEMENT incident (%model.descLike;)*>
+<!ATTLIST incident xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST incident
+ %tei_att.global.attributes;
+ %tei_att.timed.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.ascribed.attributes; >
 <!--doc:(index entry) marks a location to be indexed for whatever purpose. [3.8.2. Index Entries] -->
 <!ELEMENT index ((term,(index)?)*)*>
 <!ATTLIST index xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2094,6 +2163,15 @@ result %teidata.name;  #IMPLIED >
 <!ATTLIST keywords
  %tei_att.global.attributes;
 scheme %teidata.pointer;  #IMPLIED >
+<!--doc:marks any communicative phenomenon, not necessarily vocalized, for example a gesture, frown, etc. [8.3.3. Vocal, Kinesic, Incident] -->
+<!ELEMENT kinesic (%model.descLike;)*>
+<!ATTLIST kinesic xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST kinesic
+ %tei_att.global.attributes;
+ %tei_att.timed.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.ascribed.directed.attributes;
+iterated %teidata.xTruthValue;  "false"  >
 <!--doc:(verse line) contains a single, possibly incomplete, line of verse. [3.12.1. Core Tags for Verse 3.12. Passages of Verse or Drama 7.2.5. Speech Contents] -->
 <!ELEMENT l (#PCDATA|%model.gLike;|%model.phrase;|%model.inter;|%model.global;)*>
 <!ATTLIST l xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2445,6 +2523,14 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.written.attributes;
 points CDATA  #IMPLIED >
+<!--doc:marks a pause either between or within utterances. [8.3.2. Pausing] -->
+<!ELEMENT pause  EMPTY>
+<!ATTLIST pause xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST pause
+ %tei_att.global.attributes;
+ %tei_att.timed.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.ascribed.directed.attributes; >
 <!--doc:(page beginning) marks the beginning of a new page in a paginated document. [3.10.3. Milestone
 Elements] -->
 <!ELEMENT pb  EMPTY>
@@ -2610,6 +2696,20 @@ marks (none|some|all) #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.lexicographic.attributes;
  %tei_att.typed.attributes; >
+<!--doc:(recording event) provides details of an audio or video recording event used as the source of a spoken text, either directly or from a public broadcast. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
+<!ELEMENT recording (%model.recordingPart;|%model.pLike;)*>
+<!ATTLIST recording xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST recording
+ %tei_att.global.attributes;
+ %tei_att.declarable.attributes;
+ %tei_att.duration.attributes;
+ %tei_att.typed.attribute.subtype;
+type (audio|video) "audio"  >
+<!--doc:(recording statement) describes a set of recordings used as the basis for transcription of a spoken text. [8.2. Documenting the Source of Transcribed Speech 2.2.7. The Source Description] -->
+<!ELEMENT recordingStmt ((%model.pLike;)+|(recording)+)>
+<!ATTLIST recordingStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST recordingStmt
+ %tei_att.global.attributes; >
 <!--doc:indicates one or more cancelled interventions in a document which have subsequently been marked as reaffirmed or repeated. [11.3.4.4. Confirmation, Cancellation, and Reinstatement of Modifications] -->
 <!ELEMENT redo  EMPTY>
 <!ATTLIST redo xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2745,6 +2845,12 @@ direct %teidata.xTruthValue;  "true"  >
  %tei_att.typed.attributes;
  %tei_att.resourced.attributes;
 key %teidata.xmlName;  #IMPLIED >
+<!--doc:(script statement) contains a citation giving details of the script used for a spoken text. [8.2. Documenting the Source of Transcribed Speech 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
+<!ELEMENT scriptStmt ((%model.pLike;)+|%model.biblLike;)>
+<!ATTLIST scriptStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST scriptStmt
+ %tei_att.global.attributes;
+ %tei_att.declarable.attributes; >
 <!--doc:(secluded text) Secluded. Marks text present in the source which the editor believes to be genuine but out of its original place (which is unknown). [11.3.1.7. Text Omitted from or Supplied in the Transcription] -->
 <!ELEMENT secl %macro.paraContent;>
 <!ATTLIST secl xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2797,6 +2903,14 @@ level %teidata.count;  #IMPLIED >
 <!ATTLIST settingDesc
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
+<!--doc:marks the point at which some paralinguistic feature of a series of utterances by any one speaker changes. [8.3.6. Shifts] -->
+<!ELEMENT shift  EMPTY>
+<!ATTLIST shift xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST shift
+ %tei_att.global.attributes;
+ %tei_att.ascribed.attributes;
+feature %teidata.enumerated;  #IMPLIED
+new %teidata.enumerated;  "normal"  >
 <!--doc:(Latin for thus or so) contains text reproduced although apparently incorrect or inaccurate. [3.4.1. Apparent Errors] -->
 <!ELEMENT sic %macro.paraContent;>
 <!ATTLIST sic xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2814,7 +2928,7 @@ level %teidata.count;  #IMPLIED >
 <!ATTLIST soCalled
  %tei_att.global.attributes; >
 <!--doc:(source description) describes the source from which an electronic text was derived or generated, typically a bibliographic description in the case of a digitized text, or a phrase such as "born digital" for a text which has no previous existence. [2.2.7. The Source Description] -->
-<!ELEMENT sourceDesc ((%model.pLike;)+|(%model.biblLike;|_DUMMY_model.sourceDescPart|%model.listLike;)+)>
+<!ELEMENT sourceDesc ((%model.pLike;)+|(%model.biblLike;|%model.sourceDescPart;|%model.listLike;)+)>
 <!ATTLIST sourceDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST sourceDesc
  %tei_att.global.attributes;
@@ -3077,6 +3191,7 @@ otherLangs CDATA  #IMPLIED >
 <!ATTLIST time
  %tei_att.global.attributes;
  %tei_att.datable.attributes;
+ %tei_att.duration.attributes;
  %tei_att.editLike.attributes;
  %tei_att.dimensions.attributes;
  %tei_att.typed.attributes; >
@@ -3127,11 +3242,28 @@ type %teidata.enumerated;  "main"  >
 <!ATTLIST trailer
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
+<!--doc:describes the set of transcription conventions used, particularly for spoken material. [8.2. Documenting the Source of Transcribed Speech] -->
+<!ELEMENT transcriptionDesc (%model.labelLike;|%model.ptrLike;|%model.pLike;)*>
+<!ATTLIST transcriptionDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST transcriptionDesc
+ %tei_att.global.attributes;
+ident %teidata.name;  #REQUIRED
+version %teidata.versionNumber;  #IMPLIED >
 <!--doc:describes a single textual transposition as an ordered list of at least two pointers specifying the order in which the elements indicated should be re-combined. [11.3.4.5. Transpositions] -->
 <!ELEMENT transpose ((ptr,(ptr)+))>
 <!ATTLIST transpose xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST transpose
  %tei_att.global.attributes; >
+<!--doc:(utterance) contains a stretch of speech usually preceded and followed by silence or by a change of speaker. [8.3.1. Utterances] -->
+<!ELEMENT u %macro.paraContent;>
+<!ATTLIST u xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST u
+ %tei_att.global.attributes;
+ %tei_att.timed.attributes;
+ %tei_att.declaring.attributes;
+ %tei_att.ascribed.directed.attributes;
+ %tei_att.notated.attributes;
+trans (smooth|latching|overlap|pause) "smooth"  >
 <!--doc:contains a word, phrase, or passage which cannot be transcribed with certainty because it is illegible or inaudible in the source. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.4.3. Additions, Deletions, and Omissions] -->
 <!ELEMENT unclear %macro.paraContent;>
 <!ATTLIST unclear xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3203,6 +3335,15 @@ name %teidata.word;  #REQUIRED >
 <!ATTLIST value xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST value
  %tei_att.global.attributes; >
+<!--doc:marks any vocalized but not necessarily lexical phenomenon, for example voiced pauses, non-lexical backchannels, etc. [8.3.3. Vocal, Kinesic, Incident] -->
+<!ELEMENT vocal (%model.descLike;)*>
+<!ATTLIST vocal xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST vocal
+ %tei_att.global.attributes;
+ %tei_att.timed.attributes;
+ %tei_att.ascribed.directed.attributes;
+ %tei_att.typed.attributes;
+iterated %teidata.xTruthValue;  "false"  >
 <!--doc:(word) represents a grammatical (not necessarily orthographic) word. [17.1. Linguistic Segment Categories 17.4.2. Lightweight Linguistic Annotation] -->
 <!ELEMENT w (#PCDATA|%model.gLike;|seg|w|m|c|pc|%model.global;|_DUMMY_model.lPart|%model.hiLike;|%model.pPart.edit;)*>
 <!ATTLIST w xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3221,6 +3362,15 @@ absolute %teidata.temporal.w3c;  #IMPLIED
 unit %teidata.enumerated;  #IMPLIED
 interval %teidata.interval;  #IMPLIED
 since %teidata.pointer;  #IMPLIED >
+<!--doc:contains a passage of written text revealed to participants in the course of a spoken text. [8.3.4. Writing] -->
+<!ELEMENT writing %macro.paraContent;>
+<!ATTLIST writing xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST writing
+ %tei_att.global.attributes;
+ %tei_att.ascribed.directed.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.timed.attributes;
+gradual %teidata.xTruthValue;  #IMPLIED >
 <!--doc:(non-TEI metadata) provides a container element into which metadata in non-TEI formats may be placed. [2.5. Non-TEI Metadata] -->
 <!ELEMENT xenoData (#PCDATA)*>
 <!ATTLIST xenoData xmlns CDATA "http://www.tei-c.org/ns/1.0">
