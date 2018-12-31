@@ -7,7 +7,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2018-12-28T11:07:35Z. .
+# Schema generated from ODD source 2018-12-31T11:51:19Z. .
 # TEI Edition: Version 3.4.0. Last updated on
 #	23rd July 2018, revision 1fa0b54
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
@@ -360,6 +360,8 @@ sch:pattern [
 ]
 tei_att.datable.attributes =
   tei_att.datable.w3c.attributes,
+  tei_att.datable.iso.attributes,
+  tei_att.datable.custom.attributes,
   tei_att.datable.attribute.calendar,
   tei_att.datable.attribute.period
 tei_att.datable.attribute.calendar =
@@ -1219,12 +1221,16 @@ tei_att.citing.attribute.to =
   attribute to {
     xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
   }?
-tei_model.nameLike.agent = tei_name
-tei_model.nameLike.agent_alternation = tei_name
-tei_model.nameLike.agent_sequence = tei_name
-tei_model.nameLike.agent_sequenceOptional = tei_name?
-tei_model.nameLike.agent_sequenceOptionalRepeatable = tei_name*
-tei_model.nameLike.agent_sequenceRepeatable = tei_name+
+tei_model.nameLike.agent = tei_name | tei_orgName | tei_persName
+tei_model.nameLike.agent_alternation =
+  tei_name | tei_orgName | tei_persName
+tei_model.nameLike.agent_sequence = tei_name, tei_orgName, tei_persName
+tei_model.nameLike.agent_sequenceOptional =
+  tei_name?, tei_orgName?, tei_persName?
+tei_model.nameLike.agent_sequenceOptionalRepeatable =
+  tei_name*, tei_orgName*, tei_persName*
+tei_model.nameLike.agent_sequenceRepeatable =
+  tei_name+, tei_orgName+, tei_persName+
 tei_model.segLike =
   tei_seg | tei_s | tei_cl | tei_phr | tei_w | tei_m | tei_c | tei_pc
 tei_model.hiLike = tei_hi
@@ -1295,17 +1301,17 @@ tei_model.dateLike_sequenceOptional = tei_date?, tei_time?
 tei_model.dateLike_sequenceOptionalRepeatable = tei_date*, tei_time*
 tei_model.dateLike_sequenceRepeatable = tei_date+, tei_time+
 tei_model.measureLike =
-  tei_num | tei_measure | tei_measureGrp | tei_unit
+  tei_num | tei_measure | tei_measureGrp | tei_unit | tei_geo
 tei_model.measureLike_alternation =
-  tei_num | tei_measure | tei_measureGrp | tei_unit
+  tei_num | tei_measure | tei_measureGrp | tei_unit | tei_geo
 tei_model.measureLike_sequence =
-  tei_num, tei_measure, tei_measureGrp, tei_unit
+  tei_num, tei_measure, tei_measureGrp, tei_unit, tei_geo
 tei_model.measureLike_sequenceOptional =
-  tei_num?, tei_measure?, tei_measureGrp?, tei_unit?
+  tei_num?, tei_measure?, tei_measureGrp?, tei_unit?, tei_geo?
 tei_model.measureLike_sequenceOptionalRepeatable =
-  tei_num*, tei_measure*, tei_measureGrp*, tei_unit*
+  tei_num*, tei_measure*, tei_measureGrp*, tei_unit*, tei_geo*
 tei_model.measureLike_sequenceRepeatable =
-  tei_num+, tei_measure+, tei_measureGrp+, tei_unit+
+  tei_num+, tei_measure+, tei_measureGrp+, tei_unit+, tei_geo+
 tei_model.egLike = notAllowed
 tei_model.egLike_alternation = notAllowed
 tei_model.egLike_sequence = empty
@@ -1313,12 +1319,13 @@ tei_model.egLike_sequenceOptional = empty
 tei_model.egLike_sequenceOptionalRepeatable = empty
 tei_model.egLike_sequenceRepeatable = notAllowed
 tei_model.graphicLike = tei_media | tei_graphic | tei_binaryObject
-tei_model.offsetLike = notAllowed
-tei_model.offsetLike_alternation = notAllowed
-tei_model.offsetLike_sequence = empty
-tei_model.offsetLike_sequenceOptional = empty
-tei_model.offsetLike_sequenceOptionalRepeatable = empty
-tei_model.offsetLike_sequenceRepeatable = notAllowed
+tei_model.offsetLike = tei_offset | tei_geogFeat
+tei_model.offsetLike_alternation = tei_offset | tei_geogFeat
+tei_model.offsetLike_sequence = tei_offset, tei_geogFeat
+tei_model.offsetLike_sequenceOptional = tei_offset?, tei_geogFeat?
+tei_model.offsetLike_sequenceOptionalRepeatable =
+  tei_offset*, tei_geogFeat*
+tei_model.offsetLike_sequenceRepeatable = tei_offset+, tei_geogFeat+
 tei_model.pPart.msdesc = notAllowed
 tei_model.pPart.editorial =
   tei_choice | tei_abbr | tei_expan | tei_ex | tei_am | tei_subst
@@ -1515,12 +1522,54 @@ tei_model.labelLike_sequence = tei_desc, tei_label
 tei_model.labelLike_sequenceOptional = tei_desc?, tei_label?
 tei_model.labelLike_sequenceOptionalRepeatable = tei_desc*, tei_label*
 tei_model.labelLike_sequenceRepeatable = tei_desc+, tei_label+
-tei_model.listLike = tei_list
-tei_model.listLike_alternation = tei_list
-tei_model.listLike_sequence = tei_list
-tei_model.listLike_sequenceOptional = tei_list?
-tei_model.listLike_sequenceOptionalRepeatable = tei_list*
-tei_model.listLike_sequenceRepeatable = tei_list+
+tei_model.listLike =
+  tei_list
+  | tei_listOrg
+  | tei_listEvent
+  | tei_listPerson
+  | tei_listPlace
+  | tei_listRelation
+  | tei_listNym
+tei_model.listLike_alternation =
+  tei_list
+  | tei_listOrg
+  | tei_listEvent
+  | tei_listPerson
+  | tei_listPlace
+  | tei_listRelation
+  | tei_listNym
+tei_model.listLike_sequence =
+  tei_list,
+  tei_listOrg,
+  tei_listEvent,
+  tei_listPerson,
+  tei_listPlace,
+  tei_listRelation,
+  tei_listNym
+tei_model.listLike_sequenceOptional =
+  tei_list?,
+  tei_listOrg?,
+  tei_listEvent?,
+  tei_listPerson?,
+  tei_listPlace?,
+  tei_listRelation?,
+  tei_listNym?
+tei_model.listLike_sequenceOptionalRepeatable =
+  tei_list*,
+  tei_listOrg*,
+  tei_listEvent*,
+  tei_listPerson*,
+  tei_listPlace*,
+  tei_listRelation*,
+  tei_listNym*
+tei_model.listLike_sequenceRepeatable =
+  tei_list+,
+  tei_listOrg+,
+  tei_listEvent+,
+  tei_listPerson+,
+  tei_listPlace+,
+  tei_listRelation+,
+  tei_listNym+
 tei_model.noteLike = tei_note
 tei_model.lLike = tei_l
 tei_model.lLike_alternation = tei_l
@@ -1579,6 +1628,7 @@ tei_model.entryPart.top =
   | tei_lbl
   | tei_xr
   | tei_re
+tei_model.eventLike = tei_event | tei_listEvent
 tei_model.global.edit =
   tei_gap | tei_addSpan | tei_damageSpan | tei_delSpan | tei_space
 tei_model.divPart =
@@ -1587,23 +1637,129 @@ tei_model.divPart =
   | tei_lg
   | tei_sp
   | tei_model.divPart.spoken
-tei_model.personLike = notAllowed
-tei_model.placeNamePart = notAllowed
-tei_model.placeNamePart_alternation = notAllowed
-tei_model.placeNamePart_sequence = empty
-tei_model.placeNamePart_sequenceOptional = empty
-tei_model.placeNamePart_sequenceOptionalRepeatable = empty
-tei_model.placeNamePart_sequenceRepeatable = notAllowed
-tei_model.placeStateLike = tei_model.placeNamePart
+tei_model.persStateLike =
+  tei_persName
+  | tei_affiliation
+  | tei_age
+  | tei_education
+  | tei_faith
+  | tei_floruit
+  | tei_langKnowledge
+  | tei_nationality
+  | tei_occupation
+  | tei_persona
+  | tei_residence
+  | tei_sex
+  | tei_socecStatus
+  | tei_state
+  | tei_trait
+tei_model.personLike = tei_org | tei_person | tei_personGrp
+tei_model.personPart =
+  tei_model.biblLike
+  | tei_model.eventLike
+  | tei_model.persStateLike
+  | tei_name
+  | tei_idno
+  | tei_birth
+  | tei_death
+tei_model.placeNamePart =
+  tei_placeName
+  | tei_bloc
+  | tei_country
+  | tei_region
+  | tei_settlement
+  | tei_district
+  | tei_geogName
+tei_model.placeNamePart_alternation =
+  tei_placeName
+  | tei_bloc
+  | tei_country
+  | tei_region
+  | tei_settlement
+  | tei_district
+  | tei_geogName
+tei_model.placeNamePart_sequence =
+  tei_placeName,
+  tei_bloc,
+  tei_country,
+  tei_region,
+  tei_settlement,
+  tei_district,
+  tei_geogName
+tei_model.placeNamePart_sequenceOptional =
+  tei_placeName?,
+  tei_bloc?,
+  tei_country?,
+  tei_region?,
+  tei_settlement?,
+  tei_district?,
+  tei_geogName?
+tei_model.placeNamePart_sequenceOptionalRepeatable =
+  tei_placeName*,
+  tei_bloc*,
+  tei_country*,
+  tei_region*,
+  tei_settlement*,
+  tei_district*,
+  tei_geogName*
+tei_model.placeNamePart_sequenceRepeatable =
+  tei_placeName+,
+  tei_bloc+,
+  tei_country+,
+  tei_region+,
+  tei_settlement+,
+  tei_district+,
+  tei_geogName+
+tei_model.placeStateLike =
+  tei_model.placeNamePart
+  | tei_climate
+  | tei_location
+  | tei_population
+  | tei_state
+  | tei_terrain
+  | tei_trait
 tei_model.placeStateLike_alternation =
   tei_model.placeNamePart_alternation
-tei_model.placeStateLike_sequence = tei_model.placeNamePart_sequence
+  | tei_climate
+  | tei_location
+  | tei_population
+  | tei_state
+  | tei_terrain
+  | tei_trait
+tei_model.placeStateLike_sequence =
+  tei_model.placeNamePart_sequence,
+  tei_climate,
+  tei_location,
+  tei_population,
+  tei_state,
+  tei_terrain,
+  tei_trait
 tei_model.placeStateLike_sequenceOptional =
-  tei_model.placeNamePart_sequenceOptional?
+  tei_model.placeNamePart_sequenceOptional?,
+  tei_climate?,
+  tei_location?,
+  tei_population?,
+  tei_state?,
+  tei_terrain?,
+  tei_trait?
 tei_model.placeStateLike_sequenceOptionalRepeatable =
-  tei_model.placeNamePart_sequenceOptionalRepeatable*
+  tei_model.placeNamePart_sequenceOptionalRepeatable*,
+  tei_climate*,
+  tei_location*,
+  tei_population*,
+  tei_state*,
+  tei_terrain*,
+  tei_trait*
 tei_model.placeStateLike_sequenceRepeatable =
-  tei_model.placeNamePart_sequenceRepeatable+
+  tei_model.placeNamePart_sequenceRepeatable+,
+  tei_climate+,
+  tei_location+,
+  tei_population+,
+  tei_state+,
+  tei_terrain+,
+  tei_trait+
+tei_model.orgPart =
+  tei_model.eventLike | tei_listOrg | tei_listPerson | tei_listPlace
 tei_model.publicationStmtPart.agency =
   tei_publisher | tei_distributor | tei_authority
 tei_model.publicationStmtPart.detail =
@@ -1690,13 +1846,16 @@ tei_model.imprintPart =
   tei_publisher | tei_biblScope | tei_pubPlace | tei_distributor
 tei_model.catDescPart = tei_textDesc
 tei_model.settingPart = tei_locale | tei_activity
-tei_model.addressLike = tei_email | tei_address
-tei_model.addressLike_alternation = tei_email | tei_address
-tei_model.addressLike_sequence = tei_email, tei_address
-tei_model.addressLike_sequenceOptional = tei_email?, tei_address?
+tei_model.addressLike = tei_email | tei_address | tei_affiliation
+tei_model.addressLike_alternation =
+  tei_email | tei_address | tei_affiliation
+tei_model.addressLike_sequence = tei_email, tei_address, tei_affiliation
+tei_model.addressLike_sequenceOptional =
+  tei_email?, tei_address?, tei_affiliation?
 tei_model.addressLike_sequenceOptionalRepeatable =
-  tei_email*, tei_address*
-tei_model.addressLike_sequenceRepeatable = tei_email+, tei_address+
+  tei_email*, tei_address*, tei_affiliation*
+tei_model.addressLike_sequenceRepeatable =
+  tei_email+, tei_address+, tei_affiliation+
 tei_model.nameLike =
   tei_model.nameLike.agent
   | tei_model.offsetLike
@@ -1704,6 +1863,7 @@ tei_model.nameLike =
   | tei_rs
   | tei_idno
   | tei_lang
+  | tei_model.persNamePart
 tei_model.nameLike_alternation =
   tei_model.nameLike.agent_alternation
   | tei_model.offsetLike_alternation
@@ -1711,34 +1871,39 @@ tei_model.nameLike_alternation =
   | tei_rs
   | tei_idno
   | tei_lang
+  | tei_model.persNamePart_alternation
 tei_model.nameLike_sequence =
   tei_model.nameLike.agent_sequence,
   tei_model.offsetLike_sequence,
   tei_model.placeStateLike_sequence,
   tei_rs,
   tei_idno,
-  tei_lang
+  tei_lang,
+  tei_model.persNamePart_sequence
 tei_model.nameLike_sequenceOptional =
   tei_model.nameLike.agent_sequenceOptional?,
   tei_model.offsetLike_sequenceOptional?,
   tei_model.placeStateLike_sequenceOptional?,
   tei_rs?,
   tei_idno?,
-  tei_lang?
+  tei_lang?,
+  tei_model.persNamePart_sequenceOptional?
 tei_model.nameLike_sequenceOptionalRepeatable =
   tei_model.nameLike.agent_sequenceOptionalRepeatable*,
   tei_model.offsetLike_sequenceOptionalRepeatable*,
   tei_model.placeStateLike_sequenceOptionalRepeatable*,
   tei_rs*,
   tei_idno*,
-  tei_lang*
+  tei_lang*,
+  tei_model.persNamePart_sequenceOptionalRepeatable*
 tei_model.nameLike_sequenceRepeatable =
   tei_model.nameLike.agent_sequenceRepeatable+,
   tei_model.offsetLike_sequenceRepeatable+,
   tei_model.placeStateLike_sequenceRepeatable+,
   tei_rs+,
   tei_idno+,
-  tei_lang+
+  tei_lang+,
+  tei_model.persNamePart_sequenceRepeatable+
 tei_model.global =
   tei_model.global.meta
   | tei_model.milestoneLike
@@ -1759,6 +1924,7 @@ tei_model.biblPart =
   | tei_edition
   | tei_extent
   | tei_availability
+  | tei_listRelation
 tei_model.frontPart =
   tei_model.frontPart.drama | tei_listBibl | tei_divGen | tei_titlePage
 tei_model.addrPart =
@@ -1902,7 +2068,7 @@ tei_att.personal.attribute.sort =
   
   ## specifies the sort order of the name component in relation to others within the name.
   attribute sort { xsd:nonNegativeInteger }?
-tei_model.placeLike = notAllowed
+tei_model.placeLike = tei_place
 tei_att.milestoneUnit.attributes = tei_att.milestoneUnit.attribute.unit
 tei_att.milestoneUnit.attribute.unit =
   
@@ -3073,7 +3239,7 @@ tei_listBibl =
   element listBibl {
     (tei_model.headLike*,
      (tei_model.biblLike | tei_model.milestoneLike)+,
-     empty*),
+     (tei_relation | tei_listRelation)*),
     tei_att.global.attributes,
     tei_att.sortable.attributes,
     tei_att.declarable.attributes,
@@ -4638,7 +4804,8 @@ tei_particDesc =
   
   ## (participation description) describes the identifiable speakers, voices, or other participants in any kind of text or other persons named or otherwise referred to in a text, edition, or metadata. [15.2. Contextual Information]
   element particDesc {
-    (tei_model.pLike+ | (tei_model.personLike)+),
+    (tei_model.pLike+
+     | (tei_model.personLike | tei_listPerson | tei_listOrg)+),
     tei_att.global.attributes,
     tei_att.declarable.attributes,
     empty
@@ -4647,7 +4814,8 @@ tei_settingDesc =
   
   ## (setting description) describes the setting or settings within which a language interaction takes place, or other places otherwise referred to in a text, edition, or metadata. [15.2. Contextual Information 2.4. The Profile Description]
   element settingDesc {
-    (tei_model.pLike+ | (tei_setting | tei_model.placeLike)+),
+    (tei_model.pLike+
+     | (tei_setting | tei_model.placeLike | tei_listPlace)+),
     tei_att.global.attributes,
     tei_att.declarable.attributes,
     empty
@@ -6469,6 +6637,1098 @@ tei_annotationBlock =
     tei_att.global.attributes,
     empty
   }
+tei_att.datable.custom.attributes =
+  tei_att.datable.custom.attribute.when-custom,
+  tei_att.datable.custom.attribute.notBefore-custom,
+  tei_att.datable.custom.attribute.notAfter-custom,
+  tei_att.datable.custom.attribute.from-custom,
+  tei_att.datable.custom.attribute.to-custom,
+  tei_att.datable.custom.attribute.datingPoint,
+  tei_att.datable.custom.attribute.datingMethod
+tei_att.datable.custom.attribute.when-custom =
+  
+  ## supplies the value of a date or time in some custom standard form.
+  attribute when-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_att.datable.custom.attribute.notBefore-custom =
+  
+  ## specifies the earliest possible date for the event in some custom standard form.
+  attribute notBefore-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_att.datable.custom.attribute.notAfter-custom =
+  
+  ## specifies the latest possible date for the event in some custom standard form.
+  attribute notAfter-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_att.datable.custom.attribute.from-custom =
+  
+  ## indicates the starting point of the period in some custom standard form.
+  attribute from-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_att.datable.custom.attribute.to-custom =
+  
+  ## indicates the ending point of the period in some custom standard form.
+  attribute to-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_att.datable.custom.attribute.datingPoint =
+  
+  ## supplies a pointer to some location defining a named point in time with reference to which the datable item is understood to have occurred
+  attribute datingPoint { xsd:anyURI }?
+tei_att.datable.custom.attribute.datingMethod =
+  
+  ## supplies a pointer to a calendar element or other means of interpreting the values of the custom dating attributes.
+  attribute datingMethod { xsd:anyURI }?
+tei_model.persNamePart =
+  tei_surname
+  | tei_forename
+  | tei_genName
+  | tei_nameLink
+  | tei_addName
+  | tei_roleName
+tei_model.persNamePart_alternation =
+  tei_surname
+  | tei_forename
+  | tei_genName
+  | tei_nameLink
+  | tei_addName
+  | tei_roleName
+tei_model.persNamePart_sequence =
+  tei_surname,
+  tei_forename,
+  tei_genName,
+  tei_nameLink,
+  tei_addName,
+  tei_roleName
+tei_model.persNamePart_sequenceOptional =
+  tei_surname?,
+  tei_forename?,
+  tei_genName?,
+  tei_nameLink?,
+  tei_addName?,
+  tei_roleName?
+tei_model.persNamePart_sequenceOptionalRepeatable =
+  tei_surname*,
+  tei_forename*,
+  tei_genName*,
+  tei_nameLink*,
+  tei_addName*,
+  tei_roleName*
+tei_model.persNamePart_sequenceRepeatable =
+  tei_surname+,
+  tei_forename+,
+  tei_genName+,
+  tei_nameLink+,
+  tei_addName+,
+  tei_roleName+
+tei_att.datable.iso.attributes =
+  tei_att.datable.iso.attribute.when-iso,
+  tei_att.datable.iso.attribute.notBefore-iso,
+  tei_att.datable.iso.attribute.notAfter-iso,
+  tei_att.datable.iso.attribute.from-iso,
+  tei_att.datable.iso.attribute.to-iso
+tei_att.datable.iso.attribute.when-iso =
+  
+  ## supplies the value of a date or time in a standard form.
+  attribute when-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_att.datable.iso.attribute.notBefore-iso =
+  
+  ## specifies the earliest possible date for the event in standard form, e.g. yyyy-mm-dd.
+  attribute notBefore-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_att.datable.iso.attribute.notAfter-iso =
+  
+  ## specifies the latest possible date for the event in standard form, e.g. yyyy-mm-dd.
+  attribute notAfter-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_att.datable.iso.attribute.from-iso =
+  
+  ## indicates the starting point of the period in standard form.
+  attribute from-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_att.datable.iso.attribute.to-iso =
+  
+  ## indicates the ending point of the period in standard form.
+  attribute to-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_orgName =
+  
+  ## (organization name) contains an organizational name. [13.2.2. Organizational Names]
+  element orgName {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_persName =
+  
+  ## (personal name) contains a proper noun or proper-noun phrase referring to a person, possibly including one or more of the person's forenames, surnames, honorifics, added names, etc. [13.2.1. Personal Names]
+  element persName {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_surname =
+  
+  ## contains a family (inherited) name, as opposed to a given, baptismal, or nick name. [13.2.1. Personal Names]
+  element surname {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_forename =
+  
+  ## contains a forename, given or baptismal name. [13.2.1. Personal Names]
+  element forename {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_genName =
+  
+  ## (generational name component) contains a name component used to distinguish otherwise similar names on the basis of the relative ages or generations of the persons named. [13.2.1. Personal Names]
+  element genName {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_nameLink =
+  
+  ## (name link) contains a connecting phrase or link used within a name but not regarded as part of it, such as van der or of. [13.2.1. Personal Names]
+  element nameLink {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_addName =
+  
+  ## (additional name) contains an additional name component, such as a nickname, epithet, or alias, or any other descriptive phrase used within a personal name. [13.2.1. Personal Names]
+  element addName {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_roleName =
+  
+  ## contains a name component which indicates that the referent has a particular role or position in society, such as an official title or rank. [13.2.1. Personal Names]
+  element roleName {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_placeName =
+  
+  ## contains an absolute or relative place name. [13.2.3. Place Names]
+  element placeName {
+    tei_macro.phraseSeq,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.global.attributes,
+    tei_att.personal.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_bloc =
+  
+  ## contains the name of a geo-political unit consisting of two or more nation states or countries. [13.2.3. Place Names]
+  element bloc {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.datable.attributes,
+    empty
+  }
+tei_country =
+  
+  ## contains the name of a geo-political unit, such as a nation, country, colony, or commonwealth, larger than or administratively superior to a region and smaller than a bloc. [13.2.3. Place Names]
+  element country {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.datable.attributes,
+    empty
+  }
+tei_region =
+  
+  ## contains the name of an administrative unit such as a state, province, or county, larger than a settlement, but smaller than a country. [13.2.3. Place Names]
+  element region {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.datable.attributes,
+    empty
+  }
+tei_settlement =
+  
+  ## contains the name of a settlement such as a city, town, or village identified as a single geo-political or administrative unit. [13.2.3. Place Names]
+  element settlement {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.datable.attributes,
+    empty
+  }
+tei_district =
+  
+  ## contains the name of any kind of subdivision of a settlement, such as a parish, ward, or other administrative or geographic unit. [13.2.3. Place Names]
+  element district {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.datable.attributes,
+    empty
+  }
+tei_offset =
+  
+  ## marks that part of a relative temporal or spatial expression which indicates the direction of the offset between the two place names, dates, or times involved in the expression. [13.2.3. Place Names]
+  element offset {
+    tei_macro.phraseSeq,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.dimensions.attributes,
+    empty
+  }
+tei_geogName =
+  
+  ## (geographical name) identifies a name associated with some geographical feature such as Windrush Valley or Mount Sinai. [13.2.3. Place Names]
+  element geogName {
+    tei_macro.phraseSeq,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_geogFeat =
+  
+  ## (geographical feature name) contains a common noun identifying some geographical feature contained within a geographic name, such as valley, mount, etc. [13.2.3. Place Names]
+  element geogFeat {
+    tei_macro.phraseSeq,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.dimensions.attributes,
+    empty
+  }
+tei_affiliation =
+  
+  ## contains an informal description of a person's present or past affiliation with some organization, for example an employer or sponsor. [15.2.2. The Participant Description]
+  element affiliation {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.datable.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] sponsor; 2] recommend; 3] discredit; 4] pledged
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_age =
+  
+  ## specifies the age of a person. [13.3.2.1. Personal Characteristics]
+  element age {
+    tei_macro.phraseSeq.limited,
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.datable.attributes,
+    tei_att.typed.attribute.subtype,
+    tei_att.dimensions.attributes,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] western; 2] sui; 3] subjective; 4] objective; 5] inWorld (in world) ; 6] chronological; 7] biological; 8] psychological; 9] functional
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## supplies a numeric code representing the age or age group
+    attribute value { xsd:nonNegativeInteger }?,
+    empty
+  }
+tei_birth =
+  
+  ## contains information about a person's birth, such as its date and place. [15.2.2. The Participant Description]
+  element birth {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.datable.attributes,
+    tei_att.dimensions.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] caesarean (caesarean section) ; 2] vaginal (vaginal delivery) ; 3] exNihilo (ex nihilo) ; 4] incorporated; 5] founded; 6] established
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_climate =
+  
+  ## contains information about the physical climate of a place. [13.3.4.3. States, Traits, and Events]
+  element climate {
+    (tei_model.headLike*,
+     (tei_model.pLike+ | tei_model.labelLike+),
+     (tei_model.noteLike | tei_model.biblLike)*,
+     tei_climate*),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_death =
+  
+  ## contains information about a person's death, such as its date and place. [15.2.2. The Participant Description]
+  element death {
+    tei_macro.phraseSeq,
+    tei_att.datable.attributes,
+    tei_att.dimensions.attributes,
+    tei_att.editLike.attributes,
+    tei_att.global.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] brain; 6] natural; 7] unnatural; 8] fragmentation; 9] dissolution
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_education =
+  
+  ## contains a description of the educational experience of a person. [15.2.2. The Participant Description]
+  element education {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.datable.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] primary; 2] secondary; 3] undergraduate; 4] graduate; 5] residency; 6] apprenticeship
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_event =
+  
+  ## contains data relating to any kind of significant event associated with a person, place, or organization. [13.3.1. Basic Principles]
+  element event {
+    (tei_model.headLike*,
+     (tei_model.pLike+ | tei_model.labelLike+),
+     (tei_model.noteLike
+      | tei_model.biblLike
+      | tei_linkGrp
+      | tei_link)*,
+     tei_event*),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.typed.attributes,
+    tei_att.naming.attributes,
+    tei_att.sortable.attributes,
+    
+    ## indicates the location of an event by pointing to a place element
+    attribute where { xsd:anyURI }?,
+    empty
+  }
+tei_faith =
+  
+  ## specifies the faith, religion, or belief set of a person. [13.3.2.1. Personal Characteristics]
+  element faith {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.datable.attributes,
+    tei_att.canonical.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] practicing; 2] clandestine; 3] patrilineal; 4] matrilineal; 5] convert
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_floruit =
+  
+  ## contains information about a person's period of activity. [13.3.2.1. Personal Characteristics]
+  element floruit {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.dimensions.attributes,
+    tei_att.editLike.attributes,
+    empty
+  }
+tei_geo =
+  
+  ## (geographical coordinates) contains any expression of a set of geographic coordinates, representing a point, line, or area on the surface of the earth in some notation. [13.3.4.1. Varieties of Location]
+  element geo {
+    text, tei_att.global.attributes, tei_att.declaring.attributes, empty
+  }
+tei_langKnowledge =
+  
+  ## (language knowledge) summarizes the state of a person's linguistic knowledge, either as prose or by a list of langKnown elements. [13.3.2.1. Personal Characteristics]
+  element langKnowledge {
+    (tei_model.pLike | tei_langKnown+),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] listening; 2] speaking; 3] reading; 4] writing
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## supplies one or more valid language tags for the languages specified
+    attribute tags {
+      list {
+        (xsd:language
+         | (
+            ##
+            ""))+
+      }
+    }?,
+    empty
+  }
+tei_langKnown =
+  
+  ## (language known) summarizes the state of a person's linguistic competence, i.e., knowledge of a single language. [15.2.2. The Participant Description]
+  element langKnown {
+    tei_macro.phraseSeq.limited,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    
+    ## supplies a valid language tag for the language concerned.
+    attribute tag {
+      xsd:language
+      | (
+         ##
+         "")
+    },
+    
+    ## a code indicating the person's level of knowledge for this language
+    attribute level {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_listOrg =
+  
+  ## (list of organizations) contains a list of elements, each of which provides information about an identifiable organization. [13.2.2. Organizational Names]
+  element listOrg {
+    (tei_model.headLike*,
+     (tei_org | tei_listOrg)+,
+     (tei_relation | tei_listRelation)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.declarable.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
+tei_listEvent =
+  
+  ## (list of events) contains a list of descriptions, each of which provides information about an identifiable event. [13.3.1. Basic Principles]
+  element listEvent {
+    (tei_model.headLike*,
+     tei_model.eventLike+,
+     (tei_relation | tei_listRelation)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.declarable.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
+tei_listPerson =
+  
+  ## (list of persons) contains a list of descriptions, each of which provides information about an identifiable person or a group of people, for example the participants in a language interaction, or the people referred to in a historical source. [13.3.2. The Person Element 15.2. Contextual Information 2.4. The Profile Description 15.3.2. Declarable Elements]
+  element listPerson {
+    (tei_model.headLike*,
+     (tei_model.personLike | tei_listPerson)+,
+     (tei_relation | tei_listRelation)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.declarable.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
+tei_listPlace =
+  
+  ## (list of places) contains a list of places, optionally followed by a list of relationships (other than containment) defined amongst them. [2.2.7. The Source Description 13.3.4. Places]
+  element listPlace {
+    (tei_model.headLike*,
+     (tei_model.placeLike | tei_listPlace)+,
+     (tei_relation | tei_listRelation)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.declarable.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
+tei_location =
+  
+  ## defines the location of a place as a set of geographical coordinates, in terms of other named geo-political entities, or as an address. [13.3.4. Places]
+  element location {
+    (tei_model.labelLike
+     | tei_model.placeNamePart
+     | tei_model.offsetLike
+     | tei_model.measureLike
+     | tei_model.addressLike
+     | tei_model.noteLike
+     | tei_model.biblLike)*,
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    empty
+  }
+tei_nationality =
+  
+  ## contains an informal description of a person's present or past nationality or citizenship. [15.2.2. The Participant Description]
+  element nationality {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] birth; 2] naturalised; 3] self-assigned
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_occupation =
+  
+  ## contains an informal description of a person's trade, profession or occupation. [15.2.2. The Participant Description]
+  element occupation {
+    tei_macro.specialPara,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] primary; 2] other; 3] paid; 4] unpaid
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## indicates the classification system or taxonomy in use, for example by supplying the identifier of a taxonomy element, or pointing to some other resource.
+    attribute scheme { xsd:anyURI }?,
+    
+    ## identifies an occupation code defined within the classification system or taxonomy defined by the scheme attribute.
+    attribute code { xsd:anyURI }?,
+    empty
+  }
+tei_org =
+  
+  ## (organization) provides information about an identifiable organization such as a business, a tribe, or any other grouping of people. [13.2.2. Organizational Names]
+  element org {
+    (tei_model.headLike*,
+     (tei_model.pLike*
+      | (tei_model.labelLike
+         | tei_model.nameLike
+         | tei_model.placeLike
+         | tei_model.orgPart
+         | tei_model.milestoneLike)*),
+     (tei_model.noteLike
+      | tei_model.biblLike
+      | tei_linkGrp
+      | tei_link)*,
+     tei_model.personLike*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.editLike.attributes,
+    tei_att.sortable.attributes,
+    
+    ## specifies a primary role or classification for the organization.
+    attribute role {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    empty
+  }
+tei_listRelation =
+  
+  ## provides information about relationships identified amongst people, places, and organizations, either informally as prose or as formally expressed relation links. [13.3.2.3. Personal Relationships]
+  element listRelation {
+    (tei_model.headLike*,
+     (tei_model.pLike | (tei_relation | tei_listRelation)+)),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
+tei_person =
+  
+  ## provides information about an identifiable individual, for example a participant in a language interaction, or a person referred to in a historical source. [13.3.2. The Person Element 15.2.2. The Participant Description]
+  element person {
+    (tei_model.pLike+ | (tei_model.personPart | tei_model.global)*),
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.sortable.attributes,
+    
+    ## specifies a primary role or classification for the person.
+    attribute role {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    
+    ## specifies the sex of the person.
+    attribute sex {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    
+    ## specifies an age group for the person.
+    attribute age {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_persona =
+  
+  ## provides information about one of the personalities identified for a given individual, where an individual has multiple personalities. [13.3.2. The Person Element]
+  element persona {
+    (tei_model.pLike+ | (tei_model.personPart | tei_model.global)*),
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.sortable.attributes,
+    
+    ## specifies a primary role or classification for the persona.
+    attribute role {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    
+    ## specifies the sex of the persona.
+    attribute sex {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    
+    ## specifies an age group for the persona.
+    attribute age {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_personGrp =
+  
+  ## (personal group) describes a group of individuals treated as a single person for analytic purposes. [15.2.2. The Participant Description]
+  element personGrp {
+    (tei_model.pLike+ | (tei_model.personPart | tei_model.global)*),
+    tei_att.global.attributes,
+    tei_att.sortable.attributes,
+    
+    ## specifies the role of this group of participants in the interaction.
+    attribute role {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## specifies the sex of the participant group.
+    attribute sex {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    
+    ## specifies the age group of the participants.
+    attribute age {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## describes informally the size or approximate size of the group for example by means of a number and an indication of accuracy e.g. approx 200.
+    attribute size {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    empty
+  }
+tei_place =
+  
+  ## contains data about a geographic location [13.3.4. Places]
+  element place {
+    (tei_model.headLike*,
+     (tei_model.pLike*
+      | (tei_model.labelLike
+         | tei_model.placeStateLike
+         | tei_model.eventLike)*),
+     (tei_model.noteLike
+      | tei_model.biblLike
+      | tei_idno
+      | tei_linkGrp
+      | tei_link)*,
+     (tei_model.placeLike | tei_listPlace)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.editLike.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
+tei_population =
+  
+  ## contains information about the population of a place. [13.3.4.3. States, Traits, and Events]
+  element population {
+    (tei_model.headLike*,
+     ((tei_model.pLike+ | tei_model.labelLike+),
+      (tei_model.noteLike | tei_model.biblLike)*)?,
+     tei_population*),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.dimensions.attributes,
+    empty
+  }
+tei_relation =
+  
+  ## (relationship) describes any kind of relationship or linkage amongst a specified group of places, events, persons, objects or other items. [13.3.2.3. Personal Relationships]
+  element relation {
+    (tei_desc?)
+    >> sch:pattern [
+         id = "tei_clarin-relation-reforkeyorname-constraint-assert-17"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:relation"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@ref or @key or @name"
+             "One of the attributes  'name', 'ref' or 'key' must be supplied"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tei_clarin-relation-activemutual-constraint-report-16"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:relation"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test = "@active and @mutual"
+             "Only one of the attributes @active and @mutual may be supplied"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tei_clarin-relation-activepassive-constraint-report-17"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:relation"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test = "@passive and not(@active)"
+             "the attribute 'passive' may be supplied only if the attribute 'active' is supplied"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.canonical.attributes,
+    tei_att.sortable.attributes,
+    tei_att.typed.attributes,
+    
+    ## supplies a name for the kind of relationship of which this is an instance.
+    attribute name {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    (
+     ## identifies the active participants in a non-mutual relationship, or all the participants in a mutual one.
+     attribute active {
+       list { xsd:anyURI+ }
+     }?
+     | 
+       ## supplies a list of participants amongst all of whom the relationship holds equally.
+       attribute mutual {
+         list { xsd:anyURI+ }
+       }?),
+    
+    ## identifies the passive participants in a non-mutual relationship.
+    attribute passive {
+      list { xsd:anyURI+ }
+    }?,
+    empty
+  }
+tei_residence =
+  
+  ## describes a person's present or past places of residence. [15.2.2. The Participant Description]
+  element residence {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] primary; 2] secondary; 3] temporary; 4] permanent
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_sex =
+  
+  ## specifies the sex of a person. [13.3.2.1. Personal Characteristics]
+  element sex {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.editLike.attributes,
+    tei_att.datable.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] explicit; 2] implicit
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## supplies a coded value for sex
+    attribute value {
+      list {
+        xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+      }
+    }?,
+    empty
+  }
+tei_socecStatus =
+  
+  ## (socio-economic status) contains an informal description of a person's perceived social or economic status. [15.2.2. The Participant Description]
+  element socecStatus {
+    tei_macro.phraseSeq,
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attribute.subtype,
+    
+    ## characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Sample values include: 1] atBirth; 2] atDeath; 3] dependent; 4] inherited; 5] independent
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## identifies the classification system or taxonomy in use, for example by pointing to a locally-defined taxonomy element or by supplying a URI for an externally-defined system.
+    attribute scheme { xsd:anyURI }?,
+    
+    ## identifies a status code defined within the classification system or taxonomy defined by the scheme attribute.
+    attribute code { xsd:anyURI }?,
+    empty
+  }
+tei_state =
+  
+  ## contains a description of some status or quality attributed to a person, place, or organization often at some specific time or for a specific date range. [13.3.1. Basic Principles 13.3.2.1. Personal Characteristics]
+  element state {
+    (tei_state+
+     | (tei_model.headLike*,
+        tei_model.pLike+,
+        (tei_model.noteLike | tei_model.biblLike)*)
+     | (tei_model.labelLike
+        | tei_model.noteLike
+        | tei_model.biblLike)*),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.typed.attributes,
+    tei_att.naming.attributes,
+    tei_att.dimensions.attributes,
+    empty
+  }
+tei_terrain =
+  
+  ## contains information about the physical terrain of a place. [13.3.4.3. States, Traits, and Events]
+  element terrain {
+    (tei_model.headLike*,
+     (tei_model.pLike+ | tei_model.labelLike+),
+     (tei_model.noteLike | tei_model.biblLike)*,
+     tei_terrain*),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_trait =
+  
+  ## contains a description of some status or quality attributed to a person, place, or organization typically, but not necessarily, independent of the volition or action of the holder and usually not at some specific time or for a specific date range. [13.3.1. Basic Principles 13.3.2.1. Personal Characteristics]
+  element trait {
+    (tei_trait+
+     | (tei_model.headLike*,
+        tei_model.pLike+,
+        (tei_model.noteLike | tei_model.biblLike)*)
+     | (tei_model.labelLike
+        | tei_model.noteLike
+        | tei_model.biblLike)*),
+    tei_att.global.attributes,
+    tei_att.datable.attributes,
+    tei_att.editLike.attributes,
+    tei_att.naming.attributes,
+    tei_att.typed.attributes,
+    tei_att.dimensions.attributes,
+    empty
+  }
+tei_nym =
+  
+  ## (canonical name) contains the definition for a canonical name or name component of any kind. [13.3.5. Names and Nyms]
+  element nym {
+    (tei_model.entryPart*, tei_model.pLike*, tei_nym*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.sortable.attributes,
+    
+    ## points to constituent nyms
+    attribute parts {
+      list { xsd:anyURI+ }
+    }?,
+    empty
+  }
+tei_listNym =
+  
+  ## (list of canonical names) contains a list of nyms, that is, standardized names for any thing. [13.3.5. Names and Nyms]
+  element listNym {
+    (tei_model.headLike*,
+     (tei_nym | tei_listNym)+,
+     (tei_relation | tei_listRelation)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    tei_att.declarable.attributes,
+    tei_att.sortable.attributes,
+    empty
+  }
 tei_att.global.linking.attributes =
   tei_att.global.linking.attribute.corresp,
   tei_att.global.linking.attribute.synch,
@@ -6524,7 +7784,7 @@ tei_link =
   element link {
     empty
     >> sch:pattern [
-         id = "tei_clarin-link-linkTargets3-constraint-assert-17"
+         id = "tei_clarin-link-linkTargets3-constraint-assert-18"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6565,7 +7825,7 @@ tei_ab =
     tei_macro.paraContent
     >> sch:pattern [
          id =
-           "tei_clarin-ab-abstractModel-structure-ab-constraint-report-16"
+           "tei_clarin-ab-abstractModel-structure-ab-constraint-report-18"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6587,7 +7847,7 @@ tei_ab =
        ]
     >> sch:pattern [
          id =
-           "tei_clarin-ab-abstractModel-structure-l-constraint-report-17"
+           "tei_clarin-ab-abstractModel-structure-l-constraint-report-19"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6741,7 +8001,7 @@ tei_join =
   element join {
     ((tei_model.descLike | tei_model.certLike)*)
     >> sch:pattern [
-         id = "tei_clarin-join-joinTargets3-constraint-assert-18"
+         id = "tei_clarin-join-joinTargets3-constraint-assert-19"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6900,7 +8160,7 @@ tei_s =
   element s {
     tei_macro.phraseSeq
     >> sch:pattern [
-         id = "tei_clarin-s-noNestedS-constraint-report-18"
+         id = "tei_clarin-s-noNestedS-constraint-report-20"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7039,7 +8299,7 @@ tei_span =
   element span {
     tei_macro.phraseSeq.limited
     >> sch:pattern [
-         id = "tei_clarin-span-targetfrom-constraint-report-19"
+         id = "tei_clarin-span-targetfrom-constraint-report-21"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7061,7 +8321,7 @@ tei_span =
          "         "
        ]
     >> sch:pattern [
-         id = "tei_clarin-span-targetto-constraint-report-20"
+         id = "tei_clarin-span-targetto-constraint-report-22"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7083,7 +8343,7 @@ tei_span =
          "         "
        ]
     >> sch:pattern [
-         id = "tei_clarin-span-tonotfrom-constraint-report-21"
+         id = "tei_clarin-span-tonotfrom-constraint-report-23"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7104,7 +8364,7 @@ tei_span =
          "         "
        ]
     >> sch:pattern [
-         id = "tei_clarin-span-tofrom-constraint-report-22"
+         id = "tei_clarin-span-tofrom-constraint-report-24"
          "\x{a}" ~
          "            "
          sch:rule [
