@@ -9,7 +9,7 @@
       </titleStmt>
       <publicationStmt>
         <publisher>CLARIN.SI</publisher>
-        <date>2018-12-28</date>
+        <date>2018-12-31</date>
         <availability status="free">
           <p>This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.</p>
         </availability>
@@ -28,6 +28,7 @@
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
+      <change when="2018-12-31">Tomaž Erjavec: added module for names and dates so we can code e.g. parliamentary corpora; newly generated schemas.</change>
       <change when="2018-12-28">Tomaž Erjavec: added module for spoken text so we can code e.g. parliamentary corpora; newly generated schemas.</change>
       <change when="2018-10-10">Tomaž Erjavec: added transcription module so we can use facsimile; newly generated schemas.</change>
       <change when="2018-04-09">Tomaž Erjavec: added dictionaries module and newly generated schemas as TEI has changed (added @msd et al).</change>
@@ -46,6 +47,7 @@
         <moduleRef key="transcr" except=""/>
         <moduleRef key="dictionaries" except=""/>
         <moduleRef key="spoken" except=""/>
+        <moduleRef key="namesdates" except=""/>
         <moduleRef key="linking" except=""/>
         <moduleRef key="analysis" except="interp interpGrp"/>
         <moduleRef key="iso-fs" except="bicond cond fsConstraints fsdLink if iff then vMerge vNot"/>
