@@ -8,7 +8,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2019-09-06T17:21:44Z. .
+# Schema generated from ODD source 2019-09-06T17:36:11Z. .
 # TEI Edition: Version 3.5.0. Last updated on
 #	29th January 2019, revision 3c0c64ec4
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.5.0/
@@ -1396,7 +1396,8 @@ tei_model.egLike_sequence = empty
 tei_model.egLike_sequenceOptional = empty
 tei_model.egLike_sequenceOptionalRepeatable = empty
 tei_model.egLike_sequenceRepeatable = notAllowed
-tei_model.graphicLike = tei_media | tei_graphic | tei_binaryObject
+tei_model.graphicLike =
+  tei_media | tei_graphic | tei_binaryObject | tei_formula
 tei_model.offsetLike = tei_offset | tei_geogFeat
 tei_model.offsetLike_alternation = tei_offset | tei_geogFeat
 tei_model.offsetLike_sequence = tei_offset, tei_geogFeat
@@ -1602,6 +1603,7 @@ tei_model.labelLike_sequenceOptionalRepeatable = tei_desc*, tei_label*
 tei_model.labelLike_sequenceRepeatable = tei_desc+, tei_label+
 tei_model.listLike =
   tei_list
+  | tei_table
   | tei_listOrg
   | tei_listEvent
   | tei_listPerson
@@ -1611,6 +1613,7 @@ tei_model.listLike =
   | tei_listNym
 tei_model.listLike_alternation =
   tei_list
+  | tei_table
   | tei_listOrg
   | tei_listEvent
   | tei_listPerson
@@ -1620,6 +1623,7 @@ tei_model.listLike_alternation =
   | tei_listNym
 tei_model.listLike_sequence =
   tei_list,
+  tei_table,
   tei_listOrg,
   tei_listEvent,
   tei_listPerson,
@@ -1629,6 +1633,7 @@ tei_model.listLike_sequence =
   tei_listNym
 tei_model.listLike_sequenceOptional =
   tei_list?,
+  tei_table?,
   tei_listOrg?,
   tei_listEvent?,
   tei_listPerson?,
@@ -1638,6 +1643,7 @@ tei_model.listLike_sequenceOptional =
   tei_listNym?
 tei_model.listLike_sequenceOptionalRepeatable =
   tei_list*,
+  tei_table*,
   tei_listOrg*,
   tei_listEvent*,
   tei_listPerson*,
@@ -1647,6 +1653,7 @@ tei_model.listLike_sequenceOptionalRepeatable =
   tei_listNym*
 tei_model.listLike_sequenceRepeatable =
   tei_list+,
+  tei_table+,
   tei_listOrg+,
   tei_listEvent+,
   tei_listPerson+,
@@ -2000,6 +2007,8 @@ tei_model.global =
   | tei_model.noteLike
   | tei_model.global.edit
   | tei_metamark
+  | tei_notatedMusic
+  | tei_figure
   | tei_model.global.spoken
 tei_model.featureVal =
   tei_model.featureVal.complex | tei_model.featureVal.single
@@ -6033,6 +6042,113 @@ tei_undo =
     }?,
     empty
   }
+tei_att.tableDecoration.attributes =
+  tei_att.tableDecoration.attribute.role,
+  tei_att.tableDecoration.attribute.rows,
+  tei_att.tableDecoration.attribute.cols
+tei_att.tableDecoration.attribute.role =
+  
+  ## indicates the kind of information held in this cell or in each cell of this row.
+  ## Suggested values include: 1] label; 2] data
+  [ a:defaultValue = "data" ]
+  attribute role {
+    
+    ## labelling or descriptive information only.
+    "label"
+    | 
+      ## data values.
+      "data"
+    | xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+  }?
+tei_att.tableDecoration.attribute.rows =
+  
+  ## indicates the number of rows occupied by this cell or row.
+  [ a:defaultValue = "1" ] attribute rows { xsd:nonNegativeInteger }?
+tei_att.tableDecoration.attribute.cols =
+  
+  ## (columns) indicates the number of columns occupied by this cell or row.
+  [ a:defaultValue = "1" ] attribute cols { xsd:nonNegativeInteger }?
+tei_table =
+  
+  ## contains text displayed in tabular form, in rows and columns. [14.1.1. TEI Tables]
+  element table {
+    ((tei_model.headLike | tei_model.global)*,
+     ((tei_row, tei_model.global*)+
+      | (tei_model.graphicLike, tei_model.global*)+),
+     (tei_model.divBottom, tei_model.global*)*),
+    tei_att.global.attributes,
+    tei_att.typed.attributes,
+    
+    ## indicates the number of rows in the table.
+    attribute rows { xsd:nonNegativeInteger }?,
+    
+    ## (columns) indicates the number of columns in each row of the table.
+    attribute cols { xsd:nonNegativeInteger }?,
+    empty
+  }
+tei_row =
+  
+  ## contains one row of a table. [14.1.1. TEI Tables]
+  element row {
+    tei_cell+,
+    tei_att.global.attributes,
+    tei_att.tableDecoration.attributes,
+    empty
+  }
+tei_cell =
+  
+  ## contains one cell of a table. [14.1.1. TEI Tables]
+  element cell {
+    tei_macro.specialPara,
+    tei_att.global.attributes,
+    tei_att.tableDecoration.attributes,
+    empty
+  }
+tei_formula =
+  
+  ## contains a mathematical or other formula. [14.2. Formulæ and Mathematical Expressions]
+  element formula {
+    (text | tei_model.graphicLike | tei_model.hiLike)*,
+    tei_att.global.attributes,
+    tei_att.notated.attributes,
+    empty
+  }
+tei_notatedMusic =
+  
+  ## encodes the presence of music notation in a text [14.3. Notated Music in Written Text]
+  element notatedMusic {
+    (tei_model.labelLike
+     | tei_model.ptrLike
+     | tei_graphic
+     | tei_binaryObject
+     | tei_seg)*,
+    tei_att.global.attributes,
+    tei_att.placement.attributes,
+    tei_att.typed.attributes,
+    empty
+  }
+tei_figure =
+  
+  ## groups elements representing or containing graphic information such as an illustration, formula, or figure. [14.4. Specific Elements for Graphic Images]
+  element figure {
+    (tei_model.headLike
+     | tei_model.common
+     | tei_figDesc
+     | tei_model.graphicLike
+     | tei_model.global
+     | tei_model.divBottom)*,
+    tei_att.global.attributes,
+    tei_att.placement.attributes,
+    tei_att.typed.attributes,
+    tei_att.written.attributes,
+    empty
+  }
+tei_figDesc =
+  
+  ## (description of figure) contains a brief prose description of the appearance or content of a graphic figure, for use when documenting an image without displaying it. [14.4. Specific Elements for Graphic Images]
+  element figDesc {
+    tei_macro.limitedContent, tei_att.global.attributes, empty
+  }
 tei_model.entryLike = tei_superEntry | tei_entry | tei_entryFree
 tei_att.entryLike.attributes =
   tei_att.entryLike.attribute.type, tei_att.typed.attribute.subtype
@@ -9171,6 +9287,7 @@ tei_char =
      tei_model.descLike*,
      tei_charProp*,
      tei_mapping*,
+     tei_figure*,
      tei_model.graphicLike*,
      tei_model.noteLike*),
     tei_att.global.attributes,
@@ -9205,6 +9322,7 @@ tei_glyph =
      tei_model.descLike*,
      tei_charProp*,
      tei_mapping*,
+     tei_figure*,
      tei_model.graphicLike*,
      tei_model.noteLike*),
     tei_att.global.attributes,

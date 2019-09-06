@@ -17,8 +17,6 @@ schema:	val-odd
 	Stylesheets/bin/teitodtd        ${PARAMS} ../schema/tei_clarin.dtd
 	Stylesheets/bin/teitoxsd        ${PARAMS} ../schema/tei_clarin.xsd
 	Stylesheets/bin/teitoschematron ${PARAMS} ../schema/tei_clarin.sch
-	rm ../schema/*.tmp
-	rm ../schema/tei_clarin.xsd
 
 #This still needs to be implemented!
 #html:	val-odd
