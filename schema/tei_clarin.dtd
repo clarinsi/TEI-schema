@@ -1,9 +1,9 @@
 
 <!--
-DTD generated from ODD source 2018-12-31T11:52:01Z. .This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
-TEI Edition: Version 3.4.0. Last updated on
-	23rd July 2018, revision 1fa0b54
-TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
+DTD generated from ODD source 2019-09-06T17:21:50Z. .This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
+TEI Edition: Version 3.5.0. Last updated on
+	29th January 2019, revision 3c0c64ec4
+TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.5.0/
 
 -->
 
@@ -20,10 +20,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
 <!ENTITY % teidata.count ' CDATA ' >
 
 <!ENTITY % teidata.temporal.w3c ' CDATA ' >
-
-<!ENTITY % teidata.duration.iso ' CDATA ' >
-
-<!ENTITY % teidata.temporal.iso ' CDATA ' >
 
 <!ENTITY % teidata.duration.w3c ' CDATA ' >
 
@@ -67,6 +63,10 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
 
 <!ENTITY % teidata.probCert ' CDATA ' >
 
+<!ENTITY % teidata.temporal.iso ' CDATA ' >
+
+<!ENTITY % teidata.duration.iso ' CDATA ' >
+
 <!-- end datatypes -->
 
 <!-- predeclared classes -->
@@ -75,10 +75,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.4.0/
 dur %teidata.duration.w3c;  #IMPLIED'>
 <!ENTITY % tei_att.duration.w3c.attributes '
  %tei_att.duration.w3c.attribute.dur;'> 
-<!ENTITY % tei_att.duration.iso.attribute.dur-iso '
-dur-iso %teidata.duration.iso;  #IMPLIED'>
-<!ENTITY % tei_att.duration.iso.attributes '
- %tei_att.duration.iso.attribute.dur-iso;'> 
 <!ENTITY % tei_att.global.responsibility.attribute.cert '
 cert %teidata.probCert;  #IMPLIED'>
 
@@ -133,6 +129,15 @@ source CDATA  #IMPLIED'>
 <!ENTITY % model.resourceLike_sequenceOptional "text?, facsimile?, sourceDoc?, fsdDecl?"> 
 <!ENTITY % model.resourceLike_sequenceOptionalRepeatable "text*, facsimile*, sourceDoc*, fsdDecl*"> 
 <!ENTITY % model.resourceLike_sequenceRepeatable "text+, facsimile+, sourceDoc+, fsdDecl+"> 
+<!ENTITY % model.objectLike "object |listObject"> 
+<!ENTITY % model.objectLike_sequence "object, listObject"> 
+<!ENTITY % model.objectLike_sequenceOptional "object?, listObject?"> 
+<!ENTITY % model.objectLike_sequenceOptionalRepeatable "object*, listObject*"> 
+<!ENTITY % model.objectLike_sequenceRepeatable "object+, listObject+"> 
+<!ENTITY % tei_att.duration.iso.attribute.dur-iso '
+dur-iso %teidata.duration.iso;  #IMPLIED'>
+<!ENTITY % tei_att.duration.iso.attributes '
+ %tei_att.duration.iso.attribute.dur-iso;'> 
 <!ENTITY % tei_att.global.facs.attribute.facs '
 facs CDATA  #IMPLIED'>
 <!ENTITY % tei_att.global.facs.attributes '
@@ -396,10 +401,6 @@ status %teidata.enumerated;  "draft" '>
 dur %teidata.duration.w3c;  #IMPLIED'>
 <!ENTITY % tei_att.duration.w3c.attributes '
  %tei_att.duration.w3c.attribute.dur;'> 
-<!ENTITY % tei_att.duration.iso.attribute.dur-iso '
-dur-iso %teidata.duration.iso;  #IMPLIED'>
-<!ENTITY % tei_att.duration.iso.attributes '
- %tei_att.duration.iso.attribute.dur-iso;'> 
 <!ENTITY % tei_att.global.responsibility.attribute.cert '
 cert %teidata.probCert;  #IMPLIED'>
 
@@ -754,11 +755,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.labelLike_sequenceOptional "desc?, label?"> 
 <!ENTITY % model.labelLike_sequenceOptionalRepeatable "desc*, label*"> 
 <!ENTITY % model.labelLike_sequenceRepeatable "desc+, label+"> 
-<!ENTITY % model.listLike "list |listOrg |listEvent |listPerson |listPlace |listRelation |listNym"> 
-<!ENTITY % model.listLike_sequence "list, listOrg, listEvent, listPerson, listPlace, listRelation, listNym"> 
-<!ENTITY % model.listLike_sequenceOptional "list?, listOrg?, listEvent?, listPerson?, listPlace?, listRelation?, listNym?"> 
-<!ENTITY % model.listLike_sequenceOptionalRepeatable "list*, listOrg*, listEvent*, listPerson*, listPlace*, listRelation*, listNym*"> 
-<!ENTITY % model.listLike_sequenceRepeatable "list+, listOrg+, listEvent+, listPerson+, listPlace+, listRelation+, listNym+"> 
+<!ENTITY % model.listLike "list |listOrg |listEvent |listPerson |listPlace |listRelation |listObject |listNym"> 
+<!ENTITY % model.listLike_sequence "list, listOrg, listEvent, listPerson, listPlace, listRelation, listObject, listNym"> 
+<!ENTITY % model.listLike_sequenceOptional "list?, listOrg?, listEvent?, listPerson?, listPlace?, listRelation?, listObject?, listNym?"> 
+<!ENTITY % model.listLike_sequenceOptionalRepeatable "list*, listOrg*, listEvent*, listPerson*, listPlace*, listRelation*, listObject*, listNym*"> 
+<!ENTITY % model.listLike_sequenceRepeatable "list+, listOrg+, listEvent+, listPerson+, listPlace+, listRelation+, listObject+, listNym+"> 
 <!ENTITY % model.noteLike "note"> 
 <!ENTITY % model.noteLike_sequence "note"> 
 <!ENTITY % model.noteLike_sequenceOptional "note?"> 
@@ -959,11 +960,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.addressLike_sequenceOptional "email?, address?, affiliation?"> 
 <!ENTITY % model.addressLike_sequenceOptionalRepeatable "email*, address*, affiliation*"> 
 <!ENTITY % model.addressLike_sequenceRepeatable "email+, address+, affiliation+"> 
-<!ENTITY % model.nameLike "%model.nameLike.agent; |%model.offsetLike; |%model.placeStateLike; |rs |idno |lang |%model.persNamePart;"> 
-<!ENTITY % model.nameLike_sequence "%model.nameLike.agent;, %model.offsetLike;, %model.placeStateLike;, rs, idno, lang, %model.persNamePart;"> 
-<!ENTITY % model.nameLike_sequenceOptional "%model.nameLike.agent;?, %model.offsetLike;?, %model.placeStateLike;?, rs?, idno?, lang?, %model.persNamePart;?"> 
-<!ENTITY % model.nameLike_sequenceOptionalRepeatable "%model.nameLike.agent;*, %model.offsetLike;*, %model.placeStateLike;*, rs*, idno*, lang*, %model.persNamePart;*"> 
-<!ENTITY % model.nameLike_sequenceRepeatable "%model.nameLike.agent;+, %model.offsetLike;+, %model.placeStateLike;+, rs+, idno+, lang+, %model.persNamePart;+"> 
+<!ENTITY % model.nameLike "%model.nameLike.agent; |%model.offsetLike; |%model.placeStateLike; |rs |idno |lang |%model.persNamePart; |objectName"> 
+<!ENTITY % model.nameLike_sequence "%model.nameLike.agent;, %model.offsetLike;, %model.placeStateLike;, rs, idno, lang, %model.persNamePart;, objectName"> 
+<!ENTITY % model.nameLike_sequenceOptional "%model.nameLike.agent;?, %model.offsetLike;?, %model.placeStateLike;?, rs?, idno?, lang?, %model.persNamePart;?, objectName?"> 
+<!ENTITY % model.nameLike_sequenceOptionalRepeatable "%model.nameLike.agent;*, %model.offsetLike;*, %model.placeStateLike;*, rs*, idno*, lang*, %model.persNamePart;*, objectName*"> 
+<!ENTITY % model.nameLike_sequenceRepeatable "%model.nameLike.agent;+, %model.offsetLike;+, %model.placeStateLike;+, rs+, idno+, lang+, %model.persNamePart;+, objectName+"> 
 <!ENTITY % model.global "%model.global.meta; |%model.milestoneLike; |%model.noteLike; |%model.global.edit; |metamark |%model.global.spoken;"> 
 <!ENTITY % model.global_sequence "%model.global.meta;, %model.milestoneLike;, %model.noteLike;, %model.global.edit;, metamark, %model.global.spoken;"> 
 <!ENTITY % model.global_sequenceOptional "%model.global.meta;?, %model.milestoneLike;?, %model.noteLike;?, %model.global.edit;?, metamark?, %model.global.spoken;?"> 
@@ -974,11 +975,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.featureVal_sequenceOptional "%model.featureVal.complex;?, %model.featureVal.single;?"> 
 <!ENTITY % model.featureVal_sequenceOptionalRepeatable "%model.featureVal.complex;*, %model.featureVal.single;*"> 
 <!ENTITY % model.featureVal_sequenceRepeatable "%model.featureVal.complex;+, %model.featureVal.single;+"> 
-<!ENTITY % model.biblPart "%model.respLike; |%model.imprintPart; |series |citedRange |bibl |relatedItem |textLang |edition |extent |availability |listRelation"> 
-<!ENTITY % model.biblPart_sequence "%model.respLike;, %model.imprintPart;, series, citedRange, bibl, relatedItem, textLang, edition, extent, availability, listRelation"> 
-<!ENTITY % model.biblPart_sequenceOptional "%model.respLike;?, %model.imprintPart;?, series?, citedRange?, bibl?, relatedItem?, textLang?, edition?, extent?, availability?, listRelation?"> 
-<!ENTITY % model.biblPart_sequenceOptionalRepeatable "%model.respLike;*, %model.imprintPart;*, series*, citedRange*, bibl*, relatedItem*, textLang*, edition*, extent*, availability*, listRelation*"> 
-<!ENTITY % model.biblPart_sequenceRepeatable "%model.respLike;+, %model.imprintPart;+, series+, citedRange+, bibl+, relatedItem+, textLang+, edition+, extent+, availability+, listRelation+"> 
+<!ENTITY % model.biblPart "%model.respLike; |%model.imprintPart; |series |citedRange |bibl |relatedItem |textLang |edition |extent |availability |listRelation |objectIdentifier"> 
+<!ENTITY % model.biblPart_sequence "%model.respLike;, %model.imprintPart;, series, citedRange, bibl, relatedItem, textLang, edition, extent, availability, listRelation, objectIdentifier"> 
+<!ENTITY % model.biblPart_sequenceOptional "%model.respLike;?, %model.imprintPart;?, series?, citedRange?, bibl?, relatedItem?, textLang?, edition?, extent?, availability?, listRelation?, objectIdentifier?"> 
+<!ENTITY % model.biblPart_sequenceOptionalRepeatable "%model.respLike;*, %model.imprintPart;*, series*, citedRange*, bibl*, relatedItem*, textLang*, edition*, extent*, availability*, listRelation*, objectIdentifier*"> 
+<!ENTITY % model.biblPart_sequenceRepeatable "%model.respLike;+, %model.imprintPart;+, series+, citedRange+, bibl+, relatedItem+, textLang+, edition+, extent+, availability+, listRelation+, objectIdentifier+"> 
 <!ENTITY % model.frontPart "listBibl |divGen |titlePage"> 
 <!ENTITY % model.frontPart_sequence "listBibl, divGen, titlePage"> 
 <!ENTITY % model.frontPart_sequenceOptional "listBibl?, divGen?, titlePage?"> 
@@ -1083,6 +1084,11 @@ extent %teidata.enumerated;  #IMPLIED'>
 <!ENTITY % model.resourceLike_sequenceOptional "text?, facsimile?, sourceDoc?, fsdDecl?"> 
 <!ENTITY % model.resourceLike_sequenceOptionalRepeatable "text*, facsimile*, sourceDoc*, fsdDecl*"> 
 <!ENTITY % model.resourceLike_sequenceRepeatable "text+, facsimile+, sourceDoc+, fsdDecl+"> 
+<!ENTITY % model.objectLike "object |listObject"> 
+<!ENTITY % model.objectLike_sequence "object, listObject"> 
+<!ENTITY % model.objectLike_sequenceOptional "object?, listObject?"> 
+<!ENTITY % model.objectLike_sequenceOptionalRepeatable "object*, listObject*"> 
+<!ENTITY % model.objectLike_sequenceRepeatable "object+, listObject+"> 
 <!ENTITY % tei_att.personal.attribute.full '
 full (yes|abb|init) "yes" '>
 
@@ -1096,6 +1102,10 @@ sort %teidata.count;  #IMPLIED'>
 <!ENTITY % model.placeLike_sequenceOptional "place?"> 
 <!ENTITY % model.placeLike_sequenceOptionalRepeatable "place*"> 
 <!ENTITY % model.placeLike_sequenceRepeatable "place+"> 
+<!ENTITY % tei_att.duration.iso.attribute.dur-iso '
+dur-iso %teidata.duration.iso;  #IMPLIED'>
+<!ENTITY % tei_att.duration.iso.attributes '
+ %tei_att.duration.iso.attribute.dur-iso;'> 
 <!ENTITY % tei_att.milestoneUnit.attribute.unit '
 unit %teidata.enumerated;  #REQUIRED'>
 <!ENTITY % tei_att.milestoneUnit.attributes '
@@ -1336,7 +1346,7 @@ ana CDATA  #IMPLIED'>
 
 <!ENTITY % macro.limitedContent '(#PCDATA|%model.limitedPhrase;|%model.inter;)*' >
 
-<!ENTITY % macro.phraseSeq '(#PCDATA|%model.gLike;|%model.phrase;|%model.global;)*' >
+<!ENTITY % macro.phraseSeq '(#PCDATA|%model.gLike;|%model.qLike;|%model.phrase;|%model.global;)*' >
 
 <!ENTITY % macro.phraseSeq.limited '(#PCDATA|%model.limitedPhrase;|%model.global;)*' >
 
@@ -1834,11 +1844,12 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.damaged.attributes;
  %tei_att.typed.attributes;
  %tei_att.spanning.attributes; >
-<!--doc:contains a date in any format. [3.5.4. Dates and Times 2.2.4. Publication, Distribution, Licensing, etc. 2.6. The Revision Description 3.11.2.4. Imprint, Size of a Document, and Reprint Information 15.2.3. The Setting Description 13.3.6. Dates and Times] -->
+<!--doc:contains a date in any format. [3.5.4. Dates and Times 2.2.4. Publication, Distribution, Licensing, etc. 2.6. The Revision Description 3.11.2.4. Imprint, Size of a Document, and Reprint Information 15.2.3. The Setting Description 13.3.7. Dates and Times] -->
 <!ELEMENT date (#PCDATA|%model.gLike;|%model.phrase;|%model.global;)*>
 <!ATTLIST date xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST date
  %tei_att.global.attributes;
+ %tei_att.canonical.attributes;
  %tei_att.datable.attributes;
  %tei_att.duration.attributes;
  %tei_att.editLike.attributes;
@@ -1900,7 +1911,8 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST desc
  %tei_att.global.attributes;
  %tei_att.translatable.attributes;
- %tei_att.typed.attributes; >
+ %tei_att.typed.attribute.subtype;
+type %teidata.enumerated;  #IMPLIED >
 <!--doc:(dictionary scrap) encloses a part of a dictionary entry in which other phrase-level dictionary elements are freely combined. [9.1. Dictionary Body and Overall Structure 9.2. The Structure of Dictionary Entries] -->
 <!ELEMENT dictScrap (#PCDATA|%model.gLike;|%model.entryPart;|%model.morphLike;|%model.phrase;|%model.inter;|%model.global;)*>
 <!ATTLIST dictScrap xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2610,10 +2622,18 @@ ordered %teidata.truthValue;  "true"  >
  %tei_att.typed.attributes;
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes; >
-<!--doc:(list of canonical names) contains a list of nyms, that is, standardized names for any thing. [13.3.5. Names and Nyms] -->
+<!--doc:(list of canonical names) contains a list of nyms, that is, standardized names for any thing. [13.3.6. Names and Nyms] -->
 <!ELEMENT listNym (((%model.headLike;)*,(nym|listNym)+,(relation|listRelation)*))>
 <!ATTLIST listNym xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listNym
+ %tei_att.global.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.declarable.attributes;
+ %tei_att.sortable.attributes; >
+<!--doc:(list of objects) contains a list of descriptions, each of which provides information about an identifiable physical object. [13.3.5. Objects] -->
+<!ELEMENT listObject (((%model.headLike;)*,(%model.objectLike;)+,(relation|listRelation)*))>
+<!ATTLIST listObject xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST listObject
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
  %tei_att.declarable.attributes;
@@ -2849,7 +2869,7 @@ value %teidata.numeric;  #IMPLIED >
 value %teidata.numeric;  #REQUIRED
 max %teidata.numeric;  #IMPLIED
 trunc %teidata.truthValue;  #IMPLIED >
-<!--doc:(canonical name) contains the definition for a canonical name or name component of any kind. [13.3.5. Names and Nyms] -->
+<!--doc:(canonical name) contains the definition for a canonical name or name component of any kind. [13.3.6. Names and Nyms] -->
 <!ELEMENT nym (((%model.entryPart;)*,(%model.pLike;)*,(nym)*))>
 <!ATTLIST nym xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST nym
@@ -2866,6 +2886,30 @@ parts CDATA  #IMPLIED >
  %tei_att.pointing.attributes;
  %tei_att.notated.attributes;
 type %teidata.enumerated;  #IMPLIED >
+<!--doc:contains a description of a single identifiable physical object. [13.3.5. Objects] -->
+<!ELEMENT object (((objectIdentifier)+,(%model.headLike;)*,((%model.pLike;)*|((msContents)?,(physDesc)?,(history)?,(additional)?)),(%model.noteLike;|%model.biblLike;|linkGrp|link)*,(object)?))>
+<!ATTLIST object xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST object
+ %tei_att.global.attributes;
+ %tei_att.sortable.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.declaring.attributes;
+ %tei_att.docStatus.attributes;
+ %tei_att.canonical.attributes; >
+<!--doc:(object identifier) groups one or more identifiers or pieces of locating information concerning a single object. [13.3.5. Objects] -->
+<!ELEMENT objectIdentifier (%model.placeNamePart;|institution|repository|collection|idno|msName|objectName|altIdentifier|address)*>
+<!ATTLIST objectIdentifier xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST objectIdentifier
+ %tei_att.global.attributes; >
+<!--doc:(name of an object) contains a proper noun or noun phrase used to refer to an object. [13.2.4. Object Names] -->
+<!ELEMENT objectName %macro.phraseSeq;>
+<!ATTLIST objectName xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST objectName
+ %tei_att.datable.attributes;
+ %tei_att.editLike.attributes;
+ %tei_att.global.attributes;
+ %tei_att.personal.attributes;
+ %tei_att.typed.attributes; >
 <!--doc:contains an informal description of a person's trade, profession or occupation. [15.2.2. The Participant Description] -->
 <!ELEMENT occupation %macro.specialPara;>
 <!ATTLIST occupation xmlns CDATA "http://www.tei-c.org/ns/1.0">
