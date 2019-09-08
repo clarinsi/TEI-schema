@@ -4,3 +4,7 @@
   same line as the preceding token
 * teiud2conllu.xsl: converts a CLARIN.SI TEI encoded corpus with
   MTE+UD morphosyntactic annotations into CoNLL-U format
+
+Data to support ODD development:
+* tei_odds.rng: Schema for validating the tei_clarin ODD
+* p5subset.xml: Subset of TEI P5 (needed for generating XML schemas from ODD)
