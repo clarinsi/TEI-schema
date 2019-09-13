@@ -31,10 +31,10 @@
       <pc xml:id="tid.39.1.12" ana="mte:Z" msd="UposTag=PUNCT">.</pc>
       
       Out:
-      11-12	bigbang	_	_	_	_	_	_	_	_
+      11-12	bigbang	_	_	_	_	_	_	_	SpaceAfter=No
       11	big	big	X	Xf	Foreign=Yes	-1	-	_	_
-      12	bang	bang	X	Xf	Foreign=Yes	-1	-	_	SpaceAfter=No
-      13	.	.	PUNCT	Z	_	-1	-	_	SpaceAfter=No
+      12	bang	bang	X	Xf	Foreign=Yes	-1	-	_	_
+      13	.	.	PUNCT	Z	_	-1	-	_	_
 
       In:
       <choice xml:id="tid.53.4.2">
@@ -145,15 +145,18 @@
 	  <xsl:with-param name="feats">_</xsl:with-param>
 	  <xsl:with-param name="head">_</xsl:with-param>
 	  <xsl:with-param name="deprel">_</xsl:with-param>
-	  <xsl:with-param name="misc">_</xsl:with-param>
+	  <xsl:with-param name="jos">_</xsl:with-param>
 	</xsl:apply-templates>
-	<!-- "Syntactic" tokens -->
+	<!-- "Syntactic" tokens (not allowed to have spacing information) -->
 	<xsl:for-each select="tei:reg/tei:*">
-	  <xsl:apply-templates mode="output" select="."/>
+	  <xsl:apply-templates mode="output" select=".">
+	    <xsl:with-param name="space"/>
+	  </xsl:apply-templates>
 	</xsl:for-each>
       </xsl:when>
+      <!-- Two or more original tokens, 1 normalised token -->
       <xsl:when test="tei:orig/tei:*[2]">
-	<!-- Surface tokens -->
+	<!-- Output info on syntactic token, but output merged surface tokens -->
 	<xsl:apply-templates mode="output" select="tei:reg/tei:*">
 	  <xsl:with-param name="token">
 	    <!-- Space-merge all original tokens (including <c>) -->
@@ -180,15 +183,16 @@
 	  <xsl:with-param name="feats">_</xsl:with-param>
 	  <xsl:with-param name="head">_</xsl:with-param>
 	  <xsl:with-param name="deprel">_</xsl:with-param>
-	  <xsl:with-param name="misc">_</xsl:with-param>
+	  <xsl:with-param name="jos">_</xsl:with-param>
 	</xsl:apply-templates>
-	<!-- "Syntactic" tokens -->
+	<!-- "Syntactic" tokens (not allowed to have spacing information) -->
 	<xsl:for-each select="tei:reg/tei:*">
-	  <xsl:apply-templates mode="output" select="."/>
+	  <xsl:apply-templates mode="output" select=".">
+	    <xsl:with-param name="space"/>
+	  </xsl:apply-templates>
 	</xsl:for-each>
       </xsl:when>
-      <!-- 1-1 mapping -->
-      <!-- Also output normalised token -->
+      <!-- 1-1 mapping (also output normalised token) -->
       <xsl:otherwise>
 	<xsl:apply-templates mode="output" select="tei:reg/tei:*">
 	  <xsl:with-param name="token" select="tei:orig/tei:*"/>
@@ -205,6 +209,7 @@
     <xsl:param name="id">
       <xsl:apply-templates mode="number" select="."/>
     </xsl:param>
+    <!-- Token  -->
     <xsl:param name="token" select="text()"/>
     <!-- Normalised form of word -->
     <xsl:param name="norm"/>
@@ -219,12 +224,12 @@
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <!-- UD part-of-speech tag, encoded as first feature of @msd -->
+    <!-- UD part-of-speech tag, encoded as first feature of @msd as "UposTag=X" -->
     <xsl:param name="cpostag">
       <xsl:variable name="catfeat" select="replace(@msd, '\|.+', '')"/>
       <xsl:value-of select="replace($catfeat, 'UposTag=', '')"/>
     </xsl:param>
-    <!-- MULTEXT-East MSD, encoded as (pointer value of) @ana -->
+    <!-- MULTEXT-East MSD, encoded as (some sort of pointer) value of @ana -->
     <xsl:param name="xpostag">
       <xsl:choose>
 	<xsl:when test="starts-with(@ana, '#')">
@@ -279,56 +284,39 @@
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <!-- Language specific features (transferred from input encoding -->
-    <xsl:param name="misc">
+    <!-- Language specific feature: JOS dependency -->
+    <xsl:param name="jos">
       <!-- JOS dependency syntax: head index and relation -->
-      <xsl:variable name="JOS">
-	<xsl:variable name="Syntax"
-		      select="key('corresp',ancestor::tei:s[1]/@xml:id)[@type='JOS-SYN']"/>
-	<xsl:if test="$Syntax//tei:link">
-	  <xsl:text>Dep=</xsl:text>
-	  <xsl:call-template name="head">
-	    <xsl:with-param name="links" select="$Syntax"/>
-	  </xsl:call-template>
-	  <xsl:text>|</xsl:text>
-	  <xsl:text>Rel=</xsl:text>
-	  <xsl:call-template name="rel">
-	    <xsl:with-param name="links" select="$Syntax"/>
-	  </xsl:call-template>
-	</xsl:if>
-      </xsl:variable>
-      <!-- Is token followed by space?  -->
-      <xsl:variable name="Space">
-	<!-- Closest ancestor where space after token is implied -->
-	<xsl:variable name="ancestor">
-	  <xsl:choose>
-	    <xsl:when test="ancestor::tei:p">
-	      <xsl:value-of select="generate-id(ancestor::tei:p)"/>
-	    </xsl:when>
-	    <xsl:when test="ancestor::tei:ab">
-	      <xsl:value-of select="generate-id(ancestor::tei:ab[1])"/>
-	    </xsl:when>
-	    <xsl:when test="ancestor::tei:div">
-	      <xsl:value-of select="generate-id(ancestor::tei:div[1])"/>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <xsl:message terminate="yes">No appropriate ancestor found</xsl:message>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</xsl:variable>
-	<!-- If a token inside the same $ancestor follows, and it is not a <c>, then no space after -->
-	<!-- This in fact doesn't work for original tokens, as normalised tokens will follow, but
-	     these should not be taken into account; we are lucky, as this template is always called
-	     on normalised tokens, and these, by convention, follow original tokens -->
-	<xsl:if test="following::tei:*[self::tei:w or self::tei:pc or self::tei:c][1]/
-		      ancestor::tei:*[generate-id(.) = $ancestor]
-		      and
-		      not(following::tei:*[self::tei:w or self::tei:pc or self::tei:c][1][self::tei:c])
-		      ">
-	  <xsl:text>SpaceAfter=No</xsl:text>
-	</xsl:if>
-      </xsl:variable>
-      <xsl:variable name="Normalised">
+      <xsl:variable name="Syntax"
+		    select="key('corresp',ancestor::tei:s[1]/@xml:id)[@type='JOS-SYN']"/>
+      <xsl:if test="$Syntax//tei:link">
+	<xsl:text>Dep=</xsl:text>
+	<xsl:call-template name="head">
+	  <xsl:with-param name="links" select="$Syntax"/>
+	</xsl:call-template>
+	<xsl:text>|</xsl:text>
+	<xsl:text>Rel=</xsl:text>
+	<xsl:call-template name="rel">
+	  <xsl:with-param name="links" select="$Syntax"/>
+	</xsl:call-template>
+      </xsl:if>
+    </xsl:param>
+    <!-- Language specific feature: Is token followed by space? -->
+    <xsl:param name="space">
+      <!-- If original token is ancestor, then we need to know if a space follows choice -->
+      <xsl:choose>
+	<xsl:when test="ancestor::tei:orig">
+	  <xsl:apply-templates mode="space" select="ancestor::tei:choice"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-templates mode="space" select="."/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>
+
+    <!-- Construct language specific features -->
+    <xsl:variable name="misc">
+      <xsl:variable name="normalised">
 	<xsl:if test="normalize-space($norm)">
 	  <xsl:text>Normalized=</xsl:text>
 	  <xsl:value-of select="$norm"/>
@@ -336,7 +324,9 @@
       </xsl:variable>
       <xsl:variable name="all" select="replace(
 				       replace(
-				       concat($Normalised, '|', $Space, '|', $JOS),
+				       replace(
+				       concat($normalised, '|', $space, '|', $jos),
+				       '_', ''),
 				       '^\|+', ''),
 				       '\|+$', '')"/>
       <xsl:choose>
@@ -347,7 +337,7 @@
 	  <xsl:text>_</xsl:text>
 	</xsl:otherwise>
       </xsl:choose>
-    </xsl:param>
+    </xsl:variable>
     
     <!-- 1/ID -->
     <xsl:value-of select="$id"/>
@@ -406,6 +396,38 @@
  		level="any" from="tei:s"/>
   </xsl:template>
 
+  <!-- Does a space follow the element? -->
+  <xsl:template mode="space" match="tei:*">
+    <!-- Closest ancestor where space after token is implied -->
+    <xsl:variable name="ancestor">
+      <xsl:choose>
+	<xsl:when test="ancestor::tei:p">
+	  <xsl:value-of select="generate-id(ancestor::tei:p)"/>
+	</xsl:when>
+	<xsl:when test="ancestor::tei:ab">
+	  <xsl:value-of select="generate-id(ancestor::tei:ab[1])"/>
+	</xsl:when>
+	<xsl:when test="ancestor::tei:div">
+	  <xsl:value-of select="generate-id(ancestor::tei:div[1])"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:message terminate="yes">No appropriate ancestor found</xsl:message>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <!-- If a token inside the same $ancestor follows, and it is not a <c>, then no space after -->
+    <!-- This in fact doesn't work for original tokens, as normalised tokens will follow, but
+	 these should not be taken into account; we are lucky, as this template is always called
+	 on normalised tokens, and these, by convention, follow original tokens -->
+    <xsl:if test="following::tei:*[self::tei:w or self::tei:pc or self::tei:c][1]/
+		  ancestor::tei:*[generate-id(.) = $ancestor]
+		  and
+		  not(following::tei:*[self::tei:w or self::tei:pc or self::tei:c][1][self::tei:c])
+		  ">
+      <xsl:text>SpaceAfter=No</xsl:text>
+    </xsl:if>
+  </xsl:template>
+  
   <!-- Return the name of the syntactic relation -->
   <xsl:template name="rel">
     <xsl:param name="links"/>
