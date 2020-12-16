@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="clarin.si-demo" xml:lang="sl">
+<?xml version="1.0" encoding="utf-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="clarin.si-demo" xml:lang="sl">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -33,7 +32,7 @@
     </fileDesc>
     <encodingDesc>
       <classDecl>
-        <!-- Taxonomy of JANES Named Entity classes, to illustrate their encoding -->
+        
         <taxonomy xml:id="Janes.NER">
           <category xml:id="per">
             <catDesc xml:lang="sl">oseba</catDesc>
@@ -56,7 +55,7 @@
             <catDesc xml:lang="en">miscellaneous</catDesc>
           </category>
         </taxonomy>
-        <!-- Taxonomy of PARSEME verbal multiword expressions, to illustrate their encoding -->
+        
         <taxonomy xml:id="PARSEME.VMWE">
           <category xml:id="ID">
             <catDesc xml:lang="sl">idiom</catDesc>
@@ -81,8 +80,7 @@
         </taxonomy>
       </classDecl>
       <listPrefixDef>
-        <prefixDef ident="mte" matchPattern="(.+)"
-		   replacementPattern="http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#$1">
+        <prefixDef ident="mte" matchPattern="(.+)" replacementPattern="http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#$1">
           <p xml:lang="en">Private URIs for morphosyntactic descriptions (MSDs), with the prefix "mte" pointing to fs elements defining the Slovene MULTEXT-East V6 MSDs.</p>
           <p xml:lang="sl">Zasebni naslovi URI s predpono "msd" kažejo na element fs, ki definirajo slovenske oblikoskladenjske oznake MULTEXT-East V6.</p>
         </prefixDef>
@@ -127,31 +125,31 @@
 	<head xml:lang="en">Example of a morphosyntactically and syntactically annotated text from the ssj500k corpus</head>
         <p xml:id="ssj1.1">
           <s xml:id="ssj1.1.1">
-            <pc xml:id="ssj1.1.1.t1" ana="mte:Z">"</pc>
-            <w xml:id="ssj1.1.1.t2" ana="mte:Pd-msg" lemma="tisti">Tistega</w><c> </c>
-            <w xml:id="ssj1.1.1.t3" ana="mte:Ncmsg" lemma="večer">večera</w><c> </c>
-            <w xml:id="ssj1.1.1.t4" ana="mte:Va-r1s-n" lemma="biti">sem</w><c> </c>
-            <w xml:id="ssj1.1.1.t5" ana="mte:Rgp" lemma="preveč">preveč</w><c> </c>
-            <w xml:id="ssj1.1.1.t6" ana="mte:Vmep-sm" lemma="popiti">popil</w>
-            <pc xml:id="ssj1.1.1.t7" ana="mte:Z">,</pc><c> </c>
-            <w xml:id="ssj1.1.1.t8" ana="mte:Vmep-sn" lemma="zgoditi">zgodilo</w><c> </c>
-            <w xml:id="ssj1.1.1.t9" ana="mte:Px------y" lemma="se">se</w><c> </c>
-            <w xml:id="ssj1.1.1.t10" ana="mte:Va-r3s-n" lemma="biti">je</w><c> </c>
-            <w xml:id="ssj1.1.1.t11" ana="mte:Ncmsan" lemma="mesec">mesec</w><c> </c>
-            <w xml:id="ssj1.1.1.t12" ana="mte:Ncmpg" lemma="dan">dni</w><c> </c>
-            <w xml:id="ssj1.1.1.t13" ana="mte:Sl" lemma="po">po</w><c> </c>
-            <w xml:id="ssj1.1.1.t14" ana="mte:Pd-nsl" lemma="ta">tem</w>
-            <pc xml:id="ssj1.1.1.t15" ana="mte:Z">,</pc><c> </c>
-            <w xml:id="ssj1.1.1.t16" ana="mte:Cs" lemma="ko">ko</w><c> </c>
-            <w xml:id="ssj1.1.1.t17" ana="mte:Va-r1s-n" lemma="biti">sem</w><c> </c>
-            <w xml:id="ssj1.1.1.t18" ana="mte:Vmep-sm" lemma="izvedeti">izvedel</w>
-            <pc xml:id="ssj1.1.1.t19" ana="mte:Z">,</pc><c> </c>
-            <w xml:id="ssj1.1.1.t20" ana="mte:Cs" lemma="da">da</w><c> </c>
-            <w xml:id="ssj1.1.1.t21" ana="mte:Pp1-sa--y" lemma="jaz">me</w><c> </c>
-            <w xml:id="ssj1.1.1.t22" ana="mte:Ncfsn" lemma="žena">žena</w><c> </c>
-            <w xml:id="ssj1.1.1.t23" ana="mte:Vmpr3s" lemma="varati">vara</w>
-            <pc xml:id="ssj1.1.1.t24" ana="mte:Z">.</pc><c> </c>
-            <!-- Syntactic dependencies -->
+            <pc xml:id="ssj1.1.1.t1" ana="mte:Z" join="right">"</pc>
+            <w xml:id="ssj1.1.1.t2" ana="mte:Pd-msg" lemma="tisti">Tistega</w>
+            <w xml:id="ssj1.1.1.t3" ana="mte:Ncmsg" lemma="večer">večera</w>
+            <w xml:id="ssj1.1.1.t4" ana="mte:Va-r1s-n" lemma="biti">sem</w>
+            <w xml:id="ssj1.1.1.t5" ana="mte:Rgp" lemma="preveč">preveč</w>
+            <w xml:id="ssj1.1.1.t6" ana="mte:Vmep-sm" lemma="popiti" join="right">popil</w>
+            <pc xml:id="ssj1.1.1.t7" ana="mte:Z">,</pc>
+            <w xml:id="ssj1.1.1.t8" ana="mte:Vmep-sn" lemma="zgoditi">zgodilo</w>
+            <w xml:id="ssj1.1.1.t9" ana="mte:Px------y" lemma="se">se</w>
+            <w xml:id="ssj1.1.1.t10" ana="mte:Va-r3s-n" lemma="biti">je</w>
+            <w xml:id="ssj1.1.1.t11" ana="mte:Ncmsan" lemma="mesec">mesec</w>
+            <w xml:id="ssj1.1.1.t12" ana="mte:Ncmpg" lemma="dan">dni</w>
+            <w xml:id="ssj1.1.1.t13" ana="mte:Sl" lemma="po">po</w>
+            <w xml:id="ssj1.1.1.t14" ana="mte:Pd-nsl" lemma="ta" join="right">tem</w>
+            <pc xml:id="ssj1.1.1.t15" ana="mte:Z">,</pc>
+            <w xml:id="ssj1.1.1.t16" ana="mte:Cs" lemma="ko">ko</w>
+            <w xml:id="ssj1.1.1.t17" ana="mte:Va-r1s-n" lemma="biti">sem</w>
+            <w xml:id="ssj1.1.1.t18" ana="mte:Vmep-sm" lemma="izvedeti" join="right">izvedel</w>
+            <pc xml:id="ssj1.1.1.t19" ana="mte:Z">,</pc>
+            <w xml:id="ssj1.1.1.t20" ana="mte:Cs" lemma="da">da</w>
+            <w xml:id="ssj1.1.1.t21" ana="mte:Pp1-sa--y" lemma="jaz">me</w>
+            <w xml:id="ssj1.1.1.t22" ana="mte:Ncfsn" lemma="žena">žena</w>
+            <w xml:id="ssj1.1.1.t23" ana="mte:Vmpr3s" lemma="varati" join="right">vara</w>
+            <pc xml:id="ssj1.1.1.t24" ana="mte:Z">.</pc>
+            
             <linkGrp type="syntax" targFunc="head argument" corresp="#ssj1.1.1">
               <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t1"/>
               <link ana="syn:Atr" target="#ssj1.1.1.t3 #ssj1.1.1.t2"/>
@@ -178,22 +176,22 @@
               <link ana="syn:Obj" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
               <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t24"/>
             </linkGrp>
-            <!-- Multi-word expressions - note that the constituent words need not be contiguous! -->
+            
             <linkGrp type="MWE" corresp="#ssj1.1.1">
               <link ana="mwe:IReflV" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
             </linkGrp>
           </s>
           <s xml:id="ssj1.1.2">
-            <w xml:id="ssj1.1.2.t1" ana="mte:Ncmsn" lemma="dogodek">Dogodek</w><c> </c>
-            <w xml:id="ssj1.1.2.t2" ana="mte:Sl" lemma="v">v</w><c> </c>
+            <w xml:id="ssj1.1.2.t1" ana="mte:Ncmsn" lemma="dogodek">Dogodek</w>
+            <w xml:id="ssj1.1.2.t2" ana="mte:Sl" lemma="v">v</w>
             <seg type="name" subtype="loc">
 	      <w xml:id="ssj1.1.2.t3" ana="mte:Npmsl" lemma="Ankaran">Ankaranu</w>
-	      </seg><c> </c>
-	      <w xml:id="ssj1.1.2.t4" ana="mte:Va-r3s-n" lemma="biti">je</w><c> </c>
-	      <w xml:id="ssj1.1.2.t5" ana="mte:Va-p-sf" lemma="biti">bila</w><c> </c>
-	      <w xml:id="ssj1.1.2.t6" ana="mte:Agpfsn" lemma="dramatičen">dramatična</w><c> </c>
-	      <w xml:id="ssj1.1.2.t7" ana="mte:Ncfsn" lemma="nesreča">nesreča</w>
-	      <pc xml:id="ssj1.1.2.t8" ana="mte:Z">.</pc>
+	      </seg>
+	      <w xml:id="ssj1.1.2.t4" ana="mte:Va-r3s-n" lemma="biti">je</w>
+	      <w xml:id="ssj1.1.2.t5" ana="mte:Va-p-sf" lemma="biti">bila</w>
+	      <w xml:id="ssj1.1.2.t6" ana="mte:Agpfsn" lemma="dramatičen">dramatična</w>
+	      <w xml:id="ssj1.1.2.t7" ana="mte:Ncfsn" lemma="nesreča" join="right">nesreča</w>
+	      <pc xml:id="ssj1.1.2.t8" ana="mte:Z" join="right">.</pc>
 	      <linkGrp type="syntax" targFunc="head argument" corresp="#ssj1.1.2">
 		<link ana="syn:Atr" target="#ssj1.1.2.t5 #ssj1.1.2.t1"/>
 		<link ana="syn:Atr" target="#ssj1.1.2.t3 #ssj1.1.2.t2"/>
@@ -214,7 +212,7 @@
           <s>
             <seg type="name" subtype="per">
 	      <w lemma="@iNinaromsek" ana="mte:Xa">@iNinaromsek</w>
-	    </seg><c> </c>
+	    </seg>
 	    <choice>
 	      <orig>
                 <w>mela</w>
@@ -222,16 +220,16 @@
 	      <reg>
                 <w lemma="imeti" ana="mte:Vmpp-sf">imela</w>
 	      </reg>
-	    </choice><c> </c>
+	    </choice>
 	    <choice>
 	      <orig>
-                <w>saaansooo</w>
+                <w join="right">saaansooo</w>
 	      </orig>
 	      <reg>
-                <w lemma="šansa" ana="mte:Ncfsa">šanso</w>
+                <w lemma="šansa" ana="mte:Ncfsa" join="right">šanso</w>
 	      </reg>
 	    </choice>
-	    <pc ana="mte:Z">,</pc><c> </c>
+	    <pc ana="mte:Z">,</pc>
 	    <choice>
 	      <orig>
                 <w>js</w>
@@ -239,9 +237,9 @@
 	      <reg>
                 <w lemma="jaz" ana="mte:Pp1-sn">jaz</w>
 	      </reg>
-	    </choice><c> </c>
-	    <w lemma="iti" ana="mte:Vmbr1s">grem</w><c> </c>
-	    <w lemma="pa" ana="mte:Cc">pa</w><c> </c>
+	    </choice>
+	    <w lemma="iti" ana="mte:Vmbr1s">grem</w>
+	    <w lemma="pa" ana="mte:Cc">pa</w>
 	    <choice>
 	      <orig>
 		<w>kr</w>
@@ -249,7 +247,7 @@
 	      <reg>
 		<w lemma="kar" ana="mte:Rgp">kar</w>
 	      </reg>
-	    </choice><c> </c>
+	    </choice>
 	    <choice>
 	      <orig>
 		<w>ze</w>
@@ -257,7 +255,7 @@
 	      <reg>
 		<w lemma="že" ana="mte:Q">že</w>
 	      </reg>
-	    </choice><c> </c>
+	    </choice>
 	    <choice>
 	      <orig>
 		<w>dons</w>
@@ -265,8 +263,8 @@
 	      <reg>
 		<w lemma="danes" ana="mte:Rgp">danes</w>
 	      </reg>
-	    </choice><c> </c>
-	    <w lemma=":P" ana="mte:Xe">:P</w><c> </c>
+	    </choice>
+	    <w lemma=":P" ana="mte:Xe">:P</w>
 	  </s>
 	  <s>
 	    <choice>
@@ -276,10 +274,10 @@
 	      <reg>
 		<w lemma="še" ana="mte:Q">še</w>
 	      </reg>
-	    </choice><c> </c>
-	    <w lemma="prevoz" ana="mte:Ncmsan">prevoz</w><c> </c>
-	    <w lemma="do" ana="mte:Sg">do</w><c> </c>
-	    <w lemma="dol" ana="mte:Rgp">dol</w><c> </c>
+	    </choice>
+	    <w lemma="prevoz" ana="mte:Ncmsan">prevoz</w>
+	    <w lemma="do" ana="mte:Sg">do</w>
+	    <w lemma="dol" ana="mte:Rgp">dol</w>
 	    <choice>
 	      <orig>
 		<w>sm</w>
@@ -287,9 +285,9 @@
 	      <reg>
 		<w lemma="biti" ana="mte:Va-r1s-n">sem</w>
 	      </reg>
-	    </choice><c> </c>
-	    <w lemma="dobiti" ana="mte:Vmep-sf">dobila</w>
-	    <pc ana="mte:Z">..</pc>
+	    </choice>
+	    <w lemma="dobiti" ana="mte:Vmep-sf" join="right">dobila</w>
+	    <pc ana="mte:Z" join="right">..</pc>
 	  </s>
 	  <s>
 	    <choice>
@@ -297,12 +295,12 @@
 		<w>odzabe</w>
 	      </orig>
 	      <reg>
-		<w lemma="o" ana="mte:I">o</w><c> </c>
+		<w lemma="o" ana="mte:I">o</w>
 		<w lemma="džabe" ana="mte:Xf">džabe</w>
 	      </reg>
-	    </choice><c> </c>
+	    </choice>
 	    <w lemma=":D" ana="mte:Xe">:D</w>
-	  </s><c> </c>
+	  </s>
 	  <s>
 	    <choice>
 	      <orig>
@@ -311,7 +309,7 @@
 	      <reg>
 		<w lemma="dobiti" ana="mte:Vmer2s">dobiš</w>
 	      </reg>
-            </choice><c> </c>
+            </choice>
 	    <choice>
 	      <orig>
 		<w>pozdravcke</w>
@@ -319,20 +317,20 @@
 	      <reg>
 		<w lemma="pozdravček" ana="mte:Ncmpa">pozdravčke</w>
 	      </reg>
-	    </choice><c> </c>
+	    </choice>
 	    <w lemma=";)" ana="mte:Xe">;)</w>
-	  </s><c> </c>
+	  </s>
 	  <s>
-	    <pc ana="mte:Z">(</pc>
+	    <pc ana="mte:Z" join="right">(</pc>
 	    <choice>
 	      <orig>
-		<w>vm</w>
+		<w join="right">vm</w>
 	      </orig>
 	      <reg>
-		<w lemma="vedeti" ana="mte:Vmpr1s">vem</w>
+		<w lemma="vedeti" ana="mte:Vmpr1s" join="right">vem</w>
 	      </reg>
 	    </choice>
-	    <pc ana="mte:Z">,</pc>
+	    <pc ana="mte:Z" join="right">,</pc>
 	    <choice>
 	      <orig>
 		<w>zleht</w>
@@ -340,17 +338,17 @@
 	      <reg>
 		<w lemma="žleht" ana="mte:Agpfsn">žleht</w>
 	      </reg>
-	     </choice><c> </c>
+	     </choice>
 	     <choice>
 	       <orig>
-		 <w>sm</w>
+		 <w join="right">sm</w>
 	       </orig>
 	       <reg>
-		 <w lemma="biti" ana="mte:Va-r1s-n">sem</w>
+		 <w lemma="biti" ana="mte:Va-r1s-n" join="right">sem</w>
 	       </reg>
 	     </choice>
-	     <pc ana="mte:Z">)</pc><c> </c>
-	     <w lemma=":O" ana="mte:Xe">:O</w>
+	     <pc ana="mte:Z">)</pc>
+	     <w lemma=":O" ana="mte:Xe" join="right">:O</w>
 	  </s>
         </p>
       </div>
@@ -361,78 +359,78 @@
 	  <note xml:id="DruzPolZb.1990-05-07.s001-01.sp-2.1" type="speaker">PREDSEDUJOČI DR. FRANCE BUČAR:</note>
 	  <u xml:id="DruzPolZb.1990-05-07.s001-01.sp-2.2">
 	    <s>
-	      <w lemma="pričenjati" ana="mte:Vmpr1s">Pričenjam</w><c> </c>
-	      <w lemma="1." ana="mte:Mdo">1.</w><c> </c>
-	      <w lemma="seja" ana="mte:Ncfsa">sejo</w><c> </c>
-	      <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w><c> </c>
-	      <w lemma="zbor" ana="mte:Ncmsg">zbora</w><c> </c>
-	      <w lemma="skupščina" ana="mte:Ncfsg">Skupščine</w><c> </c>
-	      <w lemma="republika" ana="mte:Ncfsg">Republike</w><c> </c>
-	      <w lemma="Slovenija" ana="mte:Npfsg">Slovenije</w>
-	      <pc ana="mte:Z">,</pc><c> </c>
-	      <w lemma="ki" ana="mte:Cs">ki</w><c> </c>
-	      <w lemma="biti" ana="mte:Va-r3s-n">je</w><c> </c>
-	      <w lemma="po" ana="mte:Sl">po</w><c> </c>
-	      <w lemma="določba" ana="mte:Ncfsl">določbi</w><c> </c>
-	      <w lemma="prvi" ana="mte:Mlomsg">prvega</w><c> </c>
-	      <w lemma="odstavek" ana="mte:Ncmsg">odstavka</w><c> </c>
-	      <w lemma="2." ana="mte:Mdo">2.</w><c> </c>
-	      <w lemma="člen" ana="mte:Ncmsg">člena</w><c> </c>
-	      <w lemma="poslovnik" ana="mte:Ncmsg">Poslovnika</w><c> </c>
-	      <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w><c> </c>
-	      <w lemma="zbor" ana="mte:Ncmsg">zbora</w><c> </c>
-	      <w lemma="skupščina" ana="mte:Ncfsg">Skupščine</w><c> </c>
-	      <w lemma="republika" ana="mte:Ncfsg">Republike</w><c> </c>
-	      <w lemma="Slovenija" ana="mte:Npfsg">Slovenije</w><c> </c>
-	      <w lemma="sklicati" ana="mte:Vmep-sf">sklicala</w><c> </c>
-	      <w lemma="predsednica" ana="mte:Ncfsn">predsednica</w><c> </c>
+	      <w lemma="pričenjati" ana="mte:Vmpr1s">Pričenjam</w>
+	      <w lemma="1." ana="mte:Mdo">1.</w>
+	      <w lemma="seja" ana="mte:Ncfsa">sejo</w>
+	      <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w>
 	      <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
-	      <pc ana="mte:Z">,</pc><c> </c>
-	      <w lemma="ki" ana="mte:Cs">ki</w><c> </c>
-	      <w lemma="biti" ana="mte:Va-r3s-n">je</w><c> </c>
-	      <w lemma="doslej" ana="mte:Rgp">doslej</w><c> </c>
-	      <w lemma="opravljati" ana="mte:Vmpp-sf">opravljala</w><c> </c>
-	      <w lemma="ta" ana="mte:Pd-fsa">to</w><c> </c>
-	      <w lemma="funkcija" ana="mte:Ncfsa">funkcijo</w>
-	      <pc ana="mte:Z">.</pc><c> </c>
+	      <w lemma="skupščina" ana="mte:Ncfsg">Skupščine</w>
+	      <w lemma="republika" ana="mte:Ncfsg">Republike</w>
+	      <w lemma="Slovenija" ana="mte:Npfsg" join="right">Slovenije</w>
+	      <pc ana="mte:Z">,</pc>
+	      <w lemma="ki" ana="mte:Cs">ki</w>
+	      <w lemma="biti" ana="mte:Va-r3s-n">je</w>
+	      <w lemma="po" ana="mte:Sl">po</w>
+	      <w lemma="določba" ana="mte:Ncfsl">določbi</w>
+	      <w lemma="prvi" ana="mte:Mlomsg">prvega</w>
+	      <w lemma="odstavek" ana="mte:Ncmsg">odstavka</w>
+	      <w lemma="2." ana="mte:Mdo">2.</w>
+	      <w lemma="člen" ana="mte:Ncmsg">člena</w>
+	      <w lemma="poslovnik" ana="mte:Ncmsg">Poslovnika</w>
+	      <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w>
+	      <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
+	      <w lemma="skupščina" ana="mte:Ncfsg">Skupščine</w>
+	      <w lemma="republika" ana="mte:Ncfsg">Republike</w>
+	      <w lemma="Slovenija" ana="mte:Npfsg">Slovenije</w>
+	      <w lemma="sklicati" ana="mte:Vmep-sf">sklicala</w>
+	      <w lemma="predsednica" ana="mte:Ncfsn">predsednica</w>
+	      <w lemma="zbor" ana="mte:Ncmsg" join="right">zbora</w>
+	      <pc ana="mte:Z">,</pc>
+	      <w lemma="ki" ana="mte:Cs">ki</w>
+	      <w lemma="biti" ana="mte:Va-r3s-n">je</w>
+	      <w lemma="doslej" ana="mte:Rgp">doslej</w>
+	      <w lemma="opravljati" ana="mte:Vmpp-sf">opravljala</w>
+	      <w lemma="ta" ana="mte:Pd-fsa">to</w>
+	      <w lemma="funkcija" ana="mte:Ncfsa" join="right">funkcijo</w>
+	      <pc ana="mte:Z">.</pc>
 	    </s>
 	    <s>
-	      <w lemma="dovoliti" ana="mte:Vmem2p">Dovolite</w>
-	      <pc ana="mte:Z">,</pc><c> </c>
-	      <w lemma="da" ana="mte:Cs">da</w><c> </c>
-	      <w lemma="se" ana="mte:Px------y">se</w><c> </c>
-	      <w lemma="ti" ana="mte:Pp2-pd">vam</w><c> </c>
-	      <w lemma="predstaviti" ana="mte:Vmer1s">predstavim</w>
+	      <w lemma="dovoliti" ana="mte:Vmem2p" join="right">Dovolite</w>
+	      <pc ana="mte:Z">,</pc>
+	      <w lemma="da" ana="mte:Cs">da</w>
+	      <w lemma="se" ana="mte:Px------y">se</w>
+	      <w lemma="ti" ana="mte:Pp2-pd">vam</w>
+	      <w lemma="predstaviti" ana="mte:Vmer1s" join="right">predstavim</w>
 	      <pc ana="mte:Z">.</pc>
-            </s><c> </c>
+            </s>
 	    <s>
-              <w lemma="biti" ana="mte:Va-r1s-n">Sem</w><c> </c>
-              <w lemma="France" ana="mte:Npmsn">France</w><c> </c>
-              <w lemma="Bučar" ana="mte:Npmsn">Bučar</w>
-              <pc ana="mte:Z">,</pc><c> </c>
-              <w lemma="kot" ana="mte:Cs">kot</w><c> </c>
-              <w lemma="star" ana="mte:Agsmsny">najstarejši</w><c> </c>
-              <w lemma="član" ana="mte:Ncmsn">član</w><c> </c>
-              <w lemma="ta" ana="mte:Pd-msg">tega</w><c> </c>
-              <w lemma="zbor" ana="mte:Ncmsg">zbora</w><c> </c>
-              <w lemma="po" ana="mte:Sl">po</w><c> </c>
-              <w lemma="drug" ana="mte:Mlpmsl">drugem</w><c> </c>
-              <w lemma="odstavek" ana="mte:Ncmsl">odstavku</w><c> </c>
-              <w lemma="2." ana="mte:Mdo">2.</w><c> </c>
-              <w lemma="člen" ana="mte:Ncmsg">člena</w><c> </c>
-              <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w><c> </c>
-              <w lemma="zbor" ana="mte:Ncmsg">zbora</w><c> </c>
-              <w lemma="republika" ana="mte:Ncfsg">Republike</w><c> </c>
-              <w lemma="Slovenija" ana="mte:Npfsg">Slovenije</w>
-              <pc ana="mte:Z">,</pc><c> </c>
-              <w lemma="zato" ana="mte:Cc">zato</w><c> </c>
-              <w lemma="voditi" ana="mte:Vmpr1s">vodim</w><c> </c>
-              <w lemma="seja" ana="mte:Ncfsa">sejo</w><c> </c>
-              <w lemma="do" ana="mte:Sg">do</w><c> </c>
-              <w lemma="izvolitev" ana="mte:Ncfsg">izvolitve</w><c> </c>
-              <w lemma="predsednik" ana="mte:Ncmsg">predsednika</w><c> </c>
+              <w lemma="biti" ana="mte:Va-r1s-n">Sem</w>
+              <w lemma="France" ana="mte:Npmsn">France</w>
+              <w lemma="Bučar" ana="mte:Npmsn" join="right">Bučar</w>
+              <pc ana="mte:Z">,</pc>
+              <w lemma="kot" ana="mte:Cs">kot</w>
+              <w lemma="star" ana="mte:Agsmsny">najstarejši</w>
+              <w lemma="član" ana="mte:Ncmsn">član</w>
+              <w lemma="ta" ana="mte:Pd-msg">tega</w>
               <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
-              <pc ana="mte:Z">.</pc>
+              <w lemma="po" ana="mte:Sl">po</w>
+              <w lemma="drug" ana="mte:Mlpmsl">drugem</w>
+              <w lemma="odstavek" ana="mte:Ncmsl">odstavku</w>
+              <w lemma="2." ana="mte:Mdo">2.</w>
+              <w lemma="člen" ana="mte:Ncmsg">člena</w>
+              <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w>
+              <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
+              <w lemma="republika" ana="mte:Ncfsg">Republike</w>
+              <w lemma="Slovenija" ana="mte:Npfsg" join="right">Slovenije</w>
+              <pc ana="mte:Z">,</pc>
+              <w lemma="zato" ana="mte:Cc">zato</w>
+              <w lemma="voditi" ana="mte:Vmpr1s">vodim</w>
+              <w lemma="seja" ana="mte:Ncfsa">sejo</w>
+              <w lemma="do" ana="mte:Sg">do</w>
+              <w lemma="izvolitev" ana="mte:Ncfsg">izvolitve</w>
+              <w lemma="predsednik" ana="mte:Ncmsg">predsednika</w>
+              <w lemma="zbor" ana="mte:Ncmsg" join="right">zbora</w>
+              <pc ana="mte:Z" join="right">.</pc>
 	    </s>
 	  </u>
 	</div>
