@@ -9,30 +9,29 @@
         </author>
       </titleStmt>
       <editionStmt>
-        <edition>0.6</edition>
+        <edition>0.7</edition>
       </editionStmt>
       <publicationStmt>
         <authority>CLARIN.SI</authority>
         <pubPlace>
           <ref target="https://github.com/clarinsi/TEI-schema">https://github.com/clarinsi/TEI-schema</ref>
-          <ref target="http://nl.ijs.si/tei/schema/clarin/">http://nl.ijs.si/tei/schema/clarin/</ref>
         </pubPlace>
         <availability>
           <p xml:lang="sl">Prosto dostopno.</p>
           <p xml:lang="en">Freely available.</p>
         </availability>
-        <date>2018-12-28</date>
+        <date>2020-12-16</date>
       </publicationStmt>
       <sourceDesc>
         <p>Examples made on the basis of 
-        <ref target="http://hdl.handle.net/11356/1165">Training corpus ssj500k 2.0</ref> and 
-        <ref target="http://hdl.handle.net/11356/1123">CMC training corpus Janes-Tag 2.0</ref> 
+        <ref target="http://hdl.handle.net/11356/1165">Training corpus ssj500k 2.0</ref>,
+        <ref target="http://hdl.handle.net/11356/1123">CMC training corpus Janes-Tag 2.0</ref>, and
+        <ref target="http://hdl.handle.net/11356/1167">Slovenian parliamentary corpus SlovParl 2.0</ref> 
         corpora.</p>
       </sourceDesc>
     </fileDesc>
     <encodingDesc>
       <classDecl>
-        
         <taxonomy xml:id="Janes.NER">
           <category xml:id="per">
             <catDesc xml:lang="sl">oseba</catDesc>
@@ -84,9 +83,9 @@
           <p xml:lang="en">Private URIs for morphosyntactic descriptions (MSDs), with the prefix "mte" pointing to fs elements defining the Slovene MULTEXT-East V6 MSDs.</p>
           <p xml:lang="sl">Zasebni naslovi URI s predpono "msd" kažejo na element fs, ki definirajo slovenske oblikoskladenjske oznake MULTEXT-East V6.</p>
         </prefixDef>
-        <prefixDef ident="syn" matchPattern="(.+)" replacementPattern="#$1">
-          <p xml:lang="sl">Zasebni naslovi URI s predpono "syn" kažejo na elemente, ki jih pojasnijo in podajo njihovo preslikavo v angleščino. V pričujočem dokumentu so to enostavno lokalne reference na skladenjske specifikacije v dodatku.</p>
-          <p xml:lang="en">Private URIs with the prefix "syn" point to elements giving their explanation and mapping to English. In this document they are simply local references to the syntactic specifications in the back matter.</p>
+        <prefixDef ident="jos-syn" matchPattern="(.+)" replacementPattern="#$1">
+          <p xml:lang="sl">Zasebni naslovi URI s predpono "jos-syn" kažejo na elemente, ki jih pojasnijo in podajo njihovo preslikavo v angleščino. V pričujočem dokumentu so to enostavno lokalne reference na skladenjske specifikacije v dodatku.</p>
+          <p xml:lang="en">Private URIs with the prefix "jos-syn" point to elements giving their explanation and mapping to English. In this document they are simply local references to the syntactic specifications in the back matter.</p>
         </prefixDef>
         <prefixDef ident="mwe" matchPattern="(.+)" replacementPattern="#$1">
           <p xml:lang="sl">Zasebni naslovi URI s predpono "mwe" kažejo na elemente, ki podajo preslikavo v njihove slovenske in angleške termine. V pričujočem dokumentu so to kar lokalne reference na vrste PARSEME glagolskih večbesednih izrazov, ki se nahajajo v taksonomiji "PARSEME.VMWE" v kolofonu TEI.</p>
@@ -151,30 +150,30 @@
             <pc xml:id="ssj1.1.1.t24" ana="mte:Z">.</pc>
             
             <linkGrp type="syntax" targFunc="head argument" corresp="#ssj1.1.1">
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t1"/>
-              <link ana="syn:Atr" target="#ssj1.1.1.t3 #ssj1.1.1.t2"/>
-              <link ana="syn:AdvO" target="#ssj1.1.1.t6 #ssj1.1.1.t3"/>
-              <link ana="syn:PPart" target="#ssj1.1.1.t6 #ssj1.1.1.t4"/>
-              <link ana="syn:AdvM" target="#ssj1.1.1.t6 #ssj1.1.1.t5"/>
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t6"/>
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t7"/>
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t8"/>
-              <link ana="syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
-              <link ana="syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t10"/>
-              <link ana="syn:AdvO" target="#ssj1.1.1.t8 #ssj1.1.1.t11"/>
-              <link ana="syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t12"/>
-              <link ana="syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t13"/>
-              <link ana="syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t14"/>
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t15"/>
-              <link ana="syn:Conj" target="#ssj1.1.1.t18 #ssj1.1.1.t16"/>
-              <link ana="syn:PPart" target="#ssj1.1.1.t18 #ssj1.1.1.t17"/>
-              <link ana="syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t18"/>
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t19"/>
-              <link ana="syn:Conj" target="#ssj1.1.1.t23 #ssj1.1.1.t20"/>
-              <link ana="syn:Obj" target="#ssj1.1.1.t23 #ssj1.1.1.t21"/>
-              <link ana="syn:Sb" target="#ssj1.1.1.t23 #ssj1.1.1.t22"/>
-              <link ana="syn:Obj" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
-              <link ana="syn:Root" target="#ssj1.1.1 #ssj1.1.1.t24"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t1"/>
+              <link ana="jos-syn:Atr" target="#ssj1.1.1.t3 #ssj1.1.1.t2"/>
+              <link ana="jos-syn:AdvO" target="#ssj1.1.1.t6 #ssj1.1.1.t3"/>
+              <link ana="jos-syn:PPart" target="#ssj1.1.1.t6 #ssj1.1.1.t4"/>
+              <link ana="jos-syn:AdvM" target="#ssj1.1.1.t6 #ssj1.1.1.t5"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t6"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t7"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t8"/>
+              <link ana="jos-syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
+              <link ana="jos-syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t10"/>
+              <link ana="jos-syn:AdvO" target="#ssj1.1.1.t8 #ssj1.1.1.t11"/>
+              <link ana="jos-syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t12"/>
+              <link ana="jos-syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t13"/>
+              <link ana="jos-syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t14"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t15"/>
+              <link ana="jos-syn:Conj" target="#ssj1.1.1.t18 #ssj1.1.1.t16"/>
+              <link ana="jos-syn:PPart" target="#ssj1.1.1.t18 #ssj1.1.1.t17"/>
+              <link ana="jos-syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t18"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t19"/>
+              <link ana="jos-syn:Conj" target="#ssj1.1.1.t23 #ssj1.1.1.t20"/>
+              <link ana="jos-syn:Obj" target="#ssj1.1.1.t23 #ssj1.1.1.t21"/>
+              <link ana="jos-syn:Sb" target="#ssj1.1.1.t23 #ssj1.1.1.t22"/>
+              <link ana="jos-syn:Obj" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
+              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t24"/>
             </linkGrp>
             
             <linkGrp type="MWE" corresp="#ssj1.1.1">
@@ -193,14 +192,14 @@
 	      <w xml:id="ssj1.1.2.t7" ana="mte:Ncfsn" lemma="nesreča" join="right">nesreča</w>
 	      <pc xml:id="ssj1.1.2.t8" ana="mte:Z" join="right">.</pc>
 	      <linkGrp type="syntax" targFunc="head argument" corresp="#ssj1.1.2">
-		<link ana="syn:Atr" target="#ssj1.1.2.t5 #ssj1.1.2.t1"/>
-		<link ana="syn:Atr" target="#ssj1.1.2.t3 #ssj1.1.2.t2"/>
-		<link ana="syn:Atr" target="#ssj1.1.2.t1 #ssj1.1.2.t3"/>
-		<link ana="syn:PPart" target="#ssj1.1.2.t5 #ssj1.1.2.t4"/>
-		<link ana="syn:Root" target="#ssj1.1.2 #ssj1.1.2.t5"/>
-		<link ana="syn:Atr" target="#ssj1.1.2.t7 #ssj1.1.2.t6"/>
-		<link ana="syn:Sb" target="#ssj1.1.2.t5 #ssj1.1.2.t7"/>
-		<link ana="syn:Root" target="#ssj1.1.2 #ssj1.1.2.t8"/>
+		<link ana="jos-syn:Atr" target="#ssj1.1.2.t5 #ssj1.1.2.t1"/>
+		<link ana="jos-syn:Atr" target="#ssj1.1.2.t3 #ssj1.1.2.t2"/>
+		<link ana="jos-syn:Atr" target="#ssj1.1.2.t1 #ssj1.1.2.t3"/>
+		<link ana="jos-syn:PPart" target="#ssj1.1.2.t5 #ssj1.1.2.t4"/>
+		<link ana="jos-syn:Root" target="#ssj1.1.2 #ssj1.1.2.t5"/>
+		<link ana="jos-syn:Atr" target="#ssj1.1.2.t7 #ssj1.1.2.t6"/>
+		<link ana="jos-syn:Sb" target="#ssj1.1.2.t5 #ssj1.1.2.t7"/>
+		<link ana="jos-syn:Root" target="#ssj1.1.2 #ssj1.1.2.t8"/>
 	      </linkGrp>
           </s>
         </p>
