@@ -9,13 +9,12 @@
       </titleStmt>
       <publicationStmt>
         <publisher>CLARIN.SI</publisher>
-        <date>2019-09-06</date>
+        <date>2020-12-16</date>
         <availability status="free">
           <p>This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.</p>
         </availability>
         <pubPlace>
           <ref target="https://github.com/clarinsi/TEI-schema">https://github.com/clarinsi/TEI-schema</ref>
-          <ref target="http://nl.ijs.si/tei/schema/clarin/">http://nl.ijs.si/tei/schema/clarin/</ref>
         </pubPlace>
       </publicationStmt>
       <sourceDesc>
@@ -28,6 +27,7 @@
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
+      <change when="2020-12-16">Tomaž Erjavec: change representation of whitespace.</change>
       <change when="2019-09-06">Tomaž Erjavec: added module for figures, so we can code tables; newly generated schemas.</change>
       <change when="2018-12-31">Tomaž Erjavec: added module for names and dates so we can code e.g. parliamentary corpora; newly generated schemas.</change>
       <change when="2018-12-28">Tomaž Erjavec: added module for spoken text so we can code e.g. parliamentary corpora; newly generated schemas.</change>

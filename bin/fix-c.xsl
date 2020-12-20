@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Stylesheet to put "<c> </c>", i.e. whitespace in an linguistically analysed text -->
-<!-- into the same line as the preceding token. E.g.:
+<!-- Stylesheet to put replace c with @join="right"
      Input:
        <pc>"</pc>
-       <w>Tistega</w>
-       <c> </c>
+       <w>Tistega</w><c> </c>
        <w>večera</w>
      Output:
-       <pc>"</pc>
-       <w>Tistega</w><c> </c>
+       <pc join="right">"</pc>
+       <w>Tistega</w>
        <w>večera</w>
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -28,13 +26,16 @@
     <xsl:copy/>
   </xsl:template>
 
-  <xsl:template match="text()">
-    <xsl:choose>
-      <xsl:when test="following-sibling::tei:*[1][self::tei:c]"/>
-      <xsl:otherwise>
-	<xsl:value-of select="."/>
-      </xsl:otherwise>
-    </xsl:choose>
+  <xsl:template match="tei:c"/>
+  <xsl:template match="tei:w | tei:pc">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:if test="not(following::tei:*[1][self::tei:c] or
+		    ancestor::tei:choice/following::tei:*[1][self::tei:c])">
+	<xsl:attribute name="join">right</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:copy>
   </xsl:template>
 
 </xsl:stylesheet>
