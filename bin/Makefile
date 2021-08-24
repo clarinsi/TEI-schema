@@ -1,6 +1,6 @@
 test:
 	date
-all:	schema val
+all:	schema val docs
 xall:	schema val docs
 
 val:	val-exa val-odd
@@ -19,12 +19,10 @@ schema:	val-odd
 	Stylesheets/bin/teitoxsd        ${PARAMS} ../schema/tei_clarin.xsd
 	Stylesheets/bin/teitoschematron ${PARAMS} ../schema/tei_clarin.sch
 
-#This still needs to be implemented!
-docs:	val-odd
-	Stylesheets/bin/teitohtml --profiledir=$H --profile=profile --odd ${PARAMS} ../docs/index.html
-	Stylesheets/bin/teitohtml --odd ${PARAMS} ../doc/tei_clarin_doc.html
-	Stylesheets/bin/teitolite --odd ${PARAMS} ../doc/tei_clarin_doc.xml
 H = /project/corpora/TEI-schema/bin/
+docs:	val-odd
+	Stylesheets/bin/teitohtml --profiledir=$H --profile=profile --odd ${PARAMS} \
+	../docs/tei_clarin_doc.html
 
 j = java -jar /usr/share/java/jing.jar
 s = java -jar /usr/share/java/saxon.jar
