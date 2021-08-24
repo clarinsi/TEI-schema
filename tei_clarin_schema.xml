@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://www.tei-c.org/ns/1.0"
-  xml:lang="en" n="tei_clarin">
+<TEI xmlns:rng="http://relaxng.org/ns/structure/1.0" 
+     xmlns="http://www.tei-c.org/ns/1.0"
+     xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
+     xmlns:eg="http://www.tei-c.org/ns/Examples"
+     xmlns:egXML="http://www.tei-c.org/ns/Examples"
+     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+     xmlns:tei="http://www.tei-c.org/ns/1.0"
+     xml:lang="en" n="tei_clarin">
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>TEI schema for linguistically annotated corpora of CLARIN.SI</title>
+        <title>TEI schema for CLARIN.SI</title>
         <author>Tomaž Erjavec, tomaz.erjavec@ijs.si</author>
       </titleStmt>
       <publicationStmt>
         <publisher>CLARIN.SI</publisher>
-        <date>2020-12-16</date>
+        <date>2021-08-24</date>
         <availability status="free">
           <p>This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.</p>
         </availability>
@@ -27,6 +33,7 @@
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
+      <change when="2021-08-24">Tomaž Erjavec: start adding text of recommendations.</change>
       <change when="2020-12-16">Tomaž Erjavec: change representation of whitespace.</change>
       <change when="2019-09-06">Tomaž Erjavec: added module for figures, so we can code tables; newly generated schemas.</change>
       <change when="2018-12-31">Tomaž Erjavec: added module for names and dates so we can code e.g. parliamentary corpora; newly generated schemas.</change>
@@ -36,25 +43,1213 @@
     </revisionDesc>
   </teiHeader>
   <text>
+    <front>
+      <titlePage>
+        <docTitle>
+          <titlePart type="main"><ref target="https://github.com/clarinsi/TEI-schema/">CLARIN.SI TEI schema</ref></titlePart>
+          <titlePart type="sub">A TEI Schema for CLARIN.SI resources</titlePart>
+        </docTitle>
+        <docEdition>0.2</docEdition>
+      </titlePage>
+      <p></p>
+      <divGen type="toc"/>
+    </front>
+    
     <body>
-      <p>A TEI schema for linguistically annotated corpora, primarily meant as example of good practice for <ref target="http://www-clarin.si/">CLARIN.SI</ref>. This is a very general TEI schema - for actual practice, the companion document "tei_clarin_example.xml" should be consulted.</p>
-      <schemaSpec ident="tei_clarin" start="TEI teiCorpus" docLang="en" prefix="tei_" xml:lang="en">
-        <moduleRef key="core" except="gb"/>
-        <moduleRef key="tei" except=""/>
-        <moduleRef key="header" except="handNote typeNote scriptNote"/>
-        <moduleRef key="textstructure"
-          except="argument div1 div2 div3 div4 div5 div6 div7 epigraph floatingText"/>
-        <moduleRef key="corpus" except=""/>
-        <moduleRef key="transcr" except=""/>
-        <moduleRef key="figures" except=""/>
-        <moduleRef key="dictionaries" except=""/>
-        <moduleRef key="spoken" except=""/>
-        <moduleRef key="namesdates" except=""/>
-        <moduleRef key="linking" except=""/>
-        <moduleRef key="analysis" except="interp interpGrp"/>
-        <moduleRef key="iso-fs" except="bicond cond fsConstraints fsdLink if iff then vMerge vNot"/>
-        <moduleRef key="gaiji" except=""/>
-      </schemaSpec>
+      <div xml:id="sec-intro">
+        <head>Introduction</head>
+        <p>The preferred annotation scheme for langauge resources deposited in the repository of the
+	<ref target="http://www-clarin.si/">CLARIN.SI</ref> research infrastructure are as given in the 
+        <ref target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">Text Encoding
+	Initiative Guidelines</ref>, which are XML-based recommendations for encoding texts for scholarly
+        purposes. As opposed to most other such recommendations, the TEI Guidelines have the
+        ambition to be applicable to texts in any natural language, of any date, in any
+        literary genre or text type, without restriction on form or content. The TEI 
+        customisatoin for CLARIN.SI allows a wide range of language resources to be encoded,
+        while making explicit recommendations on the manner of encoding various
+        phenomena. The recommendations are written as a TEI ODD document, on the
+        basis of which it is possible to derive an XML schema expressed either as a RelaxNG
+        schema, a DTD or a W3C schema, and such schemas are also part of this Git repository.</p>
+
+        <p>When using these recommendations, the following points should be taken in consideration:
+        <list>
+
+          <item>The TEI Guidelines are a large and complex set of specifications, and the
+          CLARIN.SI recommendations do not attempt to give an introduction to them. Rather,
+          it concentrates only on aspects of the Guidelines that are most likely to be of use
+          in encoding the most common kinds of resources which are likely to be deposited in
+	  the CLARIN.SI repository, in particular linguistically annotated language corpora.</item>
+          
+          <item>It is difficult if not impossible to determine in advance what kinds of resources
+          and their mark-up will be deposited in the repository. While we tried to cater for the
+          more obvious encoding needs, it is possible that new users will have to use TEI elements
+          or attributes that are not mentioned here.</item>
+
+          <item>Since these recommendations are very much work in progress, we have left the formal
+          specification (i.e. the XML schema) rather unconstrained, so it can accommodate encoding
+          practices that we have not (yet) foreseen. The downside of this is that the XML schemas
+          will allow constructs that are at odds to those that we propose in the prose of the
+          recommendations. Therefore, the prose should be taken as the definitive way of encoding
+          the phenomena under discussion, i.e. even if a language resource validates against the
+          schema, it might still not be encoded according to these recommendations.</item>
+
+          <item>In the text of these recommendations, every mention of an element is linked to its
+          definition, where examples of use are also given. The text also makes frequent reference
+          to the text of the TEI Guidelines. However, the TEI Guidelines give generic examples and
+          explanations, which can be at odds with particular recommendations that are made here, so
+          the ones from the TEI Guidelines should be taken with a grain of salt.</item>
+
+        </list>
+        </p>
+        
+        <p>The rest of these recommendations are structured as follows:
+        <list>
+          <item>the rest of this section details the <ref target="#sec-scope">scope and
+          purpose</ref> of the recommendations;</item>
+
+          <item><ref target="#sec-general">Section 2</ref> gives the general requirements that
+          a CLARIN.SI langauge resource has to meet;</item>
+
+          <item><ref target="#sec-overall">Section 3</ref> explains the overall document
+          structure of a CLARIN.SI laguage resource;</item>
+
+          <item><ref target="#sec-metadata">Section 4</ref> concentrates on encoding a language
+          resource metadata;</item>
+          
+          <item><ref target="#sec-transcript">Section 5</ref> gives the encoding of the corpus body;</item>
+
+          <item><ref target="#sec-linguistic">Section 6</ref> details linguistic annotations;</item>
+
+          <item><ref target="#sec-multimedia">Section 7</ref> gives information on multimedia information;</item>
+
+          <item><ref target="#sec-conversion">Section 9</ref> discusses conversions to and from
+          the CLARIN.SI format;</item>
+
+          <item><ref target="#examplar">Appendix A</ref> gives a complete example document that illustrates
+          the encoding according to the CLARIN.SI schema.</item>
+
+          <item><ref target="#schema">Appendix B</ref> gives the formal specification of
+          the CLARIN.SI schema.</item>
+        </list>
+      </p>
+        
+      <div xml:id="sec-scope">
+          <head>Scope and purpose</head>
+          <p>These recommendations consists of guidelines, a formal TEI schema, and derived XML
+          schemas in various schema languages. They are intended for the encoding of language
+          resources, in particular of linguistically annotated corpora, regardless of the language
+          or country of origin, for the purposes of scholarly investigations, be they from the
+          field of linguistics, political science, history or other humanities and social sciences
+          disciplines.</p>
+          
+          <p>In developing a schema for structuring data, two approaches can be adopted: a
+          descriptive one, where as much as possible of the original data distinctions are kept in
+          the target encoding; or a prescriptive one, where the target encoding is severely
+          constrained, to enable seamless data interchange and esp. interoperability with software
+          tools. The CLARIN.SI recommendations adopt the <emph>descriptive</emph> approach, as the
+          source data, time and effort devoted to converting it, the intended applications will
+          differ considerably, and it is likely that any prescriptive schema would soon turn out to
+          be too restrictive. Nevertheless, the recommendations do try to limit the plethora of
+          encoding options otherwise available in TEI to those that could be sensibly applied to
+          langauge corpora, and where more than one option is available in TEI to encode a given
+          phenomenon, the schema and especially the text guidelines attempt to recommend only one
+          option.</p>
+        </div>
+        
+    </div>
+      
+    <div xml:id="sec-general">
+      <head>General requirements</head>
+      
+      <p>A CLARIN.SI corpus should, in general, capture as much of the text from the source as
+      possible, while the presence of graphical items or other elements that could not or were not
+      transcribed should be indicated by markup, in particular with the use of <gi>gap</gi>.</p>
+      
+      <div xml:id="sec-chars">
+          <head>Characters</head>
+          
+          <p>The corpus should be encoded in Unicode, using the UTF-8 character encoding, at
+          least for European languages.  In cases where the original contains characters from
+          the Unicode Private Use Area, these should be given their closest Unicode
+          equivalents.<note>TEI supports preserving the original Private Use Area codepoints
+          by using the <gi>g</gi> element, the use of which is further explained in the Section
+          on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/WD.html">Characters,
+          Glyphs, and Writing Modes</ref> of the TEI Guidelines. However, such characters will
+          rarely if ever be used in PPCs, so the current Parla-CLARIN proposal does not include
+          the gaiji module which allows the use of this element - if they are needed, then the
+          Parla-CLARIN ODD needs to be changed.</note></p>
+          
+          <p>End-of-line hyphens can be removed, and the split words joined in order to
+          simplify linguistic processing. It is recommended that this practice is documented
+          in the TEI header of the corpus, in the <gi>hyphenation</gi> element.</p>
+          
+          <p>The following characters, esp. prevalent when the source documents are in Word or
+	  HTML, deserve special mention:
+          
+          <list>
+            <item>NO-BREAK SPACE (U+00A0) prevents, with some applications, an automatic
+            line break at its position and collapsing consecutive white space characters
+            into a single space. As Parla-CLARIN is not interested in preserving the
+            details of the layout, and the use of this character complicates (or breaks)
+            further processing esp. lingistic annotation, it is recommended that this
+            character is substituted by the normal space character (U+0020). The same
+            holds for other variants of spaces (U+2000 - U+200A), which are, however,
+            used much less frequently.</item>
+            
+            <item>NON-BREAKING HYPHEN (U+2011), similarly to NO-BREAK SPACE, prevents a
+            line break, in this case, following its position. With a smiliar reasoning
+	    as above, it is recommended that this character is substituted by the normal
+	    hyphen character ('-', U+002D).</item>
+            
+            <item>SOFT HYPHEN (U+00AD) indicates that a word can be hyphenated at that
+            point. Occurences of this character should be removed from the corpus,
+            because, again, they only complicate or break further processing.</item>
+          </list>
+          </p>
+          
+          <p>While not required, it is sensible to also normalise sequences of whitespace
+          characters (such as tabulators, end-of-line characters and spaces) into a single
+          space or end-of-line character. Again, this simplifies further (esp. linguistic)
+          processing.</p>
+          
+        </div>
+        
+        <div xml:id="sec-document">
+          <head>Documenting the encoding process</head>
+          
+          <p>Difficult encoding situations that are not covered by the TEI Guidelines can be
+          documented in the <gi>editorialDecl</gi> of the corpus TEI header.  In particular, if the
+          source texts has been changed (so, omitting or normalising figures, text, EOL hyphens,
+          quotes, special characters, etc. as discussed above) this practice can be documented in
+          the <gi>correction</gi>, <gi>normalization</gi>, <gi>quotation</gi>, and, as mentioned,
+          in the <gi>hyphenation</gi> element of the editorial declaration. Two further elements,
+          namely <gi>segmentation</gi> and <gi>interpretation</gi> can also be used to document
+          these aspects of the encoding process. The example below illustrates the use of these
+          elements:
+
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-editorial">
+            <editorialDecl>
+              <correction>
+                <p>Found typos in the source have been silently corrected.</p>
+              </correction>
+              <normalization>
+                <p>Tables have been omitted from the corpus. Spacing has been normalised
+                to single space. Soft hyphens have been removed.</p>
+              </normalization>
+              <hyphenation>
+                <p>End-of-line hyphens have been silently removed.</p>
+              </hyphenation>
+              <quotation>
+                <p>Quotation marks have been left in the text and are not explicitly
+                marked up.</p>
+              </quotation>
+              <segmentation>
+                <p>The texts are segmented into paragraphs, sentences, words and
+                punctuation.</p>
+              </segmentation>
+              <interpretation>
+                <p>Word-level linguistic annotation comprises the lemma of a word and its
+                morphosyntactic description, which follow the
+                <ref target="http://nl.ijs.si/ME/V6/msd/">MULTEXT-East morphosyntactic
+                specification Version 6</ref> for Slovene.</p>
+              </interpretation>
+            </editorialDecl>
+          </egXML>
+          </p>
+
+          <p>When automatic procedures have been used to encode the texts (most prominently, to
+          add linguistic markup, as discussed in the Section on <ref
+          target="#sec-linguistic">Linguistic annotation</ref>) this should be documented in
+          the <gi>appInfo</gi> element of the <gi>encodingDesc</gi>, as shown in the example
+          below:
+
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-appinfo">
+            <appInfo>
+              <application version="1.0" ident="reldi-tagger">
+               <label>ReLDI morphosyntactic tagger and lemmatiser</label>
+               <desc>MSD tagging and lemmatisation performed with ReLDI Tagger trained for
+               Slovene and available from
+               <ref target="https://github.com/clarinsi/reldi-tagger">GitHub</ref>.</desc>
+              </application>
+            </appInfo>
+          </egXML>
+          </p>
+        </div>
+        
+        <div xml:id="sec-langs">
+          <head>Languages</head>
+          <p>The language of an element's text content is in TEI, as in XML, signaled by the
+          value of its <att>xml:lang</att> attribute.  The CLARIN.SI recommendations require
+          that each element that contains text is either marked by this attribute, or one of
+          its ancestors is; in particular, the root element of the corpus should have an
+          <att>xml:lang</att> attribute. For multilingual documents (excluding cases where only
+          a minor part of the text is in another language), the language code if the root
+          element should be <q>mul</q> for <q>multiple languages</q>. Note that if, going by
+          the ancestor axis, the values of two <att>xml:lang</att> are in conflict, the one
+          closer to the context node is relevant one.
+          </p>
+          
+          <p>The values of <att>xml:lang</att> should follow <ref
+          target="https://tools.ietf.org/html/bcp47">BCP 47</ref>, cf. also <q><ref
+          target="https://www.w3.org/International/questions/qa-when-xmllang">xml:lang in XML
+          document schemas</ref></q>.</p>
+          
+          <p>It is good practice to document the languages used in the <gi>langUsage</gi>
+          element of the TEI header.</p>
+          
+          <p>Apart from the above considerations, a related question is where to draw the line
+          between the object and meta languages, i.e. the language of the corpus and the
+          language of the mark-up. The TEI defines the names of the elements and attributes in
+          English, and the language of the corpus will, of course, depend on the country of the
+          parliament. It is less straightforward to decide in which language the attribute
+          values (such as the values of the <att>type</att> attribute) should be. CLARIN.SI
+          recommends that these should also be in English.</p>
+        </div>
+        
+        <div xml:id="sec-idents">
+          <head>Identifiers and referencing</head>
+          <p>In order to simply refer to elements of a TEI document (i.e. a CLARIN.SI
+          corpus), elements can be marked with an ID, i.e. given the <att>xml:id</att> attribute
+          with a unique value, obeying certain format requirements as defined by
+          <ref target="https://www.w3.org/TR/xml-id/">W3C</ref>.</p>
+          
+          <p>CLARIN.SI requires an <att>xml:id</att> attribute on the root element of
+          each corpus file, which should, furthermore, be identical to the filename (modulo
+          the file extension).  CLARIN.SI also recommends that the divisions of the
+          document (element <gi>div</gi>) should also be given identifiers. While any
+          element can be given an <att>xml:id</att>, this is in general, not a good idea;
+          rather, only those elements that will or could be referenced should be marked with
+          this attribute.</p>
+          
+          <p>TEI offers a number of attributes that contain (URI) pointers.  Where the reference
+          is to an element inside the document, the value of the <att>xml:id</att> being
+          referred to should be preceded by a hash (#), as mandated by the XML standard. If the
+          ID pointed to is from another document, them the full URI needs to be used.  However,
+          as such URIs can be very long, TEI also offers another way of pointing, which can be
+          used to shorten such long URIs, and this is defined by the <gi>prefixDef</gi> element
+          in the TEI header. So, for example, if the definitions of MULTEXT-East feature
+          structures are stored in the XML document
+          <val>http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml</val>, while the corpus uses
+          pointers to these definitions
+          (e.g. <val>http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#Pd-nsg</val>), then,
+          with the appropriate definition of the prefix, we can use in the corpus much shorter
+          pointers such as <val>mte:Pd-nsg</val>, which are then, via a regular expression
+          mapping in the prefix definition converted to the full URI.
+          </p>
+        </div>
+        
+        <div xml:id="sec-temporal">
+          <head>Temporal information</head>
+          <p>Corpora can contain time-related information, e.g. the date and time of a tweet, the
+          birth (and death) dates of an author, etc. In general, such information in TEI is stored in the
+          attributes of the pertinent element, which take as their values a date and possibly time,
+          according to the ISO 8601 Date and Time Formats, and specified in the <ref
+          target="https://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes Second
+          Edition</ref>. TEI offers a very rich set of attributes and ancillary elements to specify
+          time-related information, which are discussed in the Section on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#CONADA">Dates and
+          Times</ref> of the TEI Guidelines.</p>
+
+          <p>CLARIN.SI users are free to use any of the TEI temporal attributes and
+          elements, however, for most purposes, the following five attributes will suffice:
+          <list>
+            <item><att>when</att>: when a certain event happened;</item>
+            <item><att>from</att>, <att>to</att>: the start and end of an event or state;</item>
+            <item><att>notBefore</att>, <att>notAfter</att>: the earliest and latest known
+            time that where an event or state took place, used in cases where the exact time
+            is not known.</item>
+          </list>
+          </p>
+        </div>
+        
+        <div xml:id="sec-files">
+          <head>Files</head>
+          <p>While this recommendations make the assumption that a complete language resource is
+          one TEI XML document, this does not mean that it also has to be stored in one file, as
+          the file structure is distinct from the concept of XML documents. To enable one XML
+          document to be composed of many files, the <ref
+          target="https://www.w3.org/TR/xinclude/">XInclude</ref> mechanism should be
+          used. Typically, a corpus will then be composed of a file containing the root XML element
+          and the corpus header, while individual text files will be included in the corpus using
+          the <gi>include</gi> element from the XInclude namespace, as illustrated by the following
+          example:
+
+          <eg xml:id="exa-xinclude">
+            <![CDATA[<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Sk-11/SI-1990-05-07-01.xml"/>]]>
+          </eg>
+          </p>
+          
+          <p>As mentioned, we recommend that the file has the same name as the value of the
+          <att>xml:id</att> attribute of the root element of the file. This e.g. guarantees
+          that each file of the corpus has a unique name.</p>
+        </div>
+        
+      </div>
+      
+      <div xml:id="sec-overall">
+        <head>Overall document structure</head>
+        
+        <div xml:id="sec-corpstruct">
+          <head>Corpus structure</head>
+
+          <p>As illustrated below, a CLARIN.SI corpus is typically rooted in a <gi>teiCorpus</gi>
+          element. The <gi>teiHeader</gi> of the corpus then contains the metadata for the complete
+          corpus, including the metadata that is marked with the <att>xml:id</att> attribute and
+          referred to by the subordinate <gi>TEI</gi> elements, such as the defined taxonomies for
+	  text types.</p>
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-docstructure">
+            <teiCorpus xml:lang="xx">
+              <teiHeader>
+                <!-- Common corpus metadata -->
+              </teiHeader>
+              <TEI xml:id="id.1">
+                <teiHeader>
+                  <!-- Document metadata -->
+                </teiHeader>
+                <text>
+                  <body>
+                    <!-- Document text -->
+                  </body>
+                </text>
+              </TEI>
+              <!-- More TEI elements here -->
+            </teiCorpus>
+          </egXML>
+
+          <p>We do not specify what an individual <gi>TEI</gi> element should contain, as the size
+          and granularity of corpora will differ substantially. Typically, however, an individual
+          <gi>TEI</gi> element would contain one text from the corpus, in any case such
+          data that has common metadata that distinguishes it from the other <gi>TEI</gi> elements
+          in the corpus.</p>
+
+          <p>In cases of smaller corpora, the top level <gi>teiCorpus</gi> can also be omitted,
+          so the complete corpus is rooted simply in a <gi>TEI</gi> element, and the individual (short)
+	  texts are encoded as <gi>div</gi> elements.</p>
+          
+          <p>As illustrated below, the <gi>text</gi> element can, apart from the obligatory
+          <gi>body</gi>, also contain front matter in <gi>front</gi> and back matter in
+          <gi>back</gi>. While the <gi>body</gi> will contain the text proper, the former contains
+          preamble text, and the latter various appendices or texts that are related to the
+          main text.</p>
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-textstructure">
+            <TEI xml:id="id_1">
+              <teiHeader>
+                <!-- Document metadata -->
+              </teiHeader>
+              <text>
+                <front>
+                  <!-- Front matter -->
+                </front>
+                <body>
+                  <!-- Transcription text -->
+                </body>
+                <back>
+                  <!-- Back matter -->
+                </back>
+              </text>
+            </TEI>
+          </egXML>
+
+        </div>
+        
+        <div xml:id="sec-textstruct">
+          <head>Text divisions</head>
+          
+          <p>In the text <gi>body</gi>, as well as in the <gi>front</gi> and <gi>back</gi>
+          matter, the element that further organises the content into sections is the division,
+          <gi>div</gi>, and each of the three text-bearing elements (if present) should
+          contain at least one division.</p>
+
+          <p>The divisions can be nested, as shown in the example below:
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-divsimple">
+            <body>
+              <div>
+                <head>Part I.</head>
+                ...
+              </div>
+              <div>
+                <head>Chapter 1</head>
+                ...
+              </div>
+              <div>
+                <head>Chapter 2</head>
+                ...
+              </div>
+              ...
+            </body>
+          </egXML>
+          In general it is a complicated question what should constitute a division of a
+          transcription, with the pragmatic solution being that a division will be whatever has
+          a heading (than can be recognised by the up-conversion software) in the source
+          transcription.</p>
+
+          <p>The divisions can be further characterised by their <att>type</att> and, possibly,
+          <att>subtype</att> attributes. The use of these attributes makes sense in cases where the
+          source either explicitly (e.g. via its structure, as in up-conversion from Word
+          documents) or implicitly (e.g. via pattern matching the content of the headings)
+          indicates what kind of a division it is. For example:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-divtype">
+            <body>
+              <div type="part">
+                <head>Part I.</head>
+                ...
+              </div>
+              <div type="chapter">
+                <head>Chapter 1</head>
+                ...
+              </div>
+              <div type="chapter">
+                <head>Chapter 2</head>
+                ...
+              </div>
+              ...
+            </body>
+          </egXML>
+          </p>
+          
+          <p>If used, the values of the <att>type</att> and <att>subtype</att> attributes will
+          depend on the structure of the source texts, on the need to distinguish the types of
+          divisions, as well as on the ability to automatically recognise them or the available
+          effort to manually add them. The CLARIN.SI specification does therefore not enforce the
+          use of these attributes nor does it restrict their values.  Below we give an example of a
+          relatively complex structure made on the basis of a corpus of parliamentary proceedins:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-divakn">
+            <body>
+              <div type="prayers">
+                <head>Prayers</head>
+                ...
+              </div>
+              <div type="oralStatements">
+                <head>Speaker’s Statement</head>
+                ...
+              </div>
+              <div type="questions">
+                <head>Oral Answers to Questions</head>
+                <div type="debateSection" subtype="topic">
+                  <head>Health</head>
+                  <div type="debateSection" subtype="askedPerson">
+                    <head>The Secretary of State was asked—</head>
+                    <div type="debateSection" subtype="questionAnswer">
+                      <head>Ambulance Waiting Times</head>
+                      ...
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div type="pointOfOrder">
+                <head>Points of Order</head>
+                ...
+              </div>
+            </body>
+          </egXML>
+          </p>
+        </div>
+        
+        <div xml:id="sec-docvariants">
+          <head>Document variants</head>
+          <p>Copora can exist in two or more versions, e.g. the original and its translation(s) into
+          another language(s).</p>
+
+          <p>TEI offers a number of options on how to encode <q>variant</q> texts, most of them
+          discussed in the <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.htm">Chapter on Linking,
+          Segmentation, and Alignment</ref>. We here present the simplest option, where it is
+          assumed that the text of each language exists in a separate TEI document and that the
+          senteces should be aligned between the original and translation. As shown in the
+          example below, which gives one sentence from the file <code>text-orig.xml</code> and one
+          from the file <code>text-trans.xml</code> it is in this case enough to specify the
+          <att>xml:id</att> on both elements and use the <att>corresp</att> attribute to point to
+          the aligned sentence(s):
+
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-variants">
+            <!-- From text-orig.xml: -->
+            <s xml:id="orig.1" corresp="text-trans#trans.1">Ali je to slaba stvar?</s>
+
+            <!-- From text-trans.xml: -->
+            <s xml:id="trans.1" corresp="text-orig.xml#orig.1">キレるってそんなに悪いことでしょうか？</s>
+          </egXML>
+          It should be noted that the relation between the aligned elements does not need
+          to be 1-1: if the relation is 0-1 or 1-0, then the non-aligned element is simply
+          not given in a <att>corresp</att>; if the relation is n-1 or 1-n, then several
+          IDs are given as values of the <att>corresp</att> attribute,
+          e.g. <code>corresp="text-orig.xml#orig.3 text-orig.xml#orig.4"</code>.</p>
+        </div>
+        
+      </div>
+
+      <div xml:id="sec-metadata">
+        <head>Corpus metadata</head>
+        <p>TEI allows significant metadata to be added to a document.  The metadata is
+        contained in the <gi>teiHeader</gi> element, which in corpora can appear at two
+        levels:
+        <list>
+          <item>the overall corpus teiHeader, i.e. as part of the <gi>teiCorpus</gi> element;</item>
+          <item>the teiHeader of individual corpus texts, i.e. as part of a <gi>TEI</gi> element.</item>
+        </list>
+        It is recommended that the metadata that is common to the whole corpus is stored in
+        the corpus TEI header, whereas the text-specific metadata is in the corpus text TEI
+        header.</p>
+        
+        <p>It is outside the scope of this specification to give all the details of a
+        <gi>teiHeader</gi> element, for this, the user is referred to the Section on the <ref
+        target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html">TEI header</ref>
+        of the TEI Guidelines, and, of course, to the example corpora that are part of the
+        CLARIN.SI Git repository. Here we do, however, give some examples that are useful for
+	a variety of corpora.</p>
+
+        <div xml:id="sec-speakers">
+          <head>Speaker metadata</head>
+          <p>Speech corpora typically contain information about speakers, which is given in the
+          corpus TEI header, in particular in the <gi>listPerson</gi> element, itself a part of the
+          participant description, i.e. the <gi>particDesc</gi> element.</p>
+
+          <p>A <gi>listPerson</gi> typically contains <gi>person</gi> elements, which give
+          information on an individual person, as the example below illustrates.
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-speakers">
+            <person xml:id="KucanMilan1941">
+              <persName>
+                <surname>Kučan</surname>
+                <forename>Milan</forename>
+              </persName>
+              <sex value="M">male</sex>
+              <birth when="1941-01-14">
+                <placeName ref="http://www.geonames.org/3197229">Križevci</placeName>
+              </birth>
+            </person>
+          </egXML>
+
+          Each <gi>person</gi> must have an <att>xml:id</att> attribute, so that it can be referred
+          to from the transcription. Apart from that, the only required element is
+          <gi>persName</gi>, giving the name of the person. This can be contained directly in the
+          element, or, as the preferred option, further decomposed into the person surname(s) and
+          forename(s) or even other elements, as explained in the Section on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ND.html#NDPER">Personal
+          Names</ref> of the TEI Guidelines.</p>
+
+          <p>As illustrated above, further person metadata can contain the sex of the person and
+          their birth date and place. Other potentially useful elements are the persons
+          <gi>death</gi> date and place, as well as (possibly time stamped) <gi>education</gi>,
+          <gi>occupation</gi>, and <gi>affiliation</gi>.</p>
+
+          <p>Persons can have further attributes, and TEI offers various elements (typically typed)
+          to express them; they are introduced in the Section on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ND.html#NDPERSEpc">Personal
+          Characteristics</ref> of the TEI Guidelines. The two more general ones are
+          <gi>state</gi>, which contains the description of some status or quality attributed to a
+          person (or organization), often at some specific time or for a specific date range and
+          <gi>trait</gi>, which differs from <gi>state</gi> that it is independent of the volition
+          or action of the holder and usually not at some specific time or for a specific date
+          range. The former could, for example, be used to encode the fact that a person was jailed
+          for a given period of time, while the latter would e.g. be used for the information that
+          a person is handicapped.</p>
+
+          <p>It can be advantageous to refer to external knowledge sources about a person, such as
+          Wikipedia or VIAF. This is encoded using the <gi>idno</gi> element, whose content is
+          typically an URI, while the <att>type</att> attribute denotes the kind of knowledge
+          source referred to.
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-external">
+            <person xml:id="Kucan_Milan1941">
+              <persName>
+                <surname>Kučan</surname>
+                <forename>Milan</forename>
+              </persName>
+              <idno type="wikimedia" xml:lang="sl">https://sl.wikipedia.org/wiki/Milan_Ku%C4%8Dan</idno>
+              <idno type="wikimedia" xml:lang="en">https://en.wikipedia.org/wiki/Milan_Ku%C4%8Dan</idno>
+              <idno type="viaf">https://viaf.org/viaf/68121580/</idno>
+            </person>
+          </egXML>
+          </p>
+        </div>
+      </div>
+      
+      <div xml:id="sec-transcript">
+        <head>Encoding of texts</head>
+
+	<!-- NOT YET:
+        <p>The transcriptions of the parliamentary debates the central part of these
+        recommendations and this section explains how to encode the transcriptions of speeches
+        proper, the commentary inserted by the transcribers, and the encoding of interruption
+        of speeches and various verbal and non-verbal incidents in the parliament. Most of
+        these elements are explained in the Chapter on <ref
+        target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/TS.html">Transcription of
+        Speech</ref> of the TEI Guidelines.</p>
+        
+        <div xml:id="sec-uterrance">
+          <head>Utterances and commentary</head>
+          <p>In the transcriptions the main distinction to be made is between the
+          transcriptions of the utterances of the speakers against the commentary inserted by
+          the transcriber, such as the titles of the divisions, results of voting, comments on
+          what is happening in the chamber etc. The former should be encoded using the
+          utterance element, <gi>u</gi>, while latter are encoded using a variety of elements,
+          such as <gi>head</gi> or <gi>note</gi>, and possibly others, as further discussed
+          below. Below we give an example of a rather straightforward start of a division:
+        
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-relations">
+            <div>
+              <head>REPUBLIKA SLOVENIJA DRŽAVNI ZBOR</head>
+              <head type="session">nadaljevanje 39. seje</head>
+              <note type="chairman">Sejo so vodili predsednik Državnega zbora dr. Milan Brglez
+              in podpredsednika Primož Hainz ter Matjaž Nemec.</note>
+              <note type="time">Seja se je začela ob 10.03.</note>
+              <note type="speaker">PREDSEDNIK DR. MILAN BRGLEZ:</note>
+              <u who="#SDZ7.BrglezMilan" ana="#chair">
+                <seg xml:id="SDZ7-Redna-39-2018-03-27.seg1">Spoštovani kolegice poslanke in
+                kolegi poslanci, gospe in gospodje!</seg>
+                <seg xml:id="SDZ7-Redna-39-2018-03-27.seg2">Začenjam z nadaljevanjem 39. seje
+                Državnega zbora.</seg>
+                ...
+              </u>
+              ...
+            </div>
+          </egXML>
+          
+          The example starts with the division heading, saying that this is the National Assembly
+          of the Republic of Slovenia, with the second heading specifying that this is the
+          continuation of the 39th session. Next come three notes, first one specifying who
+          chaired the session, the second when the session started and the third the name of the
+          first speaker. It should be noted that these are not formal specifications, rather,
+          they are simply parts of the transcript that have been wrapped in certain elements.</p>
+          
+          <p>After these preliminary notes comes the transcript of the speech proper, which, as
+          mentioned, is encoded using the <gi>u</gi> element. Its main attribute is
+          <att>who</att>, giving the pointer to the <gi>person</gi> element containing the
+          metadata of the speaker. The <gi>u</gi> element can also have the <att>ana</att>
+          attribute giving one or more pointers to a typology of types of speakers. In our case,
+          it would point to a category that specifies that the speaker is the chair of the
+          session.</p>
+          
+          <p>The utterances can (but are not required to) be segmented using the generic
+          TEI element for segments, <gi>seg</gi>, encoding the paragraphs of the source
+          transcription.<note>The reason why the TEI element for paragraphs (<gi>p</gi>) is not
+          used is that utterances, being essentially (transcriptions of) spoken text, do not
+          allow for internal paragraphs, a concept pertinent to written text.</note></p>
+        </div>
+        
+	-->
+      </div>
+      
+      <div xml:id="sec-linguistic">
+        <head>Linguistic annotation</head>
+        <p>This section introduces basic types of linguistic annotation that can be added language
+        corpora; the examples should be sufficient for users to be able to add further types of
+        linguistic annotation to their own corpora.</p>
+        
+        <p>The TEI Guidelines discuss basic linguistic annotation in their Chapter on <ref
+        target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/AI.html">Simple Analytic
+        Mechanisms</ref> and we follow one particular option given there. In particular, it is
+        recommended that (where possible) the annotation is in-line (as opposed to stand-off),
+        i.e. that the linguistic annotation is given in the main document, and therefore mixed
+        with the other annotations, rather than in a separate document with pointers into the
+        base text.</p>
+        
+        <div xml:id="sec-anawords">
+          <head>Basic word-level annotation</head>
+          
+          <p>Basic linguistic annotation comprises sentence segmentation, tokenisation,
+          part-of-speech tagging and lemmatisation. The CLARIN.SI recommendations
+          specialise the recommendations given in the Section on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/AI.html#AILALW">Lightweight
+          Linguistic Annotation</ref> of the TEI Guidelines. The following example shows the
+          basic principles of the annotation:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-ud">
+            <s>
+              <w msd="UPosTag=DET|Case=Gen|Gender=Neut|Number=Sing|PronType=Dem" lemma="ta">Tega</w>
+              <w msd="UPosTag=PRON|PronType=Prs|Reflex=Yes|Variant=Short" lemma="se">se</w>
+              <w msd="UPosTag=PART" lemma="sploh">sploh</w>
+              <w msd="UPosTag=AUX|Mood=Ind|Number=Sing|Person=1|Polarity=Neg|Tense=Pres|VerbForm=Fin" lemma="biti">nisem</w>
+              <w msd="UPosTag=VERB|Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part" lemma="zavesti" join="right">zavedel</w>
+              <pc msd="UPosTag=PUNCT">.</pc>
+            </s>
+          </egXML>
+          
+          Sentences are marked up using the <gi>s</gi> element, words with the <gi>w</gi>
+          element and punctuation symbols with the <gi>pc</gi> element. To retain the
+          linguistically significant whitespace, the <att>join</att> element is used, with the
+          possible values being <val>no</val> (assumed to be the default), <val>right</val>
+          (no whitespace to the right of the token) and <val>left</val> (no whitespace to the
+          left of the token) and <val>both</val> (no whitespace to either side of the
+          token). While, in the preceding example, it would be more intuitive to have the
+          value <val>left</val> marked on the full-stop, we recommend that only the value
+          <val>right</val> is used on the preceding token, as this simplifies processing.</p>
+          
+          <p>The base form of a word is given in the <att>lemma</att> attribute,<note>Note
+          that punctuation characters, <gi>pc</gi>, do not have a <att>lemma</att> attribute,
+          as they cannot sensibly be said to have lemmas.</note> while the situation with the
+          part-of-speech tags is somewhat more complicated. For analytic tagsets, where a
+          "part-of-speech tag" is actually a set of attribute-values, as in the example above,
+          the <att>msd</att> attribute should be used. For synthetic tagsets, such as the <ref
+          target="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">Penn
+          Treebank tagset</ref>, which have atomic tags that cannot always be decomposed into
+          attribute-value pairs (e.g. "TO" for the word "to"), a better alternative is to use
+          of the <att>pos</att> attribute.</p>
+
+	  <p>There is also a third option, for tags that are look like strings, however, they
+	  are meant as a shorthand for a feature-structure representation, as is the case with
+	  the <ref target="http://nl.ijs.si/ME/V6/msd/html/">MULTEXT-East tagset</ref>. For
+	  these, it is best to use the generic <att>ana</att> attribute, whose value is a
+	  pointer, as shown in the following example:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-msd">
+            <s>
+              <w ana="#Pd-nsg" lemma="ta">Tega</w>
+              <w ana="#Px------y" lemma="se">se</w>
+              <w ana="#Q" lemma="sploh">sploh</w>
+              <w ana="#Va-r1s-y" lemma="biti">nisem</w>
+              <w ana="#Vmep-sm" lemma="zavesti" join="right">zavedel</w>
+              <pc ana="#Z">.</pc>
+            </s>
+          </egXML>
+          
+          Here, the tags are pointers to identifiers, where the elements bearing these
+          identifiers define the appropriate feature-structures, i.e. pairs of
+          attribute-values, as in the example below:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-fs">
+            <fs xml:id="Pd-nsg" xml:lang="en">
+              <f name="CATEGORY"><symbol value="Pronoun"/></f>
+              <f name="Type"><symbol value="demonstrative"/></f>
+              <f name="Gender"><symbol value="neuter"/></f>
+              <f name="Number"><symbol value="singular"/></f>
+              <f name="Case"><symbol value="genitive"/></f>
+            </fs>
+          </egXML>
+          </p>
+
+	  <p>Such feature structures are grouped together in the feature-value library
+	  (<gi>fvLib</gi>) element, which can be contained in its own <gi>TEI</gi> element of
+	  the corpus. As <att>ana</att> is a pointer, it can also contain complete URLs
+	  (e.g. <code>http://nl.ijs.si/ME/V6/msd/tables/msd-fslib2-sl.xml#Pd-nsg</code>) which
+	  enables the feature-structure definitions to be stored externaly to the
+	  corpus. However, prefixing such PoS tags for each token by the complete URL would
+	  lead to very large files. This is why the TEI offers a mechanism to shorten 
+	  references to URLs. This mechanism is explained in the Section <ref
+	  target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.html#SAPU">Using
+	  Abbreviated Pointers</ref> of the TEI Guidelines, and we give below and example:
+	  
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-prefix">
+            <s>
+              <w ana="mte:Pd-nsg" lemma="ta">Tega</w>
+              <w ana="mte:Px------y" lemma="se">se</w>
+              <w ana="mte:Q" lemma="sploh">sploh</w>
+              <w ana="mte:Va-r1s-y" lemma="biti">nisem</w>
+              <w ana="mte:Vmep-sm" lemma="zavesti" join="right">zavedel</w>
+              <pc ana="mte:Z">.</pc>
+            </s>
+          </egXML>
+	  
+	  As can be seen, the only difference to the preceding example is that the values (IDs) of
+	  the tags are preceded by <code>mte:</code> rather than <code>#</code>. This prefix should
+	  be then expanded by the processing software to whatever the <gi>prefixDef</gi> element,
+	  defined in the TEI header, specifies, as shown in the example below:
+	  
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-prefixDef">
+            <prefixDef ident="mte" 
+                       matchPattern="(.+)"
+                       replacementPattern="http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#$1">
+              <p xml:lang="en">Private MSD URIs with the prefix "mte" point to fs elements
+              defining the Slovene MULTEXT-East Version 6 MSDs, cf. <ref
+              target="http://nl.ijs.si/ME/V6/">http://nl.ijs.si/ME/V6/</ref> and <ref
+              target="https://github.com/clarinsi/mte-msd">https://github.com/clarinsi/mte-msd</ref>.</p>
+            </prefixDef>
+          </egXML>
+	  </p>
+        </div>
+        
+        <div xml:id="sec-ananorm">
+          <head>Normalised and syntactic words</head>
+          
+          <p>In certain contexts a word (or, in general, a token) in the text needs to be
+          normalised in a certain way. This can happen with historical
+          texts, which contain archaic wordforms and where we wish to annotate them with
+          their modernised forms, or when the text is linguisticaly annotated, and the
+          annotation framework distinguishes original words form syntactic words (i.e. has the
+          concept of <q>multiwords</q>), as is the case in the <ref
+          target="https://universaldependencies.org/format.html#words-tokens-and-empty-nodes">Universal
+          Dependencies framework</ref>.</p>
+	  
+	  <p>For simple normalisation, where one word token is normalised into another word token,
+	  the <att>norm</att> attribute on word or punctuation tokens should be used, as explained
+	  at the end of the Section <ref
+	  target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/AI.html#AILALW">Lightweight
+	  Linguistic Annotation</ref> of the TEI Guidelines.</p>
+
+	  <p>More challenging is the case where one original word token must be represented as
+	  several normalised words, either in the context of historical corpora or, as mentioned
+	  above, in the context of multiword units. For this we use embedded empty words with
+	  associated <att>norm</att> attributes, and possibly other attributes with linguistic
+	  annotation. For example, Czech has the word <q>abyste</q> which is decomposed into two
+	  syntactic words, <q>aby</q> and <q>byste</q>. This should be encoded as in the following
+	  example:<note>Note that the example is rendered in three lines, however, the correct
+	  encoding in the corpus is actually in a single line, without any spaces between the
+	  elements, as otherwise the new line and indenting spaces are actually a part of the word
+	  <q>abyste</q>.</note>
+
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-1-2">
+	    <w>abyste<w norm="aby" lemma="aby"/><w norm="byste" lemma="být"/></w>
+          </egXML>
+	  </p>
+	  
+          <p>There are also cases where two (or more) original words correspond to one normalised
+          word. Here, it is the outer word that carries the <att>norm</att> and possibly other
+          linguistic attributes, while the inner words are the original ones. For example, Slovene
+          used to form the superlative form of adjectives with the word <q>naj</q> written
+          separately (and often as <q>nar</q>), while in contemporary Slovene the <q>naj</q> is a
+          prefix of the adjective. This case should be encoded as follows:
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-2-1">
+	    <w norm="najlepši" lemma="lep"><w>nar</w> <w>lepši</w></w>
+          </egXML>
+	  </p>
+	</div>
+	
+        <div xml:id="sec-anasegment">
+          <head>Segmental annotation</head>
+          
+          <p>A common annotation type, used e.g. for marking named entities or terms, is
+          segmental annotation, where a stretch of text or tokens is simply enclosed in XML
+          tags, as the following example illustrates:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-names">
+            <s>
+              <name type="person">
+                <w>John</w>
+                <w>Malkovič</w>
+              </name>
+              <w>went</w>
+              <w>to</w>
+              <name type="location">
+                <w>New</w>
+                <w>York</w>
+              </name>
+              <pc>.</pc>
+            </s>
+          </egXML>
+          
+          TEI offers a number of elements that can be used for such annotations,
+          e.g.:
+          <list>
+            <item><gi>term</gi> for marking up terms, discussed in the Section on <ref
+            target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COHQU">Terms,
+            Glosses, Equivalents, and Descriptions</ref> of the TEI Guidelines;</item>
+            
+            <item><gi>name</gi> for various types of names, or, the more general <gi>rs</gi>
+            for <q>referring string</q>, e.g. <tag>rs type="person"</tag> her
+            husband<tag>/rs</tag>, discussed in the Section on <ref
+            target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#CONARS">Referring
+            Strings</ref> of the TEI Guidelines;</item>
+            
+            <item><gi>num</gi> for numbers and <gi>measure</gi>, usually comprising a number, a
+            unit, and a commodity name (e.g. <tag>measure type="weight" quantity="5000"
+            unit="ton" commodity="coal"</tag>five thousand tons of coal<tag>/measure</tag>,
+            discussed in the Section on <ref
+            target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#CONANU">Numbers
+            and Measures</ref> of the TEI Guidelines;</item>
+            
+            <item><gi>date</gi> and <gi>time</gi>, discussed in the Section on <ref
+            target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#CONADA">Dates
+            and Times</ref> of the TEI Guidelines;</item>
+            
+            <item><gi>seg</gi> for cases where TEI does not have a specific element for some
+            type of segmental markup, e.g. <tag>seg type="swearword"
+            subtype="religious"</tag>Damn<tag>/seg</tag>; this element is discussed in the
+            Section on <ref
+            target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.html#SASE">Blocks,
+            Segments, and Anchors</ref> of the TEI Guidelines.</item>
+          </list>
+          
+          It should be noted that for cases of discontinuity of the segment, the <att>prev</att>
+          and <att>next</att> attributes can be used to link its parts together. Furthermore,
+          the <att>part</att> attribute can be used to specify the type of the fragments, as
+          shown in the following example:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-terms">
+            <term xml:id="t1" part="I" next="#t3">di-</term> and
+            <term xml:id="t2" part="I" next="#t3">poli</term><term xml:id="t3" part="F">methyl</term>
+          </egXML>
+          </p>
+        </div>
+        
+        <div xml:id="sec-analinking">
+          <head>Linking annotation</head>
+          
+          <p>For analyses that establish relations between tokens or segments, such as syntactic
+          dependency analysis or semantic role labelling, the <gi>linkGrp</gi> element, explained
+          in the <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.html">Chapter on
+          Linking, Segmentation, and Alignment</ref> is used. It is composed of <gi>link</gi>
+          elements, which give two or more references to IDs, as illustrated in the following
+          example:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-analysis-syntax">
+            <s xml:id="ssj1.1.5">
+              <w xml:id="ssj1.1.5.t1">Tega</w>
+              <w xml:id="ssj1.1.5.t2">se</w>
+              <w xml:id="ssj1.1.5.t3">sploh</w>
+              <w xml:id="ssj1.1.5.t4">nisem</w>
+              <w join="right" xml:id="ssj1.1.5.t5">zavedel</w>
+              <pc xml:id="ssj1.1.5.t6">.</pc>
+              <linkGrp type="UD-SYN" targFunc="head argument">
+                <link ana="ud-syn:obj" target="#ssj1.1.5.t5 #ssj1.1.5.t1"/>
+                <link ana="ud-syn:expl" target="#ssj1.1.5.t5 #ssj1.1.5.t2"/>
+                <link ana="ud-syn:advmod" target="#ssj1.1.5.t5 #ssj1.1.5.t3"/>
+                <link ana="ud-syn:aux" target="#ssj1.1.5.t5 #ssj1.1.5.t4"/>
+                <link ana="ud-syn:root" target="#ssj1.1.5 #ssj1.1.5.t5"/>
+                <link ana="ud-syn:punct" target="#ssj1.1.5.t5 #ssj1.1.5.t6"/>
+              </linkGrp>
+              <linkGrp type="SRL" targFunc="head argument" corresp="#ssj1.1.5" >
+                <link ana="srl:PAT" target="#ssj1.1.5.t5 #ssj1.1.5.t1"/>
+              </linkGrp>
+            </s>
+          </egXML>
+          
+          In the example, each token, as well as the sentence element are given an ID, and the
+          first link group specifies the Universal Dependencies syntactic analysis of the
+          sentence, while the second one give its semantic role labels.  They are distinguished
+          by their <att>type</att> attribute<note>We do not specify the values of
+          <att>type</att> of the link gropu as the range of possibilities is too great and not
+          known in advance.</note>, while the <att>targFunc</att> attribute explains the
+          functions of the references given in the <att>target</att> attributes of the contained
+          <gi>link</gi> elements.</p>
+          
+          <p>The contained links then give the references to the head and argument tokens of
+          the relation, while the <att>ana</att> attribute specifies what kind of a relation
+          this is. It should be noted that the value of the analysis attribute is a pointer,
+          and, in the example, we use the TEI prefix mechanism, which is then expanded via the
+          <gi>prefixDef</gi> element in the TEI header to resolve into a URI pointer (as
+          explained in Section on <ref target="#sec-idents">Identifiers and referencing</ref>),
+          most likely to pointing to <gi>taxonomy</gi> categories that give the definitions of
+          the relations. A further point to notice is that the sentence serves as the Root
+          element of the sentence, i.e. the fifth link of the UD analysis ties together the
+          sentence with the top-most token of the sentence.</p>
+        </div>
+        
+      </div>
+      
+      <div xml:id="sec-multimedia">
+        <head>Multimedia</head>
+        
+        <p>Some corpora can also have data from other modalities associated with the transcripts,
+        in particular audio or video recordings, and the facsimile of the original texts,
+        particularly relevant for corpora of historcial texts. This section explains how to encode
+        such data in the TEI encoded documents, where it is assumed that the actual speech, video
+        and images are stored in separate files, and the TEI document makes reference to them.</p>
+        
+        <div xml:id="sec-speechvideo">
+          <head>Speech and video</head>
+          
+          <p>The (speech) corpus can refer to and align with external audio and video data using
+          the <gi>timeline</gi> element, explained in the Section on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.html#SASYMP">Placing
+          Synchronous Events in Time</ref> of the TEI Guidelines, and further elaborated in <ref
+          target="https://www.iso.org/standard/37338.html">ISO 24624:2016 Language resource
+          management -- Transcription of spoken language</ref>. While the ISO standard is better
+          elaborated, it also changes and adds element definitions, so we are using the standard
+          TEI variant of speech encoding as far as the schema is concerned, while taking into
+          account, as much as possible, specific encoding choices as proposed by the ISO
+          standard.</p>
+          
+          <p>First, TEI offers the <gi>recordingStmt</gi> element (a part of <gi>fileDesc</gi>
+          of the TEI header) which contains the information about the recording(s) of the
+          transcription. This information can be unstructured (i.e. a series of <gi>ab</gi>
+          elements) or structured (contained in the <gi>recording</gi> element); CLARIN.SI
+          recommends the structured version. As shown in the example below, the element
+          contains information of the type of recording (audio / video), its duration<note>The
+          <att>dur</att> values should follow the <ref
+          target="https://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#duration">W3C
+          datatype</ref>.</note> and a pointer to the file, possibly a responsibility statement
+          (<gi>respStmt</gi>) of the person or agency that made the recording, the date when
+          the recording file was made and the equipment used:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-recordingStmt">
+            <recordingStmt>
+              <recording type="audio" dur="PT43M45S">
+                <media mimeType="audio/wav" url="WAV/Session_2018-12-01a.wav"/>
+                <respStmt>
+                  <resp>Audio capture</resp>
+                  <name>John Dury</name>
+                </respStmt>
+                <time>2016-04-15</time>
+                <equipment>
+                  <ab>Video downloaded from U.K. parliament site.</ab>
+                  <ab>Audio extracted from video with Audacity 1.4</ab>
+                </equipment>
+              </recording>
+            </recordingStmt>
+          </egXML>
+          </p>
+          
+          <p>The mapping of time intervals of the recording to IDs in the TEI document is
+          encoded in the <gi>timeline</gi> element, in particular in the contained
+          <gi>when</gi> elements. As explained below, these IDs are then used to link elements
+          in the transcription to the timeline, therefore each <gi>when</gi> element must have
+          the <att>xml:id</att> attribute. The <gi>when</gi> elements must also be in the same
+          order as the time-points they encode.</p>
+          
+          <p>As the example below shows, the timeline gives the unit in which the intervals are
+          specified (typically second, <code>s</code>) and the time origin of the timeline,
+          here referring to the first <gi>when</gi> element, at the very start of the
+          recording, so specified with the absolute time.  Further <gi>when</gi> elements give
+          the interval between this origin point and their end:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-timeline">
+            <timeline unit="s" origin="#T0">
+              <when xml:id="T0" absolute="00:00:00.0"/>
+              <when xml:id="T1" interval="1.13" since="#T0"/>
+              <when xml:id="T2" interval="3.84" since="#T0"/>
+              <when xml:id="T3" interval="5.33" since="#T0"/>
+              <when xml:id="T4" interval="9.35" since="#T0"/>
+              <when xml:id="T5" interval="12.62" since="#T0"/>
+            </timeline>
+          </egXML>
+          </p>
+          
+          <p>The IDs of the timeline synchronisation are then used by the <gi>u</gi>
+	  elements in the transcription via their <att>start</att> and
+          <att>end</att> attributes. In the examples below we give three cases of such linking:
+          the first one gives a straightforward temporal structure on the <gi>u</gi>;
+	  the second one uses the
+          empty <gi>anchor</gi> element to give additional temporal structure for cases where
+          the synchronised parts of the utterance are not further marked-up
+	  (or the synchronisation is required for elements that don't have the <att>start</att> and
+          <att>end</att> attributes); while the third and
+          fourth demonstrate the case where two utterances are partially overlapping:<note>Note
+          that in such cases we would also use the <att>prev</att> and <att>next</att>
+          attributes, as shown in the <ref target="#exa-splitu">Example on split
+          utterances</ref>.</note>:
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-utiming">
+            <u who="#SPK0" start="#T0" end="#T1" xml:id="u2">Good morning!</u>
+            <u who="#SPK1" start="#T1" end="#T3">Good morning, <anchor synch="#T2"/>Mr. president!</u>
+            <u who="#SPK0" start="#T4" end="#T7">You do not have the <anchor synch="#T5"/>floor!</u>
+            <u who="#SPK1" start="#T5" end="#T6">Sorry, <anchor synch="#T2"/>mate!</u>
+          </egXML>
+          </p>
+        </div>
+        
+        <div xml:id="sec-facsimile">
+          <head>Facsimile</head>
+          <p>Especially for older text, where the exact appearance of the original is of interest,
+          it can be advantageous to also enable viewing the facsimile together with the
+          text transcription. How to achieve this in general is explained in the <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html">Chapter on
+          Representation of Primary Sources</ref> of the TEI Guidelines.</p>
+          
+          <p>The simplest but also the most limiting way to achieve this is to have per-page
+          facsimile files and use the page break i.e. <gi>pb</gi> element to mark page
+          boundaries in the transcript and then directly specify the image file of the page
+          with the <att>facs</att> attribute, as illustrated in the example below:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-pb">
+            <body>
+              <pb facs="PNG/page1.png"/>
+              <!-- text contained on page 1 encoded here -->
+              <pb facs="PNG/page2.png"/>
+              <!-- text contained on page 2 encoded here -->
+            </body>
+          </egXML>
+          </p>
+          
+          <p>By convention, this encoding indicates that the image indicated by the <att>facs</att>
+          attribute represents the whole of the text following the <gi>pb</gi> element, up
+          to the next <gi>pb</gi> element.</p>
+          
+          <p>A more complicated solution, where it is possible to have several images per page
+          (e.g. in different resolutions) or to specify areas of a page is enabled by the
+          <gi>facsimile</gi> element, which should appear immediately before the <gi>text</gi>
+          element of a TEI document. The example below refers to the first and third pages
+          directly with the <gi>graphic</gi> element, whereas the second page is encoded as a
+          <gi>surface</gi> which then contains the page image in two resolutions:
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-facsimile">
+            <facsimile>
+              <graphic xml:id="page1" url="PNG/page1.png"/>
+              <surface xml:id="page2">
+                <graphic type="600dpi" url="PNG/page2-highRes.png"/>
+                <graphic type="300dpi" url="PNG/page2-lowRes.png"/>
+              </surface>
+              <graphic xml:id="page3" url="PNG/page3.png"/>
+            </facsimile>
+          </egXML>
+          </p>
+          
+          <p>More complicated cases, such as delimiting portions of a page are also supported
+          by the TEI Guidelines, and for these the reader is referred directly to the Section
+          on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX">Digital
+          Facsimiles</ref>.</p>
+        </div>
+      </div>
+      
+      <div xml:id="sec-conversion">
+        <head>Conversions</head>
+        <p>A TEI encoded document is, in general, not meant to be used directly by software
+        programs, rather it serves as an interchange and storage format.  Furthermore, most TEI
+        documents are not "born TEI", but rather converted into TEI from some source format.
+        In this section we discuss some up- and down-conversion scripts that have already been
+        developed for transforming source formats into CLARIN.SI and from CLARIN.SI into
+        formats immediately usable by software and are available in the Git repository of
+        CLARIN.SI.</p>
+        
+        <div xml:id="sec-conllu">
+          <head>Conversion from CoNLL-U</head>
+          <p>To do!</p>
+	</div>
+      </div>
+      
+      <div xml:id="sec-ack">
+        <head>Acknowledgements</head>
+        
+        <p>This proposal was inspired by a number of related projects, in
+        particular: <ref target="https://tei-c.org/extra/teiinlibraries/">Best Practices for
+        TEI in Libraries</ref>, the DARIAH and ELEXIS funded initiative <ref
+        target="https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html">TEI
+        Lex0</ref> to develop an interchange encoding for machine readable dictionaries, and
+        the <ref target="https://www.distant-reading.net/eltec/">ELTeC corpus</ref> initiative
+        by the COST Action CA16204 <q>Distant Reading for European Literary History</q>.</p>
+        
+        <p>The work on these recommendations was funded by the <ref target="https://www.clarin.eu/">CLARIN</ref>
+        Research Infrastructure for Language Resources and Tools.</p>
+      </div>
     </body>
+    
+    <back>
+      <divGen type="subtoc"/>
+      <div xml:id="examplar">
+        <head>Example document</head>
+        <p>This section gives a complete example document and
+	aims to illustrate the encoding of various aspects of corpus annotation.</p>
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" xmlns:xi="http://www.w3.org/2001/XInclude"
+	       xml:id="exa-exemplar">
+	  <!-- Does not render correctly! -->
+          <xi:include href="tei_clarin_example.xml"/>
+        </egXML>
+      </div>
+      <div xml:id="schema">
+        <head>Formal specification</head>
+	<schemaSpec ident="tei_clarin" start="TEI teiCorpus" docLang="en" prefix="tei_" xml:lang="en">
+          <moduleRef key="core" except="binaryObject gb"/>
+          <moduleRef key="tei" except=""/>
+          <moduleRef key="header" except="handNote typeNote scriptNote"/>
+          <moduleRef key="textstructure"
+		     except="argument div1 div2 div3 div4 div5 div6 div7 epigraph floatingText"/>
+          <moduleRef key="corpus" except=""/>
+          <moduleRef key="transcr" except="am"/>
+          <moduleRef key="figures" except=""/>
+          <moduleRef key="dictionaries" except=""/>
+          <moduleRef key="spoken" except=""/>
+          <moduleRef key="namesdates" except=""/>
+          <moduleRef key="linking" except=""/>
+          <moduleRef key="analysis" except="interp interpGrp"/>
+          <moduleRef key="iso-fs" except="bicond cond fsConstraints fsdLink if iff then vMerge vNot"/>
+          <moduleRef key="gaiji" except=""/>
+	</schemaSpec>
+      </div>
+    </back>
   </text>
 </TEI>

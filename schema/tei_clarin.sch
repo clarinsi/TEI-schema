@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
    <title>ISO Schematron rules</title>
-   <!-- This file generated 2021-01-21T16:40:22Z by 'extract-isosch.xsl'. -->
-
+   <!-- This file generated 2021-08-24T14:19:45Z by 'extract-isosch.xsl'. -->
    <!-- ********************* -->
    <!-- namespaces, declared: -->
    <!-- ********************* -->
-
-
    <!-- ********************* -->
    <!-- namespaces, implicit: -->
    <!-- ********************* -->
