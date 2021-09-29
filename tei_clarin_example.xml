@@ -205,149 +205,23 @@
         </p>
       </div>
       <div>
-	<head xml:lang="sl">Primer normaliziranega in oblikoskladenjsko označenega besedila korpusa Janes-Tag</head>
-	<head xml:lang="en">Example of a normalised and morphosyntactically annotated text from the Janes-Tag corpus</head>
+	<head xml:lang="sl">Primer normaliziranega in oblikoskladenjsko označenega besedila korpusa PriLit</head>
+	<head xml:lang="en">Example of a normalised and morphosyntactically annotated text from the PriLit corpus</head>
+	<bibl>Žejn, Andrejka and Erjavec, Tomaž, 2021, The corpus of older Slovenian narrative prose PriLit 1.0, Slovenian language resource repository CLARIN.SI, http://hdl.handle.net/11356/1319.</bibl>
         <p xml:id="tid.231386671772495872">
-          <s>
-            <seg type="name" subtype="per">
-	      <w lemma="@iNinaromsek" ana="mte:Xa">@iNinaromsek</w>
-	    </seg>
-	    <choice>
-	      <orig>
-                <w>mela</w>
-	      </orig>
-	      <reg>
-                <w lemma="imeti" ana="mte:Vmpp-sf">imela</w>
-	      </reg>
-	    </choice>
-	    <choice>
-	      <orig>
-                <w join="right">saaansooo</w>
-	      </orig>
-	      <reg>
-                <w lemma="šansa" ana="mte:Ncfsa" join="right">šanso</w>
-	      </reg>
-	    </choice>
-	    <pc ana="mte:Z">,</pc>
-	    <choice>
-	      <orig>
-                <w>js</w>
-	      </orig>
-	      <reg>
-                <w lemma="jaz" ana="mte:Pp1-sn">jaz</w>
-	      </reg>
-	    </choice>
-	    <w lemma="iti" ana="mte:Vmbr1s">grem</w>
-	    <w lemma="pa" ana="mte:Cc">pa</w>
-	    <choice>
-	      <orig>
-		<w>kr</w>
-	      </orig>
-	      <reg>
-		<w lemma="kar" ana="mte:Rgp">kar</w>
-	      </reg>
-	    </choice>
-	    <choice>
-	      <orig>
-		<w>ze</w>
-	      </orig>
-	      <reg>
-		<w lemma="že" ana="mte:Q">že</w>
-	      </reg>
-	    </choice>
-	    <choice>
-	      <orig>
-		<w>dons</w>
-	      </orig>
-	      <reg>
-		<w lemma="danes" ana="mte:Rgp">danes</w>
-	      </reg>
-	    </choice>
-	    <w lemma=":P" ana="mte:Xe">:P</w>
-	  </s>
-	  <s>
-	    <choice>
-	      <orig>
-		<w>se</w>
-	      </orig>
-	      <reg>
-		<w lemma="še" ana="mte:Q">še</w>
-	      </reg>
-	    </choice>
-	    <w lemma="prevoz" ana="mte:Ncmsan">prevoz</w>
-	    <w lemma="do" ana="mte:Sg">do</w>
-	    <w lemma="dol" ana="mte:Rgp">dol</w>
-	    <choice>
-	      <orig>
-		<w>sm</w>
-              </orig>
-	      <reg>
-		<w lemma="biti" ana="mte:Va-r1s-n">sem</w>
-	      </reg>
-	    </choice>
-	    <w lemma="dobiti" ana="mte:Vmep-sf" join="right">dobila</w>
-	    <pc ana="mte:Z" join="right">..</pc>
-	  </s>
-	  <s>
-	    <choice>
-	      <orig>
-		<w>odzabe</w>
-	      </orig>
-	      <reg>
-		<w lemma="o" ana="mte:I">o</w>
-		<w lemma="džabe" ana="mte:Xf">džabe</w>
-	      </reg>
-	    </choice>
-	    <w lemma=":D" ana="mte:Xe">:D</w>
-	  </s>
-	  <s>
-	    <choice>
-	      <orig>
-		<w>dobis</w>
-	      </orig>
-	      <reg>
-		<w lemma="dobiti" ana="mte:Vmer2s">dobiš</w>
-	      </reg>
-            </choice>
-	    <choice>
-	      <orig>
-		<w>pozdravcke</w>
-	      </orig>
-	      <reg>
-		<w lemma="pozdravček" ana="mte:Ncmpa">pozdravčke</w>
-	      </reg>
-	    </choice>
-	    <w lemma=";)" ana="mte:Xe">;)</w>
-	  </s>
-	  <s>
-	    <pc ana="mte:Z" join="right">(</pc>
-	    <choice>
-	      <orig>
-		<w join="right">vm</w>
-	      </orig>
-	      <reg>
-		<w lemma="vedeti" ana="mte:Vmpr1s" join="right">vem</w>
-	      </reg>
-	    </choice>
-	    <pc ana="mte:Z" join="right">,</pc>
-	    <choice>
-	      <orig>
-		<w>zleht</w>
-	      </orig>
-	      <reg>
-		<w lemma="žleht" ana="mte:Agpfsn">žleht</w>
-	      </reg>
-	     </choice>
-	     <choice>
-	       <orig>
-		 <w join="right">sm</w>
-	       </orig>
-	       <reg>
-		 <w lemma="biti" ana="mte:Va-r1s-n" join="right">sem</w>
-	       </reg>
-	     </choice>
-	     <pc ana="mte:Z">)</pc>
-	     <w lemma=":O" ana="mte:Xe" join="right">:O</w>
+	  <s xml:id="Cigler_Deteljica1863.4.s2">
+	    <w xml:id="Cigler_Deteljica1863.4.s2.t1" ana="mte:Agpnsg" msd="UposTag=ADJ|Case=Gen|Degree=Pos|Gender=Neut|Number=Sing" lemma="ljubljanski">Ljubljanskega</w>
+	    <w xml:id="Cigler_Deteljica1863.4.s2.t2" ana="mte:Cc" msd="UposTag=CCONJ" lemma="in">in</w>
+	    <w xml:id="Cigler_Deteljica1863.4.s2.t3" ana="mte:Npnsg" msd="UposTag=PROPN|Case=Gen|Gender=Neut|Number=Sing" norm="Krškega" lemma="Krško">Kerškega</w>
+	    <w join="right" xml:id="Cigler_Deteljica1863.4.s2.t4" ana="mte:Ncnsg" msd="UposTag=NOUN|Case=Gen|Gender=Neut|Number=Sing" lemma="knezoškofijstvo">knezoškofijstva</w>
+	    <pc xml:id="Cigler_Deteljica1863.4.s2.t5" ana="mte:Z" msd="UposTag=PUNCT">.</pc>
+	    <linkGrp corresp="#Cigler_Deteljica1863.4.s2" targFunc="head argument" type="UD-SYN">
+	      <link ana="ud-syn:amod" target="#Cigler_Deteljica1863.4.s2.t4 #Cigler_Deteljica1863.4.s2.t1"/>
+	      <link ana="ud-syn:cc" target="#Cigler_Deteljica1863.4.s2.t3 #Cigler_Deteljica1863.4.s2.t2"/>
+	      <link ana="ud-syn:conj" target="#Cigler_Deteljica1863.4.s2.t1 #Cigler_Deteljica1863.4.s2.t3"/>
+	      <link ana="ud-syn:root" target="#Cigler_Deteljica1863.4.s2 #Cigler_Deteljica1863.4.s2.t4"/>
+	      <link ana="ud-syn:punct" target="#Cigler_Deteljica1863.4.s2.t4 #Cigler_Deteljica1863.4.s2.t5"/>
+	    </linkGrp>
 	  </s>
         </p>
       </div>
