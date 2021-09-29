@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2021-08-24T14:19:37Z. .This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
+DTD generated from ODD source 2021-09-29T17:22:24Z. 2021-09-29.This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -99,11 +99,11 @@ rendition CDATA  #IMPLIED'>
 source CDATA  #IMPLIED'>
 <!ENTITY % tei_att.global.source.attributes '
  %tei_att.global.source.attribute.source;'> 
-<!ENTITY % model.entryPart "superEntry |hom |sense |form |orth |pron |hyph |syll |gramGrp |pos |subc |colloc |def |etym |usg |lbl |xr |re"> 
-<!ENTITY % model.entryPart_sequence "superEntry, hom, sense, form, orth, pron, hyph, syll, gramGrp, pos, subc, colloc, def, etym, usg, lbl, xr, re"> 
-<!ENTITY % model.entryPart_sequenceOptional "superEntry?, hom?, sense?, form?, orth?, pron?, hyph?, syll?, gramGrp?, pos?, subc?, colloc?, def?, etym?, usg?, lbl?, xr?, re?"> 
-<!ENTITY % model.entryPart_sequenceOptionalRepeatable "superEntry*, hom*, sense*, form*, orth*, pron*, hyph*, syll*, gramGrp*, pos*, subc*, colloc*, def*, etym*, usg*, lbl*, xr*, re*"> 
-<!ENTITY % model.entryPart_sequenceRepeatable "superEntry+, hom+, sense+, form+, orth+, pron+, hyph+, syll+, gramGrp+, pos+, subc+, colloc+, def+, etym+, usg+, lbl+, xr+, re+"> 
+<!ENTITY % model.entryPart ""> 
+<!ENTITY % model.entryPart_sequence ""> 
+<!ENTITY % model.entryPart_sequenceOptional ""> 
+<!ENTITY % model.entryPart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.entryPart_sequenceRepeatable ""> 
 <!ENTITY % model.eventLike "event |listEvent"> 
 <!ENTITY % model.eventLike_sequence "event, listEvent"> 
 <!ENTITY % model.eventLike_sequenceOptional "event?, listEvent?"> 
@@ -150,17 +150,7 @@ facs CDATA  #IMPLIED'>
 <!ENTITY % tei_att.global.change.attribute.change '
 change CDATA  #IMPLIED'>
 <!ENTITY % tei_att.global.change.attributes '
- %tei_att.global.change.attribute.change;'> 
-<!ENTITY % model.entryLike "superEntry |entry |entryFree"> 
-<!ENTITY % model.entryLike_sequence "superEntry, entry, entryFree"> 
-<!ENTITY % model.entryLike_sequenceOptional "superEntry?, entry?, entryFree?"> 
-<!ENTITY % model.entryLike_sequenceOptionalRepeatable "superEntry*, entry*, entryFree*"> 
-<!ENTITY % model.entryLike_sequenceRepeatable "superEntry+, entry+, entryFree+"> 
-<!ENTITY % model.ptrLike.form "oRef |pRef"> 
-<!ENTITY % model.ptrLike.form_sequence "oRef, pRef"> 
-<!ENTITY % model.ptrLike.form_sequenceOptional "oRef?, pRef?"> 
-<!ENTITY % model.ptrLike.form_sequenceOptionalRepeatable "oRef*, pRef*"> 
-<!ENTITY % model.ptrLike.form_sequenceRepeatable "oRef+, pRef+"> <!ENTITY % tei_att.duration.attributes '%tei_att.duration.w3c.attributes;%tei_att.duration.iso.attributes;'> 
+ %tei_att.global.change.attribute.change;'> <!ENTITY % tei_att.duration.attributes '%tei_att.duration.w3c.attributes;%tei_att.duration.iso.attributes;'> 
 <!ENTITY % model.global.spoken "pause |vocal |kinesic |incident |writing |shift"> 
 <!ENTITY % model.global.spoken_sequence "pause, vocal, kinesic, incident, writing, shift"> 
 <!ENTITY % model.global.spoken_sequenceOptional "pause?, vocal?, kinesic?, incident?, writing?, shift?"> 
@@ -795,16 +785,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.featureVal.single_sequenceOptional "binary?, symbol?, numeric?, string?, vLabel?, default?, vAlt?"> 
 <!ENTITY % model.featureVal.single_sequenceOptionalRepeatable "binary*, symbol*, numeric*, string*, vLabel*, default*, vAlt*"> 
 <!ENTITY % model.featureVal.single_sequenceRepeatable "binary+, symbol+, numeric+, string+, vLabel+, default+, vAlt+"> 
-<!ENTITY % model.entryPart "superEntry |hom |sense |form |orth |pron |hyph |syll |gramGrp |pos |subc |colloc |def |etym |usg |lbl |xr |re"> 
-<!ENTITY % model.entryPart_sequence "superEntry, hom, sense, form, orth, pron, hyph, syll, gramGrp, pos, subc, colloc, def, etym, usg, lbl, xr, re"> 
-<!ENTITY % model.entryPart_sequenceOptional "superEntry?, hom?, sense?, form?, orth?, pron?, hyph?, syll?, gramGrp?, pos?, subc?, colloc?, def?, etym?, usg?, lbl?, xr?, re?"> 
-<!ENTITY % model.entryPart_sequenceOptionalRepeatable "superEntry*, hom*, sense*, form*, orth*, pron*, hyph*, syll*, gramGrp*, pos*, subc*, colloc*, def*, etym*, usg*, lbl*, xr*, re*"> 
-<!ENTITY % model.entryPart_sequenceRepeatable "superEntry+, hom+, sense+, form+, orth+, pron+, hyph+, syll+, gramGrp+, pos+, subc+, colloc+, def+, etym+, usg+, lbl+, xr+, re+"> 
-<!ENTITY % model.entryPart.top "cit |entry |dictScrap |form |gramGrp |def |etym |usg |lbl |xr |re"> 
-<!ENTITY % model.entryPart.top_sequence "cit, entry, dictScrap, form, gramGrp, def, etym, usg, lbl, xr, re"> 
-<!ENTITY % model.entryPart.top_sequenceOptional "cit?, entry?, dictScrap?, form?, gramGrp?, def?, etym?, usg?, lbl?, xr?, re?"> 
-<!ENTITY % model.entryPart.top_sequenceOptionalRepeatable "cit*, entry*, dictScrap*, form*, gramGrp*, def*, etym*, usg*, lbl*, xr*, re*"> 
-<!ENTITY % model.entryPart.top_sequenceRepeatable "cit+, entry+, dictScrap+, form+, gramGrp+, def+, etym+, usg+, lbl+, xr+, re+"> 
+<!ENTITY % model.entryPart ""> 
+<!ENTITY % model.entryPart_sequence ""> 
+<!ENTITY % model.entryPart_sequenceOptional ""> 
+<!ENTITY % model.entryPart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.entryPart_sequenceRepeatable ""> 
 <!ENTITY % model.eventLike "event |listEvent"> 
 <!ENTITY % model.eventLike_sequence "event, listEvent"> 
 <!ENTITY % model.eventLike_sequenceOptional "event?, listEvent?"> 
@@ -965,11 +950,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.addressLike_sequenceOptional "email?, address?, affiliation?"> 
 <!ENTITY % model.addressLike_sequenceOptionalRepeatable "email*, address*, affiliation*"> 
 <!ENTITY % model.addressLike_sequenceRepeatable "email+, address+, affiliation+"> 
-<!ENTITY % model.nameLike "%model.nameLike.agent; |%model.offsetLike; |%model.placeStateLike; |rs |idno |lang |%model.persNamePart; |objectName"> 
-<!ENTITY % model.nameLike_sequence "%model.nameLike.agent;, %model.offsetLike;, %model.placeStateLike;, rs, idno, lang, %model.persNamePart;, objectName"> 
-<!ENTITY % model.nameLike_sequenceOptional "%model.nameLike.agent;?, %model.offsetLike;?, %model.placeStateLike;?, rs?, idno?, lang?, %model.persNamePart;?, objectName?"> 
-<!ENTITY % model.nameLike_sequenceOptionalRepeatable "%model.nameLike.agent;*, %model.offsetLike;*, %model.placeStateLike;*, rs*, idno*, lang*, %model.persNamePart;*, objectName*"> 
-<!ENTITY % model.nameLike_sequenceRepeatable "%model.nameLike.agent;+, %model.offsetLike;+, %model.placeStateLike;+, rs+, idno+, lang+, %model.persNamePart;+, objectName+"> 
+<!ENTITY % model.nameLike "%model.nameLike.agent; |%model.offsetLike; |%model.placeStateLike; |rs |idno |%model.persNamePart; |objectName"> 
+<!ENTITY % model.nameLike_sequence "%model.nameLike.agent;, %model.offsetLike;, %model.placeStateLike;, rs, idno, %model.persNamePart;, objectName"> 
+<!ENTITY % model.nameLike_sequenceOptional "%model.nameLike.agent;?, %model.offsetLike;?, %model.placeStateLike;?, rs?, idno?, %model.persNamePart;?, objectName?"> 
+<!ENTITY % model.nameLike_sequenceOptionalRepeatable "%model.nameLike.agent;*, %model.offsetLike;*, %model.placeStateLike;*, rs*, idno*, %model.persNamePart;*, objectName*"> 
+<!ENTITY % model.nameLike_sequenceRepeatable "%model.nameLike.agent;+, %model.offsetLike;+, %model.placeStateLike;+, rs+, idno+, %model.persNamePart;+, objectName+"> 
 <!ENTITY % model.global "%model.global.meta; |%model.milestoneLike; |%model.noteLike; |%model.global.edit; |metamark |notatedMusic |figure |%model.global.spoken;"> 
 <!ENTITY % model.global_sequence "%model.global.meta;, %model.milestoneLike;, %model.noteLike;, %model.global.edit;, metamark, notatedMusic, figure, %model.global.spoken;"> 
 <!ENTITY % model.global_sequenceOptional "%model.global.meta;?, %model.milestoneLike;?, %model.noteLike;?, %model.global.edit;?, metamark?, notatedMusic?, figure?, %model.global.spoken;?"> 
@@ -1005,16 +990,16 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.inter_sequenceOptional "%model.biblLike;?, %model.labelLike;?, %model.listLike;?, %model.stageLike;?, %model.attributable;?"> 
 <!ENTITY % model.inter_sequenceOptionalRepeatable "%model.biblLike;*, %model.labelLike;*, %model.listLike;*, %model.stageLike;*, %model.attributable;*"> 
 <!ENTITY % model.inter_sequenceRepeatable "%model.biblLike;+, %model.labelLike;+, %model.listLike;+, %model.stageLike;+, %model.attributable;+"> 
-<!ENTITY % model.common "%model.divPart; |%model.inter; |q |%model.entryLike;"> 
-<!ENTITY % model.common_sequence "%model.divPart;, %model.inter;, q, %model.entryLike;"> 
-<!ENTITY % model.common_sequenceOptional "%model.divPart;?, %model.inter;?, q?, %model.entryLike;?"> 
-<!ENTITY % model.common_sequenceOptionalRepeatable "%model.divPart;*, %model.inter;*, q*, %model.entryLike;*"> 
-<!ENTITY % model.common_sequenceRepeatable "%model.divPart;+, %model.inter;+, q+, %model.entryLike;+"> 
-<!ENTITY % model.phrase "%model.segLike; |%model.highlighted; |%model.graphicLike; |%model.pPart.edit; |%model.ptrLike; |%model.pPart.data; |%model.ptrLike.form;"> 
-<!ENTITY % model.phrase_sequence "%model.segLike;, %model.highlighted;, %model.graphicLike;, %model.pPart.edit;, %model.ptrLike;, %model.pPart.data;, %model.ptrLike.form;"> 
-<!ENTITY % model.phrase_sequenceOptional "%model.segLike;?, %model.highlighted;?, %model.graphicLike;?, %model.pPart.edit;?, %model.ptrLike;?, %model.pPart.data;?, %model.ptrLike.form;?"> 
-<!ENTITY % model.phrase_sequenceOptionalRepeatable "%model.segLike;*, %model.highlighted;*, %model.graphicLike;*, %model.pPart.edit;*, %model.ptrLike;*, %model.pPart.data;*, %model.ptrLike.form;*"> 
-<!ENTITY % model.phrase_sequenceRepeatable "%model.segLike;+, %model.highlighted;+, %model.graphicLike;+, %model.pPart.edit;+, %model.ptrLike;+, %model.pPart.data;+, %model.ptrLike.form;+"> 
+<!ENTITY % model.common "%model.divPart; |%model.inter; |q"> 
+<!ENTITY % model.common_sequence "%model.divPart;, %model.inter;, q"> 
+<!ENTITY % model.common_sequenceOptional "%model.divPart;?, %model.inter;?, q?"> 
+<!ENTITY % model.common_sequenceOptionalRepeatable "%model.divPart;*, %model.inter;*, q*"> 
+<!ENTITY % model.common_sequenceRepeatable "%model.divPart;+, %model.inter;+, q+"> 
+<!ENTITY % model.phrase "%model.segLike; |%model.highlighted; |%model.graphicLike; |%model.pPart.edit; |%model.ptrLike; |%model.pPart.data;"> 
+<!ENTITY % model.phrase_sequence "%model.segLike;, %model.highlighted;, %model.graphicLike;, %model.pPart.edit;, %model.ptrLike;, %model.pPart.data;"> 
+<!ENTITY % model.phrase_sequenceOptional "%model.segLike;?, %model.highlighted;?, %model.graphicLike;?, %model.pPart.edit;?, %model.ptrLike;?, %model.pPart.data;?"> 
+<!ENTITY % model.phrase_sequenceOptionalRepeatable "%model.segLike;*, %model.highlighted;*, %model.graphicLike;*, %model.pPart.edit;*, %model.ptrLike;*, %model.pPart.data;*"> 
+<!ENTITY % model.phrase_sequenceRepeatable "%model.segLike;+, %model.highlighted;+, %model.graphicLike;+, %model.pPart.edit;+, %model.ptrLike;+, %model.pPart.data;+"> 
 <!ENTITY % model.limitedPhrase "%model.hiLike; |%model.emphLike; |%model.pPart.editorial; |%model.ptrLike; |%model.pPart.data;"> 
 <!ENTITY % model.limitedPhrase_sequence "%model.hiLike;, %model.emphLike;, %model.pPart.editorial;, %model.ptrLike;, %model.pPart.data;"> 
 <!ENTITY % model.limitedPhrase_sequenceOptional "%model.hiLike;?, %model.emphLike;?, %model.pPart.editorial;?, %model.ptrLike;?, %model.pPart.data;?"> 
@@ -1075,11 +1060,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.profileDescPart_sequenceOptional "abstract?, creation?, langUsage?, textClass?, calendarDesc?, correspDesc?, textDesc?, particDesc?, settingDesc?, handNotes?, listTranspose?"> 
 <!ENTITY % model.profileDescPart_sequenceOptionalRepeatable "abstract*, creation*, langUsage*, textClass*, calendarDesc*, correspDesc*, textDesc*, particDesc*, settingDesc*, handNotes*, listTranspose*"> 
 <!ENTITY % model.profileDescPart_sequenceRepeatable "abstract+, creation+, langUsage+, textClass+, calendarDesc+, correspDesc+, textDesc+, particDesc+, settingDesc+, handNotes+, listTranspose+"> 
-<!ENTITY % model.standOffPart "%model.global.meta; |%model.biblLike; |%model.listLike; |%model.annotationLike; |listChange |zone |%model.entryLike; |u |seg |listAnnotation"> 
-<!ENTITY % model.standOffPart_sequence "%model.global.meta;, %model.biblLike;, %model.listLike;, %model.annotationLike;, listChange, zone, %model.entryLike;, u, seg, listAnnotation"> 
-<!ENTITY % model.standOffPart_sequenceOptional "%model.global.meta;?, %model.biblLike;?, %model.listLike;?, %model.annotationLike;?, listChange?, zone?, %model.entryLike;?, u?, seg?, listAnnotation?"> 
-<!ENTITY % model.standOffPart_sequenceOptionalRepeatable "%model.global.meta;*, %model.biblLike;*, %model.listLike;*, %model.annotationLike;*, listChange*, zone*, %model.entryLike;*, u*, seg*, listAnnotation*"> 
-<!ENTITY % model.standOffPart_sequenceRepeatable "%model.global.meta;+, %model.biblLike;+, %model.listLike;+, %model.annotationLike;+, listChange+, zone+, %model.entryLike;+, u+, seg+, listAnnotation+"> 
+<!ENTITY % model.standOffPart "%model.global.meta; |%model.biblLike; |%model.listLike; |%model.annotationLike; |listChange |zone |u |seg |listAnnotation"> 
+<!ENTITY % model.standOffPart_sequence "%model.global.meta;, %model.biblLike;, %model.listLike;, %model.annotationLike;, listChange, zone, u, seg, listAnnotation"> 
+<!ENTITY % model.standOffPart_sequenceOptional "%model.global.meta;?, %model.biblLike;?, %model.listLike;?, %model.annotationLike;?, listChange?, zone?, u?, seg?, listAnnotation?"> 
+<!ENTITY % model.standOffPart_sequenceOptionalRepeatable "%model.global.meta;*, %model.biblLike;*, %model.listLike;*, %model.annotationLike;*, listChange*, zone*, u*, seg*, listAnnotation*"> 
+<!ENTITY % model.standOffPart_sequenceRepeatable "%model.global.meta;+, %model.biblLike;+, %model.listLike;+, %model.annotationLike;+, listChange+, zone+, u+, seg+, listAnnotation+"> 
 <!ENTITY % tei_att.formula.attribute.formula '
 formula %teidata.xpath;  #IMPLIED'>
 <!ENTITY % tei_att.formula.attributes '
@@ -1099,10 +1084,6 @@ formula %teidata.xpath;  #IMPLIED'>
 <!ENTITY % model.correspDescPart_sequenceOptional "note?, correspAction?, correspContext?"> 
 <!ENTITY % model.correspDescPart_sequenceOptionalRepeatable "note*, correspAction*, correspContext*"> 
 <!ENTITY % model.correspDescPart_sequenceRepeatable "note+, correspAction+, correspContext+"> 
-<!ENTITY % tei_att.partials.attribute.extent '
-extent %teidata.enumerated;  #IMPLIED'>
-<!ENTITY % tei_att.partials.attributes '
- %tei_att.partials.attribute.extent;'> 
 <!ENTITY % model.resource "text |facsimile |sourceDoc |standOff |fsdDecl"> 
 <!ENTITY % model.resource_sequence "text, facsimile, sourceDoc, standOff, fsdDecl"> 
 <!ENTITY % model.resource_sequenceOptional "text?, facsimile?, sourceDoc?, standOff?, fsdDecl?"> 
@@ -1190,65 +1171,7 @@ cols %teidata.count;  "1" '>
 <!ENTITY % tei_att.tableDecoration.attributes '
  %tei_att.tableDecoration.attribute.role;
  %tei_att.tableDecoration.attribute.rows;
- %tei_att.tableDecoration.attribute.cols;'> 
-<!ENTITY % model.entryLike "superEntry |entry |entryFree"> 
-<!ENTITY % model.entryLike_sequence "superEntry, entry, entryFree"> 
-<!ENTITY % model.entryLike_sequenceOptional "superEntry?, entry?, entryFree?"> 
-<!ENTITY % model.entryLike_sequenceOptionalRepeatable "superEntry*, entry*, entryFree*"> 
-<!ENTITY % model.entryLike_sequenceRepeatable "superEntry+, entry+, entryFree+"> 
-<!ENTITY % tei_att.entryLike.attribute.type '
-type %teidata.enumerated;  "main" '>
-<!ENTITY % tei_att.entryLike.attributes '
- %tei_att.entryLike.attribute.type;'> 
-<!ENTITY % tei_att.lexicographic.attribute.expand '
-expand %teidata.text;  #IMPLIED'>
-
-<!ENTITY % tei_att.lexicographic.attribute.split '
-split %teidata.text;  #IMPLIED'>
-
-<!ENTITY % tei_att.lexicographic.attribute.value '
-value %teidata.text;  #IMPLIED'>
-
-<!ENTITY % tei_att.lexicographic.attribute.location '
-location %teidata.pointer;  #IMPLIED'>
-
-<!ENTITY % tei_att.lexicographic.attribute.mergedIn '
-mergedIn %teidata.pointer;  #IMPLIED'>
-
-<!ENTITY % tei_att.lexicographic.attribute.opt '
-opt %teidata.truthValue;  "false" '>
-<!ENTITY % tei_att.lexicographic.attributes '%tei_att.datcat.attributes;%tei_att.lexicographic.normalized.attributes;
- %tei_att.lexicographic.attribute.expand;
- %tei_att.lexicographic.attribute.split;
- %tei_att.lexicographic.attribute.value;
- %tei_att.lexicographic.attribute.location;
- %tei_att.lexicographic.attribute.mergedIn;
- %tei_att.lexicographic.attribute.opt;'> 
-<!ENTITY % model.morphLike "gram |gen |number |case |per |tns |mood |iType"> 
-<!ENTITY % model.morphLike_sequence "gram, gen, number, case, per, tns, mood, iType"> 
-<!ENTITY % model.morphLike_sequenceOptional "gram?, gen?, number?, case?, per?, tns?, mood?, iType?"> 
-<!ENTITY % model.morphLike_sequenceOptionalRepeatable "gram*, gen*, number*, case*, per*, tns*, mood*, iType*"> 
-<!ENTITY % model.morphLike_sequenceRepeatable "gram+, gen+, number+, case+, per+, tns+, mood+, iType+"> 
-<!ENTITY % model.lexicalRefinement "gramGrp |pos |subc |colloc |usg |lbl"> 
-<!ENTITY % model.lexicalRefinement_sequence "gramGrp, pos, subc, colloc, usg, lbl"> 
-<!ENTITY % model.lexicalRefinement_sequenceOptional "gramGrp?, pos?, subc?, colloc?, usg?, lbl?"> 
-<!ENTITY % model.lexicalRefinement_sequenceOptionalRepeatable "gramGrp*, pos*, subc*, colloc*, usg*, lbl*"> 
-<!ENTITY % model.lexicalRefinement_sequenceRepeatable "gramGrp+, pos+, subc+, colloc+, usg+, lbl+"> 
-<!ENTITY % model.gramPart "%model.morphLike; |%model.lexicalRefinement;"> 
-<!ENTITY % model.gramPart_sequence "%model.morphLike;, %model.lexicalRefinement;"> 
-<!ENTITY % model.gramPart_sequenceOptional "%model.morphLike;?, %model.lexicalRefinement;?"> 
-<!ENTITY % model.gramPart_sequenceOptionalRepeatable "%model.morphLike;*, %model.lexicalRefinement;*"> 
-<!ENTITY % model.gramPart_sequenceRepeatable "%model.morphLike;+, %model.lexicalRefinement;+"> 
-<!ENTITY % model.formPart "%model.gramPart; |form |orth |pron |hyph |syll |stress"> 
-<!ENTITY % model.formPart_sequence "%model.gramPart;, form, orth, pron, hyph, syll, stress"> 
-<!ENTITY % model.formPart_sequenceOptional "%model.gramPart;?, form?, orth?, pron?, hyph?, syll?, stress?"> 
-<!ENTITY % model.formPart_sequenceOptionalRepeatable "%model.gramPart;*, form*, orth*, pron*, hyph*, syll*, stress*"> 
-<!ENTITY % model.formPart_sequenceRepeatable "%model.gramPart;+, form+, orth+, pron+, hyph+, syll+, stress+"> 
-<!ENTITY % model.ptrLike.form "oRef |pRef"> 
-<!ENTITY % model.ptrLike.form_sequence "oRef, pRef"> 
-<!ENTITY % model.ptrLike.form_sequenceOptional "oRef?, pRef?"> 
-<!ENTITY % model.ptrLike.form_sequenceOptionalRepeatable "oRef*, pRef*"> 
-<!ENTITY % model.ptrLike.form_sequenceRepeatable "oRef+, pRef+"> <!ENTITY % tei_att.duration.attributes '%tei_att.duration.w3c.attributes;%tei_att.duration.iso.attributes;'> 
+ %tei_att.tableDecoration.attribute.cols;'> <!ENTITY % tei_att.duration.attributes '%tei_att.duration.w3c.attributes;%tei_att.duration.iso.attributes;'> 
 <!ENTITY % model.global.spoken "pause |vocal |kinesic |incident |writing |shift"> 
 <!ENTITY % model.global.spoken_sequence "pause, vocal, kinesic, incident, writing, shift"> 
 <!ENTITY % model.global.spoken_sequenceOptional "pause?, vocal?, kinesic?, incident?, writing?, shift?"> 
@@ -1715,12 +1638,6 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST calendarDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST calendarDesc
  %tei_att.global.attributes; >
-<!--doc:contains grammatical case information given by a dictionary for a given form. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT case %macro.paraContent;>
-<!ATTLIST case xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST case
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(category description) describes some category within a taxonomy or text typology, either in the form of a brief prose description or in terms of the situational parameters used by the TEI formal textDesc. [2.3.7. The Classification Declaration] -->
 <!ELEMENT catDesc (#PCDATA|%model.limitedPhrase;|%model.catDescPart;)*>
 <!ATTLIST catDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1798,7 +1715,7 @@ mode (s|w|sw|ws|m|x) "x"  >
 <!ATTLIST choice
  %tei_att.global.attributes; >
 <!--doc:(cited quotation) contains a quotation from some other document, together with a bibliographic reference to its source. In a dictionary it may contain an example text with at least one occurrence of the word form, used in the sense being described, or a translation of the headword, or an example. [3.3.3. Quotation 4.3.1. Grouped Texts 9.3.5.1. Examples] -->
-<!ELEMENT cit (%model.biblLike;|_DUMMY_model.egLike|%model.entryPart;|%model.global;|%model.graphicLike;|%model.ptrLike;|%model.attributable;|pc|q)+>
+<!ELEMENT cit (%model.biblLike;|_DUMMY_model.egLike|_DUMMY_model.entryPart|%model.global;|%model.graphicLike;|%model.ptrLike;|%model.attributable;|pc|q)+>
 <!ATTLIST cit xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST cit
  %tei_att.global.attributes;
@@ -1844,13 +1761,6 @@ scheme %teidata.pointer;  #REQUIRED >
 <!ATTLIST closer
  %tei_att.global.attributes;
  %tei_att.written.attributes; >
-<!--doc:(collocate) contains any sequence of words that co-occur with the headword with significant frequency. [9.3.2. Grammatical Information] -->
-<!ELEMENT colloc %macro.paraContent;>
-<!ATTLIST colloc xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST colloc
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.typed.attributes; >
 <!--doc:describes the internal composition of a text or text sample, for example as fragmentary, complete, etc. [15.2.1. The Text Description] -->
 <!ELEMENT constitution %macro.phraseSeq.limited;>
 <!ATTLIST constitution xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1960,12 +1870,6 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:(definition) contains definition text in a dictionary entry. [9.3.3.1. Definitions] -->
-<!ELEMENT def %macro.paraContent;>
-<!ATTLIST def xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST def
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(default feature value) represents the value part of a feature-value specification which contains a defaulted value. [18.9. Default Values] -->
 <!ELEMENT default  EMPTY>
 <!ATTLIST default xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2003,11 +1907,6 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.translatable.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:(dictionary scrap) encloses a part of a dictionary entry in which other phrase-level dictionary elements are freely combined. [9.1. Dictionary Body and Overall Structure 9.2. The Structure of Dictionary Entries] -->
-<!ELEMENT dictScrap (#PCDATA|%model.gLike;|%model.entryPart;|%model.morphLike;|%model.phrase;|%model.inter;|%model.global;)*>
-<!ATTLIST dictScrap xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST dictScrap
- %tei_att.global.attributes; >
 <!--doc:identifies any word or phrase which is regarded as linguistically distinct, for example as archaic, technical, dialectal, non-preferred, etc., or as forming part of a sublanguage. [3.3.2.3. Other Linguistically Distinct Material] -->
 <!ELEMENT distinct %macro.phraseSeq;>
 <!ATTLIST distinct xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2130,34 +2029,12 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST encodingDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST encodingDesc
  %tei_att.global.attributes; >
-<!--doc:contains a single structured entry in any kind of lexical resource, such as a dictionary or lexicon. [9.1. Dictionary Body and Overall Structure 9.2. The Structure of Dictionary Entries] -->
-<!ELEMENT entry (hom|sense|pc|%model.entryPart.top;|%model.global;|%model.ptrLike;)+>
-<!ATTLIST entry xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST entry
- %tei_att.global.attributes;
- %tei_att.entryLike.attributes;
- %tei_att.sortable.attributes; >
-<!--doc:(unstructured entry) contains a single unstructured entry in any kind of lexical resource, such as a dictionary or lexicon. [9.1. Dictionary Body and Overall Structure 9.2. The Structure of Dictionary Entries] -->
-<!ELEMENT entryFree (#PCDATA|%model.gLike;|%model.entryPart;|%model.morphLike;|%model.phrase;|%model.inter;|%model.global;)*>
-<!ATTLIST entryFree xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST entryFree
- %tei_att.global.attributes;
- %tei_att.entryLike.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.sortable.attributes; >
 <!--doc:provides technical details of the equipment and media used for an audio or video recording used as the source for a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
 <!ELEMENT equipment (%model.pLike;)+>
 <!ATTLIST equipment xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST equipment
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:(etymology) encloses the etymological information in a dictionary entry. [9.3.4. Etymological Information] -->
-<!ELEMENT etym (#PCDATA|%model.gLike;|%model.global;|%model.inter;|%model.phrase;|def|etym|gramGrp|lbl|usg|xr)*>
-<!ATTLIST etym xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST etym
- %tei_att.global.attributes;
- %tei_att.typed.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:contains data relating to any kind of significant event associated with a person, place, or organization. [13.3.1. Basic Principles] -->
 <!ELEMENT event (((idno)*,(%model.headLike;)*,((%model.pLike;)+|(%model.labelLike;)+),(%model.noteLike;|%model.biblLike;|linkGrp|link|idno|ptr)*,(event)*))>
 <!ATTLIST event xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2274,14 +2151,6 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:(form information group) groups all the information on the written and spoken forms of one headword. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT form (#PCDATA|%model.gLike;|%model.phrase;|%model.inter;|%model.formPart;|%model.global;)*>
-<!ATTLIST form xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST form
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:contains a mathematical or other formula. [14.2. Formulæ and Mathematical Expressions] -->
 <!ELEMENT formula (#PCDATA|%model.graphicLike;|%model.hiLike;)*>
 <!ATTLIST formula xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2357,12 +2226,6 @@ ref %teidata.pointer;  #IMPLIED >
  %tei_att.dimensions.attributes;
 reason NMTOKENS  #IMPLIED
 agent %teidata.enumerated;  #IMPLIED >
-<!--doc:(gender) identifies the morphological gender of a lexical item, as given in the dictionary. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT gen %macro.paraContent;>
-<!ATTLIST gen xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST gen
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(generational name component) contains a name component used to distinguish otherwise similar names on the basis of the relative ages or generations of the persons named. [13.2.1. Personal Names] -->
 <!ELEMENT genName %macro.phraseSeq;>
 <!ATTLIST genName xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2422,21 +2285,6 @@ datum %teidata.enumerated;  "WGS84"  >
 <!ATTLIST glyphName xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST glyphName
  %tei_att.global.attributes; >
-<!--doc:(grammatical information) within an entry in a dictionary or a terminological data file, contains grammatical information relating to a term, word, or form. [9.3.2. Grammatical Information] -->
-<!ELEMENT gram %macro.paraContent;>
-<!ATTLIST gram xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST gram
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
-type %teidata.enumerated;  #IMPLIED >
-<!--doc:(grammatical information group) groups morpho-syntactic information about a lexical item, e.g. pos, gen, number, case, or iType (inflectional class). [9.3.2. Grammatical Information] -->
-<!ELEMENT gramGrp (#PCDATA|%model.gLike;|%model.phrase;|%model.inter;|%model.gramPart;|%model.global;)*>
-<!ATTLIST gramGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST gramGrp
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.typed.attributes; >
 <!--doc:indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it. [3.9. Graphics and Other Non-textual Components 11.1. Digital Facsimiles] -->
 <!ELEMENT graphic (%model.descLike;)*>
 <!ATTLIST graphic xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2488,19 +2336,6 @@ new %teidata.pointer;  #IMPLIED >
 <!ATTLIST hi
  %tei_att.global.attributes;
  %tei_att.written.attributes; >
-<!--doc:(homograph) groups information relating to one homograph within an entry. [9.2. The Structure of Dictionary Entries] -->
-<!ELEMENT hom (sense|pc|%model.entryPart.top;|%model.global;)*>
-<!ATTLIST hom xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST hom
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
-<!--doc:(hyphenation) contains a hyphenated form of a dictionary headword, or hyphenation information in some other form. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT hyph %macro.paraContent;>
-<!ATTLIST hyph xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST hyph
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.notated.attributes; >
 <!--doc:summarizes the way in which hyphenation in a source text has been treated in an encoded version of it. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
 <!ELEMENT hyphenation (%model.pLike;)+>
 <!ATTLIST hyphenation xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2508,14 +2343,6 @@ new %teidata.pointer;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.declarable.attributes;
 eol (all|some|hard|none) "some"  >
-<!--doc:(inflectional class) indicates the inflectional class associated with a lexical item. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT iType %macro.paraContent;>
-<!ATTLIST iType xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST iType
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:(identifier) supplies any form of identifier used to identify some object, such as a bibliographic item, a person, a title, an organization, etc. in a standardized way. [13.3.1. Basic Principles 2.2.4. Publication, Distribution, Licensing, etc. 2.2.5. The Series Statement 3.11.2.4. Imprint, Size of a Document, and Reprint Information] -->
 <!ELEMENT idno (#PCDATA|%model.gLike;|idno)*>
 <!ATTLIST idno xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2616,12 +2443,6 @@ iterated %teidata.xTruthValue;  "false"  >
  %tei_att.typed.attributes;
  %tei_att.placement.attributes;
  %tei_att.written.attributes; >
-<!--doc:(language name) contains the name of a language mentioned in etymological or other linguistic discussion. [9.3.4. Etymological Information] -->
-<!ELEMENT lang %macro.paraContent;>
-<!ATTLIST lang xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST lang
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(language knowledge) summarizes the state of a person's linguistic knowledge, either as prose or by a list of langKnown elements. [13.3.2.1. Personal Characteristics] -->
 <!ELEMENT langKnowledge (((precision)*,(%model.pLike;|(langKnown)+)))>
 <!ATTLIST langKnowledge xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2664,14 +2485,6 @@ Elements 7.2.5. Speech Contents] -->
  %tei_att.edition.attributes;
  %tei_att.spanning.attributes;
  %tei_att.breaking.attributes; >
-<!--doc:(label) contains a label for a form, example, translation, or other piece of information, e.g. abbreviation for, contraction of, literally, approximately, synonyms:, etc. [9.3.1. Information on Written and Spoken Forms 9.3.3.2. Translation Equivalents 9.3.5.3. Cross-References to Other Entries] -->
-<!ELEMENT lbl %macro.paraContent;>
-<!ATTLIST lbl xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST lbl
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:(line group) contains one or more verse lines functioning as a formal unit, e.g. a stanza, refrain, verse paragraph, etc. [3.12.1. Core Tags for Verse 3.12. Passages of Verse or Drama 7.2.5. Speech Contents] -->
 <!ELEMENT lg (((%model.divTop;|%model.global;)*,(%model.lLike;|%model.stageLike;|%model.labelLike;|lg),(%model.lLike;|%model.stageLike;|%model.labelLike;|%model.global;|lg)*,((%model.divBottom;),(%model.global;)*)*))>
 <!ATTLIST lg xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2918,12 +2731,6 @@ Elements] -->
 <!ATTLIST monogr xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST monogr
  %tei_att.global.attributes; >
-<!--doc:contains information about the grammatical mood of verbs (e.g. indicative, subjunctive, imperative). [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT mood %macro.paraContent;>
-<!ATTLIST mood xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST mood
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(name, proper noun) contains a proper noun or noun phrase. [3.5.1. Referring Strings] -->
 <!ELEMENT name %macro.phraseSeq;>
 <!ATTLIST name xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2995,12 +2802,6 @@ Measures] -->
  %tei_att.ranging.attributes;
 type %teidata.enumerated;  #IMPLIED
 value %teidata.numeric;  #IMPLIED >
-<!--doc:indicates grammatical number associated with a form, as given in a dictionary. [9.3.1. Information on Written and Spoken Forms 9.3.2. Grammatical Information] -->
-<!ELEMENT number %macro.paraContent;>
-<!ATTLIST number xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST number
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(numeric value) represents the value part of a feature-value specification which contains a numeric value or range. [18.3. Other Atomic Feature Values] -->
 <!ELEMENT numeric  EMPTY>
 <!ATTLIST numeric xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3011,23 +2812,13 @@ value %teidata.numeric;  #REQUIRED
 max %teidata.numeric;  #IMPLIED
 trunc %teidata.truthValue;  #IMPLIED >
 <!--doc:(canonical name) contains the definition for a canonical name or name component of any kind. [13.3.6. Names and Nyms] -->
-<!ELEMENT nym (((idno)*,(%model.entryPart;)*,(%model.pLike;)*,(nym)*))>
+<!ELEMENT nym (((idno)*,(_DUMMY_model.entryPart)*,(%model.pLike;)*,(nym)*))>
 <!ATTLIST nym xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST nym
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
  %tei_att.sortable.attributes;
 parts CDATA  #IMPLIED >
-<!--doc:(orthographic-form reference) in a dictionary example, indicates a reference to the orthographic form(s) of the headword. [9.4. Headword and Pronunciation References] -->
-<!ELEMENT oRef (#PCDATA|%model.gLike;|oRef)*>
-<!ATTLIST oRef xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST oRef
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
- %tei_att.pointing.attributes;
- %tei_att.notated.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:contains a description of a single identifiable physical object. [13.3.5. Objects] -->
 <!ELEMENT object (((objectIdentifier)+,(%model.headLike;)*,((%model.pLike;)*|((msContents)?,(physDesc)?,(history)?,(additional)?)),(%model.noteLike;|%model.biblLike;|linkGrp|link)*,(object)?))>
 <!ATTLIST object xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3104,16 +2895,6 @@ Normalization 12. Critical Apparatus] -->
 <!ATTLIST orig xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST orig
  %tei_att.global.attributes; >
-<!--doc:(orthographic form) gives the orthographic form of a dictionary headword. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT orth %macro.paraContent;>
-<!ATTLIST orth xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST orth
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
- %tei_att.partials.attributes;
- %tei_att.notated.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents] -->
 <!ELEMENT p %macro.paraContent;>
 <!ATTLIST p xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3122,14 +2903,6 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.declaring.attributes;
  %tei_att.fragmentable.attributes;
  %tei_att.written.attributes; >
-<!--doc:(pronunciation reference) in a dictionary example, indicates a reference to the pronunciation(s) of the headword. [9.4. Headword and Pronunciation References] -->
-<!ELEMENT pRef (#PCDATA|%model.gLike;|pRef)*>
-<!ATTLIST pRef xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST pRef
- %tei_att.global.attributes;
- %tei_att.pointing.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.notated.attributes; >
 <!--doc:(participation description) describes the identifiable speakers, voices, or other participants in any kind of text or other persons named or otherwise referred to in a text, edition, or metadata. [15.2. Contextual Information] -->
 <!ELEMENT particDesc ((%model.pLike;)+|(%model.personLike;|listPerson|listOrg)+)>
 <!ATTLIST particDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3178,12 +2951,6 @@ Elements] -->
 force (strong|weak|inter) #IMPLIED
 unit %teidata.enumerated;  #IMPLIED
 pre %teidata.truthValue;  #IMPLIED >
-<!--doc:(person) contains an indication of the grammatical person (1st, 2nd, 3rd, etc.) associated with a given inflected form in a dictionary. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT per %macro.paraContent;>
-<!ATTLIST per xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST per
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(personal name) contains a proper noun or proper-noun phrase referring to a person, possibly including one or more of the person's forenames, surnames, honorifics, added names, etc. [13.2.1. Personal Names] -->
 <!ELEMENT persName %macro.phraseSeq;>
 <!ATTLIST persName xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3258,12 +3025,6 @@ age %teidata.enumerated;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:(part of speech) indicates the part of speech assigned to a dictionary headword such as noun, verb, or adjective. [9.3.2. Grammatical Information] -->
-<!ELEMENT pos %macro.paraContent;>
-<!ATTLIST pos xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST pos
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(postal box or post office box) contains a number or other identifier for some postal delivery point other than a street address. [3.5.2. Addresses] -->
 <!ELEMENT postBox (#PCDATA)>
 <!ATTLIST postBox xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3311,15 +3072,6 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST projectDesc
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:(pronunciation) contains the pronunciation(s) of the word. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT pron %macro.paraContent;>
-<!ATTLIST pron xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST pron
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.notated.attributes;
- %tei_att.partials.attributes;
- %tei_att.typed.attributes; >
 <!--doc:(pointer) defines a pointer to another location. [3.6. Simple Links and Cross-References 16.1. Links] -->
 <!ELEMENT ptr  EMPTY>
 <!ATTLIST ptr xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3384,13 +3136,6 @@ marks (none|some|all) #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
  %tei_att.notated.attributes; >
-<!--doc:(related entry) contains a dictionary entry for a lexical item related to the headword, such as a compound phrase or derived form, embedded inside a larger entry. [9.3.6. Related Entries] -->
-<!ELEMENT re (#PCDATA|%model.gLike;|sense|%model.entryPart.top;|%model.phrase;|%model.global;)*>
-<!ATTLIST re xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST re
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.typed.attributes; >
 <!--doc:(recording event) provides details of an audio or video recording event used as the source of a spoken text, either directly or from a public broadcast. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
 <!ELEMENT recording (%model.recordingPart;|%model.pLike;)*>
 <!ATTLIST recording xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3614,13 +3359,6 @@ reason CDATA  #IMPLIED >
 <!ATTLIST segmentation
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:groups together all information relating to one word sense in a dictionary entry, for example definitions, examples, and translation equivalents. [9.2. The Structure of Dictionary Entries] -->
-<!ELEMENT sense (#PCDATA|%model.gLike;|sense|%model.entryPart.top;|%model.phrase;|%model.global;)*>
-<!ATTLIST sense xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST sense
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
-level %teidata.count;  #IMPLIED >
 <!--doc:(series information) contains information about the series in which a book or other bibliographic item has appeared. [3.11.2.1. Analytic, Monographic, and Series Levels] -->
 <!ELEMENT series (#PCDATA|%model.gLike;|title|%model.ptrLike;|editor|respStmt|biblScope|idno|textLang|%model.global;|availability)*>
 <!ATTLIST series xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3809,12 +3547,6 @@ type NMTOKENS  #IMPLIED >
 <!ATTLIST street xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST street
  %tei_att.global.attributes; >
-<!--doc:contains the stress pattern for a dictionary headword, if given separately. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT stress %macro.paraContent;>
-<!ATTLIST stress xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST stress
- %tei_att.global.attributes;
- %tei_att.notated.attributes; >
 <!--doc:(string value) represents the value part of a feature-value specification which contains a string. [18.3. Other Atomic Feature Values] -->
 <!ELEMENT string %macro.xtext;>
 <!ATTLIST string xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3828,12 +3560,6 @@ type NMTOKENS  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.declarable.attributes;
  %tei_att.styleDef.attributes; >
-<!--doc:(subcategorization) contains subcategorization information (transitive/intransitive, countable/non-countable, etc.) [9.3.2. Grammatical Information] -->
-<!ELEMENT subc %macro.paraContent;>
-<!ATTLIST subc xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST subc
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:(substitution) groups one or more deletions (or surplus text) with one or more additions when the combination is to be regarded as a single intervention in the text. [11.3.1.5. Substitutions] -->
 <!ELEMENT subst (add|surplus|del|%model.milestoneLike;)+>
 <!ATTLIST subst xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3849,13 +3575,6 @@ type NMTOKENS  #IMPLIED >
  %tei_att.pointing.attributes;
  %tei_att.transcriptional.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:groups a sequence of entries within any kind of lexical resource, such as a dictionary or lexicon which function as a single unit, for example a set of homographs. [9.1. Dictionary Body and Overall Structure] -->
-<!ELEMENT superEntry (((form)?,(entry)+)|dictScrap)>
-<!ATTLIST superEntry xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST superEntry
- %tei_att.global.attributes;
- %tei_att.entryLike.attributes;
- %tei_att.sortable.attributes; >
 <!--doc:signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
 <!ELEMENT supplied %macro.paraContent;>
 <!ATTLIST supplied xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3896,13 +3615,6 @@ flipping %teidata.truthValue;  #IMPLIED >
  %tei_att.editLike.attributes;
  %tei_att.dimensions.attributes;
 reason CDATA  #IMPLIED >
-<!--doc:(syllabification) contains the syllabification of the headword. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT syll %macro.paraContent;>
-<!ATTLIST syll xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST syll
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes;
- %tei_att.notated.attributes; >
 <!--doc:(symbolic value) represents the value part of a feature-value specification which contains one of a finite list of symbols. [18.3. Other Atomic Feature Values] -->
 <!ELEMENT symbol  EMPTY>
 <!ATTLIST symbol xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -4047,12 +3759,6 @@ type %teidata.enumerated;  "main"  >
 <!ATTLIST titleStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST titleStmt
  %tei_att.global.attributes; >
-<!--doc:(tense) indicates the grammatical tense associated with a given inflected form in a dictionary. [9.3.1. Information on Written and Spoken Forms] -->
-<!ELEMENT tns %macro.paraContent;>
-<!ATTLIST tns xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST tns
- %tei_att.global.attributes;
- %tei_att.lexicographic.attributes; >
 <!--doc:contains a closing title or footer appearing at the end of a division of a text. [4.2.4. Content of Textual Divisions 4.2. Elements Common to All Divisions] -->
 <!ELEMENT trailer (#PCDATA|lg|%model.gLike;|%model.phrase;|%model.inter;|%model.lLike;|%model.global;)*>
 <!ATTLIST trailer xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -4156,14 +3862,6 @@ Measures] -->
  %tei_att.datable.attributes;
  %tei_att.canonical.attributes;
  %tei_att.typed.attributes; >
-<!--doc:(usage) contains usage information in a dictionary entry. [9.3.5.2. Usage Information and Other Labels] -->
-<!ELEMENT usg %macro.paraContent;>
-<!ATTLIST usg xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST usg
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:(value alternation) represents the value part of a feature-value specification which contains a set of values, only one of which can be valid. [18.8.1. Alternation] -->
 <!ELEMENT vAlt (((%model.featureVal;),(%model.featureVal;)+))>
 <!ATTLIST vAlt xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -4239,14 +3937,6 @@ gradual %teidata.xTruthValue;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.declarable.attributes;
  %tei_att.typed.attributes; >
-<!--doc:(cross-reference phrase) contains a phrase, sentence, or icon referring the reader to some other location in this or another text. [9.3.5.3. Cross-References to Other Entries] -->
-<!ELEMENT xr (#PCDATA|%model.gLike;|%model.phrase;|%model.inter;|usg|lbl|%model.global;)*>
-<!ATTLIST xr xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST xr
- %tei_att.global.attributes;
- %tei_att.typed.attribute.subtype;
- %tei_att.lexicographic.attributes;
-type %teidata.enumerated;  #IMPLIED >
 <!--doc:defines any two-dimensional area within a surface element. [11.1. Digital Facsimiles 11.2.2. Embedded Transcription] -->
 <!ELEMENT zone (#PCDATA|%model.gLike;|%model.graphicLike;|%model.global;|surface|%model.linePart;)*>
 <!ATTLIST zone xmlns CDATA "http://www.tei-c.org/ns/1.0">

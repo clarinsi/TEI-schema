@@ -1,5 +1,8 @@
 test:
-	date
+	grab-clarin.pl 11356/1434 ssj500k-en.TEI.zip > Origs/ssj500k-en/
+	sample.pl ssj500k Origs/ssj500k-en/ ../samples/ssj500k
+	show.pl ../samples/ssj500k
+
 all:	schema val docs
 xall:	schema val docs
 

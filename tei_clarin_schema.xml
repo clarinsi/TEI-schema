@@ -10,12 +10,12 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>TEI schema for CLARIN.SI</title>
+        <title>TEI schema for CLARIN.SI corpora</title>
         <author>Tomaž Erjavec, tomaz.erjavec@ijs.si</author>
       </titleStmt>
       <publicationStmt>
         <publisher>CLARIN.SI</publisher>
-        <date>2021-08-24</date>
+        <date>2021-09-29</date>
         <availability status="free">
           <p>This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.</p>
         </availability>
@@ -33,6 +33,7 @@
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
+      <change when="2021-09-29">Tomaž Erjavec: reduce to corpora, work on text.</change>
       <change when="2021-08-24">Tomaž Erjavec: start adding text of recommendations.</change>
       <change when="2020-12-16">Tomaž Erjavec: change representation of whitespace.</change>
       <change when="2019-09-06">Tomaž Erjavec: added module for figures, so we can code tables; newly generated schemas.</change>
@@ -47,8 +48,9 @@
       <titlePage>
         <docTitle>
           <titlePart type="main"><ref target="https://github.com/clarinsi/TEI-schema/">CLARIN.SI TEI schema</ref></titlePart>
-          <titlePart type="sub">A TEI Schema for CLARIN.SI resources</titlePart>
+          <titlePart type="sub">A TEI Schema for CLARIN.SI corpora</titlePart>
         </docTitle>
+        <docDate>2021-09-29</docDate>
         <docEdition>0.2</docEdition>
       </titlePage>
       <p></p>
@@ -58,18 +60,19 @@
     <body>
       <div xml:id="sec-intro">
         <head>Introduction</head>
-        <p>The preferred annotation scheme for langauge resources deposited in the repository of the
+        <p>The preferred annotation scheme for langauge corpora deposited in the repository of the
 	<ref target="http://www-clarin.si/">CLARIN.SI</ref> research infrastructure are as given in the 
         <ref target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">Text Encoding
 	Initiative Guidelines</ref>, which are XML-based recommendations for encoding texts for scholarly
         purposes. As opposed to most other such recommendations, the TEI Guidelines have the
         ambition to be applicable to texts in any natural language, of any date, in any
         literary genre or text type, without restriction on form or content. The TEI 
-        customisatoin for CLARIN.SI allows a wide range of language resources to be encoded,
-        while making explicit recommendations on the manner of encoding various
-        phenomena. The recommendations are written as a TEI ODD document, on the
-        basis of which it is possible to derive an XML schema expressed either as a RelaxNG
-        schema, a DTD or a W3C schema, and such schemas are also part of this Git repository.</p>
+        customisation for CLARIN.SI supports the encoding of language corpora
+        and makes explicit recommendations on the manner of encoding various phenomena.</p>
+
+	<p>The recommendations are written as a TEI ODD document, on the basis of which it is
+	possible to derive an XML schema expressed either as a RelaxNG schema, a DTD or a W3C
+	schema, and such schemas are also part of this Git repository.</p>
 
         <p>When using these recommendations, the following points should be taken in consideration:
         <list>
@@ -77,20 +80,20 @@
           <item>The TEI Guidelines are a large and complex set of specifications, and the
           CLARIN.SI recommendations do not attempt to give an introduction to them. Rather,
           it concentrates only on aspects of the Guidelines that are most likely to be of use
-          in encoding the most common kinds of resources which are likely to be deposited in
-	  the CLARIN.SI repository, in particular linguistically annotated language corpora.</item>
+          in encoding linguistically annotated language corpora which are likely to be deposited in
+	  the CLARIN.SI repository.</item>
           
-          <item>It is difficult if not impossible to determine in advance what kinds of resources
+          <item>It is difficult if not impossible to determine in advance what kinds of corpora
           and their mark-up will be deposited in the repository. While we tried to cater for the
           more obvious encoding needs, it is possible that new users will have to use TEI elements
           or attributes that are not mentioned here.</item>
 
-          <item>Since these recommendations are very much work in progress, we have left the formal
-          specification (i.e. the XML schema) rather unconstrained, so it can accommodate encoding
+          <item>Since these recommendations are work in progress, we have left the formal
+          specification (i.e. the XML schema) very unconstrained, so it can accommodate encoding
           practices that we have not (yet) foreseen. The downside of this is that the XML schemas
           will allow constructs that are at odds to those that we propose in the prose of the
           recommendations. Therefore, the prose should be taken as the definitive way of encoding
-          the phenomena under discussion, i.e. even if a language resource validates against the
+          the phenomena under discussion, i.e. even if a corpus validates against the
           schema, it might still not be encoded according to these recommendations.</item>
 
           <item>In the text of these recommendations, every mention of an element is linked to its
@@ -108,15 +111,15 @@
           purpose</ref> of the recommendations;</item>
 
           <item><ref target="#sec-general">Section 2</ref> gives the general requirements that
-          a CLARIN.SI langauge resource has to meet;</item>
+          a CLARIN.SI corpus has to meet;</item>
 
           <item><ref target="#sec-overall">Section 3</ref> explains the overall document
-          structure of a CLARIN.SI laguage resource;</item>
+          structure of a CLARIN.SI corpus;</item>
 
-          <item><ref target="#sec-metadata">Section 4</ref> concentrates on encoding a language
-          resource metadata;</item>
+          <item><ref target="#sec-metadata">Section 4</ref> concentrates on encoding the corpus
+	  metadata;</item>
           
-          <item><ref target="#sec-transcript">Section 5</ref> gives the encoding of the corpus body;</item>
+          <!--item><ref target="#sec-transcript">Section 5</ref> gives the encoding of the corpus body;</item-->
 
           <item><ref target="#sec-linguistic">Section 6</ref> details linguistic annotations;</item>
 
@@ -135,25 +138,23 @@
         
       <div xml:id="sec-scope">
           <head>Scope and purpose</head>
-          <p>These recommendations consists of guidelines, a formal TEI schema, and derived XML
-          schemas in various schema languages. They are intended for the encoding of language
-          resources, in particular of linguistically annotated corpora, regardless of the language
-          or country of origin, for the purposes of scholarly investigations, be they from the
-          field of linguistics, political science, history or other humanities and social sciences
-          disciplines.</p>
+          <p>These recommendations consists of readable guidelines and a formal TEI ODD schema with
+          derived XML schemas in various schema languages.  They are intended for the encoding of
+          linguistically annotated corpora, regardless of the language or country of origin, for
+          the purposes of scholarly investigations, be they from the field of linguistics,
+          political science, history or other humanities and social sciences disciplines.</p>
           
           <p>In developing a schema for structuring data, two approaches can be adopted: a
           descriptive one, where as much as possible of the original data distinctions are kept in
           the target encoding; or a prescriptive one, where the target encoding is severely
           constrained, to enable seamless data interchange and esp. interoperability with software
-          tools. The CLARIN.SI recommendations adopt the <emph>descriptive</emph> approach, as the
-          source data, time and effort devoted to converting it, the intended applications will
-          differ considerably, and it is likely that any prescriptive schema would soon turn out to
-          be too restrictive. Nevertheless, the recommendations do try to limit the plethora of
-          encoding options otherwise available in TEI to those that could be sensibly applied to
-          langauge corpora, and where more than one option is available in TEI to encode a given
-          phenomenon, the schema and especially the text guidelines attempt to recommend only one
-          option.</p>
+          tools. These recommendations adopt the <emph>descriptive</emph> approach, as the source
+          data, time and effort devoted to converting it, the intended applications will differ
+          considerably, and it is likely that any prescriptive schema would soon turn out to be too
+          restrictive. Nevertheless, the recommendations do try to limit the plethora of encoding
+          options otherwise available in TEI to those that could be sensibly applied to language
+          corpora, and where more than one option is available in TEI to encode a given phenomenon,
+          the schema and especially the text guidelines attempt to recommend only one option.</p>
         </div>
         
     </div>
@@ -168,34 +169,32 @@
       <div xml:id="sec-chars">
           <head>Characters</head>
           
-          <p>The corpus should be encoded in Unicode, using the UTF-8 character encoding, at
-          least for European languages.  In cases where the original contains characters from
-          the Unicode Private Use Area, these should be given their closest Unicode
-          equivalents.<note>TEI supports preserving the original Private Use Area codepoints
-          by using the <gi>g</gi> element, the use of which is further explained in the Section
-          on <ref
-          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/WD.html">Characters,
-          Glyphs, and Writing Modes</ref> of the TEI Guidelines. However, such characters will
-          rarely if ever be used in PPCs, so the current Parla-CLARIN proposal does not include
-          the gaiji module which allows the use of this element - if they are needed, then the
-          Parla-CLARIN ODD needs to be changed.</note></p>
+          <p>The corpus should be encoded in Unicode, using the UTF-8 character encoding, at least
+          for European languages.  In cases where the original contains characters from the Unicode
+          Private Use Area, these should be given their closest Unicode equivalents.<note>TEI
+          supports preserving the original Private Use Area codepoints by using the <gi>g</gi>
+          element, the use of which is further explained in the Section on <ref
+          target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/WD.html">Characters, Glyphs,
+          and Writing Modes</ref> of the TEI Guidelines. However, such characters will rarely if
+          ever be used in corpora, so the current proposal does not include the gaiji module which
+          allows the use of this element - if they are needed, then the CLARIN.SI ODD needs to
+          be changed.</note></p>
           
-          <p>End-of-line hyphens can be removed, and the split words joined in order to
-          simplify linguistic processing. It is recommended that this practice is documented
-          in the TEI header of the corpus, in the <gi>hyphenation</gi> element.</p>
+          <p>End-of-line hyphens can be removed, and the split words joined in order to simplify
+          linguistic processing. It is recommended that this practice is documented in the TEI
+          header of the corpus, in the <gi>hyphenation</gi> element.</p>
           
           <p>The following characters, esp. prevalent when the source documents are in Word or
-	  HTML, deserve special mention:
+          HTML, deserve special mention:
           
           <list>
-            <item>NO-BREAK SPACE (U+00A0) prevents, with some applications, an automatic
-            line break at its position and collapsing consecutive white space characters
-            into a single space. As Parla-CLARIN is not interested in preserving the
-            details of the layout, and the use of this character complicates (or breaks)
-            further processing esp. lingistic annotation, it is recommended that this
-            character is substituted by the normal space character (U+0020). The same
-            holds for other variants of spaces (U+2000 - U+200A), which are, however,
-            used much less frequently.</item>
+            <item>NO-BREAK SPACE (U+00A0) prevents, with some applications, an automatic line break
+            at its position and collapsing consecutive white space characters into a single
+            space. As this recommendation is not interested in preserving the details of the
+            layout, and the use of this character complicates (or breaks) further processing
+            esp. lingistic annotation, it is recommended that this character is substituted by the
+            normal space character (U+0020). The same holds for other variants of spaces (U+2000 -
+            U+200A), which are, however, used much less frequently.</item>
             
             <item>NON-BREAKING HYPHEN (U+2011), similarly to NO-BREAK SPACE, prevents a
             line break, in this case, following its position. With a smiliar reasoning
@@ -284,7 +283,7 @@
           that each element that contains text is either marked by this attribute, or one of
           its ancestors is; in particular, the root element of the corpus should have an
           <att>xml:lang</att> attribute. For multilingual documents (excluding cases where only
-          a minor part of the text is in another language), the language code if the root
+          a minor part of the text is in another language), the language code of the root
           element should be <q>mul</q> for <q>multiple languages</q>. Note that if, going by
           the ancestor axis, the values of two <att>xml:lang</att> are in conflict, the one
           closer to the context node is relevant one.
@@ -314,34 +313,38 @@
           with a unique value, obeying certain format requirements as defined by
           <ref target="https://www.w3.org/TR/xml-id/">W3C</ref>.</p>
           
-          <p>CLARIN.SI requires an <att>xml:id</att> attribute on the root element of
-          each corpus file, which should, furthermore, be identical to the filename (modulo
-          the file extension).  CLARIN.SI also recommends that the divisions of the
-          document (element <gi>div</gi>) should also be given identifiers. While any
-          element can be given an <att>xml:id</att>, this is in general, not a good idea;
-          rather, only those elements that will or could be referenced should be marked with
-          this attribute.</p>
+          <p>CLARIN.SI requires an <att>xml:id</att> attribute on the root element of each corpus
+          file, which should, furthermore, be identical to the filename (modulo the file
+          extension).  CLARIN.SI also recommends that the divisions of the document (element
+          <gi>div</gi>), if any, should also be given identifiers. While any element can be given
+          an <att>xml:id</att>, this is in general, not a good idea; rather, only those elements
+          that will or could be referenced should be marked with this attribute.</p>
           
           <p>TEI offers a number of attributes that contain (URI) pointers.  Where the reference
           is to an element inside the document, the value of the <att>xml:id</att> being
           referred to should be preceded by a hash (#), as mandated by the XML standard. If the
-          ID pointed to is from another document, them the full URI needs to be used.  However,
-          as such URIs can be very long, TEI also offers another way of pointing, which can be
-          used to shorten such long URIs, and this is defined by the <gi>prefixDef</gi> element
-          in the TEI header. So, for example, if the definitions of MULTEXT-East feature
-          structures are stored in the XML document
-          <val>http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml</val>, while the corpus uses
-          pointers to these definitions
-          (e.g. <val>http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#Pd-nsg</val>), then,
-          with the appropriate definition of the prefix, we can use in the corpus much shorter
-          pointers such as <val>mte:Pd-nsg</val>, which are then, via a regular expression
-          mapping in the prefix definition converted to the full URI.
+          ID pointed to is from another document, then the full URI needs to be used.</p>
+
+	  <p>However, as such URIs can be very long, TEI also offers another way of pointing, which
+	  can be used to shorten such long URIs, and this is defined by the <gi>prefixDef</gi>
+	  element in the TEI header, as illustrated below:
+
+	  <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-prefixDef">
+            <prefixDef ident="mte" matchPattern="(.+)" 
+                       replacementPattern="http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#$1">
+              <p xml:lang="en">Private URIs with this prefix point to feature-structure elements defining the Slovenian MULTEXT-East Version 6 MSDs.</p>
+            </prefixDef>
+          </egXML>
+
+	  With such a definition, we can use the much shorter pointers in the mark-up of words,
+	  such as <val>mte:Pd-nsg</val>, which are then, via a regular expression mapping in the
+	  prefix definition converted to the full URI <val>http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#Pd-nsg</val>.
           </p>
         </div>
         
         <div xml:id="sec-temporal">
           <head>Temporal information</head>
-          <p>Corpora can contain time-related information, e.g. the date and time of a tweet, the
+          <p>Corpora cancontain time-related information, e.g. the date and time of a tweet, the
           birth (and death) dates of an author, etc. In general, such information in TEI is stored in the
           attributes of the pertinent element, which take as their values a date and possibly time,
           according to the ISO 8601 Date and Time Formats, and specified in the <ref
@@ -351,13 +354,13 @@
           target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#CONADA">Dates and
           Times</ref> of the TEI Guidelines.</p>
 
-          <p>CLARIN.SI users are free to use any of the TEI temporal attributes and
-          elements, however, for most purposes, the following five attributes will suffice:
+          <p>CLARIN.SI corpora can use any of the TEI temporal attributes and elements, however,
+          for most purposes, the following five attributes will suffice:
           <list>
             <item><att>when</att>: when a certain event happened;</item>
             <item><att>from</att>, <att>to</att>: the start and end of an event or state;</item>
             <item><att>notBefore</att>, <att>notAfter</att>: the earliest and latest known
-            time that where an event or state took place, used in cases where the exact time
+            time that an event or state took place, used in cases where the exact time
             is not known.</item>
           </list>
           </p>
@@ -365,14 +368,14 @@
         
         <div xml:id="sec-files">
           <head>Files</head>
-          <p>While this recommendations make the assumption that a complete language resource is
-          one TEI XML document, this does not mean that it also has to be stored in one file, as
-          the file structure is distinct from the concept of XML documents. To enable one XML
-          document to be composed of many files, the <ref
-          target="https://www.w3.org/TR/xinclude/">XInclude</ref> mechanism should be
-          used. Typically, a corpus will then be composed of a file containing the root XML element
-          and the corpus header, while individual text files will be included in the corpus using
-          the <gi>include</gi> element from the XInclude namespace, as illustrated by the following
+          <p>While this recommendations make the assumption that a complete corpus is one TEI XML
+          document, this does not mean that it also has to be stored in one file, as the file
+          structure is distinct from the concept of XML documents. To enable one XML document to be
+          composed of many files, the <ref target="https://www.w3.org/TR/xinclude/">XInclude</ref>
+          mechanism should be used. Typically, a corpus will then be composed of a file containing
+          the root XML element <gi>teiCorpus</gi>, which contains the corpus header, while
+          individual <gi>TEI</gi>-rooted text files will be included in the corpus using the
+          <gi>include</gi> element from the XInclude namespace, as illustrated by the following
           example:
 
           <eg xml:id="exa-xinclude">
@@ -393,8 +396,8 @@
         <div xml:id="sec-corpstruct">
           <head>Corpus structure</head>
 
-          <p>As illustrated below, a CLARIN.SI corpus is typically rooted in a <gi>teiCorpus</gi>
-          element. The <gi>teiHeader</gi> of the corpus then contains the metadata for the complete
+          <p>As illustrated below, a CLARIN.SI corpus is rooted in a <gi>teiCorpus</gi>
+          element. The <gi>teiHeader</gi> of the corpus contains the metadata for the complete
           corpus, including the metadata that is marked with the <att>xml:id</att> attribute and
           referred to by the subordinate <gi>TEI</gi> elements, such as the defined taxonomies for
 	  text types.</p>
@@ -418,21 +421,19 @@
             </teiCorpus>
           </egXML>
 
-          <p>We do not specify what an individual <gi>TEI</gi> element should contain, as the size
-          and granularity of corpora will differ substantially. Typically, however, an individual
-          <gi>TEI</gi> element would contain one text from the corpus, in any case such
-          data that has common metadata that distinguishes it from the other <gi>TEI</gi> elements
-          in the corpus.</p>
+          <p>An individual <gi>TEI</gi> element is referred to as a <hi>corpus element</hi>.  In
+          cases where such a category is simply defined (e.g. a corpus of books) it contains one
+          text from the corpus, however, if corpus "texts" are very short (tweets, samples) or
+          very long or complex (encyclopedias) one corpus element can contain a collection or
+          part of a "text" according to some well-specified criterion.</p>
 
           <p>In cases of smaller corpora, the top level <gi>teiCorpus</gi> can also be omitted,
           so the complete corpus is rooted simply in a <gi>TEI</gi> element, and the individual (short)
 	  texts are encoded as <gi>div</gi> elements.</p>
           
-          <p>As illustrated below, the <gi>text</gi> element can, apart from the obligatory
-          <gi>body</gi>, also contain front matter in <gi>front</gi> and back matter in
-          <gi>back</gi>. While the <gi>body</gi> will contain the text proper, the former contains
-          preamble text, and the latter various appendices or texts that are related to the
-          main text.</p>
+          <p>The <gi>text</gi> element can, in general, apart from the obligatory <gi>body</gi>,
+          also contain front matter in <gi>front</gi> and back matter in <gi>back</gi>.
+	  However, front and back are seldomly used in computer corpora.</p>
           
           <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-textstructure">
             <TEI xml:id="id_1">
@@ -458,12 +459,8 @@
         <div xml:id="sec-textstruct">
           <head>Text divisions</head>
           
-          <p>In the text <gi>body</gi>, as well as in the <gi>front</gi> and <gi>back</gi>
-          matter, the element that further organises the content into sections is the division,
-          <gi>div</gi>, and each of the three text-bearing elements (if present) should
-          contain at least one division.</p>
-
-          <p>The divisions can be nested, as shown in the example below:
+          <p>The <gi>div</gi> elemet can be used to further divide the texts.
+	  The divisions can be nested, as shown in the example below:
           <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-divsimple">
             <body>
               <div>
@@ -481,16 +478,14 @@
               ...
             </body>
           </egXML>
-          In general it is a complicated question what should constitute a division of a
-          transcription, with the pragmatic solution being that a division will be whatever has
-          a heading (than can be recognised by the up-conversion software) in the source
-          transcription.</p>
+          As with corpus elements, there is no hard and fast rule what should constitute a
+          division, except that they typically have a heading.
 
-          <p>The divisions can be further characterised by their <att>type</att> and, possibly,
-          <att>subtype</att> attributes. The use of these attributes makes sense in cases where the
-          source either explicitly (e.g. via its structure, as in up-conversion from Word
-          documents) or implicitly (e.g. via pattern matching the content of the headings)
-          indicates what kind of a division it is. For example:
+	  The divisions can be further characterised by their <att>type</att> and, possibly,
+	  <att>subtype</att> attributes. They can be used when the digital source of the texts
+	  either explicitly (e.g. via its structure, as in up-conversion from Word documents) or
+	  implicitly (e.g. via pattern matching the content of the headings) indicates what kind of
+	  a division it is. For example:
           
           <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-divtype">
             <body>
@@ -516,7 +511,7 @@
           divisions, as well as on the ability to automatically recognise them or the available
           effort to manually add them. The CLARIN.SI specification does therefore not enforce the
           use of these attributes nor does it restrict their values.  Below we give an example of a
-          relatively complex structure made on the basis of a corpus of parliamentary proceedins:
+          relatively complex structure made on the basis of a corpus of parliamentary proceedings:
           
           <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-divakn">
             <body>
@@ -669,10 +664,49 @@
         </div>
       </div>
       
-      <div xml:id="sec-transcript">
+      <!--div xml:id="sec-transcript">
         <head>Encoding of texts</head>
+	<p>In this section we illustrate the encoding of various types of texts from corpora in the
+	CLARIN.SI repository.
+	
+	<p>
+	  <bibl>Erjavec, Tomaž; et al., 2021, Multilingual comparable corpora of parliamentary
+	  debates ParlaMint 2.1, Slovenian language resource repository CLARIN.SI, <ref
+	  target="http://hdl.handle.net/11356/1432">http://hdl.handle.net/11356/1432</ref>.
+	  </bibl>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" xml:id="exa-relations">
+   <text ana="#reference">
+      <body>
+         <div type="debateSection">
+            <head>REPUBLIKA SLOVENIJA DRŽAVNI ZBOR</head>
+            <head type="session">1. izredna seja</head>
+            <head type="chairman">Sejo sta vodila predsednik Državnega zbora dr. Milan Brglez in podpredsednik Janko Veber.</head>
+            <note type="time">Seja se je začela ob 10. uri.</note>
+            <note type="speaker">PREDSEDNIK DR. MILAN BRGLEZ:</note>
+            <u who="#BrglezMilan"
+               xml:id="ParlaMint-SI_2014-08-25-SDZ7-Izredna-01.u1"
+               ana="#chair">
+               <seg xml:id="ParlaMint-SI_2014-08-25-SDZ7-Izredna-01.seg1">Spoštovane kolegice poslanke in kolegi poslanci, gospe in gospodje!</seg>
+               <seg xml:id="ParlaMint-SI_2014-08-25-SDZ7-Izredna-01.seg2">Začenjam 1. izredno sejo Državnega zbora, ki sem jo sklical na podlagi drugega odstavka 58. člena in drugega odstavka 60. člena Poslovnika Državnega zbora. Obveščen sem, da se današnje seje ne more udeležiti poslanec Marijan Pojbič. Vse prisotne lepo pozdravljam.</seg>
+               <seg xml:id="ParlaMint-SI_2014-08-25-SDZ7-Izredna-01.seg3">Preden preidemo na določitev dnevnega reda seje, dovolite, da nagovorim Državni zbor v zvezi s spominom na žrtve vseh totalitarnih in avtoritarnih režimov.</seg>
+	       ...
+	    </u>
+	 </div>
+      </body>
+   </text>
+	  </egXML>
+	</p>
 
-	<!-- NOT YET:
+	<p>
+	  <bibl>Verdonik, Darinka; et al., 2021, Spoken corpus Gos VideoLectures 4.2
+	  (transcription), Slovenian language resource repository CLARIN.SI,
+	  <ref target="http://hdl.handle.net/11356/1444">http://hdl.handle.net/11356/1444</ref>.</bibl>
+	  <egXML>
+	    
+	  </egXML>
+</p>
+-->	
+<!-- From ParlaMint:
         <p>The transcriptions of the parliamentary debates the central part of these
         recommendations and this section explains how to encode the transcriptions of speeches
         proper, the commentary inserted by the transcribers, and the encoding of interruption
@@ -732,14 +766,13 @@
           allow for internal paragraphs, a concept pertinent to written text.</note></p>
         </div>
         
-	-->
-      </div>
+      </div-->
       
       <div xml:id="sec-linguistic">
         <head>Linguistic annotation</head>
-        <p>This section introduces basic types of linguistic annotation that can be added language
-        corpora; the examples should be sufficient for users to be able to add further types of
-        linguistic annotation to their own corpora.</p>
+        <p>This section introduces common types of linguistic annotation that can be added language
+        to the corporus texts; the examples should be sufficient for users to be able to add
+        further types of linguistic annotation to their own corpora.</p>
         
         <p>The TEI Guidelines discuss basic linguistic annotation in their Chapter on <ref
         target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/AI.html">Simple Analytic
@@ -1241,7 +1274,9 @@
           <moduleRef key="corpus" except=""/>
           <moduleRef key="transcr" except="am"/>
           <moduleRef key="figures" except=""/>
-          <moduleRef key="dictionaries" except=""/>
+          <!-- Dictionaries no longer supported (will be when documentation is written - or merged with
+	       TEILex0
+	       moduleRef key="dictionaries" except=""/-->
           <moduleRef key="spoken" except=""/>
           <moduleRef key="namesdates" except=""/>
           <moduleRef key="linking" except=""/>
