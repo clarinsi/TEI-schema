@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="clarin.si-demo" xml:lang="sl">
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="clarin.si-demo" xml:lang="sl">
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title xml:lang="sl">Primer po shemi TEI CLARIN.SI označenega besedila </title>
-        <title xml:lang="en">Example of a TEI CLARIN.SI encoded text</title>
+        <title xml:lang="sl">Primer po shemi CLARIN.SI TEI označenega besedila</title>
+        <title xml:lang="en">Example of a CLARIN.SI TEI encoded text</title>
         <author>
           <name xml:id="ET">Tomaž Erjavec, JSI</name>
         </author>
       </titleStmt>
       <editionStmt>
-        <edition>0.7</edition>
+        <edition>0.8</edition>
       </editionStmt>
       <publicationStmt>
-        <authority>CLARIN.SI</authority>
+        <publisher>CLARIN.SI</publisher>
         <pubPlace>
           <ref target="https://github.com/clarinsi/TEI-schema">https://github.com/clarinsi/TEI-schema</ref>
         </pubPlace>
@@ -20,18 +21,190 @@
           <p xml:lang="sl">Prosto dostopno.</p>
           <p xml:lang="en">Freely available.</p>
         </availability>
-        <date>2020-12-16</date>
+        <date when="2021-10-31">31. 10. 2021</date>
       </publicationStmt>
       <sourceDesc>
-        <p>Examples made on the basis of 
-        <ref target="http://hdl.handle.net/11356/1165">Training corpus ssj500k 2.0</ref>,
-        <ref target="http://hdl.handle.net/11356/1123">CMC training corpus Janes-Tag 2.0</ref>, and
-        <ref target="http://hdl.handle.net/11356/1167">Slovenian parliamentary corpus SlovParl 2.0</ref> 
-        corpora.</p>
+	<bibl>
+	  <author>Krek, Simon; et al.</author>
+	  <title>Training corpus ssj500k 2.3</title>
+	  <date>2021</date>
+	  <idno type="URI" subtype="handle">http://hdl.handle.net/11356/1434"></idno>
+	</bibl>
+	<bibl>
+	  <author>Verdonik, Darinka; et al.</author>
+	  <title>Spoken corpus Gos VideoLectures 4.2 (transcription)</title>
+	  <date>2021</date>
+          <idno type="URI" subtype="handle">http://hdl.handle.net/11356/1444</idno>
+	</bibl>
+        <recordingStmt>
+          <recording type="audio" dur="PT39M15S">
+            <media xml:id="GosVL07_kungf.wav"
+                   mimeType="audio/wav"
+                   url="../GosVL.wav/GosVL07_kungf.wav"/>
+            <respStmt>
+              <resp xml:lang="sl">Snemanje</resp>
+              <resp xml:lang="en">Recording</resp>
+              <name>
+                <ref target="https://videolectures.net/">VideoLectures.NET</ref>
+              </name>
+            </respStmt>
+            <date>2012-03-15</date>
+            <equipment n="9">
+              <p xml:lang="sl">Kvaliteta posnetka (1-12): 9</p>
+              <p xml:lang="en">Recording quality (1-12): 9</p>
+            </equipment>
+          </recording>
+        </recordingStmt>
       </sourceDesc>
     </fileDesc>
     <encodingDesc>
+      <projectDesc>
+        <p xml:lang="sl"><ref target="http://www.slovenscina.eu/">Razvoj slovenščine v digitalnem okolju</ref></p>
+        <p xml:lang="en"><ref target="http://www.slovenscina.eu/en">Development of Slovene in a Digital Environment</ref></p>
+      </projectDesc>
+      <samplingDecl>
+        <p xml:lang="en">This example corpus is composed of a few selected sentences for the corpora listed in the source description.</p>
+        <p xml:lang="sl">Korpus je sestavljen iz nekaj izbranih stavkov iz korpusov navedenih v opisu vira.</p>
+      </samplingDecl>
+      <editorialDecl>
+        <correction>
+          <p xml:lang="en">No source sentences were not corrected in any way.</p>
+          <p xml:lang="sl">Izvorni stavki niso bili popravljani.</p>
+        </correction>
+        <quotation>
+          <p xml:lang="en">Quotation marks have been left in the text and are not explicitly marked up.</p>
+          <p xml:lang="sl">Navednice so del besedila, besedilo znotraj navednic ni posebej označeno.</p>
+        </quotation>
+        <segmentation>
+          <p xml:lang="en">The texts are segmented into paragraphs, sentences, words and punctuation.</p>
+          <p xml:lang="sl">Besedila so razdeljena v odstavke, stavke, besede in ločila.</p>
+        </segmentation>
+        <interpretation>
+          <p xml:lang="en">Word-level linguistic annotation comprises the normalised form of the word, its lemma of a word and morphosyntactic description. The system of annotation follows the <ref target="http://nl.ijs.si/ME/V6/msd/">MULTEXT-East morphosyntactic specification Version 6</ref> for Slovene. The words are also annotated with the Universal Dependencies features.</p>
+          <p xml:lang="sl">Jezikoslovne oznake besed vsebujejo normalizirano obliko besede, lemo in oblikoskladenjsko oznako. Sistem označevanja sledi <ref target="http://nl.ijs.si/ME/V6/msd/">Priporočilom za oblikoskladenjsko označevanje MULTEXT-East različica 6</ref> za slovenski jezik. Besede so tudi označene z lastnostmi Universal Dependencies.</p>
+          <p xml:lang="en">Syntactic annotation follows two dependency frameworks. The JOS dependency relations have been manually annotated. This system of annotation follows the <ref target="http://nl.ijs.si/jos/">Specifications of dependency annotations JOS</ref>. The Universal Dependencies have been automatically produced on the basis of the JOS annotations.</p>
+          <p xml:lang="sl">Skladenjsko označevanje je izraženo v dveh odvisnostnih modelih. Oznake so bile ročno pregledane. Sistem označevanja JOS sledi <ref target="http://nl.ijs.si/jos/">Specifikacijam odvisnostnega označevanja JOS</ref>. Odvisnosti Universal Dependencies so bile avtomatsko generirane na osnovi odvisnosti JOS.</p>
+          <p xml:lang="en">Named entity annotation was done manually according to the <ref target="http://nl.ijs.si/janes/wp-content/uploads/2017/09/SlovenianNER-eng-v1.1.pdf">Annotation guidelines for Slovenian named entities V1.1</ref>. Only about half of the corpus has been NER annotated.</p>
+          <p xml:lang="sl">Označevanje imenskih entitet je bilo opravljeno ročno v skladu s <ref target="http://nl.ijs.si/janes/wp-content/uploads/2017/09/SlovenianNER-slv-v1.1.pdf">Smernice za označevanje imenskih entitet v slovenskem jeziku V1.1</ref>. Samo približno polovica korpusa je označena z imenskimi entitetami.</p>
+          <p xml:lang="en">Verbal multiword expression annotations were manually added. The annotation follows the <ref target="http://parsemefr.lif.univ-mrs.fr/parseme-st-guidelines/1.1">Guidelines of the PARSEME shared task 1.1</ref>.</p>
+          <p xml:lang="sl">Označevanje glagolskih večbesednih izrazov je bilo opravljeno ročno v skladu s <ref target="http://parsemefr.lif.univ-mrs.fr/parseme-st-guidelines/1.1">Smernicami PARSEME 1.1</ref>.</p>
+        </interpretation>
+        <stdVals>
+          <p xml:lang="en">The two-letter language codes follow ISO 639-1 and are defined in the language usage element.</p>
+          <p xml:lang="sl">Dvočrkovne kode jezikov sledijo ISO 639-1 in so definirane v elementu uporabe jezikov.</p>
+          <p xml:lang="en">Names identified in the text are categorised into types given in the taxonomy "Janes.NER" in this teiHeader.</p>
+          <p xml:lang="sl">Imena, identificirana v korpusu, so razdeljena na vrste podane v taksonomiji "Janes.NER" v tem kolofonu TEI.</p>
+          <p xml:lang="sl">Vrste glagolskih večbesednih izrazov so zapisane v taksonomiji "PARSEME.VMWE" v tem kolofonu TEI.</p>
+          <p xml:lang="en">Verbal multiword expression types are given in the taxonomy "PARSEME.VMWE" in this teiHeader.</p>
+          <p xml:lang="en">The names of JOS syntactic dependency functions are given in the in the back of this document.</p>
+          <p xml:lang="sl">Imena skladenjskih odvisnostnih povezav JOS so zapisana v prilogi tega dokumenta.</p>
+          <p xml:lang="en">The names of UD syntactic dependency functions are given in the taxonomy "UD-SYN" in teiHeader of this document.</p>
+          <p xml:lang="sl">Imena skladenjskih odvisnostnih povezav UD so zapisana v taksonomiji "UD-SYN" v kolofonu tega dokumenta.</p>
+          <p xml:lang="en">Morphosyntactic descriptions are given in the feature-structure library in the back of this document.</p>
+          <p xml:lang="sl">Oblikoslovne oznake so podane v strukturah lastnosti v prilogi tega dokumenta.</p>
+        </stdVals>
+      </editorialDecl>
       <classDecl>
+	<!-- The UD relation taxonomy for Slovenian -->
+        <taxonomy xml:id="UD-SYN">
+          <category xml:id="acl">
+            <catDesc xml:lang="en">Clausal modifier of noun (adjectival clause)</catDesc>
+          </category>
+          <category xml:id="advcl">
+            <catDesc xml:lang="en">Adverbial clause modifier</catDesc>
+          </category>
+          <category xml:id="advmod">
+            <catDesc xml:lang="en">Adverbial modifier</catDesc>
+          </category>
+          <category xml:id="amod">
+            <catDesc xml:lang="en">Adjectival modifier</catDesc>
+          </category>
+          <category xml:id="appos">
+            <catDesc xml:lang="en">Appositional modifier</catDesc>
+          </category>
+          <category xml:id="aux">
+            <catDesc xml:lang="en">Auxiliary</catDesc>
+          </category>
+          <category xml:id="case">
+            <catDesc xml:lang="en">Case marking</catDesc>
+          </category>
+          <category xml:id="cc">
+            <catDesc xml:lang="en">Coordinating conjunction</catDesc>
+          </category>
+          <category xml:id="ccomp">
+            <catDesc xml:lang="en">Clausal complement</catDesc>
+          </category>
+          <category xml:id="cc_preconj">
+            <catDesc xml:lang="en">Preconjunct</catDesc>
+          </category>
+          <category xml:id="conj">
+            <catDesc xml:lang="en">Conjunct</catDesc>
+          </category>
+          <category xml:id="cop">
+            <catDesc xml:lang="en">Copula</catDesc>
+          </category>
+          <category xml:id="csubj">
+            <catDesc xml:lang="en">Clausal subject</catDesc>
+          </category>
+          <category xml:id="dep">
+            <catDesc xml:lang="en">Unspecified dependency</catDesc>
+          </category>
+          <category xml:id="det">
+            <catDesc xml:lang="en">Determiner</catDesc>
+          </category>
+          <category xml:id="discourse">
+            <catDesc xml:lang="en">Discourse element</catDesc>
+          </category>
+          <category xml:id="expl">
+            <catDesc xml:lang="en">Expletive</catDesc>
+          </category>
+          <category xml:id="fixed">
+            <catDesc xml:lang="en">Fixed multiword expression</catDesc>
+          </category>
+          <category xml:id="flat">
+            <catDesc xml:lang="en">Flat multiword expression</catDesc>
+          </category>
+          <category xml:id="flat_foreign">
+            <catDesc xml:lang="en">Flat multiword expression: foreign</catDesc>
+          </category>
+          <category xml:id="flat_name">
+            <catDesc xml:lang="en">Flat name</catDesc>
+          </category>
+          <category xml:id="iobj">
+            <catDesc xml:lang="en">Indirect object</catDesc>
+          </category>
+          <category xml:id="mark">
+            <catDesc xml:lang="en">Marker</catDesc>
+          </category>
+          <category xml:id="nmod">
+            <catDesc xml:lang="en">Nominal modifier</catDesc>
+          </category>
+          <category xml:id="nsubj">
+            <catDesc xml:lang="en">Nominal subject</catDesc>
+          </category>
+          <category xml:id="nummod">
+            <catDesc xml:lang="en">Numeric modifier</catDesc>
+          </category>
+          <category xml:id="obj">
+            <catDesc xml:lang="en">Object</catDesc>
+          </category>
+          <category xml:id="obl">
+            <catDesc xml:lang="en">Oblique nominal</catDesc>
+          </category>
+          <category xml:id="parataxis">
+            <catDesc xml:lang="en">Parataxis</catDesc>
+          </category>
+          <category xml:id="punct">
+            <catDesc xml:lang="en">Punctuation</catDesc>
+          </category>
+          <category xml:id="root">
+            <catDesc xml:lang="en">Root</catDesc>
+          </category>
+          <category xml:id="xcomp">
+            <catDesc xml:lang="en">Open clausal complement</catDesc>
+          </category>
+        </taxonomy>
+	<!-- The standard taxonomy of Named Entity types -->
         <taxonomy xml:id="Janes.NER">
           <category xml:id="per">
             <catDesc xml:lang="sl">oseba</catDesc>
@@ -54,7 +227,7 @@
             <catDesc xml:lang="en">miscellaneous</catDesc>
           </category>
         </taxonomy>
-        
+	<!-- The taxonomy of ParseME Verbal Multi-Word Expresions -->
         <taxonomy xml:id="PARSEME.VMWE">
           <category xml:id="ID">
             <catDesc xml:lang="sl">idiom</catDesc>
@@ -77,6 +250,109 @@
             <catDesc xml:lang="en">other verbal MWE</catDesc>
           </category>
         </taxonomy>
+	<!-- The taxonomy for Semantic Role Labeling -->
+        <taxonomy xml:id="SRL">
+          <category xml:id="ACT">
+            <catDesc xml:lang="sl">vršilec</catDesc>
+            <catDesc xml:lang="en">actor</catDesc>
+          </category>
+          <category xml:id="PAT">
+            <catDesc xml:lang="sl">prizadeto</catDesc>
+            <catDesc xml:lang="en">patient</catDesc>
+          </category>
+          <category xml:id="REC">
+            <catDesc xml:lang="sl">prejemnik</catDesc>
+            <catDesc xml:lang="en">receiver</catDesc>
+          </category>
+          <category xml:id="ORIG">
+            <catDesc xml:lang="sl">izvor</catDesc>
+            <catDesc xml:lang="en">origin</catDesc>
+          </category>
+          <category xml:id="RESLT">
+            <catDesc xml:lang="sl">učinek</catDesc>
+            <catDesc xml:lang="en">result</catDesc>
+          </category>
+          <category xml:id="TIME">
+            <catDesc xml:lang="sl">čas</catDesc>
+            <catDesc xml:lang="en">time</catDesc>
+          </category>
+          <category xml:id="DUR">
+            <catDesc xml:lang="sl">trajanje</catDesc>
+            <catDesc xml:lang="en">duration</catDesc>
+          </category>
+          <category xml:id="FREQ">
+            <catDesc xml:lang="sl">pogostnost</catDesc>
+            <catDesc xml:lang="en">frequency</catDesc>
+          </category>
+          <category xml:id="LOC">
+            <catDesc xml:lang="sl">kraj</catDesc>
+            <catDesc xml:lang="en">location</catDesc>
+          </category>
+          <category xml:id="SOURCE">
+            <catDesc xml:lang="sl">začetna lokacija</catDesc>
+            <catDesc xml:lang="en">source</catDesc>
+          </category>
+          <category xml:id="GOAL">
+            <catDesc xml:lang="sl">končna lokacija</catDesc>
+            <catDesc xml:lang="en">goal</catDesc>
+          </category>
+          <category xml:id="EVENT">
+            <catDesc xml:lang="sl">dogodek</catDesc>
+            <catDesc xml:lang="en">event</catDesc>
+          </category>
+          <category xml:id="AIM">
+            <catDesc xml:lang="sl">namen</catDesc>
+            <catDesc xml:lang="en">aim</catDesc>
+          </category>
+          <category xml:id="CAUSE">
+            <catDesc xml:lang="sl">vzrok</catDesc>
+            <catDesc xml:lang="en">cause</catDesc>
+          </category>
+          <category xml:id="CONTR">
+            <catDesc xml:lang="sl">protivnost</catDesc>
+            <catDesc xml:lang="en">contradiction</catDesc>
+          </category>
+          <category xml:id="COND">
+            <catDesc xml:lang="sl">pogoj</catDesc>
+            <catDesc xml:lang="en">condition</catDesc>
+          </category>
+          <category xml:id="REG">
+            <catDesc xml:lang="sl">ozir</catDesc>
+            <catDesc xml:lang="en">regard</catDesc>
+          </category>
+          <category xml:id="ACMP">
+            <catDesc xml:lang="sl">spremstvo</catDesc>
+            <catDesc xml:lang="en">accompaniment</catDesc>
+          </category>
+          <category xml:id="RESTR">
+            <catDesc xml:lang="sl">omejitev</catDesc>
+            <catDesc xml:lang="en">restriction</catDesc>
+          </category>
+          <category xml:id="MANN">
+            <catDesc xml:lang="sl">način</catDesc>
+            <catDesc xml:lang="en">manner</catDesc>
+          </category>
+          <category xml:id="MEANS">
+            <catDesc xml:lang="sl">sredstvo</catDesc>
+            <catDesc xml:lang="en">means</catDesc>
+          </category>
+          <category xml:id="QUANT">
+            <catDesc xml:lang="sl">količina</catDesc>
+            <catDesc xml:lang="en">quantity</catDesc>
+          </category>
+          <category xml:id="MWPRED">
+            <catDesc xml:lang="sl">zveza z nedoločnikom</catDesc>
+            <catDesc xml:lang="en">multiword predicate</catDesc>
+          </category>
+          <category xml:id="MODAL">
+            <catDesc xml:lang="sl">zveza z modalnim glagolom</catDesc>
+            <catDesc xml:lang="en">modal</catDesc>
+          </category>
+          <category xml:id="PHRAS">
+            <catDesc xml:lang="sl">frazeološka zveza</catDesc>
+            <catDesc xml:lang="en">phraseme</catDesc>
+          </category>
+        </taxonomy>
       </classDecl>
       <listPrefixDef>
         <prefixDef ident="mte" matchPattern="(.+)" replacementPattern="http://nl.ijs.si/ME/V6/msd/tables/msd-fslib-sl.xml#$1">
@@ -87,9 +363,17 @@
           <p xml:lang="sl">Zasebni naslovi URI s predpono "jos-syn" kažejo na elemente, ki jih pojasnijo in podajo njihovo preslikavo v angleščino. V pričujočem dokumentu so to enostavno lokalne reference na skladenjske specifikacije v dodatku.</p>
           <p xml:lang="en">Private URIs with the prefix "jos-syn" point to elements giving their explanation and mapping to English. In this document they are simply local references to the syntactic specifications in the back matter.</p>
         </prefixDef>
+        <prefixDef ident="ud-syn" matchPattern="(.+)" replacementPattern="#$1">
+          <p>Private URIs with this prefix point to elements giving their name in English and Slovene. In this document they are simply local references into the UD-SYN taxonomy categories in this TEI header.</p>
+          <p xml:lang="sl">Zasebni naslovi URI s to predpono kažejo na elemente, ki podajo preslikavo v njihove slovenske in angleške termine. V pričujočem dokumentu so to enostavno lokalne reference v taksonomijo UD-SYN, ki se nahajaja v kolofonu TEI.</p>
+        </prefixDef>
         <prefixDef ident="mwe" matchPattern="(.+)" replacementPattern="#$1">
           <p xml:lang="sl">Zasebni naslovi URI s predpono "mwe" kažejo na elemente, ki podajo preslikavo v njihove slovenske in angleške termine. V pričujočem dokumentu so to kar lokalne reference na vrste PARSEME glagolskih večbesednih izrazov, ki se nahajajo v taksonomiji "PARSEME.VMWE" v kolofonu TEI.</p>
           <p xml:lang="en">Private URIs with the prefix "mwe" point to elements giving their mapping to Slovene and English terms. In this document they are simply local references to the types PARSEME verbal multiword expressions given in the "PARSEME.VMWE" taxonomy in the teiHeader.</p>
+        </prefixDef>
+        <prefixDef ident="srl" matchPattern="(.+)" replacementPattern="#$1">
+          <p xml:lang="en">Private URIs with this prefix point to elements giving their explanation and mapping to English. In this document they are simply local references to the semantic roles in the "SRL" taxonomy in the teiHeader.</p>
+          <p xml:lang="sl">Zasebni naslovi URI s to predpono kažejo na elemente, ki jih pojasnijo in podajo njihovo preslikavo v angleščino. V pričujočem dokumentu so to enostavno lokalne reference na udeleženske vloge v taksonomiji "SRL" v kolofonu TEI.</p>
         </prefixDef>
       </listPrefixDef>
       <projectDesc>
@@ -108,8 +392,31 @@
           <term xml:lang="en">English</term>
         </language>
       </langUsage>
+      <particDesc>
+        <listPerson>
+          <person xml:id="Om-vl020">
+            <name>Andrej Krevl</name>
+            <age atMost="35"/>
+            <residence>
+              <region>JZ</region>
+            </residence>
+            <sex value="M">moški</sex>
+          </person>
+	</listPerson>
+      </particDesc>
+      <settingDesc>
+        <place>
+          <region>JZ</region>
+          <settlement>Ljubljana</settlement>
+        </place>
+        <setting>
+          <activity>predavanja Videolectures</activity>
+          <date when="2012-03-15">2012-03-15</date>
+        </setting>
+      </settingDesc>
     </profileDesc>
     <revisionDesc>
+      <change when="2021-10-31"><name>Tomaž Erjavec</name>: Update document with changes to included corpus samples. Added various elements in the TEI header.</change>
       <change when="2018-12-28"><name>Tomaž Erjavec</name>: added module for spoken corpora, changed MULTEXT-East reference to V6, and changed prefix "msd" to "mte", changes in positioning of space element c between sentences and some other small changes.</change>
       <change when="2017-11-23"><name>Tomaž Erjavec</name>: substantially modified, esp. header, but less the actual encoding in the text.</change>
       <change when="2015-11-16"><name>Tomaž Erjavec</name>: corrected error in NE annotation.</change>
@@ -120,193 +427,225 @@
   <text xml:lang="sl">
     <body>
       <div xml:id="ssj1">
-	<head xml:lang="sl">Primer oblikoskladenjsko in skladenjsko označenega besedila korpusa ssj500k</head>
-	<head xml:lang="en">Example of a morphosyntactically and syntactically annotated text from the ssj500k corpus</head>
+	<head xml:lang="sl">Vzorec korpusa ssj500k z oznakami za oblikoskladnjo (MULTEXT-East, UD), skladnjo (JOS,UD), udeleženjske vloge, večbesedne glagolske enote in imenske entitete</head>
+	<head xml:lang="en">A sample from the ssj500k corpus with mark-up for morphosyntax (MULTEXT-East, UD), syntax (JOS,UD), semantic roles, multi-word verbal expressions and named entities</head>
         <p xml:id="ssj1.1">
           <s xml:id="ssj1.1.1">
-            <pc xml:id="ssj1.1.1.t1" ana="mte:Z" join="right">"</pc>
-            <w xml:id="ssj1.1.1.t2" ana="mte:Pd-msg" lemma="tisti">Tistega</w>
-            <w xml:id="ssj1.1.1.t3" ana="mte:Ncmsg" lemma="večer">večera</w>
-            <w xml:id="ssj1.1.1.t4" ana="mte:Va-r1s-n" lemma="biti">sem</w>
-            <w xml:id="ssj1.1.1.t5" ana="mte:Rgp" lemma="preveč">preveč</w>
-            <w xml:id="ssj1.1.1.t6" ana="mte:Vmep-sm" lemma="popiti" join="right">popil</w>
-            <pc xml:id="ssj1.1.1.t7" ana="mte:Z">,</pc>
-            <w xml:id="ssj1.1.1.t8" ana="mte:Vmep-sn" lemma="zgoditi">zgodilo</w>
-            <w xml:id="ssj1.1.1.t9" ana="mte:Px------y" lemma="se">se</w>
-            <w xml:id="ssj1.1.1.t10" ana="mte:Va-r3s-n" lemma="biti">je</w>
-            <w xml:id="ssj1.1.1.t11" ana="mte:Ncmsan" lemma="mesec">mesec</w>
-            <w xml:id="ssj1.1.1.t12" ana="mte:Ncmpg" lemma="dan">dni</w>
-            <w xml:id="ssj1.1.1.t13" ana="mte:Sl" lemma="po">po</w>
-            <w xml:id="ssj1.1.1.t14" ana="mte:Pd-nsl" lemma="ta" join="right">tem</w>
-            <pc xml:id="ssj1.1.1.t15" ana="mte:Z">,</pc>
-            <w xml:id="ssj1.1.1.t16" ana="mte:Cs" lemma="ko">ko</w>
-            <w xml:id="ssj1.1.1.t17" ana="mte:Va-r1s-n" lemma="biti">sem</w>
-            <w xml:id="ssj1.1.1.t18" ana="mte:Vmep-sm" lemma="izvedeti" join="right">izvedel</w>
-            <pc xml:id="ssj1.1.1.t19" ana="mte:Z">,</pc>
-            <w xml:id="ssj1.1.1.t20" ana="mte:Cs" lemma="da">da</w>
-            <w xml:id="ssj1.1.1.t21" ana="mte:Pp1-sa--y" lemma="jaz">me</w>
-            <w xml:id="ssj1.1.1.t22" ana="mte:Ncfsn" lemma="žena">žena</w>
-            <w xml:id="ssj1.1.1.t23" ana="mte:Vmpr3s" lemma="varati" join="right">vara</w>
-            <pc xml:id="ssj1.1.1.t24" ana="mte:Z">.</pc>
-            
-            <linkGrp type="syntax" targFunc="head argument" corresp="#ssj1.1.1">
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t1"/>
-              <link ana="jos-syn:Atr" target="#ssj1.1.1.t3 #ssj1.1.1.t2"/>
-              <link ana="jos-syn:AdvO" target="#ssj1.1.1.t6 #ssj1.1.1.t3"/>
-              <link ana="jos-syn:PPart" target="#ssj1.1.1.t6 #ssj1.1.1.t4"/>
-              <link ana="jos-syn:AdvM" target="#ssj1.1.1.t6 #ssj1.1.1.t5"/>
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t6"/>
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t7"/>
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t8"/>
-              <link ana="jos-syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
-              <link ana="jos-syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t10"/>
-              <link ana="jos-syn:AdvO" target="#ssj1.1.1.t8 #ssj1.1.1.t11"/>
-              <link ana="jos-syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t12"/>
-              <link ana="jos-syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t13"/>
-              <link ana="jos-syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t14"/>
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t15"/>
-              <link ana="jos-syn:Conj" target="#ssj1.1.1.t18 #ssj1.1.1.t16"/>
-              <link ana="jos-syn:PPart" target="#ssj1.1.1.t18 #ssj1.1.1.t17"/>
-              <link ana="jos-syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t18"/>
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t19"/>
-              <link ana="jos-syn:Conj" target="#ssj1.1.1.t23 #ssj1.1.1.t20"/>
-              <link ana="jos-syn:Obj" target="#ssj1.1.1.t23 #ssj1.1.1.t21"/>
-              <link ana="jos-syn:Sb" target="#ssj1.1.1.t23 #ssj1.1.1.t22"/>
-              <link ana="jos-syn:Obj" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
-              <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t24"/>
-            </linkGrp>
-            
-            <linkGrp type="MWE" corresp="#ssj1.1.1">
-              <link ana="mwe:IReflV" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
-            </linkGrp>
+	    <pc ana="mte:Z" msd="UPosTag=PUNCT" xml:id="ssj1.1.1.t1" join="right">"</pc>
+	    <w ana="mte:Pd-msg" msd="UPosTag=DET|Case=Gen|Gender=Masc|Number=Sing|PronType=Dem" lemma="tisti" xml:id="ssj1.1.1.t2">Tistega</w>
+	    <w ana="mte:Ncmsg" msd="UPosTag=NOUN|Case=Gen|Gender=Masc|Number=Sing" lemma="večer" xml:id="ssj1.1.1.t3">večera</w>
+	    <w ana="mte:Va-r1s-n" msd="UPosTag=AUX|Mood=Ind|Number=Sing|Person=1|Polarity=Pos|Tense=Pres|VerbForm=Fin" lemma="biti" xml:id="ssj1.1.1.t4">sem</w>
+	    <w ana="mte:Rgp" msd="UPosTag=DET|PronType=Ind" lemma="preveč" xml:id="ssj1.1.1.t5">preveč</w>
+	    <w ana="mte:Vmep-sm" msd="UPosTag=VERB|Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part" lemma="popiti" xml:id="ssj1.1.1.t6" join="right">popil</w>
+	    <pc ana="mte:Z" msd="UPosTag=PUNCT" xml:id="ssj1.1.1.t7">,</pc>
+	    <w ana="mte:Vmep-sn" msd="UPosTag=VERB|Aspect=Perf|Gender=Neut|Number=Sing|VerbForm=Part" lemma="zgoditi" xml:id="ssj1.1.1.t8">zgodilo</w>
+	    <w ana="mte:Px------y" msd="UPosTag=PRON|PronType=Prs|Reflex=Yes|Variant=Short" lemma="se" xml:id="ssj1.1.1.t9">se</w>
+	    <w ana="mte:Va-r3s-n" msd="UPosTag=AUX|Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin" lemma="biti" xml:id="ssj1.1.1.t10">je</w>
+	    <w ana="mte:Ncmsan" msd="UPosTag=NOUN|Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing" lemma="mesec" xml:id="ssj1.1.1.t11">mesec</w>
+	    <w ana="mte:Ncmpg" msd="UPosTag=NOUN|Case=Gen|Gender=Masc|Number=Plur" lemma="dan" xml:id="ssj1.1.1.t12">dni</w>
+	    <w ana="mte:Sl" msd="UPosTag=ADP|Case=Loc" lemma="po" xml:id="ssj1.1.1.t13">po</w>
+	    <w ana="mte:Pd-nsl" msd="UPosTag=DET|Case=Loc|Gender=Neut|Number=Sing|PronType=Dem" lemma="ta" xml:id="ssj1.1.1.t14" join="right">tem</w>
+	    <pc ana="mte:Z" msd="UPosTag=PUNCT" xml:id="ssj1.1.1.t15">,</pc>
+	    <w ana="mte:Cs" msd="UPosTag=SCONJ" lemma="ko" xml:id="ssj1.1.1.t16">ko</w>
+	    <w ana="mte:Va-r1s-n" msd="UPosTag=AUX|Mood=Ind|Number=Sing|Person=1|Polarity=Pos|Tense=Pres|VerbForm=Fin" lemma="biti" xml:id="ssj1.1.1.t17">sem</w>
+	    <w ana="mte:Vmep-sm" msd="UPosTag=VERB|Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part" lemma="izvedeti" xml:id="ssj1.1.1.t18" join="right">izvedel</w>
+	    <pc ana="mte:Z" msd="UPosTag=PUNCT" xml:id="ssj1.1.1.t19">,</pc>
+	    <w ana="mte:Cs" msd="UPosTag=SCONJ" lemma="da" xml:id="ssj1.1.1.t20">da</w>
+	    <w ana="mte:Pp1-sa--y" msd="UPosTag=PRON|Case=Acc|Number=Sing|Person=1|PronType=Prs|Variant=Short" lemma="jaz" xml:id="ssj1.1.1.t21">me</w>
+	    <w ana="mte:Ncfsn" msd="UPosTag=NOUN|Case=Nom|Gender=Fem|Number=Sing" lemma="žena" xml:id="ssj1.1.1.t22">žena</w>
+	    <w ana="mte:Vmpr3s" msd="UPosTag=VERB|Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin" lemma="varati" xml:id="ssj1.1.1.t23" join="right">vara</w>
+	    <pc ana="mte:Z" msd="UPosTag=PUNCT" xml:id="ssj1.1.1.t24">.</pc>
+	    <linkGrp corresp="#ssj1.1.1" targFunc="head argument" type="UD-SYN">
+	      <link ana="ud-syn:punct" target="#ssj1.1.1.t6 #ssj1.1.1.t1"/>
+	      <link ana="ud-syn:det" target="#ssj1.1.1.t3 #ssj1.1.1.t2"/>
+	      <link ana="ud-syn:obl" target="#ssj1.1.1.t6 #ssj1.1.1.t3"/>
+	      <link ana="ud-syn:aux" target="#ssj1.1.1.t6 #ssj1.1.1.t4"/>
+	      <link ana="ud-syn:advmod" target="#ssj1.1.1.t6 #ssj1.1.1.t5"/>
+	      <link ana="ud-syn:root" target="#ssj1.1.1 #ssj1.1.1.t6"/>
+	      <link ana="ud-syn:punct" target="#ssj1.1.1.t8 #ssj1.1.1.t7"/>
+	      <link ana="ud-syn:parataxis" target="#ssj1.1.1.t6 #ssj1.1.1.t8"/>
+	      <link ana="ud-syn:expl" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
+	      <link ana="ud-syn:aux" target="#ssj1.1.1.t8 #ssj1.1.1.t10"/>
+	      <link ana="ud-syn:obl" target="#ssj1.1.1.t8 #ssj1.1.1.t11"/>
+	      <link ana="ud-syn:nmod" target="#ssj1.1.1.t11 #ssj1.1.1.t12"/>
+	      <link ana="ud-syn:case" target="#ssj1.1.1.t14 #ssj1.1.1.t13"/>
+	      <link ana="ud-syn:nmod" target="#ssj1.1.1.t11 #ssj1.1.1.t14"/>
+	      <link ana="ud-syn:punct" target="#ssj1.1.1.t18 #ssj1.1.1.t15"/>
+	      <link ana="ud-syn:mark" target="#ssj1.1.1.t18 #ssj1.1.1.t16"/>
+	      <link ana="ud-syn:aux" target="#ssj1.1.1.t18 #ssj1.1.1.t17"/>
+	      <link ana="ud-syn:acl" target="#ssj1.1.1.t14 #ssj1.1.1.t18"/>
+	      <link ana="ud-syn:punct" target="#ssj1.1.1.t23 #ssj1.1.1.t19"/>
+	      <link ana="ud-syn:mark" target="#ssj1.1.1.t23 #ssj1.1.1.t20"/>
+	      <link ana="ud-syn:obj" target="#ssj1.1.1.t23 #ssj1.1.1.t21"/>
+	      <link ana="ud-syn:nsubj" target="#ssj1.1.1.t23 #ssj1.1.1.t22"/>
+	      <link ana="ud-syn:ccomp" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
+	      <link ana="ud-syn:punct" target="#ssj1.1.1.t6 #ssj1.1.1.t24"/>
+	    </linkGrp>
+	    <linkGrp corresp="#ssj1.1.1" targFunc="head argument" type="JOS-SYN">
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t1"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.1.t3 #ssj1.1.1.t2"/>
+	      <link ana="jos-syn:AdvO" target="#ssj1.1.1.t6 #ssj1.1.1.t3"/>
+	      <link ana="jos-syn:PPart" target="#ssj1.1.1.t6 #ssj1.1.1.t4"/>
+	      <link ana="jos-syn:AdvM" target="#ssj1.1.1.t6 #ssj1.1.1.t5"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t6"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t7"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t8"/>
+	      <link ana="jos-syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
+	      <link ana="jos-syn:PPart" target="#ssj1.1.1.t8 #ssj1.1.1.t10"/>
+	      <link ana="jos-syn:AdvO" target="#ssj1.1.1.t8 #ssj1.1.1.t11"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t12"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t13"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.1.t11 #ssj1.1.1.t14"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t15"/>
+	      <link ana="jos-syn:Conj" target="#ssj1.1.1.t18 #ssj1.1.1.t16"/>
+	      <link ana="jos-syn:PPart" target="#ssj1.1.1.t18 #ssj1.1.1.t17"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.1.t14 #ssj1.1.1.t18"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t19"/>
+	      <link ana="jos-syn:Conj" target="#ssj1.1.1.t23 #ssj1.1.1.t20"/>
+	      <link ana="jos-syn:Obj" target="#ssj1.1.1.t23 #ssj1.1.1.t21"/>
+	      <link ana="jos-syn:Sb" target="#ssj1.1.1.t23 #ssj1.1.1.t22"/>
+	      <link ana="jos-syn:Obj" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.1 #ssj1.1.1.t24"/>
+	    </linkGrp>
+	    <linkGrp corresp="#ssj1.1.1" type="MWE">
+	      <link ana="mwe:IRV" target="#ssj1.1.1.t8 #ssj1.1.1.t9"/>
+	    </linkGrp>
+	    <linkGrp corresp="#ssj1.1.1" targFunc="head argument" type="SRL">
+	      <link ana="srl:TIME" target="#ssj1.1.1.t6 #ssj1.1.1.t3"/>
+	      <link ana="srl:QUANT" target="#ssj1.1.1.t6 #ssj1.1.1.t5"/>
+	      <link ana="srl:TIME" target="#ssj1.1.1.t8 #ssj1.1.1.t11"/>
+	      <link ana="srl:PAT" target="#ssj1.1.1.t23 #ssj1.1.1.t21"/>
+	      <link ana="srl:ACT" target="#ssj1.1.1.t23 #ssj1.1.1.t22"/>
+	      <link ana="srl:RESLT" target="#ssj1.1.1.t18 #ssj1.1.1.t23"/>
+	    </linkGrp>
           </s>
           <s xml:id="ssj1.1.2">
-            <w xml:id="ssj1.1.2.t1" ana="mte:Ncmsn" lemma="dogodek">Dogodek</w>
-            <w xml:id="ssj1.1.2.t2" ana="mte:Sl" lemma="v">v</w>
-            <seg type="name" subtype="loc">
-	      <w xml:id="ssj1.1.2.t3" ana="mte:Npmsl" lemma="Ankaran">Ankaranu</w>
-	      </seg>
-	      <w xml:id="ssj1.1.2.t4" ana="mte:Va-r3s-n" lemma="biti">je</w>
-	      <w xml:id="ssj1.1.2.t5" ana="mte:Va-p-sf" lemma="biti">bila</w>
-	      <w xml:id="ssj1.1.2.t6" ana="mte:Agpfsn" lemma="dramatičen">dramatična</w>
-	      <w xml:id="ssj1.1.2.t7" ana="mte:Ncfsn" lemma="nesreča" join="right">nesreča</w>
-	      <pc xml:id="ssj1.1.2.t8" ana="mte:Z" join="right">.</pc>
-	      <linkGrp type="syntax" targFunc="head argument" corresp="#ssj1.1.2">
-		<link ana="jos-syn:Atr" target="#ssj1.1.2.t5 #ssj1.1.2.t1"/>
-		<link ana="jos-syn:Atr" target="#ssj1.1.2.t3 #ssj1.1.2.t2"/>
-		<link ana="jos-syn:Atr" target="#ssj1.1.2.t1 #ssj1.1.2.t3"/>
-		<link ana="jos-syn:PPart" target="#ssj1.1.2.t5 #ssj1.1.2.t4"/>
-		<link ana="jos-syn:Root" target="#ssj1.1.2 #ssj1.1.2.t5"/>
-		<link ana="jos-syn:Atr" target="#ssj1.1.2.t7 #ssj1.1.2.t6"/>
-		<link ana="jos-syn:Sb" target="#ssj1.1.2.t5 #ssj1.1.2.t7"/>
-		<link ana="jos-syn:Root" target="#ssj1.1.2 #ssj1.1.2.t8"/>
-	      </linkGrp>
+	    <w ana="mte:Ncmsn" msd="UPosTag=NOUN|Case=Nom|Gender=Masc|Number=Sing" lemma="dogodek" xml:id="ssj1.1.2.t1">Dogodek</w>
+	    <w ana="mte:Sl" msd="UPosTag=ADP|Case=Loc" lemma="v" xml:id="ssj1.1.2.t2">v</w>
+	    <seg type="name" subtype="loc">
+	      <w ana="mte:Npmsl" msd="UPosTag=PROPN|Case=Loc|Gender=Masc|Number=Sing" lemma="Ankaran" xml:id="ssj1.1.2.t3">Ankaranu</w>
+            </seg>
+	    <w ana="mte:Va-r3s-n" msd="UPosTag=AUX|Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin" lemma="biti" xml:id="ssj1.1.2.t4">je</w>
+	    <w ana="mte:Va-p-sf" msd="UPosTag=AUX|Gender=Fem|Number=Sing|VerbForm=Part" lemma="biti" xml:id="ssj1.1.2.t5">bila</w>
+	    <w ana="mte:Agpfsn" msd="UPosTag=ADJ|Case=Nom|Degree=Pos|Gender=Fem|Number=Sing" lemma="dramatičen" xml:id="ssj1.1.2.t6">dramatična</w>
+	    <w ana="mte:Ncfsn" msd="UPosTag=NOUN|Case=Nom|Gender=Fem|Number=Sing" lemma="nesreča" xml:id="ssj1.1.2.t7" join="right">nesreča</w>
+	    <pc ana="mte:Z" msd="UPosTag=PUNCT" xml:id="ssj1.1.2.t8">.</pc>
+	    <linkGrp corresp="#ssj1.1.2" targFunc="head argument" type="UD-SYN">
+	      <link ana="ud-syn:root" target="#ssj1.1.2 #ssj1.1.2.t1"/>
+	      <link ana="ud-syn:case" target="#ssj1.1.2.t3 #ssj1.1.2.t2"/>
+	      <link ana="ud-syn:nmod" target="#ssj1.1.2.t1 #ssj1.1.2.t3"/>
+	      <link ana="ud-syn:aux" target="#ssj1.1.2.t1 #ssj1.1.2.t4"/>
+	      <link ana="ud-syn:cop" target="#ssj1.1.2.t1 #ssj1.1.2.t5"/>
+	      <link ana="ud-syn:amod" target="#ssj1.1.2.t7 #ssj1.1.2.t6"/>
+	      <link ana="ud-syn:nsubj" target="#ssj1.1.2.t1 #ssj1.1.2.t7"/>
+	      <link ana="ud-syn:punct" target="#ssj1.1.2.t1 #ssj1.1.2.t8"/>
+	    </linkGrp>
+	    <linkGrp corresp="#ssj1.1.2" targFunc="head argument" type="JOS-SYN">
+	      <link ana="jos-syn:Atr" target="#ssj1.1.2.t5 #ssj1.1.2.t1"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.2.t3 #ssj1.1.2.t2"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.2.t1 #ssj1.1.2.t3"/>
+	      <link ana="jos-syn:PPart" target="#ssj1.1.2.t5 #ssj1.1.2.t4"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.2 #ssj1.1.2.t5"/>
+	      <link ana="jos-syn:Atr" target="#ssj1.1.2.t7 #ssj1.1.2.t6"/>
+	      <link ana="jos-syn:Sb" target="#ssj1.1.2.t5 #ssj1.1.2.t7"/>
+	      <link ana="jos-syn:Root" target="#ssj1.1.2 #ssj1.1.2.t8"/>
+	    </linkGrp>
+	    <linkGrp corresp="#ssj1.1.2" targFunc="head argument" type="SRL">
+	      <link ana="srl:ACT" target="#ssj1.1.2.t5 #ssj1.1.2.t1"/>
+	      <link ana="srl:PAT" target="#ssj1.1.2.t5 #ssj1.1.2.t7"/>
+	    </linkGrp>
           </s>
         </p>
       </div>
       <div>
-	<head xml:lang="sl">Primer normaliziranega in oblikoskladenjsko označenega besedila korpusa PriLit</head>
-	<head xml:lang="en">Example of a normalised and morphosyntactically annotated text from the PriLit corpus</head>
-	<bibl>Žejn, Andrejka and Erjavec, Tomaž, 2021, The corpus of older Slovenian narrative prose PriLit 1.0, Slovenian language resource repository CLARIN.SI, http://hdl.handle.net/11356/1319.</bibl>
-        <p xml:id="tid.231386671772495872">
-	  <s xml:id="Cigler_Deteljica1863.4.s2">
-	    <w xml:id="Cigler_Deteljica1863.4.s2.t1" ana="mte:Agpnsg" msd="UposTag=ADJ|Case=Gen|Degree=Pos|Gender=Neut|Number=Sing" lemma="ljubljanski">Ljubljanskega</w>
-	    <w xml:id="Cigler_Deteljica1863.4.s2.t2" ana="mte:Cc" msd="UposTag=CCONJ" lemma="in">in</w>
-	    <w xml:id="Cigler_Deteljica1863.4.s2.t3" ana="mte:Npnsg" msd="UposTag=PROPN|Case=Gen|Gender=Neut|Number=Sing" norm="Krškega" lemma="Krško">Kerškega</w>
-	    <w join="right" xml:id="Cigler_Deteljica1863.4.s2.t4" ana="mte:Ncnsg" msd="UposTag=NOUN|Case=Gen|Gender=Neut|Number=Sing" lemma="knezoškofijstvo">knezoškofijstva</w>
-	    <pc xml:id="Cigler_Deteljica1863.4.s2.t5" ana="mte:Z" msd="UposTag=PUNCT">.</pc>
-	    <linkGrp corresp="#Cigler_Deteljica1863.4.s2" targFunc="head argument" type="UD-SYN">
-	      <link ana="ud-syn:amod" target="#Cigler_Deteljica1863.4.s2.t4 #Cigler_Deteljica1863.4.s2.t1"/>
-	      <link ana="ud-syn:cc" target="#Cigler_Deteljica1863.4.s2.t3 #Cigler_Deteljica1863.4.s2.t2"/>
-	      <link ana="ud-syn:conj" target="#Cigler_Deteljica1863.4.s2.t1 #Cigler_Deteljica1863.4.s2.t3"/>
-	      <link ana="ud-syn:root" target="#Cigler_Deteljica1863.4.s2 #Cigler_Deteljica1863.4.s2.t4"/>
-	      <link ana="ud-syn:punct" target="#Cigler_Deteljica1863.4.s2.t4 #Cigler_Deteljica1863.4.s2.t5"/>
-	    </linkGrp>
-	  </s>
-        </p>
-      </div>
-      <div>
-	<head xml:lang="sl">Primer "govorjenega" oblikoskladenjsko označenega besedila korpusa SlovParl</head>
-	<head xml:lang="en">Example of a "spoken" morphosyntactically annotated text from the SlovParl corpus</head>
-	<div type="sp">
-	  <note xml:id="DruzPolZb.1990-05-07.s001-01.sp-2.1" type="speaker">PREDSEDUJOČI DR. FRANCE BUČAR:</note>
-	  <u xml:id="DruzPolZb.1990-05-07.s001-01.sp-2.2">
-	    <s>
-	      <w lemma="pričenjati" ana="mte:Vmpr1s">Pričenjam</w>
-	      <w lemma="1." ana="mte:Mdo">1.</w>
-	      <w lemma="seja" ana="mte:Ncfsa">sejo</w>
-	      <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w>
-	      <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
-	      <w lemma="skupščina" ana="mte:Ncfsg">Skupščine</w>
-	      <w lemma="republika" ana="mte:Ncfsg">Republike</w>
-	      <w lemma="Slovenija" ana="mte:Npfsg" join="right">Slovenije</w>
-	      <pc ana="mte:Z">,</pc>
-	      <w lemma="ki" ana="mte:Cs">ki</w>
-	      <w lemma="biti" ana="mte:Va-r3s-n">je</w>
-	      <w lemma="po" ana="mte:Sl">po</w>
-	      <w lemma="določba" ana="mte:Ncfsl">določbi</w>
-	      <w lemma="prvi" ana="mte:Mlomsg">prvega</w>
-	      <w lemma="odstavek" ana="mte:Ncmsg">odstavka</w>
-	      <w lemma="2." ana="mte:Mdo">2.</w>
-	      <w lemma="člen" ana="mte:Ncmsg">člena</w>
-	      <w lemma="poslovnik" ana="mte:Ncmsg">Poslovnika</w>
-	      <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w>
-	      <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
-	      <w lemma="skupščina" ana="mte:Ncfsg">Skupščine</w>
-	      <w lemma="republika" ana="mte:Ncfsg">Republike</w>
-	      <w lemma="Slovenija" ana="mte:Npfsg">Slovenije</w>
-	      <w lemma="sklicati" ana="mte:Vmep-sf">sklicala</w>
-	      <w lemma="predsednica" ana="mte:Ncfsn">predsednica</w>
-	      <w lemma="zbor" ana="mte:Ncmsg" join="right">zbora</w>
-	      <pc ana="mte:Z">,</pc>
-	      <w lemma="ki" ana="mte:Cs">ki</w>
-	      <w lemma="biti" ana="mte:Va-r3s-n">je</w>
-	      <w lemma="doslej" ana="mte:Rgp">doslej</w>
-	      <w lemma="opravljati" ana="mte:Vmpp-sf">opravljala</w>
-	      <w lemma="ta" ana="mte:Pd-fsa">to</w>
-	      <w lemma="funkcija" ana="mte:Ncfsa" join="right">funkcijo</w>
-	      <pc ana="mte:Z">.</pc>
-	    </s>
-	    <s>
-	      <w lemma="dovoliti" ana="mte:Vmem2p" join="right">Dovolite</w>
-	      <pc ana="mte:Z">,</pc>
-	      <w lemma="da" ana="mte:Cs">da</w>
-	      <w lemma="se" ana="mte:Px------y">se</w>
-	      <w lemma="ti" ana="mte:Pp2-pd">vam</w>
-	      <w lemma="predstaviti" ana="mte:Vmer1s" join="right">predstavim</w>
-	      <pc ana="mte:Z">.</pc>
-            </s>
-	    <s>
-              <w lemma="biti" ana="mte:Va-r1s-n">Sem</w>
-              <w lemma="France" ana="mte:Npmsn">France</w>
-              <w lemma="Bučar" ana="mte:Npmsn" join="right">Bučar</w>
-              <pc ana="mte:Z">,</pc>
-              <w lemma="kot" ana="mte:Cs">kot</w>
-              <w lemma="star" ana="mte:Agsmsny">najstarejši</w>
-              <w lemma="član" ana="mte:Ncmsn">član</w>
-              <w lemma="ta" ana="mte:Pd-msg">tega</w>
-              <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
-              <w lemma="po" ana="mte:Sl">po</w>
-              <w lemma="drug" ana="mte:Mlpmsl">drugem</w>
-              <w lemma="odstavek" ana="mte:Ncmsl">odstavku</w>
-              <w lemma="2." ana="mte:Mdo">2.</w>
-              <w lemma="člen" ana="mte:Ncmsg">člena</w>
-              <w lemma="družbenopolitičen" ana="mte:Agpmsg">Družbenopolitičnega</w>
-              <w lemma="zbor" ana="mte:Ncmsg">zbora</w>
-              <w lemma="republika" ana="mte:Ncfsg">Republike</w>
-              <w lemma="Slovenija" ana="mte:Npfsg" join="right">Slovenije</w>
-              <pc ana="mte:Z">,</pc>
-              <w lemma="zato" ana="mte:Cc">zato</w>
-              <w lemma="voditi" ana="mte:Vmpr1s">vodim</w>
-              <w lemma="seja" ana="mte:Ncfsa">sejo</w>
-              <w lemma="do" ana="mte:Sg">do</w>
-              <w lemma="izvolitev" ana="mte:Ncfsg">izvolitve</w>
-              <w lemma="predsednik" ana="mte:Ncmsg">predsednika</w>
-              <w lemma="zbor" ana="mte:Ncmsg" join="right">zbora</w>
-              <pc ana="mte:Z" join="right">.</pc>
-	    </s>
-	  </u>
-	</div>
+	<head xml:lang="sl">Primer normaliziranega in oblikoskladenjsko označenega besedila korpusa Gos VideoLectures</head>
+	<head xml:lang="en">Example of a normalised and morphosyntactically annotated text from the Gos VideoLectures corpus</head>
+         <timeline unit="seg" origin="#GosVL07_kungf.t0" corresp="#GosVL07_kungf.wav">
+            <when xml:id="GosVL07_kungf.t0"/>
+            <when xml:id="GosVL07_kungf.t23"
+                  interval="116.292"
+                  since="#GosVL07_kungf.t0"/>
+            <when xml:id="GosVL07_kungf.t45"
+                  interval="235.482"
+                  since="#GosVL07_kungf.t0"/>
+            <when xml:id="GosVL07_kungf.t49"
+                  interval="252.635"
+                  since="#GosVL07_kungf.t0"/>
+         </timeline>
+	<u xml:id="GosVL07_kungf.u5"
+           who="#Om-vl020"
+           start="#GosVL07_kungf.t23"
+	   end="#GosVL07_kungf.t49">
+	  <gap reason="sampling"/>
+          <anchor synch="#GosVL07_kungf.t45"/>
+          <seg xml:id="GosVL07_kungf.s44" synch="#GosVL07_kungf.t45">
+            <w lemma="aaa"
+               ana="mte:Ncmsn"
+               msd="UPosTag=NOUN|Case=Nom|Gender=Masc|Number=Sing"
+               xml:id="GosVL07_kungf.tok735">aaa</w>
+            <w norm="pravzaprav"
+               lemma="pravzaprav"
+               ana="mte:Q"
+               msd="UPosTag=PART"
+               xml:id="GosVL07_kungf.tok736">provzaprov</w>
+            <w lemma="za"
+               ana="mte:Sa"
+               msd="UPosTag=ADP|Case=Acc"
+               xml:id="GosVL07_kungf.tok737">za</w>
+            <w lemma="ta"
+               ana="mte:Pd-msa"
+               msd="UPosTag=DET|Case=Acc|Gender=Masc|Number=Sing|PronType=Dem"
+               xml:id="GosVL07_kungf.tok738">ta</w>
+            <w xml:id="GosVL07_kungf.tok739">taprv<w norm="ta"
+            lemma="ta"
+            ana="mte:Pd-msa"
+            msd="UPosTag=DET|Case=Acc|Gender=Masc|Number=Sing|PronType=Dem"
+            xml:id="GosVL07_kungf.tok739.n1"/>
+            <w norm="prvi"
+               lemma="prvi"
+               ana="mte:Mlomsa"
+               msd="UPosTag=ADJ|Case=Acc|Gender=Masc|NumType=Ord|Number=Sing"
+               xml:id="GosVL07_kungf.tok739.n2"/>
+            </w>
+            <w lemma="demo"
+               ana="mte:Ncmsan"
+               msd="UPosTag=NOUN|Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing"
+               xml:id="GosVL07_kungf.tok740">demo</w>
+            <w norm="tudi"
+               lemma="tudi"
+               ana="mte:Q"
+               msd="UPosTag=PART"
+               xml:id="GosVL07_kungf.tok741">tud</w>
+            <w lemma="če"
+               ana="mte:Cs"
+               msd="UPosTag=SCONJ"
+               xml:id="GosVL07_kungf.tok742">če</w>
+            <w norm="imate"
+               lemma="imeti"
+               ana="mte:Vmpr2p-n"
+               msd="UPosTag=VERB|Aspect=Imp|Mood=Ind|Number=Plur|Person=2|Polarity=Pos|Tense=Pres|VerbForm=Fin"
+               xml:id="GosVL07_kungf.tok743">mate</w>
+            <name>
+              <w norm="Windowse"
+                 lemma="Windows"
+                 ana="mte:Npmpa"
+                 msd="UPosTag=PROPN|Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing"
+                 xml:id="GosVL07_kungf.tok744">vindovse</w>
+              <w norm="XP"
+                 lemma="XP"
+                 ana="mte:Npmsn"
+                 msd="UPosTag=PROPN|Case=Nom|Gender=Masc|Number=Sing"
+                 xml:id="GosVL07_kungf.tok745">
+                <w xml:id="GosVL07_kungf.tok745.o0">iks</w>
+                <w xml:id="GosVL07_kungf.tok745.o1">p</w>
+              </w>
+            </name>
+            <w lemma="zakon"
+               ana="mte:Ncmsan"
+               msd="UPosTag=NOUN|Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing"
+               xml:id="GosVL07_kungf.tok746">zakon</w>
+          </seg>
+	</u>
       </div>
     </body>
     <back>
@@ -317,30 +656,30 @@
         <docDate>2017-10-22</docDate>
         <p xml:lang="sl">Dokument vsebuje imena in opise odvisnostnih relacij za površinskoskadenjsko označevanje projekta <ref target="http://nl.ijs.si/jos/">JOS</ref>.
         Principi označevanja so podrobneje opisani v:
-  	  <bibl>
-            <author>Špela Arhar, Nina Ledinek, Sara Može, Nanika Holz</author>
-            <title>Navodila za skladenjsko označevanje JOS, različica 1.0</title>
-            <date>2009-10-01</date>
-            <ref target="http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf">http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf</ref>
-          </bibl>
+  	<bibl>
+          <author>Špela Arhar, Nina Ledinek, Sara Može, Nanika Holz</author>
+          <title>Navodila za skladenjsko označevanje JOS, različica 1.0</title>
+          <date>2009-10-01</date>
+          <ref target="http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf">http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf</ref>
+        </bibl>
 	</p>
         <p xml:lang="en">This section contains the names and brief descriptions of the dependency relations for surface syntactic annoatioons of the <ref target="http://nl.ijs.si/jos/">JOS</ref> project. The principles of the annotation are described in further detail in:
-	  <bibl>
-            <author>Špela Arhar, Nina Ledinek, Sara Može, Nanika Holz</author>
-            <title>Navodila za skladenjsko označevanje JOS, različica 1.0</title>
-            <date>2009-10-01</date>
-            <ref target="http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf">http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf</ref>
-	  </bibl>
+	<bibl>
+          <author>Špela Arhar, Nina Ledinek, Sara Može, Nanika Holz</author>
+          <title>Navodila za skladenjsko označevanje JOS, različica 1.0</title>
+          <date>2009-10-01</date>
+          <ref target="http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf">http://nl.ijs.si/jos/bib/jos-skladnja-navodila.pdf</ref>
+	</bibl>
         </p>
-      <div>
-	<head xml:lang="sl">Definicije v slovenščini</head>
-	<list>
-	  <item xml:id="modra" corresp="#Root" xml:lang="sl"><term>povezava na koren</term>: S povezavo modra povezujemo abstraktno vozlišče stavka oz. povedi z elementi, iz katerih potekajo nadaljnje drevesnične povezave. S to povezavo so tipično povezani stavčni povedki, eliptični deli povedi brez povedka ali členkovni elementi znotraj stavka. S to povezavo so na vozlišče povezane tudi vse pojavnice (besede ali ločila), ki nimajo eksplicitne skladenjske vloge v povedi.</item>
-	  <item xml:id="del" corresp="#PPart"><term>del povedka</term>: S povezavo del povezujemo dele besednih zvez, pri katerih ne govorimo o prototipnem jedru ter določilu zveze, pač pa zgolj o delih zveze. Tipično jo uporabljamo za dele zloženega povedka, pri čemer je izvor osebna glagolska oblika oz. deležnik na –l, cilj so morfemi »ne«, »se«, »si«, »bi« oz. oblike glagola »biti« v sestavljenih nesedanjiških časih, tj. »bo«, »je« itd.</item>
-	  <item xml:id="dol" corresp="#Atr"><term>določilo</term>: S povezavo dol povezujemo določujoči in določani del podredne besedne zveze, tj. jedro in različne vrste prilastkov. Izhodišče je jedro zveze, cilj pa beseda, ki jedro določa. Tipično jo uporabljamo pri samostalniških besednih zvez (jedro je samostalnik), pridevniških oz. prislovnih besednih zvez (jedro je pridevnik oz. prislov) ter za povezovanje delov zloženega povedka: povedkovega določila in povedkovega prilastka (jedro je glagol »biti« oz. polnopomenski glagol) ali pomožnih glagolov z jedrom.</item>
-	  <item xml:id="ena" corresp="#Sb"><term>osebek</term>: S povezavo ena povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot osebek, vendar tako označena razmerja ne ustrezajo povsem klasični definiciji tega pojava. Na znotrajstavčni ravni povezuje povedkovo vozlišče z nestavčnim osebkom stavka, pri čemer je izhodišče razmerja jedro povedka, cilj razmerja pa jedro osebka. Na medstavčni ravni s to povezavo povezujemo osebkove odvisnike z ustreznim glavnim stavkom. Izhodišče je jedro povedka nadrednega stavka, cilj je jedro povedka v odvisniku.</item>
-	  <item xml:id="dve" corresp="#Obj"><term>predmet</term>: S povezavo dve povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot predmet stavka ali predmetni odvisnik, vendar tako označena razmerja ne ustrezajo povsem klasični definiciji teh dveh pojavov. Na znotrajstavčni ravni povezuje vozlišče povedka in nestavčni predmet stavka. Izhodišče razmerja je jedro povedka, cilj je jedro predmeta. Na medstavčni ravni s to povezavo povezujemo predmetne odvisnike z ustreznim glavnim stavkom. Izhodišče je jedro povedka glavnega stavka, cilj je jedro povedka v odvisniku.</item>
-	  <item xml:id="tri" corresp="#AdvM"><term>prislovno določilo lastnosti</term>: S povezavo tri povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot prislovno določilo lastnosti ali lastnostni odvisnik, vendar tako označena razmerja ne ustrezajo povsem klasični definiciji teh dveh pojavov. Na znotrajstavčni ravni povezuje vozlišče povedka in nestavčno prislovno določilo lastnosti. Izhodišče razmerja je jedro povedka, cilj je jedro prislovnega določila. Na medstavčnem nivoju s to povezavo povezujemo lastnostne odvisnike oz. polstavke z ustreznim glavnim stavkom. Izhodišče je jedro povedka glavnega stavka, cilj je jedro povedka v odvisniku.</item>
+	<div>
+	  <head xml:lang="sl">Definicije v slovenščini</head>
+	  <list>
+	    <item xml:id="modra" corresp="#Root" xml:lang="sl"><term>povezava na koren</term>: S povezavo modra povezujemo abstraktno vozlišče stavka oz. povedi z elementi, iz katerih potekajo nadaljnje drevesnične povezave. S to povezavo so tipično povezani stavčni povedki, eliptični deli povedi brez povedka ali členkovni elementi znotraj stavka. S to povezavo so na vozlišče povezane tudi vse pojavnice (besede ali ločila), ki nimajo eksplicitne skladenjske vloge v povedi.</item>
+	    <item xml:id="del" corresp="#PPart"><term>del povedka</term>: S povezavo del povezujemo dele besednih zvez, pri katerih ne govorimo o prototipnem jedru ter določilu zveze, pač pa zgolj o delih zveze. Tipično jo uporabljamo za dele zloženega povedka, pri čemer je izvor osebna glagolska oblika oz. deležnik na –l, cilj so morfemi »ne«, »se«, »si«, »bi« oz. oblike glagola »biti« v sestavljenih nesedanjiških časih, tj. »bo«, »je« itd.</item>
+	    <item xml:id="dol" corresp="#Atr"><term>določilo</term>: S povezavo dol povezujemo določujoči in določani del podredne besedne zveze, tj. jedro in različne vrste prilastkov. Izhodišče je jedro zveze, cilj pa beseda, ki jedro določa. Tipično jo uporabljamo pri samostalniških besednih zvez (jedro je samostalnik), pridevniških oz. prislovnih besednih zvez (jedro je pridevnik oz. prislov) ter za povezovanje delov zloženega povedka: povedkovega določila in povedkovega prilastka (jedro je glagol »biti« oz. polnopomenski glagol) ali pomožnih glagolov z jedrom.</item>
+	    <item xml:id="ena" corresp="#Sb"><term>osebek</term>: S povezavo ena povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot osebek, vendar tako označena razmerja ne ustrezajo povsem klasični definiciji tega pojava. Na znotrajstavčni ravni povezuje povedkovo vozlišče z nestavčnim osebkom stavka, pri čemer je izhodišče razmerja jedro povedka, cilj razmerja pa jedro osebka. Na medstavčni ravni s to povezavo povezujemo osebkove odvisnike z ustreznim glavnim stavkom. Izhodišče je jedro povedka nadrednega stavka, cilj je jedro povedka v odvisniku.</item>
+	    <item xml:id="dve" corresp="#Obj"><term>predmet</term>: S povezavo dve povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot predmet stavka ali predmetni odvisnik, vendar tako označena razmerja ne ustrezajo povsem klasični definiciji teh dveh pojavov. Na znotrajstavčni ravni povezuje vozlišče povedka in nestavčni predmet stavka. Izhodišče razmerja je jedro povedka, cilj je jedro predmeta. Na medstavčni ravni s to povezavo povezujemo predmetne odvisnike z ustreznim glavnim stavkom. Izhodišče je jedro povedka glavnega stavka, cilj je jedro povedka v odvisniku.</item>
+	    <item xml:id="tri" corresp="#AdvM"><term>prislovno določilo lastnosti</term>: S povezavo tri povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot prislovno določilo lastnosti ali lastnostni odvisnik, vendar tako označena razmerja ne ustrezajo povsem klasični definiciji teh dveh pojavov. Na znotrajstavčni ravni povezuje vozlišče povedka in nestavčno prislovno določilo lastnosti. Izhodišče razmerja je jedro povedka, cilj je jedro prislovnega določila. Na medstavčnem nivoju s to povezavo povezujemo lastnostne odvisnike oz. polstavke z ustreznim glavnim stavkom. Izhodišče je jedro povedka glavnega stavka, cilj je jedro povedka v odvisniku.</item>
 	    <item xml:id="štiri" corresp="#AdvO"><term>ostala prislovna določila</term>: S povezavo štiri povezujemo dele stavkov oz. povedi, ki bi jih tradicionalno lahko opredelili kot prislovno določilo ali prislovni odvisnik (razen prislovnega določila lastnosti ali lastnostnega odvisnika), vendar tako označena razmerja ne ustrezajo povsem klasični definiciji teh pojavov. Na znotrajstavčni ravni povezuje vozlišče povedka in prislovno določilo. Izhodišče razmerja jedro povedka, cilj je jedro prislovnega določila. Na medstavčni ravni s to povezavo povezujemo odvisnike ustrezajočih tipov z ustreznim glavnim stavkom. Izhodišče je jedro povedka glavnega stavka, cilj je jedro povedka v odvisniku.</item>
 	    <item xml:id="prir" corresp="#Coord"><term>priredje</term>: S povezavo prir povezujemo dele priredij na besednozvezni ravni. Pri besednih zvezah povezujemo jedro prvega dela priredja z jedrom drugega dela priredja, pri čemer je izhodišče v levem delu, cilj pa v desnem delu priredja.</item>
 	    <item xml:id="vez" corresp="#Conj"><term>veznik</term>: Povezavo vez uporabljamo v kombinaciji s povezavo prir tako, da trije elementi, povezani s prir in vez, tvorijo trikotnik. S povezavo vez povezujemo jedro drugega dela besednozveznega priredja in priredni veznik ali priredno ločilo, če veznika ni.</item>
