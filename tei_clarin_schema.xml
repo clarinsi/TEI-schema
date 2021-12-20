@@ -10,12 +10,12 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>TEI schema for CLARIN.SI corpora</title>
+        <title>CLARIN.SI TEI schema for language corpora</title>
         <author>Tomaž Erjavec, tomaz.erjavec@ijs.si</author>
       </titleStmt>
       <publicationStmt>
         <publisher>CLARIN.SI</publisher>
-        <date>2021-09-29</date>
+        <date>2021-10-31</date>
         <availability status="free">
           <p>This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.</p>
         </availability>
@@ -33,6 +33,7 @@
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
+      <change when="2021-10-31">Tomaž Erjavec: change example document a lot.</change>
       <change when="2021-09-29">Tomaž Erjavec: reduce to corpora, work on text.</change>
       <change when="2021-08-24">Tomaž Erjavec: start adding text of recommendations.</change>
       <change when="2020-12-16">Tomaž Erjavec: change representation of whitespace.</change>
@@ -47,11 +48,10 @@
     <front>
       <titlePage>
         <docTitle>
-          <titlePart type="main"><ref target="https://github.com/clarinsi/TEI-schema/">CLARIN.SI TEI schema</ref></titlePart>
-          <titlePart type="sub">A TEI Schema for CLARIN.SI corpora</titlePart>
+          <titlePart type="main"><ref target="https://github.com/clarinsi/TEI-schema/">CLARIN.SI TEI schema for language corpora</ref></titlePart>
         </docTitle>
-        <docDate>2021-09-29</docDate>
-        <docEdition>0.2</docEdition>
+        <docDate>2021-10-31</docDate>
+        <docEdition>0.3</docEdition>
       </titlePage>
       <p></p>
       <divGen type="toc"/>
@@ -60,19 +60,18 @@
     <body>
       <div xml:id="sec-intro">
         <head>Introduction</head>
-        <p>The preferred annotation scheme for langauge corpora deposited in the repository of the
-	<ref target="http://www-clarin.si/">CLARIN.SI</ref> research infrastructure are as given in the 
-        <ref target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">Text Encoding
-	Initiative Guidelines</ref>, which are XML-based recommendations for encoding texts for scholarly
-        purposes. As opposed to most other such recommendations, the TEI Guidelines have the
-        ambition to be applicable to texts in any natural language, of any date, in any
-        literary genre or text type, without restriction on form or content. The TEI 
-        customisation for CLARIN.SI supports the encoding of language corpora
-        and makes explicit recommendations on the manner of encoding various phenomena.</p>
+        <p>This document gives recommendations on the preferred
+	<ref target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">TEI</ref>
+	XML encoding of langauge
+        corpora in the <ref target="https://www.clarin.si/">CLARIN.SI</ref> repository.</p>
+	
+	<p>The TEI customisation for CLARIN.SI supports the encoding of language corpora and makes
+	explicit recommendations on the manner of encoding various phenomena.</p>
 
-	<p>The recommendations are written as a TEI ODD document, on the basis of which it is
-	possible to derive an XML schema expressed either as a RelaxNG schema, a DTD or a W3C
-	schema, and such schemas are also part of this Git repository.</p>
+	<p>These recommendations are written as a TEI ODD document (= proze recommendations
+	and formal schema), on the basis of which it is possible to derive an XML schema
+	expressed either as a RelaxNG schema, a DTD or a W3C schema, and such schemas are
+	also part of this Git repository.</p>
 
         <p>When using these recommendations, the following points should be taken in consideration:
         <list>
@@ -88,7 +87,7 @@
           more obvious encoding needs, it is possible that new users will have to use TEI elements
           or attributes that are not mentioned here.</item>
 
-          <item>Since these recommendations are work in progress, we have left the formal
+          <item>Since these recommendations are (always) work in progress, we have left the formal
           specification (i.e. the XML schema) very unconstrained, so it can accommodate encoding
           practices that we have not (yet) foreseen. The downside of this is that the XML schemas
           will allow constructs that are at odds to those that we propose in the prose of the

@@ -1,9 +1,9 @@
 
 <!--
-DTD generated from ODD source 2021-09-29T17:34:53Z. 2021-09-29.This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
-TEI Edition: Version 4.1.0. Last updated on
-	19th August 2020, revision b414ba550
-TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
+DTD generated from ODD source 2021-10-31T18:38:42Z. 2021-09-29.This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
+TEI Edition: Version 4.3.0. Last updated on
+        31st August 2021, revision b4f72b1ff
+TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
 
 -->
 
@@ -99,6 +99,14 @@ rendition CDATA  #IMPLIED'>
 source CDATA  #IMPLIED'>
 <!ENTITY % tei_att.global.source.attributes '
  %tei_att.global.source.attribute.source;'> 
+<!ENTITY % tei_att.typed.attribute.type '
+type %teidata.enumerated;  #IMPLIED'>
+
+<!ENTITY % tei_att.typed.attribute.subtype '
+subtype %teidata.enumerated;  #IMPLIED'>
+<!ENTITY % tei_att.typed.attributes '
+ %tei_att.typed.attribute.type;
+ %tei_att.typed.attribute.subtype;'> 
 <!ENTITY % model.entryPart ""> 
 <!ENTITY % model.entryPart_sequence ""> 
 <!ENTITY % model.entryPart_sequenceOptional ""> 
@@ -124,6 +132,10 @@ source CDATA  #IMPLIED'>
 <!ENTITY % model.orgPart_sequenceOptional "%model.eventLike;?, listOrg?, listPerson?, listPlace?"> 
 <!ENTITY % model.orgPart_sequenceOptionalRepeatable "%model.eventLike;*, listOrg*, listPerson*, listPlace*"> 
 <!ENTITY % model.orgPart_sequenceRepeatable "%model.eventLike;+, listOrg+, listPerson+, listPlace+"> 
+<!ENTITY % tei_att.locatable.attribute.where '
+where CDATA  #IMPLIED'>
+<!ENTITY % tei_att.locatable.attributes '
+ %tei_att.locatable.attribute.where;'> 
 <!ENTITY % model.resource "text |facsimile |sourceDoc |standOff |fsdDecl"> 
 <!ENTITY % model.resource_sequence "text, facsimile, sourceDoc, standOff, fsdDecl"> 
 <!ENTITY % model.resource_sequenceOptional "text?, facsimile?, sourceDoc?, standOff?, fsdDecl?"> 
@@ -189,11 +201,11 @@ datingMethod %teidata.pointer;  #IMPLIED'>
  %tei_att.datable.custom.attribute.to-custom;
  %tei_att.datable.custom.attribute.datingPoint;
  %tei_att.datable.custom.attribute.datingMethod;'> 
-<!ENTITY % model.persNamePart "surname |forename |genName |nameLink |addName |roleName"> 
-<!ENTITY % model.persNamePart_sequence "surname, forename, genName, nameLink, addName, roleName"> 
-<!ENTITY % model.persNamePart_sequenceOptional "surname?, forename?, genName?, nameLink?, addName?, roleName?"> 
-<!ENTITY % model.persNamePart_sequenceOptionalRepeatable "surname*, forename*, genName*, nameLink*, addName*, roleName*"> 
-<!ENTITY % model.persNamePart_sequenceRepeatable "surname+, forename+, genName+, nameLink+, addName+, roleName+"> 
+<!ENTITY % model.persNamePart "surname |forename |genName |nameLink |addName |roleName |persPronouns"> 
+<!ENTITY % model.persNamePart_sequence "surname, forename, genName, nameLink, addName, roleName, persPronouns"> 
+<!ENTITY % model.persNamePart_sequenceOptional "surname?, forename?, genName?, nameLink?, addName?, roleName?, persPronouns?"> 
+<!ENTITY % model.persNamePart_sequenceOptionalRepeatable "surname*, forename*, genName*, nameLink*, addName*, roleName*, persPronouns*"> 
+<!ENTITY % model.persNamePart_sequenceRepeatable "surname+, forename+, genName+, nameLink+, addName+, roleName+, persPronouns+"> 
 <!ENTITY % tei_att.datable.iso.attribute.when-iso '
 when-iso %teidata.temporal.iso;  #IMPLIED'>
 
@@ -252,6 +264,14 @@ ana CDATA  #IMPLIED'>
  %tei_att.global.analytic.attribute.ana;'> 
 <!-- end of predeclared classes -->
 
+<!ENTITY % tei_att.anchoring.attribute.anchored '
+anchored %teidata.truthValue;  "true" '>
+
+<!ENTITY % tei_att.anchoring.attribute.targetEnd '
+targetEnd CDATA  #IMPLIED'>
+<!ENTITY % tei_att.anchoring.attributes '
+ %tei_att.anchoring.attribute.anchored;
+ %tei_att.anchoring.attribute.targetEnd;'> 
 <!ENTITY % tei_att.ascribed.attribute.who '
 who CDATA  #IMPLIED'>
 <!ENTITY % tei_att.ascribed.attributes '
@@ -353,10 +373,10 @@ to %teidata.temporal.w3c;  #IMPLIED'>
  %tei_att.datable.w3c.attribute.from;
  %tei_att.datable.w3c.attribute.to;'> 
 <!ENTITY % tei_att.datable.attribute.calendar '
-calendar %teidata.pointer;  #IMPLIED'>
+calendar CDATA  #IMPLIED'>
 
 <!ENTITY % tei_att.datable.attribute.period '
-period %teidata.pointer;  #IMPLIED'>
+period CDATA  #IMPLIED'>
 <!ENTITY % tei_att.datable.attributes '%tei_att.datable.w3c.attributes;%tei_att.datable.iso.attributes;%tei_att.datable.custom.attributes;
  %tei_att.datable.attribute.calendar;
  %tei_att.datable.attribute.period;'> 
@@ -494,7 +514,7 @@ url %teidata.pointer;  #REQUIRED'>
  %tei_att.resourced.attribute.url;'> 
 <!ENTITY % tei_att.interpLike.attribute.inst '
 inst CDATA  #IMPLIED'>
-<!ENTITY % tei_att.interpLike.attributes '
+<!ENTITY % tei_att.interpLike.attributes '%tei_att.typed.attributes;
  %tei_att.interpLike.attribute.inst;'> 
 <!ENTITY % tei_att.measurement.attribute.unit '
 unit %teidata.enumerated;  #IMPLIED'>
@@ -604,10 +624,6 @@ seq %teidata.count;  #IMPLIED'>
  %tei_att.transcriptional.attribute.status;
  %tei_att.transcriptional.attribute.cause;
  %tei_att.transcriptional.attribute.seq;'> 
-<!ENTITY % tei_att.translatable.attribute.versionDate '
-versionDate %teidata.temporal.w3c;  #IMPLIED'>
-<!ENTITY % tei_att.translatable.attributes '
- %tei_att.translatable.attribute.versionDate;'> 
 <!ENTITY % tei_att.citing.attribute.unit '
 unit %teidata.enumerated;  #IMPLIED'>
 
@@ -755,11 +771,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.listLike_sequenceOptional "list?, table?, listOrg?, listEvent?, listPerson?, listPlace?, listRelation?, listObject?, listNym?"> 
 <!ENTITY % model.listLike_sequenceOptionalRepeatable "list*, table*, listOrg*, listEvent*, listPerson*, listPlace*, listRelation*, listObject*, listNym*"> 
 <!ENTITY % model.listLike_sequenceRepeatable "list+, table+, listOrg+, listEvent+, listPerson+, listPlace+, listRelation+, listObject+, listNym+"> 
-<!ENTITY % model.noteLike "note"> 
-<!ENTITY % model.noteLike_sequence "note"> 
-<!ENTITY % model.noteLike_sequenceOptional "note?"> 
-<!ENTITY % model.noteLike_sequenceOptionalRepeatable "note*"> 
-<!ENTITY % model.noteLike_sequenceRepeatable "note+"> 
+<!ENTITY % model.noteLike "note |noteGrp"> 
+<!ENTITY % model.noteLike_sequence "note, noteGrp"> 
+<!ENTITY % model.noteLike_sequenceOptional "note?, noteGrp?"> 
+<!ENTITY % model.noteLike_sequenceOptionalRepeatable "note*, noteGrp*"> 
+<!ENTITY % model.noteLike_sequenceRepeatable "note+, noteGrp+"> 
 <!ENTITY % model.lLike "l"> 
 <!ENTITY % model.lLike_sequence "l"> 
 <!ENTITY % model.lLike_sequenceOptional "l?"> 
@@ -795,21 +811,21 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.eventLike_sequenceOptional "event?, listEvent?"> 
 <!ENTITY % model.eventLike_sequenceOptionalRepeatable "event*, listEvent*"> 
 <!ENTITY % model.eventLike_sequenceRepeatable "event+, listEvent+"> 
-<!ENTITY % model.global.edit "gap |addSpan |damageSpan |delSpan |space"> 
-<!ENTITY % model.global.edit_sequence "gap, addSpan, damageSpan, delSpan, space"> 
-<!ENTITY % model.global.edit_sequenceOptional "gap?, addSpan?, damageSpan?, delSpan?, space?"> 
-<!ENTITY % model.global.edit_sequenceOptionalRepeatable "gap*, addSpan*, damageSpan*, delSpan*, space*"> 
-<!ENTITY % model.global.edit_sequenceRepeatable "gap+, addSpan+, damageSpan+, delSpan+, space+"> 
+<!ENTITY % model.global.edit "gap |ellipsis |addSpan |damageSpan |delSpan |space"> 
+<!ENTITY % model.global.edit_sequence "gap, ellipsis, addSpan, damageSpan, delSpan, space"> 
+<!ENTITY % model.global.edit_sequenceOptional "gap?, ellipsis?, addSpan?, damageSpan?, delSpan?, space?"> 
+<!ENTITY % model.global.edit_sequenceOptionalRepeatable "gap*, ellipsis*, addSpan*, damageSpan*, delSpan*, space*"> 
+<!ENTITY % model.global.edit_sequenceRepeatable "gap+, ellipsis+, addSpan+, damageSpan+, delSpan+, space+"> 
 <!ENTITY % model.divPart "%model.lLike; |%model.pLike; |lg |sp |%model.divPart.spoken;"> 
 <!ENTITY % model.divPart_sequence "%model.lLike;, %model.pLike;, lg, sp, %model.divPart.spoken;"> 
 <!ENTITY % model.divPart_sequenceOptional "%model.lLike;?, %model.pLike;?, lg?, sp?, %model.divPart.spoken;?"> 
 <!ENTITY % model.divPart_sequenceOptionalRepeatable "%model.lLike;*, %model.pLike;*, lg*, sp*, %model.divPart.spoken;*"> 
 <!ENTITY % model.divPart_sequenceRepeatable "%model.lLike;+, %model.pLike;+, lg+, sp+, %model.divPart.spoken;+"> 
-<!ENTITY % model.persStateLike "persName |affiliation |age |education |faith |floruit |langKnowledge |nationality |occupation |persona |residence |sex |socecStatus |state |trait"> 
-<!ENTITY % model.persStateLike_sequence "persName, affiliation, age, education, faith, floruit, langKnowledge, nationality, occupation, persona, residence, sex, socecStatus, state, trait"> 
-<!ENTITY % model.persStateLike_sequenceOptional "persName?, affiliation?, age?, education?, faith?, floruit?, langKnowledge?, nationality?, occupation?, persona?, residence?, sex?, socecStatus?, state?, trait?"> 
-<!ENTITY % model.persStateLike_sequenceOptionalRepeatable "persName*, affiliation*, age*, education*, faith*, floruit*, langKnowledge*, nationality*, occupation*, persona*, residence*, sex*, socecStatus*, state*, trait*"> 
-<!ENTITY % model.persStateLike_sequenceRepeatable "persName+, affiliation+, age+, education+, faith+, floruit+, langKnowledge+, nationality+, occupation+, persona+, residence+, sex+, socecStatus+, state+, trait+"> 
+<!ENTITY % model.persStateLike "persName |affiliation |age |education |faith |floruit |langKnowledge |nationality |occupation |persona |persPronouns |residence |sex |socecStatus |state |trait"> 
+<!ENTITY % model.persStateLike_sequence "persName, affiliation, age, education, faith, floruit, langKnowledge, nationality, occupation, persona, persPronouns, residence, sex, socecStatus, state, trait"> 
+<!ENTITY % model.persStateLike_sequenceOptional "persName?, affiliation?, age?, education?, faith?, floruit?, langKnowledge?, nationality?, occupation?, persona?, persPronouns?, residence?, sex?, socecStatus?, state?, trait?"> 
+<!ENTITY % model.persStateLike_sequenceOptionalRepeatable "persName*, affiliation*, age*, education*, faith*, floruit*, langKnowledge*, nationality*, occupation*, persona*, persPronouns*, residence*, sex*, socecStatus*, state*, trait*"> 
+<!ENTITY % model.persStateLike_sequenceRepeatable "persName+, affiliation+, age+, education+, faith+, floruit+, langKnowledge+, nationality+, occupation+, persona+, persPronouns+, residence+, sex+, socecStatus+, state+, trait+"> 
 <!ENTITY % model.personLike "org |person |personGrp"> 
 <!ENTITY % model.personLike_sequence "org, person, personGrp"> 
 <!ENTITY % model.personLike_sequenceOptional "org?, person?, personGrp?"> 
@@ -860,11 +876,6 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.descLike_sequenceOptional "desc?"> 
 <!ENTITY % model.descLike_sequenceOptionalRepeatable "desc*"> 
 <!ENTITY % model.descLike_sequenceRepeatable "desc+"> 
-<!ENTITY % model.glossLike "gloss"> 
-<!ENTITY % model.glossLike_sequence "gloss"> 
-<!ENTITY % model.glossLike_sequenceOptional "gloss?"> 
-<!ENTITY % model.glossLike_sequenceOptionalRepeatable "gloss*"> 
-<!ENTITY % model.glossLike_sequenceRepeatable "gloss+"> 
 <!ENTITY % model.quoteLike "quote |cit"> 
 <!ENTITY % model.quoteLike_sequence "quote, cit"> 
 <!ENTITY % model.quoteLike_sequenceOptional "quote?, cit?"> 
@@ -995,11 +1006,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.common_sequenceOptional "%model.divPart;?, %model.inter;?, q?"> 
 <!ENTITY % model.common_sequenceOptionalRepeatable "%model.divPart;*, %model.inter;*, q*"> 
 <!ENTITY % model.common_sequenceRepeatable "%model.divPart;+, %model.inter;+, q+"> 
-<!ENTITY % model.phrase "%model.segLike; |%model.highlighted; |%model.graphicLike; |%model.pPart.edit; |%model.ptrLike; |%model.pPart.data;"> 
-<!ENTITY % model.phrase_sequence "%model.segLike;, %model.highlighted;, %model.graphicLike;, %model.pPart.edit;, %model.ptrLike;, %model.pPart.data;"> 
-<!ENTITY % model.phrase_sequenceOptional "%model.segLike;?, %model.highlighted;?, %model.graphicLike;?, %model.pPart.edit;?, %model.ptrLike;?, %model.pPart.data;?"> 
-<!ENTITY % model.phrase_sequenceOptionalRepeatable "%model.segLike;*, %model.highlighted;*, %model.graphicLike;*, %model.pPart.edit;*, %model.ptrLike;*, %model.pPart.data;*"> 
-<!ENTITY % model.phrase_sequenceRepeatable "%model.segLike;+, %model.highlighted;+, %model.graphicLike;+, %model.pPart.edit;+, %model.ptrLike;+, %model.pPart.data;+"> 
+<!ENTITY % model.phrase "%model.segLike; |%model.highlighted; |%model.graphicLike; |%model.pPart.edit; |%model.ptrLike; |%model.pPart.data; |ruby"> 
+<!ENTITY % model.phrase_sequence "%model.segLike;, %model.highlighted;, %model.graphicLike;, %model.pPart.edit;, %model.ptrLike;, %model.pPart.data;, ruby"> 
+<!ENTITY % model.phrase_sequenceOptional "%model.segLike;?, %model.highlighted;?, %model.graphicLike;?, %model.pPart.edit;?, %model.ptrLike;?, %model.pPart.data;?, ruby?"> 
+<!ENTITY % model.phrase_sequenceOptionalRepeatable "%model.segLike;*, %model.highlighted;*, %model.graphicLike;*, %model.pPart.edit;*, %model.ptrLike;*, %model.pPart.data;*, ruby*"> 
+<!ENTITY % model.phrase_sequenceRepeatable "%model.segLike;+, %model.highlighted;+, %model.graphicLike;+, %model.pPart.edit;+, %model.ptrLike;+, %model.pPart.data;+, ruby+"> 
 <!ENTITY % model.limitedPhrase "%model.hiLike; |%model.emphLike; |%model.pPart.editorial; |%model.ptrLike; |%model.pPart.data;"> 
 <!ENTITY % model.limitedPhrase_sequence "%model.hiLike;, %model.emphLike;, %model.pPart.editorial;, %model.ptrLike;, %model.pPart.data;"> 
 <!ENTITY % model.limitedPhrase_sequenceOptional "%model.hiLike;?, %model.emphLike;?, %model.pPart.editorial;?, %model.ptrLike;?, %model.pPart.data;?"> 
@@ -1069,21 +1080,25 @@ to %teidata.word;  #IMPLIED'>
 formula %teidata.xpath;  #IMPLIED'>
 <!ENTITY % tei_att.formula.attributes '
  %tei_att.formula.attribute.formula;'> 
-<!ENTITY % model.correspActionPart "%model.dateLike; |%model.addressLike; |%model.nameLike; |note"> 
-<!ENTITY % model.correspActionPart_sequence "%model.dateLike;, %model.addressLike;, %model.nameLike;, note"> 
-<!ENTITY % model.correspActionPart_sequenceOptional "%model.dateLike;?, %model.addressLike;?, %model.nameLike;?, note?"> 
-<!ENTITY % model.correspActionPart_sequenceOptionalRepeatable "%model.dateLike;*, %model.addressLike;*, %model.nameLike;*, note*"> 
-<!ENTITY % model.correspActionPart_sequenceRepeatable "%model.dateLike;+, %model.addressLike;+, %model.nameLike;+, note+"> 
-<!ENTITY % model.correspContextPart "%model.ptrLike; |%model.pLike; |note"> 
-<!ENTITY % model.correspContextPart_sequence "%model.ptrLike;, %model.pLike;, note"> 
-<!ENTITY % model.correspContextPart_sequenceOptional "%model.ptrLike;?, %model.pLike;?, note?"> 
-<!ENTITY % model.correspContextPart_sequenceOptionalRepeatable "%model.ptrLike;*, %model.pLike;*, note*"> 
-<!ENTITY % model.correspContextPart_sequenceRepeatable "%model.ptrLike;+, %model.pLike;+, note+"> 
-<!ENTITY % model.correspDescPart "note |correspAction |correspContext"> 
-<!ENTITY % model.correspDescPart_sequence "note, correspAction, correspContext"> 
-<!ENTITY % model.correspDescPart_sequenceOptional "note?, correspAction?, correspContext?"> 
-<!ENTITY % model.correspDescPart_sequenceOptionalRepeatable "note*, correspAction*, correspContext*"> 
-<!ENTITY % model.correspDescPart_sequenceRepeatable "note+, correspAction+, correspContext+"> 
+<!ENTITY % tei_att.locatable.attribute.where '
+where CDATA  #IMPLIED'>
+<!ENTITY % tei_att.locatable.attributes '
+ %tei_att.locatable.attribute.where;'> 
+<!ENTITY % model.correspActionPart "%model.dateLike; |%model.addressLike; |%model.nameLike; |note |noteGrp"> 
+<!ENTITY % model.correspActionPart_sequence "%model.dateLike;, %model.addressLike;, %model.nameLike;, note, noteGrp"> 
+<!ENTITY % model.correspActionPart_sequenceOptional "%model.dateLike;?, %model.addressLike;?, %model.nameLike;?, note?, noteGrp?"> 
+<!ENTITY % model.correspActionPart_sequenceOptionalRepeatable "%model.dateLike;*, %model.addressLike;*, %model.nameLike;*, note*, noteGrp*"> 
+<!ENTITY % model.correspActionPart_sequenceRepeatable "%model.dateLike;+, %model.addressLike;+, %model.nameLike;+, note+, noteGrp+"> 
+<!ENTITY % model.correspContextPart "%model.ptrLike; |%model.pLike; |note |noteGrp"> 
+<!ENTITY % model.correspContextPart_sequence "%model.ptrLike;, %model.pLike;, note, noteGrp"> 
+<!ENTITY % model.correspContextPart_sequenceOptional "%model.ptrLike;?, %model.pLike;?, note?, noteGrp?"> 
+<!ENTITY % model.correspContextPart_sequenceOptionalRepeatable "%model.ptrLike;*, %model.pLike;*, note*, noteGrp*"> 
+<!ENTITY % model.correspContextPart_sequenceRepeatable "%model.ptrLike;+, %model.pLike;+, note+, noteGrp+"> 
+<!ENTITY % model.correspDescPart "note |noteGrp |correspAction |correspContext"> 
+<!ENTITY % model.correspDescPart_sequence "note, noteGrp, correspAction, correspContext"> 
+<!ENTITY % model.correspDescPart_sequenceOptional "note?, noteGrp?, correspAction?, correspContext?"> 
+<!ENTITY % model.correspDescPart_sequenceOptionalRepeatable "note*, noteGrp*, correspAction*, correspContext*"> 
+<!ENTITY % model.correspDescPart_sequenceRepeatable "note+, noteGrp+, correspAction+, correspContext+"> 
 <!ENTITY % model.resource "text |facsimile |sourceDoc |standOff |fsdDecl"> 
 <!ENTITY % model.resource_sequence "text, facsimile, sourceDoc, standOff, fsdDecl"> 
 <!ENTITY % model.resource_sequenceOptional "text?, facsimile?, sourceDoc?, standOff?, fsdDecl?"> 
@@ -1120,6 +1135,10 @@ dur-iso %teidata.duration.iso;  #IMPLIED'>
 unit %teidata.enumerated;  #REQUIRED'>
 <!ENTITY % tei_att.milestoneUnit.attributes '
  %tei_att.milestoneUnit.attribute.unit;'> 
+<!ENTITY % tei_att.citeStructurePart.attribute.use '
+use %teidata.xpath;  #REQUIRED'>
+<!ENTITY % tei_att.citeStructurePart.attributes '
+ %tei_att.citeStructurePart.attribute.use;'> 
 <!ENTITY % tei_att.patternReplacement.attribute.matchPattern '
 matchPattern %teidata.pattern;  #REQUIRED'>
 
@@ -1215,11 +1234,11 @@ datingMethod %teidata.pointer;  #IMPLIED'>
  %tei_att.datable.custom.attribute.to-custom;
  %tei_att.datable.custom.attribute.datingPoint;
  %tei_att.datable.custom.attribute.datingMethod;'> 
-<!ENTITY % model.persNamePart "surname |forename |genName |nameLink |addName |roleName"> 
-<!ENTITY % model.persNamePart_sequence "surname, forename, genName, nameLink, addName, roleName"> 
-<!ENTITY % model.persNamePart_sequenceOptional "surname?, forename?, genName?, nameLink?, addName?, roleName?"> 
-<!ENTITY % model.persNamePart_sequenceOptionalRepeatable "surname*, forename*, genName*, nameLink*, addName*, roleName*"> 
-<!ENTITY % model.persNamePart_sequenceRepeatable "surname+, forename+, genName+, nameLink+, addName+, roleName+"> 
+<!ENTITY % model.persNamePart "surname |forename |genName |nameLink |addName |roleName |persPronouns"> 
+<!ENTITY % model.persNamePart_sequence "surname, forename, genName, nameLink, addName, roleName, persPronouns"> 
+<!ENTITY % model.persNamePart_sequenceOptional "surname?, forename?, genName?, nameLink?, addName?, roleName?, persPronouns?"> 
+<!ENTITY % model.persNamePart_sequenceOptionalRepeatable "surname*, forename*, genName*, nameLink*, addName*, roleName*, persPronouns*"> 
+<!ENTITY % model.persNamePart_sequenceRepeatable "surname+, forename+, genName+, nameLink+, addName+, roleName+, persPronouns+"> 
 <!ENTITY % tei_att.datable.iso.attribute.when-iso '
 when-iso %teidata.temporal.iso;  #IMPLIED'>
 
@@ -1358,7 +1377,7 @@ version %teidata.version;  #IMPLIED >
  %tei_att.declaring.attributes;
  %tei_att.fragmentable.attributes;
  %tei_att.written.attributes; >
-<!--doc:(abbreviation) contains an abbreviation of any sort. [3.5.5. Abbreviations and Their Expansions] -->
+<!--doc:(abbreviation) contains an abbreviation of any sort. [3.6.5. Abbreviations and Their Expansions] -->
 <!ELEMENT abbr %macro.phraseSeq;>
 <!ATTLIST abbr xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST abbr
@@ -1370,12 +1389,12 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST abstract xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST abstract
  %tei_att.global.attributes; >
-<!--doc:contains a brief informal description of what a participant in a language interaction is doing other than speaking, if anything. [15.2.3. The Setting Description] -->
+<!--doc:(activity) contains a brief informal description of what a participant in a language interaction is doing other than speaking, if anything. [15.2.3. The Setting Description] -->
 <!ELEMENT activity %macro.phraseSeq.limited;>
 <!ATTLIST activity xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST activity
  %tei_att.global.attributes; >
-<!--doc:(addition) contains letters, words, or phrases inserted in the source text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions] -->
+<!--doc:(addition) contains letters, words, or phrases inserted in the source text by an author, scribe, or a previous annotator or corrector. [3.5.3. Additions, Deletions, and Omissions] -->
 <!ELEMENT add %macro.paraContent;>
 <!ATTLIST add xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST add
@@ -1401,17 +1420,17 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.spanning.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:(address line) contains one line of a postal address. [3.5.2. Addresses 2.2.4. Publication, Distribution, Licensing, etc. 3.11.2.4. Imprint, Size of a Document, and Reprint Information] -->
+<!--doc:(address line) contains one line of a postal address. [3.6.2. Addresses 2.2.4. Publication, Distribution, Licensing, etc. 3.12.2.4. Imprint, Size of a Document, and Reprint Information] -->
 <!ELEMENT addrLine %macro.phraseSeq;>
 <!ATTLIST addrLine xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST addrLine
  %tei_att.global.attributes; >
-<!--doc:contains a postal address, for example of a publisher, an organization, or an individual. [3.5.2. Addresses 2.2.4. Publication, Distribution, Licensing, etc. 3.11.2.4. Imprint, Size of a Document, and Reprint Information] -->
+<!--doc:(address) contains a postal address, for example of a publisher, an organization, or an individual. [3.6.2. Addresses 2.2.4. Publication, Distribution, Licensing, etc. 3.12.2.4. Imprint, Size of a Document, and Reprint Information] -->
 <!ELEMENT address (((%model.global;)*,((%model.addrPart;),(%model.global;)*)+))>
 <!ATTLIST address xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST address
  %tei_att.global.attributes; >
-<!--doc:contains an informal description of a person's present or past affiliation with some organization, for example an employer or sponsor. [15.2.2. The Participant Description] -->
+<!--doc:(affiliation) contains an informal description of a person's present or past affiliation with some organization, for example an employer or sponsor. [15.2.2. The Participant Description] -->
 <!ELEMENT affiliation %macro.phraseSeq;>
 <!ATTLIST affiliation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST affiliation
@@ -1421,7 +1440,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:specifies the age of a person. [13.3.2.1. Personal Characteristics] -->
+<!--doc:(age) specifies the age of a person. [13.3.2.1. Personal Characteristics] -->
 <!ELEMENT age %macro.phraseSeq.limited;>
 <!ATTLIST age xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST age
@@ -1444,13 +1463,13 @@ target CDATA  #IMPLIED
 mode (excl|incl) #IMPLIED
 weights CDATA  #IMPLIED >
 <!--doc:(alternation group) groups a collection of alt elements and possibly pointers. [16.8. Alternation] -->
-<!ELEMENT altGrp (alt|ptr)*>
+<!ELEMENT altGrp (((%model.descLike;)*,(alt|ptr)*))>
 <!ATTLIST altGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST altGrp
  %tei_att.global.attributes;
  %tei_att.pointing.group.attributes;
 mode (excl|incl) "excl"  >
-<!--doc:(analytic level) contains bibliographic elements describing an item (e.g. an article or poem) published within a monograph or journal and not as an independent publication. [3.11.2.1. Analytic, Monographic, and Series Levels] -->
+<!--doc:(analytic level) contains bibliographic elements describing an item (e.g. an article or poem) published within a monograph or journal and not as an independent publication. [3.12.2.1. Analytic, Monographic, and Series Levels] -->
 <!ELEMENT analytic (author|editor|respStmt|title|%model.ptrLike;|date|textLang|idno|availability)*>
 <!ATTLIST analytic xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST analytic
@@ -1512,19 +1531,20 @@ motivation NMTOKENS  #IMPLIED >
  %tei_att.datable.attributes;
 ident %teidata.name;  #REQUIRED
 version %teidata.versionNumber;  #REQUIRED >
-<!--doc:in a bibliographic reference, contains the name(s) of an author, personal or corporate, of a work; for example in the same form as that provided by a recognized bibliographic name authority. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement] -->
+<!--doc:(author) in a bibliographic reference, contains the name(s) of an author, personal or corporate, of a work; for example in the same form as that provided by a recognized bibliographic name authority. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement] -->
 <!ELEMENT author %macro.phraseSeq;>
 <!ATTLIST author xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST author
  %tei_att.global.attributes;
- %tei_att.naming.attributes; >
+ %tei_att.naming.attributes;
+ %tei_att.datable.attributes; >
 <!--doc:(release authority) supplies the name of a person or other agency responsible for making a work available, other than a publisher or distributor. [2.2.4. Publication, Distribution, Licensing, etc.] -->
 <!ELEMENT authority %macro.phraseSeq.limited;>
 <!ATTLIST authority xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST authority
  %tei_att.global.attributes;
  %tei_att.canonical.attributes; >
-<!--doc:supplies information about the availability of a text, for example any restrictions on its use or distribution, its copyright status, any licence applying to it, etc. [2.2.4. Publication, Distribution, Licensing, etc.] -->
+<!--doc:(availability) supplies information about the availability of a text, for example any restrictions on its use or distribution, its copyright status, any licence applying to it, etc. [2.2.4. Publication, Distribution, Licensing, etc.] -->
 <!ELEMENT availability (%model.availabilityPart;|%model.pLike;)+>
 <!ATTLIST availability xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST availability
@@ -1537,7 +1557,7 @@ status (free|unknown|restricted) #IMPLIED >
 <!ATTLIST back
  %tei_att.global.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:(bibliographic citation) contains a loosely-structured bibliographic citation of which the sub-components may or may not be explicitly tagged. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
+<!--doc:(bibliographic citation) contains a loosely-structured bibliographic citation of which the sub-components may or may not be explicitly tagged. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
 <!ELEMENT bibl (#PCDATA|%model.gLike;|%model.highlighted;|%model.pPart.data;|%model.pPart.edit;|%model.segLike;|%model.ptrLike;|%model.biblPart;|%model.global;)*>
 <!ATTLIST bibl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST bibl
@@ -1546,7 +1566,7 @@ status (free|unknown|restricted) #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.sortable.attributes;
  %tei_att.docStatus.attributes; >
-<!--doc:(fully-structured bibliographic citation) contains a fully-structured bibliographic citation, in which all components of the TEI file description are present. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2. The File Description 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
+<!--doc:(fully-structured bibliographic citation) contains a fully-structured bibliographic citation, in which all components of the TEI file description are present. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2. The File Description 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
 <!ELEMENT biblFull (((titleStmt,(editionStmt)?,(extent)?,publicationStmt,(seriesStmt)*,(notesStmt)?),(sourceDesc)*)|(fileDesc,profileDesc))>
 <!ATTLIST biblFull xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST biblFull
@@ -1554,13 +1574,13 @@ status (free|unknown|restricted) #IMPLIED >
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes;
  %tei_att.docStatus.attributes; >
-<!--doc:(scope of bibliographic reference) defines the scope of a bibliographic reference, for example as a list of page numbers, or a named subdivision of a larger work. [3.11.2.5. Scopes and Ranges in Bibliographic Citations] -->
+<!--doc:(scope of bibliographic reference) defines the scope of a bibliographic reference, for example as a list of page numbers, or a named subdivision of a larger work. [3.12.2.5. Scopes and Ranges in Bibliographic Citations] -->
 <!ELEMENT biblScope %macro.phraseSeq;>
 <!ATTLIST biblScope xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST biblScope
  %tei_att.global.attributes;
  %tei_att.citing.attributes; >
-<!--doc:(structured bibliographic citation) contains a structured bibliographic citation, in which only bibliographic sub-elements appear and in a specified order. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
+<!--doc:(structured bibliographic citation) contains a structured bibliographic citation, in which only bibliographic sub-elements appear and in a specified order. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
 <!ELEMENT biblStruct (((analytic)*,(monogr,(series)*)+,(%model.noteLike;|%model.ptrLike;|relatedItem|citedRange)*))>
 <!ATTLIST biblStruct xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST biblStruct
@@ -1577,7 +1597,7 @@ Feature Value] -->
  %tei_att.global.attributes;
  %tei_att.datcat.attributes;
 value %teidata.truthValue;  #REQUIRED >
-<!--doc:contains information about a person's birth, such as its date and place. [15.2.2. The Participant Description] -->
+<!--doc:(birth) contains information about a person's birth, such as its date and place. [15.2.2. The Participant Description] -->
 <!ELEMENT birth %macro.phraseSeq;>
 <!ATTLIST birth xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST birth
@@ -1588,7 +1608,7 @@ value %teidata.truthValue;  #REQUIRED >
  %tei_att.naming.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:contains the name of a geo-political unit consisting of two or more nation states or countries. [13.2.3. Place Names] -->
+<!--doc:(bloc) contains the name of a geo-political unit consisting of two or more nation states or countries. [13.2.3. Place Names] -->
 <!ELEMENT bloc %macro.phraseSeq;>
 <!ATTLIST bloc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST bloc
@@ -1602,13 +1622,13 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST body
  %tei_att.global.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:describes a broadcast used as the source of a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
+<!--doc:(broadcast) describes a broadcast used as the source of a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
 <!ELEMENT broadcast ((%model.pLike;)+|%model.biblLike;|recording)>
 <!ATTLIST broadcast xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST broadcast
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:contains the primary statement of responsibility given for a work on its title page or at the head or end of the work. [4.2.2. Openers and Closers 4.5. Front Matter] -->
+<!--doc:(byline) contains the primary statement of responsibility given for a work on its title page or at the head or end of the work. [4.2.2. Openers and Closers 4.5. Front Matter] -->
 <!ELEMENT byline (#PCDATA|%model.gLike;|%model.phrase;|docAuthor|%model.global;)*>
 <!ATTLIST byline xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST byline
@@ -1627,7 +1647,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST cRefPattern
  %tei_att.global.attributes;
  %tei_att.patternReplacement.attributes; >
-<!--doc:describes a calendar or dating system used in a dating formula in the text. [2.4.5. Calendar Description] -->
+<!--doc:(calendar) describes a calendar or dating system used in a dating formula in the text. [2.4.5. Calendar Description] -->
 <!ELEMENT calendar (%model.pLike;)+>
 <!ATTLIST calendar xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST calendar
@@ -1651,12 +1671,12 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.pointing.attributes;
 scheme %teidata.pointer;  #IMPLIED >
-<!--doc:contains an individual descriptive category, possibly nested within a superordinate category, within a user-defined taxonomy. [2.3.7. The Classification Declaration] -->
-<!ELEMENT category ((((catDesc)+|(%model.descLike;|%model.glossLike;)*),(category)*))>
+<!--doc:(category) contains an individual descriptive category, possibly nested within a superordinate category, within a user-defined taxonomy. [2.3.7. The Classification Declaration] -->
+<!ELEMENT category ((((catDesc)+|(%model.descLike;|equiv|gloss)*),(category)*))>
 <!ATTLIST category xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST category
  %tei_att.global.attributes; >
-<!--doc:(column beginning) marks the beginning of a new column of a text on a multi-column page. [3.10.3. Milestone
+<!--doc:(column beginning) marks the beginning of a new column of a text on a multi-column page. [3.11.3. Milestone
 Elements] -->
 <!ELEMENT cb  EMPTY>
 <!ATTLIST cb xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1666,13 +1686,13 @@ Elements] -->
  %tei_att.edition.attributes;
  %tei_att.spanning.attributes;
  %tei_att.breaking.attributes; >
-<!--doc:contains one cell of a table. [14.1.1. TEI Tables] -->
+<!--doc:(cell) contains one cell of a table. [14.1.1. TEI Tables] -->
 <!ELEMENT cell %macro.specialPara;>
 <!ATTLIST cell xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST cell
  %tei_att.global.attributes;
  %tei_att.tableDecoration.attributes; >
-<!--doc:documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.6. Identifying Changes and Revisions] -->
+<!--doc:(change) documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.7. Identifying Changes and Revisions] -->
 <!ELEMENT change %macro.specialPara;>
 <!ATTLIST change xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST change
@@ -1709,7 +1729,7 @@ mode (s|w|sw|ws|m|x) "x"  >
 <!ATTLIST charProp
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
-<!--doc:groups a number of alternative encodings for the same point in a text. [3.4. Simple Editorial Changes] -->
+<!--doc:(choice) groups a number of alternative encodings for the same point in a text. [3.5. Simple Editorial Changes] -->
 <!ELEMENT choice (%model.choicePart;|choice)+>
 <!ATTLIST choice xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST choice
@@ -1720,7 +1740,23 @@ mode (s|w|sw|ws|m|x) "x"  >
 <!ATTLIST cit
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
-<!--doc:(cited range) defines the range of cited content, often represented by pages or other units [3.11.2.5. Scopes and Ranges in Bibliographic Citations] -->
+<!--doc:(citation data) specifies how information may be extracted from citation structures. [3.11.4. Declaring Reference Systems 16.2.5.4. Citation Structures] -->
+<!ELEMENT citeData  EMPTY>
+<!ATTLIST citeData xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST citeData
+ %tei_att.global.attributes;
+ %tei_att.citeStructurePart.attributes;
+property CDATA #REQUIRED >
+<!--doc:(citation structure) declares a structure and method for citing the current document. [3.11.4. Declaring Reference Systems 16.2.5.4. Citation Structures] -->
+<!ELEMENT citeStructure (((citeData)*,(citeStructure)*,(%model.descLike;)*))>
+<!ATTLIST citeStructure xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST citeStructure
+ %tei_att.global.attributes;
+ %tei_att.citeStructurePart.attributes;
+delim CDATA #IMPLIED
+match %teidata.xpath;  #REQUIRED
+unit %teidata.enumerated;  #IMPLIED >
+<!--doc:(cited range) defines the range of cited content, often represented by pages or other units [3.12.2.5. Scopes and Ranges in Bibliographic Citations] -->
 <!ELEMENT citedRange %macro.phraseSeq;>
 <!ATTLIST citedRange xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST citedRange
@@ -1746,7 +1782,7 @@ scheme %teidata.pointer;  #REQUIRED >
 <!ATTLIST classDecl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST classDecl
  %tei_att.global.attributes; >
-<!--doc:contains information about the physical climate of a place. [13.3.4.3. States, Traits, and Events] -->
+<!--doc:(climate) contains information about the physical climate of a place. [13.3.4.3. States, Traits, and Events] -->
 <!ELEMENT climate (((precision)*,(%model.headLike;)*,((%model.pLike;)+|(%model.labelLike;)+),(%model.noteLike;|%model.biblLike;)*,(climate)*))>
 <!ATTLIST climate xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST climate
@@ -1755,19 +1791,19 @@ scheme %teidata.pointer;  #REQUIRED >
  %tei_att.editLike.attributes;
  %tei_att.naming.attributes;
  %tei_att.typed.attributes; >
-<!--doc:groups together salutations, datelines, and similar phrases appearing as a final group at the end of a division, especially of a letter. [4.2.2. Openers and Closers 4.2. Elements Common to All Divisions] -->
+<!--doc:(closer) groups together salutations, datelines, and similar phrases appearing as a final group at the end of a division, especially of a letter. [4.2.2. Openers and Closers 4.2. Elements Common to All Divisions] -->
 <!ELEMENT closer (#PCDATA|%model.gLike;|signed|dateline|salute|%model.phrase;|%model.global;)*>
 <!ATTLIST closer xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST closer
  %tei_att.global.attributes;
  %tei_att.written.attributes; >
-<!--doc:describes the internal composition of a text or text sample, for example as fragmentary, complete, etc. [15.2.1. The Text Description] -->
+<!--doc:(constitution) describes the internal composition of a text or text sample, for example as fragmentary, complete, etc. [15.2.1. The Text Description] -->
 <!ELEMENT constitution %macro.phraseSeq.limited;>
 <!ATTLIST constitution xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST constitution
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
-type %teidata.enumerated;  "single"  >
+type (single|composite|frags|unknown) "single"  >
 <!--doc:defines how to calculate one unit of measure in terms of another. [2.3.9. The Unit Declaration] -->
 <!ELEMENT conversion  EMPTY>
 <!ATTLIST conversion xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1775,9 +1811,10 @@ type %teidata.enumerated;  "single"  >
  %tei_att.global.attributes;
  %tei_att.datable.attributes;
  %tei_att.formula.attributes;
+ %tei_att.locatable.attributes;
 fromUnit %teidata.pointer;  #REQUIRED
 toUnit %teidata.pointer;  #REQUIRED >
-<!--doc:(correction) contains the correct form of a passage apparently erroneous in the copy text. [3.4.1. Apparent Errors] -->
+<!--doc:(correction) contains the correct form of a passage apparently erroneous in the copy text. [3.5.1. Apparent Errors] -->
 <!ELEMENT corr %macro.paraContent;>
 <!ATTLIST corr xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST corr
@@ -1814,7 +1851,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.canonical.attributes;
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains the name of a geo-political unit, such as a nation, country, colony, or commonwealth, larger than or administratively superior to a region and smaller than a bloc. [13.2.3. Place Names] -->
+<!--doc:(country) contains the name of a geo-political unit, such as a nation, country, colony, or commonwealth, larger than or administratively superior to a region and smaller than a bloc. [13.2.3. Place Names] -->
 <!ELEMENT country %macro.phraseSeq;>
 <!ATTLIST country xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST country
@@ -1822,13 +1859,13 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.datable.attributes; >
-<!--doc:contains information about the creation of a text. [2.4.1. Creation 2.4. The Profile Description] -->
+<!--doc:(creation) contains information about the creation of a text. [2.4.1. Creation 2.4. The Profile Description] -->
 <!ELEMENT creation (#PCDATA|%model.limitedPhrase;|listChange)*>
 <!ATTLIST creation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST creation
  %tei_att.global.attributes;
  %tei_att.datable.attributes; >
-<!--doc:contains an area of damage to the text witness. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
+<!--doc:(damage) contains an area of damage to the text witness. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
 <!ELEMENT damage %macro.paraContent;>
 <!ATTLIST damage xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST damage
@@ -1843,7 +1880,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.damaged.attributes;
  %tei_att.typed.attributes;
  %tei_att.spanning.attributes; >
-<!--doc:contains a date in any format. [3.5.4. Dates and Times 2.2.4. Publication, Distribution, Licensing, etc. 2.6. The Revision Description 3.11.2.4. Imprint, Size of a Document, and Reprint Information 15.2.3. The Setting Description 13.3.7. Dates and Times] -->
+<!--doc:(date) contains a date in any format. [3.6.4. Dates and Times 2.2.4. Publication, Distribution, Licensing, etc. 2.6. The Revision Description 3.12.2.4. Imprint, Size of a Document, and Reprint Information 15.2.3. The Setting Description 13.4. Dates] -->
 <!ELEMENT date (#PCDATA|%model.gLike;|%model.phrase;|%model.global;)*>
 <!ATTLIST date xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST date
@@ -1854,12 +1891,12 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.editLike.attributes;
  %tei_att.dimensions.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains a brief description of the place, date, time, etc. of production of a letter, newspaper story, or other work, prefixed or suffixed to it as a kind of heading or trailer. [4.2.2. Openers and Closers] -->
+<!--doc:(dateline) contains a brief description of the place, date, time, etc. of production of a letter, newspaper story, or other work, prefixed or suffixed to it as a kind of heading or trailer. [4.2.2. Openers and Closers] -->
 <!ELEMENT dateline (#PCDATA|%model.gLike;|%model.phrase;|%model.global;|docDate)*>
 <!ATTLIST dateline xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST dateline
  %tei_att.global.attributes; >
-<!--doc:contains information about a person's death, such as its date and place. [15.2.2. The Participant Description] -->
+<!--doc:(death) contains information about a person's death, such as its date and place. [15.2.2. The Participant Description] -->
 <!ELEMENT death %macro.phraseSeq;>
 <!ATTLIST death xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST death
@@ -1875,7 +1912,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST default xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST default
  %tei_att.global.attributes; >
-<!--doc:(deletion) contains a letter, word, or passage deleted, marked as deleted, or otherwise indicated as superfluous or spurious in the copy text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions] -->
+<!--doc:(deletion) contains a letter, word, or passage deleted, marked as deleted, or otherwise indicated as superfluous or spurious in the copy text by an author, scribe, or a previous annotator or corrector. [3.5.3. Additions, Deletions, and Omissions] -->
 <!ELEMENT del %macro.paraContent;>
 <!ATTLIST del xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST del
@@ -1892,19 +1929,18 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.spanning.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:describes the nature and extent of originality of this text. [15.2.1. The Text Description] -->
+<!--doc:(derivation) describes the nature and extent of originality of this text. [15.2.1. The Text Description] -->
 <!ELEMENT derivation %macro.phraseSeq.limited;>
 <!ATTLIST derivation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST derivation
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:(description) contains a brief description of the object documented by its parent element, typically a documentation element or an entity. [22.4.1. Description of Components] -->
+<!--doc:(description) contains a short description of the purpose, function, or use of its parent element, or when the parent is a documentation element, describes or defines the object being documented.  [22.4.1. Description of Components] -->
 <!ELEMENT desc %macro.limitedContent;>
 <!ATTLIST desc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST desc
  %tei_att.global.attributes;
- %tei_att.translatable.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
 <!--doc:identifies any word or phrase which is regarded as linguistically distinct, for example as archaic, technical, dialectal, non-preferred, etc., or as forming part of a sublanguage. [3.3.2.3. Other Linguistically Distinct Material] -->
@@ -1917,13 +1953,13 @@ type %teidata.enumerated;  #IMPLIED
 time %teidata.text;  #IMPLIED
 space %teidata.text;  #IMPLIED
 social %teidata.text;  #IMPLIED >
-<!--doc:supplies the name of a person or other agency responsible for the distribution of a text. [2.2.4. Publication, Distribution, Licensing, etc.] -->
+<!--doc:(distributor) supplies the name of a person or other agency responsible for the distribution of a text. [2.2.4. Publication, Distribution, Licensing, etc.] -->
 <!ELEMENT distributor %macro.phraseSeq;>
 <!ATTLIST distributor xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST distributor
  %tei_att.global.attributes;
  %tei_att.canonical.attributes; >
-<!--doc:contains the name of any kind of subdivision of a settlement, such as a parish, ward, or other administrative or geographic unit. [13.2.3. Place Names] -->
+<!--doc:(district) contains the name of any kind of subdivision of a settlement, such as a parish, ward, or other administrative or geographic unit. [13.2.3. Place Names] -->
 <!ELEMENT district %macro.phraseSeq;>
 <!ATTLIST district xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST district
@@ -1940,7 +1976,7 @@ social %teidata.text;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.declaring.attributes;
  %tei_att.written.attributes; >
-<!--doc:(automatically generated text division) indicates the location at which a textual division generated automatically by a text-processing application is to appear. [3.8.2. Index Entries] -->
+<!--doc:(automatically generated text division) indicates the location at which a textual division generated automatically by a text-processing application is to appear. [3.9.2. Index Entries] -->
 <!ELEMENT divGen (%model.headLike;)*>
 <!ATTLIST divGen xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST divGen
@@ -1982,7 +2018,7 @@ when %teidata.temporal.w3c;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:describes the particularities of one edition of a text. [2.2.2. The Edition Statement] -->
+<!--doc:(edition) describes the particularities of one edition of a text. [2.2.2. The Edition Statement] -->
 <!ELEMENT edition %macro.phraseSeq;>
 <!ATTLIST edition xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST edition
@@ -1992,19 +2028,20 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST editionStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST editionStmt
  %tei_att.global.attributes; >
-<!--doc:contains a secondary statement of responsibility for a bibliographic item, for example the name of an individual, institution or organization, (or of several such) acting as editor, compiler, translator, etc. [3.11.2.2. Titles, Authors, and Editors] -->
+<!--doc:contains a secondary statement of responsibility for a bibliographic item, for example the name of an individual, institution or organization, (or of several such) acting as editor, compiler, translator, etc. [3.12.2.2. Titles, Authors, and Editors] -->
 <!ELEMENT editor %macro.phraseSeq;>
 <!ATTLIST editor xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST editor
  %tei_att.global.attributes;
- %tei_att.naming.attributes; >
+ %tei_att.naming.attributes;
+ %tei_att.datable.attributes; >
 <!--doc:(editorial practice declaration) provides details of editorial principles and practices applied during the encoding of a text. [2.3.3. The Editorial Practices Declaration 2.3. The Encoding Description 15.3.2. Declarable Elements] -->
 <!ELEMENT editorialDecl (%model.pLike;|%model.editorialDeclPart;)+>
 <!ATTLIST editorialDecl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST editorialDecl
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:contains a description of the educational experience of a person. [15.2.2. The Participant Description] -->
+<!--doc:(education) contains a description of the educational experience of a person. [15.2.2. The Participant Description] -->
 <!ELEMENT education %macro.phraseSeq;>
 <!ATTLIST education xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST education
@@ -2014,7 +2051,14 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:(electronic mail address) contains an email address identifying a location to which email messages can be delivered. [3.5.2. Addresses] -->
+<!--doc:(deliberately marked omission) indicates a purposeful marking in the source document signalling that content has been omitted, and may also supply or describe the omitted content. [3.5.3. Additions, Deletions, and Omissions] -->
+<!ELEMENT ellipsis ((metamark,((%model.descLike;)?),(supplied)?))>
+<!ATTLIST ellipsis xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST ellipsis
+ %tei_att.global.attributes;
+ %tei_att.dimensions.attributes;
+ %tei_att.timed.attributes; >
+<!--doc:(electronic mail address) contains an email address identifying a location to which email messages can be delivered. [3.6.2. Addresses] -->
 <!ELEMENT email %macro.phraseSeq;>
 <!ATTLIST email xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST email
@@ -2029,13 +2073,13 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST encodingDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST encodingDesc
  %tei_att.global.attributes; >
-<!--doc:provides technical details of the equipment and media used for an audio or video recording used as the source for a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
+<!--doc:(equipment) provides technical details of the equipment and media used for an audio or video recording used as the source for a spoken text. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
 <!ELEMENT equipment (%model.pLike;)+>
 <!ATTLIST equipment xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST equipment
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:contains data relating to any kind of significant event associated with a person, place, or organization. [13.3.1. Basic Principles] -->
+<!--doc:(event) contains data relating to any kind of significant event associated with a person, place, or organization. [13.3.1. Basic Principles] -->
 <!ELEMENT event (((idno)*,(%model.headLike;)*,((%model.pLike;)+|(%model.labelLike;)+),(%model.noteLike;|%model.biblLike;|linkGrp|link|idno|ptr)*,(event)*))>
 <!ATTLIST event xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST event
@@ -2045,7 +2089,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.naming.attributes;
  %tei_att.sortable.attributes;
-where %teidata.pointer;  #IMPLIED >
+ %tei_att.locatable.attributes; >
 <!--doc:(editorial expansion) contains a sequence of letters added by an editor or transcriber when expanding an abbreviation. [11.3.1.2. Abbreviation and Expansion] -->
 <!ELEMENT ex %macro.xtext;>
 <!ATTLIST ex xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2053,13 +2097,13 @@ where %teidata.pointer;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.editLike.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:(expansion) contains the expansion of an abbreviation. [3.5.5. Abbreviations and Their Expansions] -->
+<!--doc:(expansion) contains the expansion of an abbreviation. [3.6.5. Abbreviations and Their Expansions] -->
 <!ELEMENT expan %macro.phraseSeq;>
 <!ATTLIST expan xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST expan
  %tei_att.global.attributes;
  %tei_att.editLike.attributes; >
-<!--doc:describes the approximate size of a text stored on some carrier medium or of some other object, digital or non-digital, specified in any convenient units. [2.2.3. Type and Extent of File 2.2. The File Description 3.11.2.4. Imprint, Size of a Document, and Reprint Information 10.7.1. Object Description] -->
+<!--doc:(extent) describes the approximate size of a text stored on some carrier medium or of some other object, digital or non-digital, specified in any convenient units. [2.2.3. Type and Extent of File 2.2. The File Description 3.12.2.4. Imprint, Size of a Document, and Reprint Information 10.7.1. Object Description] -->
 <!ELEMENT extent %macro.phraseSeq;>
 <!ATTLIST extent xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST extent
@@ -2096,14 +2140,14 @@ optional %teidata.truthValue;  "true"  >
 <!ATTLIST facsimile
  %tei_att.global.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:describes the extent to which the text may be regarded as imaginative or non-imaginative, that is, as describing a fictional or a non-fictional world. [15.2.1. The Text Description] -->
+<!--doc:(factuality) describes the extent to which the text may be regarded as imaginative or non-imaginative, that is, as describing a fictional or a non-fictional world. [15.2.1. The Text Description] -->
 <!ELEMENT factuality %macro.phraseSeq.limited;>
 <!ATTLIST factuality xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST factuality
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
-type %teidata.enumerated;  #IMPLIED >
-<!--doc:specifies the faith, religion, or belief set of a person. [13.3.2.1. Personal Characteristics] -->
+type (fiction|fact|mixed|inapplicable) #IMPLIED >
+<!--doc:(faith) specifies the faith, religion, or belief set of a person. [13.3.2.1. Personal Characteristics] -->
 <!ELEMENT faith %macro.phraseSeq;>
 <!ATTLIST faith xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST faith
@@ -2118,7 +2162,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST figDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST figDesc
  %tei_att.global.attributes; >
-<!--doc:groups elements representing or containing graphic information such as an illustration, formula, or figure. [14.4. Specific Elements for Graphic Images] -->
+<!--doc:(figure) groups elements representing or containing graphic information such as an illustration, formula, or figure. [14.4. Specific Elements for Graphic Images] -->
 <!ELEMENT figure (%model.headLike;|%model.common;|figDesc|%model.graphicLike;|%model.global;|%model.divBottom;)*>
 <!ATTLIST figure xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST figure
@@ -2131,7 +2175,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST fileDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST fileDesc
  %tei_att.global.attributes; >
-<!--doc:contains information about a person's period of activity. [13.3.2.1. Personal Characteristics] -->
+<!--doc:(floruit) contains information about a person's period of activity. [13.3.2.1. Personal Characteristics] -->
 <!ELEMENT floruit %macro.phraseSeq;>
 <!ATTLIST floruit xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST floruit
@@ -2139,19 +2183,19 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.datable.attributes;
  %tei_att.dimensions.attributes;
  %tei_att.editLike.attributes; >
-<!--doc:identifies a word or phrase as belonging to some language other than that of the surrounding text. [3.3.2.1. Foreign Words or Expressions] -->
+<!--doc:(foreign) identifies a word or phrase as belonging to some language other than that of the surrounding text. [3.3.2.1. Foreign Words or Expressions] -->
 <!ELEMENT foreign %macro.phraseSeq;>
 <!ATTLIST foreign xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST foreign
  %tei_att.global.attributes; >
-<!--doc:contains a forename, given or baptismal name. [13.2.1. Personal Names] -->
+<!--doc:(forename) contains a forename, given or baptismal name. [13.2.1. Personal Names] -->
 <!ELEMENT forename %macro.phraseSeq;>
 <!ATTLIST forename xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST forename
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains a mathematical or other formula. [14.2. Formulæ and Mathematical Expressions] -->
+<!--doc:(formula) contains a mathematical or other formula. [14.2. Formulæ and Mathematical Expressions] -->
 <!ELEMENT formula (#PCDATA|%model.graphicLike;|%model.hiLike;)*>
 <!ATTLIST formula xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST formula
@@ -2194,13 +2238,14 @@ baseTypes NMTOKENS  #IMPLIED >
 <!ATTLIST funder xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST funder
  %tei_att.global.attributes;
- %tei_att.canonical.attributes; >
+ %tei_att.canonical.attributes;
+ %tei_att.datable.attributes; >
 <!--doc:(feature-value library) assembles a library of reusable feature value elements (including complete feature structures). [18.4. Feature Libraries and Feature-Value Libraries] -->
 <!ELEMENT fvLib (%model.featureVal;)*>
 <!ATTLIST fvLib xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST fvLib
  %tei_att.global.attributes; >
-<!--doc:(forme work) contains a running head (e.g. a header, footer), catchword, or similar material appearing on the current page. [11.5. Headers, Footers, and Similar Matter] -->
+<!--doc:(forme work) contains a running head (e.g. a header, footer), catchword, or similar material appearing on the current page. [11.6. Headers, Footers, and Similar Matter] -->
 <!ELEMENT fw %macro.phraseSeq;>
 <!ATTLIST fw xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST fw
@@ -2216,7 +2261,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
 ref %teidata.pointer;  #IMPLIED >
-<!--doc:indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible. [3.4.3. Additions, Deletions, and Omissions] -->
+<!--doc:(gap) indicates a point where material has been omitted in a transcription, whether for editorial reasons described in the TEI header, as part of sampling practice, or because the material is illegible, invisible, or inaudible. [3.5.3. Additions, Deletions, and Omissions] -->
 <!ELEMENT gap (%model.descLike;|_DUMMY_model.certLike)*>
 <!ATTLIST gap xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST gap
@@ -2265,13 +2310,12 @@ datum %teidata.enumerated;  "WGS84"  >
  %tei_att.global.attributes;
  %tei_att.naming.attributes;
  %tei_att.typed.attributes; >
-<!--doc:identifies a phrase or word used to provide a gloss or definition for some other word or phrase. [3.3.4. Terms, Glosses, Equivalents, and Descriptions 22.4.1. Description of Components] -->
+<!--doc:(gloss) identifies a phrase or word used to provide a gloss or definition for some other word or phrase. [3.4.1. Terms and Glosses 22.4.1. Description of Components] -->
 <!ELEMENT gloss %macro.phraseSeq;>
 <!ATTLIST gloss xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST gloss
  %tei_att.global.attributes;
  %tei_att.declaring.attributes;
- %tei_att.translatable.attributes;
  %tei_att.typed.attributes;
  %tei_att.pointing.attributes;
  %tei_att.cReferencing.attributes; >
@@ -2285,7 +2329,7 @@ datum %teidata.enumerated;  "WGS84"  >
 <!ATTLIST glyphName xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST glyphName
  %tei_att.global.attributes; >
-<!--doc:indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it. [3.9. Graphics and Other Non-textual Components 11.1. Digital Facsimiles] -->
+<!--doc:(graphic) indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it. [3.10. Graphics and Other Non-textual Components 11.1. Digital Facsimiles] -->
 <!ELEMENT graphic (%model.descLike;)*>
 <!ATTLIST graphic xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST graphic
@@ -2293,7 +2337,7 @@ datum %teidata.enumerated;  "WGS84"  >
  %tei_att.media.attributes;
  %tei_att.resourced.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:contains the body of a composite text, grouping together a sequence of distinct texts (or groups of such texts) which are regarded as a unit for some purpose, for example the collected works of an author, a sequence of prose essays, etc. [4. Default Text Structure 4.3.1. Grouped Texts 15.1. Varieties of Composite Text] -->
+<!--doc:(group) contains the body of a composite text, grouping together a sequence of distinct texts (or groups of such texts) which are regarded as a unit for some purpose, for example the collected works of an author, a sequence of prose essays, etc. [4. Default Text Structure 4.3.1. Grouped Texts 15.1. Varieties of Composite Text] -->
 <!ELEMENT group (((%model.divTop;|%model.global;)*,((text|group),(text|group|%model.global;)*),(%model.divBottom;)*))>
 <!ATTLIST group xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST group
@@ -2305,7 +2349,7 @@ datum %teidata.enumerated;  "WGS84"  >
 <!ATTLIST handNotes xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST handNotes
  %tei_att.global.attributes; >
-<!--doc:marks the beginning of a sequence of text written in a new hand, or the beginning of a scribal stint. [11.3.2.1. Document Hands] -->
+<!--doc:(handwriting shift) marks the beginning of a sequence of text written in a new hand, or the beginning of a scribal stint. [11.3.2.1. Document Hands] -->
 <!ELEMENT handShift  EMPTY>
 <!ATTLIST handShift xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST handShift
@@ -2320,12 +2364,12 @@ new %teidata.pointer;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.placement.attributes;
  %tei_att.written.attributes; >
-<!--doc:(heading for list items) contains the heading for the item or gloss column in a glossary list or similar structured list. [3.7. Lists] -->
+<!--doc:(heading for list items) contains the heading for the item or gloss column in a glossary list or similar structured list. [3.8. Lists] -->
 <!ELEMENT headItem %macro.phraseSeq;>
 <!ATTLIST headItem xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST headItem
  %tei_att.global.attributes; >
-<!--doc:(heading for list labels) contains the heading for the label or term column in a glossary list or similar structured list. [3.7. Lists] -->
+<!--doc:(heading for list labels) contains the heading for the label or term column in a glossary list or similar structured list. [3.8. Lists] -->
 <!ELEMENT headLabel %macro.phraseSeq;>
 <!ATTLIST headLabel xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST headLabel
@@ -2336,14 +2380,14 @@ new %teidata.pointer;  #IMPLIED >
 <!ATTLIST hi
  %tei_att.global.attributes;
  %tei_att.written.attributes; >
-<!--doc:summarizes the way in which hyphenation in a source text has been treated in an encoded version of it. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
+<!--doc:(hyphenation) summarizes the way in which hyphenation in a source text has been treated in an encoded version of it. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
 <!ELEMENT hyphenation (%model.pLike;)+>
 <!ATTLIST hyphenation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST hyphenation
  %tei_att.global.attributes;
  %tei_att.declarable.attributes;
 eol (all|some|hard|none) "some"  >
-<!--doc:(identifier) supplies any form of identifier used to identify some object, such as a bibliographic item, a person, a title, an organization, etc. in a standardized way. [13.3.1. Basic Principles 2.2.4. Publication, Distribution, Licensing, etc. 2.2.5. The Series Statement 3.11.2.4. Imprint, Size of a Document, and Reprint Information] -->
+<!--doc:(identifier) supplies any form of identifier used to identify some object, such as a bibliographic item, a person, a title, an organization, etc. in a standardized way. [13.3.1. Basic Principles 2.2.4. Publication, Distribution, Licensing, etc. 2.2.5. The Series Statement 3.12.2.4. Imprint, Size of a Document, and Reprint Information] -->
 <!ELEMENT idno (#PCDATA|%model.gLike;|idno)*>
 <!ATTLIST idno xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST idno
@@ -2352,17 +2396,17 @@ eol (all|some|hard|none) "some"  >
  %tei_att.datable.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso. [4.6. Title Pages] -->
+<!--doc:(imprimatur) contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso. [4.6. Title Pages] -->
 <!ELEMENT imprimatur %macro.paraContent;>
 <!ATTLIST imprimatur xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST imprimatur
  %tei_att.global.attributes; >
-<!--doc:groups information relating to the publication or distribution of a bibliographic item. [3.11.2.4. Imprint, Size of a Document, and Reprint Information] -->
+<!--doc:groups information relating to the publication or distribution of a bibliographic item. [3.12.2.4. Imprint, Size of a Document, and Reprint Information] -->
 <!ELEMENT imprint (((classCode|catRef)*,((%model.imprintPart;|%model.dateLike;),(respStmt)*,(%model.global;)*)+))>
 <!ATTLIST imprint xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST imprint
  %tei_att.global.attributes; >
-<!--doc:marks any phenomenon or occurrence, not necessarily vocalized or communicative, for example incidental noises or other events affecting communication. [8.3.3. Vocal, Kinesic, Incident] -->
+<!--doc:(incident) marks any phenomenon or occurrence, not necessarily vocalized or communicative, for example incidental noises or other events affecting communication. [8.3.3. Vocal, Kinesic, Incident] -->
 <!ELEMENT incident (%model.descLike;)*>
 <!ATTLIST incident xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST incident
@@ -2370,35 +2414,35 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.timed.attributes;
  %tei_att.typed.attributes;
  %tei_att.ascribed.attributes; >
-<!--doc:(index entry) marks a location to be indexed for whatever purpose. [3.8.2. Index Entries] -->
+<!--doc:(index entry) marks a location to be indexed for whatever purpose. [3.9.2. Index Entries] -->
 <!ELEMENT index ((term,(index)?)*)*>
 <!ATTLIST index xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST index
  %tei_att.global.attributes;
  %tei_att.spanning.attributes;
 indexName %teidata.name;  #IMPLIED >
-<!--doc:describes the extent, cardinality and nature of any interaction among those producing and experiencing the text, for example in the form of response or interjection, commentary, etc. [15.2.1. The Text Description] -->
+<!--doc:(interaction) describes the extent, cardinality and nature of any interaction among those producing and experiencing the text, for example in the form of response or interjection, commentary, etc. [15.2.1. The Text Description] -->
 <!ELEMENT interaction %macro.phraseSeq.limited;>
 <!ATTLIST interaction xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST interaction
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
-type %teidata.enumerated;  #IMPLIED
+type (none|partial|complete|inapplicable) #IMPLIED
 active %teidata.enumerated;  #IMPLIED
 passive %teidata.enumerated;  #IMPLIED >
-<!--doc:describes the scope of any analytic or interpretive information added to the text in addition to the transcription. [2.3.3. The Editorial Practices Declaration] -->
+<!--doc:(interpretation) describes the scope of any analytic or interpretive information added to the text in addition to the transcription. [2.3.3. The Editorial Practices Declaration] -->
 <!ELEMENT interpretation (%model.pLike;)+>
 <!ATTLIST interpretation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST interpretation
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:contains one component of a list. [3.7. Lists 2.6. The Revision Description] -->
+<!--doc:(item) contains one component of a list. [3.8. Lists 2.6. The Revision Description] -->
 <!ELEMENT item %macro.specialPara;>
 <!ATTLIST item xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST item
  %tei_att.global.attributes;
  %tei_att.sortable.attributes; >
-<!--doc:identifies a possibly fragmented segment of text, by pointing at the possibly discontiguous elements which compose it. [16.7. Aggregation] -->
+<!--doc:(join) identifies a possibly fragmented segment of text, by pointing at the possibly discontiguous elements which compose it. [16.7. Aggregation] -->
 <!ELEMENT join (%model.descLike;|_DUMMY_model.certLike)*>
 <!ATTLIST join xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST join
@@ -2408,19 +2452,19 @@ passive %teidata.enumerated;  #IMPLIED >
 result %teidata.name;  #IMPLIED
 scope (root|branches) "root"  >
 <!--doc:(join group) groups a collection of join elements and possibly pointers. [16.7. Aggregation] -->
-<!ELEMENT joinGrp (((%model.glossLike;)*,(join|ptr)+))>
+<!ELEMENT joinGrp (((equiv|gloss|%model.descLike;)*,(join|ptr)+))>
 <!ATTLIST joinGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST joinGrp
  %tei_att.global.attributes;
  %tei_att.pointing.group.attributes;
 result %teidata.name;  #IMPLIED >
-<!--doc:contains a list of keywords or phrases identifying the topic or nature of a text. [2.4.3. The Text Classification] -->
+<!--doc:(keywords) contains a list of keywords or phrases identifying the topic or nature of a text. [2.4.3. The Text Classification] -->
 <!ELEMENT keywords ((term)+|list)>
 <!ATTLIST keywords xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST keywords
  %tei_att.global.attributes;
 scheme %teidata.pointer;  #IMPLIED >
-<!--doc:marks any communicative phenomenon, not necessarily vocalized, for example a gesture, frown, etc. [8.3.3. Vocal, Kinesic, Incident] -->
+<!--doc:(kinesic) marks any communicative phenomenon, not necessarily vocalized, for example a gesture, frown, etc. [8.3.3. Vocal, Kinesic, Incident] -->
 <!ELEMENT kinesic (%model.descLike;)*>
 <!ATTLIST kinesic xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST kinesic
@@ -2429,13 +2473,13 @@ scheme %teidata.pointer;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.ascribed.directed.attributes;
 iterated %teidata.xTruthValue;  "false"  >
-<!--doc:(verse line) contains a single, possibly incomplete, line of verse. [3.12.1. Core Tags for Verse 3.12. Passages of Verse or Drama 7.2.5. Speech Contents] -->
+<!--doc:(verse line) contains a single, possibly incomplete, line of verse. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.5. Speech Contents] -->
 <!ELEMENT l (#PCDATA|%model.gLike;|%model.phrase;|%model.inter;|%model.global;)*>
 <!ATTLIST l xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST l
  %tei_att.global.attributes;
  %tei_att.fragmentable.attributes; >
-<!--doc:contains any label or heading used to identify part of a text, typically but not exclusively in a list or glossary. [3.7. Lists] -->
+<!--doc:(label) contains any label or heading used to identify part of a text, typically but not exclusively in a list or glossary. [3.8. Lists] -->
 <!ELEMENT label %macro.phraseSeq;>
 <!ATTLIST label xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST label
@@ -2468,14 +2512,14 @@ level %teidata.word;  #IMPLIED >
 <!ATTLIST langUsage
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:characterizes a single language or sublanguage used within a text. [2.4.2. Language Usage] -->
+<!--doc:(language) characterizes a single language or sublanguage used within a text. [2.4.2. Language Usage] -->
 <!ELEMENT language %macro.phraseSeq.limited;>
 <!ATTLIST language xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST language
  %tei_att.global.attributes;
 ident %teidata.language;  #REQUIRED
 usage CDATA #IMPLIED >
-<!--doc:(line beginning) marks the beginning of a new (typographic) line in some edition or version of a text. [3.10.3. Milestone
+<!--doc:(line beginning) marks the beginning of a new (typographic) line in some edition or version of a text. [3.11.3. Milestone
 Elements 7.2.5. Speech Contents] -->
 <!ELEMENT lb  EMPTY>
 <!ATTLIST lb xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2485,7 +2529,7 @@ Elements 7.2.5. Speech Contents] -->
  %tei_att.edition.attributes;
  %tei_att.spanning.attributes;
  %tei_att.breaking.attributes; >
-<!--doc:(line group) contains one or more verse lines functioning as a formal unit, e.g. a stanza, refrain, verse paragraph, etc. [3.12.1. Core Tags for Verse 3.12. Passages of Verse or Drama 7.2.5. Speech Contents] -->
+<!--doc:(line group) contains one or more verse lines functioning as a formal unit, e.g. a stanza, refrain, verse paragraph, etc. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.5. Speech Contents] -->
 <!ELEMENT lg (((%model.divTop;|%model.global;)*,(%model.lLike;|%model.stageLike;|%model.labelLike;|lg),(%model.lLike;|%model.stageLike;|%model.labelLike;|%model.global;|lg)*,((%model.divBottom;),(%model.global;)*)*))>
 <!ATTLIST lg xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST lg
@@ -2508,7 +2552,7 @@ Elements 7.2.5. Speech Contents] -->
  %tei_att.global.attributes;
  %tei_att.coordinated.attributes;
  %tei_att.written.attributes; >
-<!--doc:defines an association or hypertextual link among elements or passages, of some type not more precisely specifiable by other elements. [16.1. Links] -->
+<!--doc:(link) defines an association or hypertextual link among elements or passages, of some type not more precisely specifiable by other elements. [16.1. Links] -->
 <!ELEMENT link  EMPTY>
 <!ATTLIST link xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST link
@@ -2516,12 +2560,12 @@ Elements 7.2.5. Speech Contents] -->
  %tei_att.pointing.attributes;
  %tei_att.typed.attributes; >
 <!--doc:(link group) defines a collection of associations or hypertextual links. [16.1. Links] -->
-<!ELEMENT linkGrp (link|ptr)+>
+<!ELEMENT linkGrp (((%model.descLike;)*,(link|ptr)+))>
 <!ATTLIST linkGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST linkGrp
  %tei_att.global.attributes;
  %tei_att.pointing.group.attributes; >
-<!--doc:contains any sequence of items organized as a list. [3.7. Lists] -->
+<!--doc:(list) contains any sequence of items organized as a list. [3.8. Lists] -->
 <!ELEMENT list (((%model.divTop;|%model.global;|(desc)*)*,((item,(%model.global;)*)+|((headLabel)?,(headItem)?,(label,(%model.global;)*,item,(%model.global;)*)+)),((%model.divBottom;),(%model.global;)*)*))>
 <!ATTLIST list xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST list
@@ -2537,15 +2581,15 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.notated.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:(citation list) contains a list of bibliographic citations of any kind. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
-<!ELEMENT listBibl (((%model.headLike;)*,(desc)*,(%model.biblLike;|%model.milestoneLike;)+,(relation|listRelation)*))>
+<!--doc:(citation list) contains a list of bibliographic citations of any kind. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements] -->
+<!ELEMENT listBibl (((%model.headLike;)*,(desc)*,(%model.milestoneLike;|relation|listRelation)*,((%model.biblLike;)+,(%model.milestoneLike;|relation|listRelation)*)+))>
 <!ATTLIST listBibl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listBibl
  %tei_att.global.attributes;
  %tei_att.sortable.attributes;
  %tei_att.declarable.attributes;
  %tei_att.typed.attributes; >
-<!--doc:groups a number of change descriptions associated with either the creation of a source text or the revision of an encoded text. [2.6. The Revision Description 11.6. Identifying Changes and Revisions] -->
+<!--doc:groups a number of change descriptions associated with either the creation of a source text or the revision of an encoded text. [2.6. The Revision Description 11.7. Identifying Changes and Revisions] -->
 <!ELEMENT listChange (((desc)*,(listChange|change)+))>
 <!ATTLIST listChange xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listChange
@@ -2554,7 +2598,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
 ordered %teidata.truthValue;  "true"  >
 <!--doc:(list of events) contains a list of descriptions, each of which provides information about an identifiable event. [13.3.1. Basic Principles] -->
-<!ELEMENT listEvent (((%model.headLike;)*,(desc)*,(%model.eventLike;)+,(relation|listRelation)*))>
+<!ELEMENT listEvent (((%model.headLike;)*,(desc)*,(relation|listRelation)*,((%model.eventLike;)+,(relation|listRelation)*)+))>
 <!ATTLIST listEvent xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listEvent
  %tei_att.global.attributes;
@@ -2562,7 +2606,7 @@ ordered %teidata.truthValue;  "true"  >
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes; >
 <!--doc:(list of canonical names) contains a list of nyms, that is, standardized names for any thing. [13.3.6. Names and Nyms] -->
-<!ELEMENT listNym (((%model.headLike;)*,(desc)*,(nym|listNym)+,(relation|listRelation)*))>
+<!ELEMENT listNym (((%model.headLike;)*,(desc)*,(relation|listRelation)*,((nym|listNym)+,(relation|listRelation)*)+))>
 <!ATTLIST listNym xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listNym
  %tei_att.global.attributes;
@@ -2570,7 +2614,7 @@ ordered %teidata.truthValue;  "true"  >
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes; >
 <!--doc:(list of objects) contains a list of descriptions, each of which provides information about an identifiable physical object. [13.3.5. Objects] -->
-<!ELEMENT listObject (((%model.headLike;)*,(desc)*,(%model.objectLike;)+,(relation|listRelation)*))>
+<!ELEMENT listObject (((%model.headLike;)*,(desc)*,(relation|listRelation)*,((%model.objectLike;)+,(relation|listRelation)*)+))>
 <!ATTLIST listObject xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listObject
  %tei_att.global.attributes;
@@ -2578,7 +2622,7 @@ ordered %teidata.truthValue;  "true"  >
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes; >
 <!--doc:(list of organizations) contains a list of elements, each of which provides information about an identifiable organization. [13.2.2. Organizational Names] -->
-<!ELEMENT listOrg (((%model.headLike;)*,(desc)*,(org|listOrg)+,(relation|listRelation)*))>
+<!ELEMENT listOrg (((%model.headLike;)*,(desc)*,(relation|listRelation)*,((org|listOrg)+,(relation|listRelation)*)+))>
 <!ATTLIST listOrg xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listOrg
  %tei_att.global.attributes;
@@ -2586,7 +2630,7 @@ ordered %teidata.truthValue;  "true"  >
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes; >
 <!--doc:(list of persons) contains a list of descriptions, each of which provides information about an identifiable person or a group of people, for example the participants in a language interaction, or the people referred to in a historical source. [13.3.2. The Person Element 15.2. Contextual Information 2.4. The Profile Description 15.3.2. Declarable Elements] -->
-<!ELEMENT listPerson (((%model.headLike;)*,(desc)*,(%model.personLike;|listPerson)+,(relation|listRelation)*))>
+<!ELEMENT listPerson (((%model.headLike;)*,(desc)*,(relation|listRelation)*,((%model.personLike;|listPerson)+,(relation|listRelation)*)+))>
 <!ATTLIST listPerson xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listPerson
  %tei_att.global.attributes;
@@ -2594,7 +2638,7 @@ ordered %teidata.truthValue;  "true"  >
  %tei_att.declarable.attributes;
  %tei_att.sortable.attributes; >
 <!--doc:(list of places) contains a list of places, optionally followed by a list of relationships (other than containment) defined amongst them. [2.2.7. The Source Description 13.3.4. Places] -->
-<!ELEMENT listPlace (((%model.headLike;)*,(desc)*,(%model.placeLike;|listPlace)+,(relation|listRelation)*))>
+<!ELEMENT listPlace (((%model.headLike;)*,(desc)*,(relation|listRelation)*,((%model.placeLike;|listPlace)+,(relation|listRelation)*)+))>
 <!ATTLIST listPlace xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listPlace
  %tei_att.global.attributes;
@@ -2634,7 +2678,7 @@ ordered %teidata.truthValue;  "true"  >
 <!ATTLIST locale xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST locale
  %tei_att.global.attributes; >
-<!--doc:defines the location of a place as a set of geographical coordinates, in terms of other named geo-political entities, or as an address. [13.3.4. Places] -->
+<!--doc:(location) defines the location of a place as a set of geographical coordinates, in terms of other named geo-political entities, or as an address. [13.3.4. Places] -->
 <!ELEMENT location (precision|%model.labelLike;|%model.placeNamePart;|%model.offsetLike;|%model.measureLike;|%model.addressLike;|%model.noteLike;|%model.biblLike;)*>
 <!ATTLIST location xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST location
@@ -2657,7 +2701,7 @@ baseForm %teidata.word;  #IMPLIED >
 <!ATTLIST mapping
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains a word or phrase referring to some quantity of an object or commodity, usually comprising a number, a unit, and a commodity name. [3.5.3. Numbers and
+<!--doc:(measure) contains a word or phrase referring to some quantity of an object or commodity, usually comprising a number, a unit, and a commodity name. [3.6.3. Numbers and
 Measures] -->
 <!ELEMENT measure %macro.phraseSeq;>
 <!ATTLIST measure xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2673,7 +2717,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.measurement.attributes;
  %tei_att.typed.attributes; >
-<!--doc:indicates the location of any form of external media such as an audio or video clip etc. [3.9. Graphics and Other Non-textual Components] -->
+<!--doc:indicates the location of any form of external media such as an audio or video clip etc. [3.10. Graphics and Other Non-textual Components] -->
 <!ELEMENT media (%model.descLike;)*>
 <!ATTLIST media xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST media
@@ -2686,11 +2730,12 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.declaring.attributes;
  %tei_att.timed.attributes;
 mimeType CDATA  #REQUIRED >
-<!--doc:contains the formalized descriptive title for a meeting or conference, for use in a bibliographic description for an item derived from such a meeting, or as a heading or preamble to publications emanating from it. [3.11.2.2. Titles, Authors, and Editors] -->
+<!--doc:contains the formalized descriptive title for a meeting or conference, for use in a bibliographic description for an item derived from such a meeting, or as a heading or preamble to publications emanating from it. [3.12.2.2. Titles, Authors, and Editors] -->
 <!ELEMENT meeting %macro.limitedContent;>
 <!ATTLIST meeting xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST meeting
  %tei_att.global.attributes;
+ %tei_att.datable.attributes;
  %tei_att.canonical.attributes; >
 <!--doc:marks words or phrases mentioned, not used. [3.3.3. Quotation] -->
 <!ELEMENT mentioned %macro.phraseSeq;>
@@ -2706,7 +2751,7 @@ mimeType CDATA  #REQUIRED >
  %tei_att.global.attributes;
 function %teidata.word;  #IMPLIED
 target CDATA  #IMPLIED >
-<!--doc:marks a boundary point separating any kind of section of a text, typically but not necessarily indicating a point at which some part of a standard reference system changes, where the change is not represented by a structural element. [3.10.3. Milestone
+<!--doc:(milestone) marks a boundary point separating any kind of section of a text, typically but not necessarily indicating a point at which some part of a standard reference system changes, where the change is not represented by a structural element. [3.11.3. Milestone
 Elements] -->
 <!ELEMENT milestone  EMPTY>
 <!ATTLIST milestone xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2726,12 +2771,12 @@ Elements] -->
  %tei_att.typed.attributes;
  %tei_att.spanning.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:(monographic level) contains bibliographic elements describing an item (e.g. a book or journal) published as an independent item (i.e. as a separate physical object). [3.11.2.1. Analytic, Monographic, and Series Levels] -->
+<!--doc:(monographic level) contains bibliographic elements describing an item (e.g. a book or journal) published as an independent item (i.e. as a separate physical object). [3.12.2.1. Analytic, Monographic, and Series Levels] -->
 <!ELEMENT monogr (((((author|editor|meeting|respStmt),(author|editor|meeting|respStmt)*,(title)+,(%model.ptrLike;|idno|textLang|editor|respStmt)*)|((title|%model.ptrLike;|idno)+,(textLang|author|editor|meeting|respStmt)*)|(authority,idno))?,(availability)*,(%model.noteLike;)*,(edition,(idno|%model.ptrLike;|editor|sponsor|funder|respStmt)*)*,imprint,(imprint|extent|biblScope)*))>
 <!ATTLIST monogr xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST monogr
  %tei_att.global.attributes; >
-<!--doc:(name, proper noun) contains a proper noun or noun phrase. [3.5.1. Referring Strings] -->
+<!--doc:(name, proper noun) contains a proper noun or noun phrase. [3.6.1. Referring Strings] -->
 <!ELEMENT name %macro.phraseSeq;>
 <!ATTLIST name xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST name
@@ -2746,13 +2791,13 @@ Elements] -->
 <!ATTLIST nameLink
  %tei_att.global.attributes;
  %tei_att.typed.attributes; >
-<!--doc:supplies the formal name of the namespace to which the elements documented by its children belong. [2.3.4. The Tagging Declaration] -->
+<!--doc:(namespace) supplies the formal name of the namespace to which the elements documented by its children belong. [2.3.4. The Tagging Declaration] -->
 <!ELEMENT namespace (tagUsage)+>
 <!ATTLIST namespace xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST namespace
  %tei_att.global.attributes;
 name %teidata.namespace;  #REQUIRED >
-<!--doc:contains an informal description of a person's present or past nationality or citizenship. [15.2.2. The Participant Description] -->
+<!--doc:(nationality) contains an informal description of a person's present or past nationality or citizenship. [15.2.2. The Participant Description] -->
 <!ELEMENT nationality %macro.phraseSeq;>
 <!ATTLIST nationality xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST nationality
@@ -2762,7 +2807,7 @@ name %teidata.namespace;  #REQUIRED >
  %tei_att.naming.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:indicates the extent of normalization or regularization of the original source carried out in converting it to electronic form. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
+<!--doc:(normalization) indicates the extent of normalization or regularization of the original source carried out in converting it to electronic form. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
 <!ELEMENT normalization (%model.pLike;)+>
 <!ATTLIST normalization xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST normalization
@@ -2776,7 +2821,7 @@ method (silent|markup) "silent"  >
  %tei_att.global.attributes;
  %tei_att.placement.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains a note or annotation. [3.8.1. Notes and Simple Annotation 2.2.6. The Notes Statement 3.11.2.8. Notes and Statement of Language 9.3.5.4. Notes within Entries] -->
+<!--doc:(note) contains a note or annotation. [3.9.1. Notes and Simple Annotation 2.2.6. The Notes Statement 3.12.2.8. Notes and Statement of Language 9.3.5.4. Notes within Entries] -->
 <!ELEMENT note %macro.specialPara;>
 <!ATTLIST note xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST note
@@ -2785,14 +2830,23 @@ method (silent|markup) "silent"  >
  %tei_att.pointing.attributes;
  %tei_att.typed.attributes;
  %tei_att.written.attributes;
-anchored %teidata.truthValue;  "true" 
-targetEnd CDATA  #IMPLIED >
+ %tei_att.anchoring.attributes; >
+<!--doc:contains a group of notes [3.9.1.1. Encoding Grouped Notes] -->
+<!ELEMENT noteGrp (((desc)*,(note|noteGrp)+))>
+<!ATTLIST noteGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST noteGrp
+ %tei_att.global.attributes;
+ %tei_att.placement.attributes;
+ %tei_att.pointing.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.written.attributes;
+ %tei_att.anchoring.attributes; >
 <!--doc:(notes statement) collects together any notes providing information about a text additional to that recorded in other parts of the bibliographic description. [2.2.6. The Notes Statement 2.2. The File Description] -->
 <!ELEMENT notesStmt (%model.noteLike;|relatedItem)+>
 <!ATTLIST notesStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST notesStmt
  %tei_att.global.attributes; >
-<!--doc:(number) contains a number, written in any form. [3.5.3. Numbers and
+<!--doc:(number) contains a number, written in any form. [3.6.3. Numbers and
 Measures] -->
 <!ELEMENT num %macro.phraseSeq;>
 <!ATTLIST num xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2820,7 +2874,7 @@ trunc %teidata.truthValue;  #IMPLIED >
  %tei_att.sortable.attributes;
 parts CDATA  #IMPLIED >
 <!--doc:contains a description of a single identifiable physical object. [13.3.5. Objects] -->
-<!ELEMENT object (((objectIdentifier)+,(%model.headLike;)*,((%model.pLike;)*|((msContents)?,(physDesc)?,(history)?,(additional)?)),(%model.noteLike;|%model.biblLike;|linkGrp|link)*,(object)?))>
+<!ELEMENT object (((objectIdentifier)+,(%model.headLike;)*,((%model.pLike;)*|((msContents)?,(physDesc)?,(history)?,(additional)?)),(%model.noteLike;|%model.biblLike;|linkGrp|link)*,(object)*))>
 <!ATTLIST object xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST object
  %tei_att.global.attributes;
@@ -2843,7 +2897,7 @@ parts CDATA  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains an informal description of a person's trade, profession or occupation. [15.2.2. The Participant Description] -->
+<!--doc:(occupation) contains an informal description of a person's trade, profession or occupation. [15.2.2. The Participant Description] -->
 <!ELEMENT occupation %macro.specialPara;>
 <!ATTLIST occupation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST occupation
@@ -2855,7 +2909,7 @@ parts CDATA  #IMPLIED >
 type %teidata.enumerated;  #IMPLIED
 scheme %teidata.pointer;  #IMPLIED
 code %teidata.pointer;  #IMPLIED >
-<!--doc:marks that part of a relative temporal or spatial expression which indicates the direction of the offset between the two place names, dates, or times involved in the expression. [13.2.3. Place Names] -->
+<!--doc:(offset) marks that part of a relative temporal or spatial expression which indicates the direction of the offset between the two place names, dates, or times involved in the expression. [13.2.3. Place Names] -->
 <!ELEMENT offset %macro.phraseSeq;>
 <!ATTLIST offset xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST offset
@@ -2865,7 +2919,7 @@ code %teidata.pointer;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:groups together dateline, byline, salutation, and similar phrases appearing as a preliminary group at the start of a division, especially of a letter. [4.2. Elements Common to All Divisions] -->
+<!--doc:(opener) groups together dateline, byline, salutation, and similar phrases appearing as a preliminary group at the start of a division, especially of a letter. [4.2. Elements Common to All Divisions] -->
 <!ELEMENT opener (#PCDATA|%model.gLike;|%model.phrase;|argument|byline|dateline|epigraph|salute|signed|%model.global;)*>
 <!ATTLIST opener xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST opener
@@ -2889,7 +2943,7 @@ role NMTOKENS  #IMPLIED >
  %tei_att.editLike.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:(original form) contains a reading which is marked as following the original, rather than being normalized or corrected. [3.4.2. Regularization and
+<!--doc:(original form) contains a reading which is marked as following the original, rather than being normalized or corrected. [3.5.2. Regularization and
 Normalization 12. Critical Apparatus] -->
 <!ELEMENT orig %macro.paraContent;>
 <!ATTLIST orig xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2909,7 +2963,7 @@ Normalization 12. Critical Apparatus] -->
 <!ATTLIST particDesc
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:defines any line passing through two or more points within a surface element. [11.1. Digital Facsimiles 11.2.2. Embedded Transcription] -->
+<!--doc:(path) defines any line passing through two or more points within a surface element. [11.1. Digital Facsimiles 11.2.2. Embedded Transcription] -->
 <!ELEMENT path  EMPTY>
 <!ATTLIST path xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST path
@@ -2922,7 +2976,7 @@ Normalization 12. Critical Apparatus] -->
  %tei_att.typed.attributes;
  %tei_att.written.attributes;
 points CDATA  #IMPLIED >
-<!--doc:marks a pause either between or within utterances. [8.3.2. Pausing] -->
+<!--doc:(pause) marks a pause either between or within utterances. [8.3.2. Pausing] -->
 <!ELEMENT pause  EMPTY>
 <!ATTLIST pause xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST pause
@@ -2930,7 +2984,7 @@ points CDATA  #IMPLIED >
  %tei_att.timed.attributes;
  %tei_att.typed.attributes;
  %tei_att.ascribed.directed.attributes; >
-<!--doc:(page beginning) marks the beginning of a new page in a paginated document. [3.10.3. Milestone
+<!--doc:(page beginning) marks the beginning of a new page in a paginated document. [3.11.3. Milestone
 Elements] -->
 <!ELEMENT pb  EMPTY>
 <!ATTLIST pb xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2960,7 +3014,16 @@ pre %teidata.truthValue;  #IMPLIED >
  %tei_att.editLike.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:provides information about an identifiable individual, for example a participant in a language interaction, or a person referred to in a historical source. [13.3.2. The Person Element 15.2.2. The Participant Description] -->
+<!--doc:(personal pronouns) indicates the personal pronouns used, or assumed to be used, by the individual being described. [13.3.2.1. Personal Characteristics] -->
+<!ELEMENT persPronouns %macro.phraseSeq;>
+<!ATTLIST persPronouns xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST persPronouns
+ %tei_att.global.attributes;
+ %tei_att.datable.attributes;
+ %tei_att.typed.attributes;
+evidence %teidata.enumerated;  #IMPLIED
+value NMTOKENS  #IMPLIED >
+<!--doc:(person) provides information about an identifiable individual, for example a participant in a language interaction, or a person referred to in a historical source. [13.3.2. The Person Element 15.2.2. The Participant Description] -->
 <!ELEMENT person ((%model.pLike;)+|(%model.personPart;|%model.global;|ptr)*)>
 <!ATTLIST person xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST person
@@ -2998,15 +3061,15 @@ age %teidata.enumerated;  #IMPLIED >
  %tei_att.segLike.attributes;
  %tei_att.typed.attributes;
  %tei_att.notated.attributes; >
-<!--doc:contains data about a geographic location [13.3.4. Places] -->
-<!ELEMENT place (((%model.headLike;)*,((%model.pLike;)*|(%model.labelLike;|%model.placeStateLike;|%model.eventLike;)*),(%model.noteLike;|%model.biblLike;|idno|ptr|linkGrp|link)*,(%model.placeLike;|listPlace)*))>
+<!--doc:(place) contains data about a geographic location [13.3.4. Places] -->
+<!ELEMENT place (((%model.headLike;)*,((%model.pLike;)*|(%model.labelLike;|%model.placeStateLike;|%model.eventLike;|name)*),(%model.noteLike;|%model.biblLike;|idno|ptr|linkGrp|link)*,(%model.placeLike;|listPlace)*))>
 <!ATTLIST place xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST place
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
  %tei_att.editLike.attributes;
  %tei_att.sortable.attributes; >
-<!--doc:contains an absolute or relative place name. [13.2.3. Place Names] -->
+<!--doc:(place name) contains an absolute or relative place name. [13.2.3. Place Names] -->
 <!ELEMENT placeName %macro.phraseSeq;>
 <!ATTLIST placeName xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST placeName
@@ -3015,7 +3078,7 @@ age %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains information about the population of a place. [13.3.4.3. States, Traits, and Events] -->
+<!--doc:(population) contains information about the population of a place. [13.3.4.3. States, Traits, and Events] -->
 <!ELEMENT population (((precision)*,(%model.headLike;)*,(((%model.pLike;)+|(%model.labelLike;)+),(%model.noteLike;|%model.biblLike;)*)?,(population)*))>
 <!ATTLIST population xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST population
@@ -3025,12 +3088,12 @@ age %teidata.enumerated;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:(postal box or post office box) contains a number or other identifier for some postal delivery point other than a street address. [3.5.2. Addresses] -->
+<!--doc:(postal box or post office box) contains a number or other identifier for some postal delivery point other than a street address. [3.6.2. Addresses] -->
 <!ELEMENT postBox (#PCDATA)>
 <!ATTLIST postBox xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST postBox
  %tei_att.global.attributes; >
-<!--doc:(postal code) contains a numerical or alphanumeric code used as part of a postal address to simplify sorting or delivery of mail. [3.5.2. Addresses] -->
+<!--doc:(postal code) contains a numerical or alphanumeric code used as part of a postal address to simplify sorting or delivery of mail. [3.6.2. Addresses] -->
 <!ELEMENT postCode (#PCDATA)>
 <!ATTLIST postCode xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST postCode
@@ -3048,7 +3111,7 @@ age %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.patternReplacement.attributes;
 ident %teidata.prefix;  #REQUIRED >
-<!--doc:describes the extent to which a text may be regarded as prepared or spontaneous. [15.2.1. The Text Description] -->
+<!--doc:(preparedness) describes the extent to which a text may be regarded as prepared or spontaneous. [15.2.1. The Text Description] -->
 <!ELEMENT preparedness %macro.phraseSeq.limited;>
 <!ATTLIST preparedness xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST preparedness
@@ -3060,7 +3123,8 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST principal xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST principal
  %tei_att.global.attributes;
- %tei_att.canonical.attributes; >
+ %tei_att.canonical.attributes;
+ %tei_att.datable.attributes; >
 <!--doc:(text-profile description) provides a detailed description of non-bibliographic aspects of a text, specifically the languages and sublanguages used, the situation in which it was produced, the participants and their setting. [2.4. The Profile Description 2.1.1. The TEI Header and Its Components] -->
 <!ELEMENT profileDesc (%model.profileDescPart;)*>
 <!ATTLIST profileDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3072,7 +3136,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST projectDesc
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:(pointer) defines a pointer to another location. [3.6. Simple Links and Cross-References 16.1. Links] -->
+<!--doc:(pointer) defines a pointer to another location. [3.7. Simple Links and Cross-References 16.1. Links] -->
 <!ELEMENT ptr  EMPTY>
 <!ATTLIST ptr xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST ptr
@@ -3082,7 +3146,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.internetMedia.attributes;
  %tei_att.pointing.attributes;
  %tei_att.typed.attributes; >
-<!--doc:(publication place) contains the name of the place where a bibliographic item was published. [3.11.2.4. Imprint, Size of a Document, and Reprint Information] -->
+<!--doc:(publication place) contains the name of the place where a bibliographic item was published. [3.12.2.4. Imprint, Size of a Document, and Reprint Information] -->
 <!ELEMENT pubPlace %macro.phraseSeq;>
 <!ATTLIST pubPlace xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST pubPlace
@@ -3093,7 +3157,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST publicationStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST publicationStmt
  %tei_att.global.attributes; >
-<!--doc:provides the name of the organization responsible for the publication or distribution of a bibliographic item. [3.11.2.4. Imprint, Size of a Document, and Reprint Information 2.2.4. Publication, Distribution, Licensing, etc.] -->
+<!--doc:(publisher) provides the name of the organization responsible for the publication or distribution of a bibliographic item. [3.12.2.4. Imprint, Size of a Document, and Reprint Information 2.2.4. Publication, Distribution, Licensing, etc.] -->
 <!ELEMENT publisher %macro.phraseSeq;>
 <!ATTLIST publisher xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST publisher
@@ -3122,7 +3186,7 @@ degree %teidata.certainty;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.ascribed.directed.attributes;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:specifies editorial practice adopted with respect to quotation marks in the original. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
+<!--doc:(quotation) specifies editorial practice adopted with respect to quotation marks in the original. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
 <!ELEMENT quotation (%model.pLike;)*>
 <!ATTLIST quotation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST quotation
@@ -3136,6 +3200,12 @@ marks (none|some|all) #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
  %tei_att.notated.attributes; >
+<!--doc:(ruby base) contains the base text annotated by a ruby gloss. [3.4.2. Ruby Annotations] -->
+<!ELEMENT rb %macro.phraseSeq;>
+<!ATTLIST rb xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST rb
+ %tei_att.global.attributes;
+ %tei_att.typed.attributes; >
 <!--doc:(recording event) provides details of an audio or video recording event used as the source of a spoken text, either directly or from a public broadcast. [8.2. Documenting the Source of Transcribed Speech 15.3.2. Declarable Elements] -->
 <!ELEMENT recording (%model.recordingPart;|%model.pLike;)*>
 <!ATTLIST recording xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3159,7 +3229,7 @@ type (audio|video) "audio"  >
  %tei_att.transcriptional.attributes;
  %tei_att.dimensions.attributes;
 target CDATA  #IMPLIED >
-<!--doc:(reference) defines a reference to another location, possibly modified by additional text or comment. [3.6. Simple Links and Cross-References 16.1. Links] -->
+<!--doc:(reference) defines a reference to another location, possibly modified by additional text or comment. [3.7. Simple Links and Cross-References 16.1. Links] -->
 <!ELEMENT ref %macro.paraContent;>
 <!ATTLIST ref xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST ref
@@ -3179,12 +3249,12 @@ target CDATA  #IMPLIED >
 length %teidata.count;  #IMPLIED
 delim %teidata.text;  #IMPLIED >
 <!--doc:(references declaration) specifies how canonical references are constructed for this text. [2.3.6.3. Milestone Method 2.3. The Encoding Description 2.3.6. The Reference System Declaration] -->
-<!ELEMENT refsDecl ((%model.pLike;)+|(cRefPattern)+|(refState)+)>
+<!ELEMENT refsDecl ((%model.pLike;)+|(citeStructure)+|(cRefPattern)+|(refState)+)>
 <!ATTLIST refsDecl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST refsDecl
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:(regularization) contains a reading which has been regularized or normalized in some sense. [3.4.2. Regularization and
+<!--doc:(regularization) contains a reading which has been regularized or normalized in some sense. [3.5.2. Regularization and
 Normalization 12. Critical Apparatus] -->
 <!ELEMENT reg %macro.paraContent;>
 <!ATTLIST reg xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3192,7 +3262,7 @@ Normalization 12. Critical Apparatus] -->
  %tei_att.global.attributes;
  %tei_att.editLike.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains the name of an administrative unit such as a state, province, or county, larger than a settlement, but smaller than a country. [13.2.3. Place Names] -->
+<!--doc:(region) contains the name of an administrative unit such as a state, province, or county, larger than a settlement, but smaller than a country. [13.2.3. Place Names] -->
 <!ELEMENT region %macro.phraseSeq;>
 <!ATTLIST region xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST region
@@ -3200,7 +3270,7 @@ Normalization 12. Critical Apparatus] -->
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.datable.attributes; >
-<!--doc:contains or references some other bibliographic item which is related to the present one in some specified manner, for example as a constituent or alternative version of it. [3.11.2.7. Related Items] -->
+<!--doc:contains or references some other bibliographic item which is related to the present one in some specified manner, for example as a constituent or alternative version of it. [3.12.2.7. Related Items] -->
 <!ELEMENT relatedItem (%model.biblLike;|%model.ptrLike;)?>
 <!ATTLIST relatedItem xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST relatedItem
@@ -3221,7 +3291,7 @@ name %teidata.enumerated;  #IMPLIED
 active CDATA  #IMPLIED
 mutual CDATA  #IMPLIED
 passive CDATA  #IMPLIED >
-<!--doc:supplies information about the rendition or appearance of one or more elements in the source text. [2.3.4. The Tagging Declaration] -->
+<!--doc:(rendition) supplies information about the rendition or appearance of one or more elements in the source text. [2.3.4. The Tagging Declaration] -->
 <!ELEMENT rendition %macro.limitedContent;>
 <!ATTLIST rendition xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST rendition
@@ -3229,7 +3299,7 @@ passive CDATA  #IMPLIED >
  %tei_att.styleDef.attributes;
 scope %teidata.enumerated;  #IMPLIED
 selector %teidata.text;  #IMPLIED >
-<!--doc:describes a person's present or past places of residence. [15.2.2. The Participant Description] -->
+<!--doc:(residence) describes a person's present or past places of residence. [15.2.2. The Participant Description] -->
 <!ELEMENT residence %macro.phraseSeq;>
 <!ATTLIST residence xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST residence
@@ -3239,20 +3309,20 @@ selector %teidata.text;  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:(responsibility) contains a phrase describing the nature of a person's intellectual responsibility, or an organization's role in the production or distribution of a work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement] -->
+<!--doc:(responsibility) contains a phrase describing the nature of a person's intellectual responsibility, or an organization's role in the production or distribution of a work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement] -->
 <!ELEMENT resp %macro.phraseSeq.limited;>
 <!ATTLIST resp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST resp
  %tei_att.global.attributes;
  %tei_att.canonical.attributes;
  %tei_att.datable.attributes; >
-<!--doc:(statement of responsibility) supplies a statement of responsibility for the intellectual content of a text, edition, recording, or series, where the specialized elements for authors, editors, etc. do not suffice or do not apply. May also be used to encode information about individuals or organizations which have played a role in the production or distribution of a bibliographic work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement] -->
+<!--doc:(statement of responsibility) supplies a statement of responsibility for the intellectual content of a text, edition, recording, or series, where the specialized elements for authors, editors, etc. do not suffice or do not apply. May also be used to encode information about individuals or organizations which have played a role in the production or distribution of a bibliographic work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement] -->
 <!ELEMENT respStmt (((((resp)+,(%model.nameLike.agent;)+)|((%model.nameLike.agent;)+,(resp)+)),(note)*))>
 <!ATTLIST respStmt xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST respStmt
  %tei_att.global.attributes;
  %tei_att.canonical.attributes; >
-<!--doc:indicates restoration of text to an earlier state by cancellation of an editorial or authorial marking or instruction. [11.3.1.6. Cancellation of Deletions and Other Markings] -->
+<!--doc:(restore) indicates restoration of text to an earlier state by cancellation of an editorial or authorial marking or instruction. [11.3.1.6. Cancellation of Deletions and Other Markings] -->
 <!ELEMENT restore %macro.paraContent;>
 <!ATTLIST restore xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST restore
@@ -3274,25 +3344,42 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST revisionDesc
  %tei_att.global.attributes;
  %tei_att.docStatus.attributes; >
-<!--doc:contains a name component which indicates that the referent has a particular role or position in society, such as an official title or rank. [13.2.1. Personal Names] -->
+<!--doc:(role name) contains a name component which indicates that the referent has a particular role or position in society, such as an official title or rank. [13.2.1. Personal Names] -->
 <!ELEMENT roleName %macro.phraseSeq;>
 <!ATTLIST roleName xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST roleName
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains one row of a table. [14.1.1. TEI Tables] -->
+<!--doc:(row) contains one row of a table. [14.1.1. TEI Tables] -->
 <!ELEMENT row (cell)+>
 <!ATTLIST row xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST row
  %tei_att.global.attributes;
  %tei_att.tableDecoration.attributes; >
-<!--doc:(referencing string) contains a general purpose name or referring string. [13.2.1. Personal Names 3.5.1. Referring Strings] -->
+<!--doc:(referencing string) contains a general purpose name or referring string. [13.2.1. Personal Names 3.6.1. Referring Strings] -->
 <!ELEMENT rs %macro.phraseSeq;>
 <!ATTLIST rs xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST rs
  %tei_att.global.attributes;
  %tei_att.naming.attributes;
+ %tei_att.typed.attributes; >
+<!--doc:(ruby text) contains a ruby text, an annotation closely associated with a passage of the main text. [3.4.2. Ruby Annotations] -->
+<!ELEMENT rt %macro.phraseSeq;>
+<!ATTLIST rt xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST rt
+ %tei_att.global.attributes;
+ %tei_att.typed.attributes;
+ %tei_att.placement.attributes;
+ %tei_att.transcriptional.attributes;
+target %teidata.pointer;  #IMPLIED
+from %teidata.pointer;  #IMPLIED
+to %teidata.pointer;  #IMPLIED >
+<!--doc:(ruby container) contains a passage of base text along with its associated ruby gloss(es). [3.4.2. Ruby Annotations] -->
+<!ELEMENT ruby ((rb,(rt)+))>
+<!ATTLIST ruby xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST ruby
+ %tei_att.global.attributes;
  %tei_att.typed.attributes; >
 <!--doc:(s-unit) contains a sentence-like division of a text. [17.1. Linguistic Segment Categories 8.4.1. Segmentation] -->
 <!ELEMENT s %macro.phraseSeq;>
@@ -3353,13 +3440,13 @@ reason CDATA  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.written.attributes;
  %tei_att.notated.attributes; >
-<!--doc:describes the principles according to which the text has been segmented, for example into sentences, tone-units, graphemic strata, etc. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
+<!--doc:(segmentation) describes the principles according to which the text has been segmented, for example into sentences, tone-units, graphemic strata, etc. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements] -->
 <!ELEMENT segmentation (%model.pLike;)+>
 <!ATTLIST segmentation xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST segmentation
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:(series information) contains information about the series in which a book or other bibliographic item has appeared. [3.11.2.1. Analytic, Monographic, and Series Levels] -->
+<!--doc:(series information) contains information about the series in which a book or other bibliographic item has appeared. [3.12.2.1. Analytic, Monographic, and Series Levels] -->
 <!ELEMENT series (#PCDATA|%model.gLike;|title|%model.ptrLike;|editor|respStmt|biblScope|idno|textLang|%model.global;|availability)*>
 <!ATTLIST series xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST series
@@ -3382,7 +3469,7 @@ reason CDATA  #IMPLIED >
 <!ATTLIST settingDesc
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:contains the name of a settlement such as a city, town, or village identified as a single geo-political or administrative unit. [13.2.3. Place Names] -->
+<!--doc:(settlement) contains the name of a settlement such as a city, town, or village identified as a single geo-political or administrative unit. [13.2.3. Place Names] -->
 <!ELEMENT settlement %macro.phraseSeq;>
 <!ATTLIST settlement xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST settlement
@@ -3390,7 +3477,7 @@ reason CDATA  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.datable.attributes; >
-<!--doc:specifies the sex of a person. [13.3.2.1. Personal Characteristics] -->
+<!--doc:(sex) specifies the sex of a person. [13.3.2.1. Personal Characteristics] -->
 <!ELEMENT sex %macro.phraseSeq;>
 <!ATTLIST sex xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST sex
@@ -3400,7 +3487,7 @@ reason CDATA  #IMPLIED >
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED
 value CDATA  #IMPLIED >
-<!--doc:marks the point at which some paralinguistic feature of a series of utterances by any one speaker changes. [8.3.6. Shifts] -->
+<!--doc:(shift) marks the point at which some paralinguistic feature of a series of utterances by any one speaker changes. [8.3.6. Shifts] -->
 <!ELEMENT shift  EMPTY>
 <!ATTLIST shift xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST shift
@@ -3408,7 +3495,7 @@ value CDATA  #IMPLIED >
  %tei_att.ascribed.attributes;
 feature %teidata.enumerated;  #IMPLIED
 new %teidata.enumerated;  "normal"  >
-<!--doc:(Latin for thus or so) contains text reproduced although apparently incorrect or inaccurate. [3.4.1. Apparent Errors] -->
+<!--doc:(Latin for thus or so) contains text reproduced although apparently incorrect or inaccurate. [3.5.1. Apparent Errors] -->
 <!ELEMENT sic %macro.paraContent;>
 <!ATTLIST sic xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST sic
@@ -3419,7 +3506,7 @@ new %teidata.enumerated;  "normal"  >
 <!ATTLIST signed
  %tei_att.global.attributes;
  %tei_att.written.attributes; >
-<!--doc:contains a word or phrase for which the author or narrator indicates a disclaiming of responsibility, for example by the use of scare quotes or italics. [3.3.3. Quotation] -->
+<!--doc:(so called) contains a word or phrase for which the author or narrator indicates a disclaiming of responsibility, for example by the use of scare quotes or italics. [3.3.3. Quotation] -->
 <!ELEMENT soCalled %macro.phraseSeq;>
 <!ATTLIST soCalled xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST soCalled
@@ -3448,13 +3535,13 @@ code %teidata.pointer;  #IMPLIED >
 <!ATTLIST sourceDoc
  %tei_att.global.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:(speech) contains an individual speech in a performance text, or a passage presented as such in a prose or verse text. [3.12.2. Core Tags for Drama 3.12. Passages of Verse or Drama 7.2.2. Speeches and Speakers] -->
+<!--doc:(speech) contains an individual speech in a performance text, or a passage presented as such in a prose or verse text. [3.13.2. Core Tags for Drama 3.13. Passages of Verse or Drama 7.2.2. Speeches and Speakers] -->
 <!ELEMENT sp (((%model.global;)*,(speaker,(%model.global;)*)?,((lg|%model.lLike;|%model.pLike;|%model.listLike;|%model.stageLike;|%model.attributable;),((%model.global;)*|q))+))>
 <!ATTLIST sp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST sp
  %tei_att.global.attributes;
  %tei_att.ascribed.directed.attributes; >
-<!--doc:indicates the location of a significant space in the text. [11.4.1. Space] -->
+<!--doc:(space) indicates the location of a significant space in the text. [11.4.1. Space] -->
 <!ELEMENT space (%model.descLike;|_DUMMY_model.certLike)*>
 <!ATTLIST space xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST space
@@ -3488,30 +3575,33 @@ dim (horizontal|vertical) #IMPLIED >
 <!ATTLIST span xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST span
  %tei_att.global.attributes;
- %tei_att.interpLike.attributes;
+ %tei_att.interpLike.attribute.inst;
+ %tei_att.typed.attribute.subtype;
  %tei_att.pointing.attributes;
- %tei_att.typed.attributes;
+type %teidata.enumerated;  #IMPLIED
 from %teidata.pointer;  #IMPLIED
 to %teidata.pointer;  #IMPLIED >
 <!--doc:(span group) collects together span tags. [17.3. Spans and Interpretations] -->
-<!ELEMENT spanGrp (span)*>
+<!ELEMENT spanGrp (((%model.descLike;)*,(span)*))>
 <!ATTLIST spanGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST spanGrp
  %tei_att.global.attributes;
- %tei_att.interpLike.attributes;
- %tei_att.typed.attributes; >
-<!--doc:contains a specialized form of heading or label, giving the name of one or more speakers in a dramatic text or fragment. [3.12.2. Core Tags for Drama] -->
+ %tei_att.interpLike.attribute.inst;
+ %tei_att.typed.attribute.subtype;
+type %teidata.enumerated;  #IMPLIED >
+<!--doc:contains a specialized form of heading or label, giving the name of one or more speakers in a dramatic text or fragment. [3.13.2. Core Tags for Drama] -->
 <!ELEMENT speaker %macro.phraseSeq;>
 <!ATTLIST speaker xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST speaker
  %tei_att.global.attributes; >
-<!--doc:specifies the name of a sponsoring organization or institution. [2.2.1. The Title Statement] -->
+<!--doc:(sponsor) specifies the name of a sponsoring organization or institution. [2.2.1. The Title Statement] -->
 <!ELEMENT sponsor %macro.phraseSeq.limited;>
 <!ATTLIST sponsor xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST sponsor
  %tei_att.global.attributes;
- %tei_att.canonical.attributes; >
-<!--doc:(stage direction) contains any kind of stage direction within a dramatic text or fragment. [3.12.2. Core Tags for Drama 3.12. Passages of Verse or Drama 7.2.4. Stage Directions] -->
+ %tei_att.canonical.attributes;
+ %tei_att.datable.attributes; >
+<!--doc:(stage direction) contains any kind of stage direction within a dramatic text or fragment. [3.13.2. Core Tags for Drama 3.13. Passages of Verse or Drama 7.2.4. Stage Directions] -->
 <!ELEMENT stage %macro.specialPara;>
 <!ATTLIST stage xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST stage
@@ -3526,7 +3616,7 @@ type NMTOKENS  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.typed.attributes;
  %tei_att.declaring.attributes; >
-<!--doc:contains a description of some status or quality attributed to a person, place, or organization often at some specific time or for a specific date range. [13.3.1. Basic Principles 13.3.2.1. Personal Characteristics] -->
+<!--doc:(state) contains a description of some status or quality attributed to a person, place, or organization often at some specific time or for a specific date range. [13.3.1. Basic Principles 13.3.2.1. Personal Characteristics] -->
 <!ELEMENT state (((precision)*,((state)+|((%model.headLike;)*,(%model.pLike;)+,(%model.noteLike;|%model.biblLike;)*)|(%model.labelLike;|%model.noteLike;|%model.biblLike;)*)))>
 <!ATTLIST state xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST state
@@ -3542,7 +3632,7 @@ type NMTOKENS  #IMPLIED >
 <!ATTLIST stdVals
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:contains a full street address including any name or number identifying a building as well as the name of the street or route on which it is located. [3.5.2. Addresses] -->
+<!--doc:contains a full street address including any name or number identifying a building as well as the name of the street or route on which it is located. [3.6.2. Addresses] -->
 <!ELEMENT street %macro.phraseSeq;>
 <!ATTLIST street xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST street
@@ -3575,7 +3665,7 @@ type NMTOKENS  #IMPLIED >
  %tei_att.pointing.attributes;
  %tei_att.transcriptional.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
+<!--doc:(supplied) signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
 <!ELEMENT supplied %macro.paraContent;>
 <!ATTLIST supplied xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST supplied
@@ -3600,14 +3690,14 @@ flipping %teidata.truthValue;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.declaring.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains a family (inherited) name, as opposed to a given, baptismal, or nick name. [13.2.1. Personal Names] -->
+<!--doc:(surname) contains a family (inherited) name, as opposed to a given, baptismal, or nick name. [13.2.1. Personal Names] -->
 <!ELEMENT surname %macro.phraseSeq;>
 <!ATTLIST surname xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST surname
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
-<!--doc:marks text present in the source which the editor believes to be superfluous or redundant. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
+<!--doc:(surplus) marks text present in the source which the editor believes to be superfluous or redundant. [11.3.3.1. Damage, Illegibility, and Supplied Text] -->
 <!ELEMENT surplus %macro.paraContent;>
 <!ATTLIST surplus xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST surplus
@@ -3622,7 +3712,7 @@ reason CDATA  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.datcat.attributes;
 value %teidata.word;  #REQUIRED >
-<!--doc:contains text displayed in tabular form, in rows and columns. [14.1.1. TEI Tables] -->
+<!--doc:(table) contains text displayed in tabular form, in rows and columns. [14.1.1. TEI Tables] -->
 <!ELEMENT table (((%model.headLike;|%model.global;)*,((row,(%model.global;)*)+|((%model.graphicLike;),(%model.global;)*)+),((%model.divBottom;),(%model.global;)*)*))>
 <!ATTLIST table xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST table
@@ -3630,7 +3720,7 @@ value %teidata.word;  #REQUIRED >
  %tei_att.typed.attributes;
 rows %teidata.count;  #IMPLIED
 cols %teidata.count;  #IMPLIED >
-<!--doc:documents the usage of a specific element within a specified document. [2.3.4. The Tagging Declaration] -->
+<!--doc:(element usage) documents the usage of a specific element within a specified document. [2.3.4. The Tagging Declaration] -->
 <!ELEMENT tagUsage %macro.limitedContent;>
 <!ATTLIST tagUsage xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST tagUsage
@@ -3644,12 +3734,12 @@ withId %teidata.count;  #IMPLIED >
 <!ATTLIST tagsDecl
  %tei_att.global.attributes;
 partial %teidata.truthValue;  #IMPLIED >
-<!--doc:defines a typology either implicitly, by means of a bibliographic citation, or explicitly by a structured taxonomy. [2.3.7. The Classification Declaration] -->
-<!ELEMENT taxonomy (((category|taxonomy)+|((%model.glossLike;|%model.descLike;)+,(category|taxonomy)*))|((%model.biblLike;),(category|taxonomy)*))>
+<!--doc:(taxonomy) defines a typology either implicitly, by means of a bibliographic citation, or explicitly by a structured taxonomy. [2.3.7. The Classification Declaration] -->
+<!ELEMENT taxonomy (((category|taxonomy)+|((%model.descLike;|equiv|gloss)+,(category|taxonomy)*))|((%model.biblLike;),(category|taxonomy)*))>
 <!ATTLIST taxonomy xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST taxonomy
  %tei_att.global.attributes; >
-<!--doc:contains the whole of a TEI encoded corpus, comprising a single corpus header and one or more TEI elements, each containing a single text header and a text. [4. Default Text Structure 15.1. Varieties of Composite Text] -->
+<!--doc:(TEI corpus) contains the whole of a TEI encoded corpus, comprising a single corpus header and one or more TEI elements, each containing a single text header and a text. [4. Default Text Structure 15.1. Varieties of Composite Text] -->
 <!ELEMENT teiCorpus ((teiHeader,(%model.resource;)*,(%model.describedResource;)+))>
 <!ATTLIST teiCorpus xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST teiCorpus
@@ -3664,7 +3754,7 @@ version %teidata.version;  #IMPLIED >
 <!ATTLIST teiHeader xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST teiHeader
  %tei_att.global.attributes; >
-<!--doc:contains a single-word, multi-word, or symbolic designation which is regarded as a technical term. [3.3.4. Terms, Glosses, Equivalents, and Descriptions] -->
+<!--doc:(term) contains a single-word, multi-word, or symbolic designation which is regarded as a technical term. [3.4.1. Terms and Glosses] -->
 <!ELEMENT term %macro.phraseSeq;>
 <!ATTLIST term xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST term
@@ -3675,7 +3765,7 @@ version %teidata.version;  #IMPLIED >
  %tei_att.canonical.attributes;
  %tei_att.sortable.attributes;
  %tei_att.cReferencing.attributes; >
-<!--doc:contains information about the physical terrain of a place. [13.3.4.3. States, Traits, and Events] -->
+<!--doc:(terrain) contains information about the physical terrain of a place. [13.3.4.3. States, Traits, and Events] -->
 <!ELEMENT terrain (((precision)*,(%model.headLike;)*,((%model.pLike;)+|(%model.labelLike;)+),(%model.noteLike;|%model.biblLike;)*,(terrain)*))>
 <!ATTLIST terrain xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST terrain
@@ -3684,7 +3774,7 @@ version %teidata.version;  #IMPLIED >
  %tei_att.editLike.attributes;
  %tei_att.naming.attributes;
  %tei_att.typed.attributes; >
-<!--doc:contains a single text of any kind, whether unitary or composite, for example a poem or drama, a collection of essays, a novel, a dictionary, or a corpus sample. [4. Default Text Structure 15.1. Varieties of Composite Text] -->
+<!--doc:(text) contains a single text of any kind, whether unitary or composite, for example a poem or drama, a collection of essays, a novel, a dictionary, or a corpus sample. [4. Default Text Structure 15.1. Varieties of Composite Text] -->
 <!ELEMENT text (((%model.global;)*,(front,(%model.global;)*)?,(body|group),(%model.global;)*,(back,(%model.global;)*)?))>
 <!ATTLIST text xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST text
@@ -3704,14 +3794,14 @@ version %teidata.version;  #IMPLIED >
 <!ATTLIST textDesc
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
-<!--doc:(text language) describes the languages and writing systems identified within the bibliographic work being described, rather than its description. [3.11.2.4. Imprint, Size of a Document, and Reprint Information 10.6.6. Languages and Writing Systems] -->
+<!--doc:(text language) describes the languages and writing systems identified within the bibliographic work being described, rather than its description. [3.12.2.4. Imprint, Size of a Document, and Reprint Information 10.6.6. Languages and Writing Systems] -->
 <!ELEMENT textLang %macro.phraseSeq;>
 <!ATTLIST textLang xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST textLang
  %tei_att.global.attributes;
 mainLang %teidata.language;  #IMPLIED
 otherLangs CDATA  #IMPLIED >
-<!--doc:contains a phrase defining a time of day in any format. [3.5.4. Dates and Times] -->
+<!--doc:(time) contains a phrase defining a time of day in any format. [3.6.4. Dates and Times] -->
 <!ELEMENT time (#PCDATA|%model.gLike;|%model.phrase;|%model.global;)*>
 <!ATTLIST time xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST time
@@ -3722,7 +3812,7 @@ otherLangs CDATA  #IMPLIED >
  %tei_att.editLike.attributes;
  %tei_att.dimensions.attributes;
  %tei_att.typed.attributes; >
-<!--doc:provides a set of ordered points in time which can be linked to elements of a spoken text to create a temporal alignment of that text. [16.4.2. Placing Synchronous Events in Time] -->
+<!--doc:(timeline) provides a set of ordered points in time which can be linked to elements of a spoken text to create a temporal alignment of that text. [16.4.2. Placing Synchronous Events in Time] -->
 <!ELEMENT timeline (when)+>
 <!ATTLIST timeline xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST timeline
@@ -3730,7 +3820,7 @@ otherLangs CDATA  #IMPLIED >
 origin %teidata.pointer;  #IMPLIED
 unit %teidata.enumerated;  #IMPLIED
 interval %teidata.interval;  #IMPLIED >
-<!--doc:contains a title for any kind of work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement] -->
+<!--doc:(title) contains a title for any kind of work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement] -->
 <!ELEMENT title %macro.paraContent;>
 <!ATTLIST title xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST title
@@ -3747,7 +3837,7 @@ level (a|m|j|s|u) #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
-<!--doc:contains a subsection or division of the title of a work, as indicated on a title page. [4.6. Title Pages] -->
+<!--doc:(title part) contains a subsection or division of the title of a work, as indicated on a title page. [4.6. Title Pages] -->
 <!ELEMENT titlePart %macro.paraContent;>
 <!ATTLIST titlePart xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST titlePart
@@ -3767,7 +3857,7 @@ type %teidata.enumerated;  "main"  >
  %tei_att.typed.attributes;
  %tei_att.placement.attributes;
  %tei_att.written.attributes; >
-<!--doc:contains a description of some status or quality attributed to a person, place, or organization typically, but not necessarily, independent of the volition or action of the holder and usually not at some specific time or for a specific date range. [13.3.1. Basic Principles 13.3.2.1. Personal Characteristics] -->
+<!--doc:(trait) contains a description of some status or quality attributed to a person, place, or organization typically, but not necessarily, independent of the volition or action of the holder and usually not at some specific time or for a specific date range. [13.3.1. Basic Principles 13.3.2.1. Personal Characteristics] -->
 <!ELEMENT trait (((precision)*,((trait)+|((%model.headLike;)*,(%model.pLike;)+,(%model.noteLike;|%model.biblLike;)*)|(%model.labelLike;|%model.noteLike;|%model.biblLike;)*)))>
 <!ATTLIST trait xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST trait
@@ -3799,7 +3889,7 @@ version %teidata.versionNumber;  #IMPLIED >
  %tei_att.ascribed.directed.attributes;
  %tei_att.notated.attributes;
 trans (smooth|latching|overlap|pause) "smooth"  >
-<!--doc:contains a word, phrase, or passage which cannot be transcribed with certainty because it is illegible or inaudible in the source. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.4.3. Additions, Deletions, and Omissions] -->
+<!--doc:(unclear) contains a word, phrase, or passage which cannot be transcribed with certainty because it is illegible or inaudible in the source. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.5.3. Additions, Deletions, and Omissions] -->
 <!ELEMENT unclear %macro.paraContent;>
 <!ATTLIST unclear xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST unclear
@@ -3839,7 +3929,7 @@ value %teidata.text;  #REQUIRED >
  %tei_att.gaijiProp.attribute.version;
 name (kZVariant|kAccountingNumeric|kBigFive|kCCCII|kCNS1986|kCNS1992|kCangjie|kCantonese|kCheungBauer|kCheungBauerIndex|kCihaiT|kCompatibilityVariant|kCowles|kDaeJaweon|kDefinition|kEACC|kFenn|kFennIndex|kFourCornerCode|kFrequency|kGB0|kGB1|kGB3|kGB5|kGB7|kGB8|kGSR|kGradeLevel|kHDZRadBreak|kHKGlyph|kHKSCS|kHanYu|kHangul|kHanyuPinlu|kHanyuPinyin|kIBMJapan|kIICore|kIRGDaeJaweon|kIRGDaiKanwaZiten|kIRGHanyuDaZidian|kIRGKangXi|kIRG_GSource|kIRG_HSource|kIRG_JSource|kIRG_KPSource|kIRG_KSource|kIRG_MSource|kIRG_TSource|kIRG_USource|kIRG_VSource|kJIS0213|kJa|kJapaneseKun|kJapaneseOn|kJinmeiyoKanji|kJis0|kJis1|kJoyoKanji|kKPS0|kKPS1|kKSC0|kKSC1|kKangXi|kKarlgren|kKorean|kKoreanEducationHanja|kKoreanName|kLau|kMainlandTelegraph|kMandarin|kMatthews|kMeyerWempe|kMorohashi|kNelson|kOtherNumeric|kPhonetic|kPrimaryNumeric|kPseudoGB1|kRSAdobe_Japan1_6|kRSJapanese|kRSKanWa|kRSKangXi|kRSKorean|kRSUnicode|kSBGY|kSemanticVariant|kSimplifiedVariant|kSpecializedSemanticVariant|kTGH|kTaiwanTelegraph|kTang|kTotalStrokes|kTraditionalVariant|kVietnamese|kXHC1983|kXerox) #REQUIRED
 value %teidata.word;  #REQUIRED >
-<!--doc:contains a symbol, a word or a phrase referring to a unit of measurement in any kind of formal or informal system. [3.5.3. Numbers and
+<!--doc:contains a symbol, a word or a phrase referring to a unit of measurement in any kind of formal or informal system. [3.6.3. Numbers and
 Measures] -->
 <!ELEMENT unit %macro.phraseSeq;>
 <!ATTLIST unit xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3889,12 +3979,12 @@ name %teidata.word;  #REQUIRED >
 <!ATTLIST vRange xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST vRange
  %tei_att.global.attributes; >
-<!--doc:contains a single value for some property, attribute, or other analysis. [5.2.1. Character Properties] -->
+<!--doc:(value) contains a single value for some property, attribute, or other analysis. [5.2.1. Character Properties] -->
 <!ELEMENT value %macro.xtext;>
 <!ATTLIST value xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST value
  %tei_att.global.attributes; >
-<!--doc:marks any vocalized but not necessarily lexical phenomenon, for example voiced pauses, non-lexical backchannels, etc. [8.3.3. Vocal, Kinesic, Incident] -->
+<!--doc:(vocal) marks any vocalized but not necessarily lexical phenomenon, for example voiced pauses, non-lexical backchannels, etc. [8.3.3. Vocal, Kinesic, Incident] -->
 <!ELEMENT vocal (%model.descLike;)*>
 <!ATTLIST vocal xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST vocal
@@ -3921,7 +4011,7 @@ absolute %teidata.temporal.w3c;  #IMPLIED
 unit %teidata.enumerated;  #IMPLIED
 interval %teidata.interval;  #IMPLIED
 since %teidata.pointer;  #IMPLIED >
-<!--doc:contains a passage of written text revealed to participants in the course of a spoken text. [8.3.4. Writing] -->
+<!--doc:(writing) contains a passage of written text revealed to participants in the course of a spoken text. [8.3.4. Writing] -->
 <!ELEMENT writing %macro.paraContent;>
 <!ATTLIST writing xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST writing
