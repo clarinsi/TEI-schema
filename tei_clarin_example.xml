@@ -229,26 +229,26 @@
         </taxonomy>
 	<!-- The taxonomy of ParseME Verbal Multi-Word Expresions -->
         <taxonomy xml:id="PARSEME.VMWE">
-          <category xml:id="ID">
-            <catDesc xml:lang="sl">idiom</catDesc>
-            <catDesc xml:lang="en">idiom</catDesc>
-          </category>
-          <category xml:id="IReflV">
-            <catDesc xml:lang="sl">inherentno povratni glagol</catDesc>
-            <catDesc xml:lang="en">inherently reflexive verb</catDesc>
-          </category>
-          <category xml:id="LVC">
-            <catDesc xml:lang="sl">zveza z glagolom z oslabljenim pomenom</catDesc>
-            <catDesc xml:lang="en">light verb construction</catDesc>
-          </category>
-          <category xml:id="VPC">
-            <catDesc xml:lang="sl">frazni glagol</catDesc>
-            <catDesc xml:lang="en">verb-particle construction</catDesc>
-          </category>
-          <category xml:id="OTH">
-            <catDesc xml:lang="sl">drugi glagolski večbesedni izraz</catDesc>
-            <catDesc xml:lang="en">other verbal MWE</catDesc>
-          </category>
+           <category xml:id="VID">
+             <catDesc xml:lang="sl">glagolski idiom</catDesc>
+             <catDesc xml:lang="en">verbal idiom</catDesc>
+           </category>
+           <category xml:id="IRV">
+             <catDesc xml:lang="sl">inherentno povratni glagol</catDesc>
+             <catDesc xml:lang="en">inherently reflexive verb</catDesc>
+           </category>
+           <category xml:id="LVC.full">
+             <catDesc xml:lang="sl">zveza z glagolom z oslabljenim pomenom</catDesc>
+             <catDesc xml:lang="en">light verb construction (full)</catDesc>
+           </category>
+           <category xml:id="LVC.cause">
+             <catDesc xml:lang="sl">vzročna zveza z glagolom z oslabljenim pomenom</catDesc>
+             <catDesc xml:lang="en">light verb construction (cause)</catDesc>
+           </category>
+           <category xml:id="IAV">
+             <catDesc xml:lang="sl">predložna glagolska zveza</catDesc>
+             <catDesc xml:lang="en">inherently adpositional verb</catDesc>
+           </category>
         </taxonomy>
 	<!-- The taxonomy for Semantic Role Labeling -->
         <taxonomy xml:id="SRL">
