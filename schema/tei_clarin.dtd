@@ -1,9 +1,9 @@
 
 <!--
-DTD generated from ODD source 2021-12-20T09:32:05Z. 2021-10-31.This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
-TEI Edition: Version 4.3.0. Last updated on
-        31st August 2021, revision b4f72b1ff
-TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
+DTD generated from ODD source 2022-11-27T10:17:07Z. 2021-10-31.This file is freely available and you are hereby authorised to copy, modify, and redistribute it in any way without further reference or permissions.
+TEI Edition: Version 4.5.0a. Last updated on
+        25th October 2022, revision 5406e8d10
+TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.5.0a./
 
 -->
 
@@ -49,8 +49,6 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
 
 <!ENTITY % teidata.word ' CDATA ' >
 
-<!ENTITY % teidata.sex '%teidata.word;' >
-
 <!ENTITY % teidata.text ' CDATA ' >
 
 <!ENTITY % teidata.name ' CDATA ' >
@@ -60,6 +58,10 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
 <!ENTITY % teidata.prefix ' CDATA ' >
 
 <!ENTITY % teidata.enumerated '%teidata.word;' >
+
+<!ENTITY % teidata.gender '%teidata.enumerated;' >
+
+<!ENTITY % teidata.sex '%teidata.enumerated;' >
 
 <!ENTITY % teidata.probCert ' CDATA ' >
 
@@ -385,9 +387,13 @@ datcat CDATA  #IMPLIED'>
 
 <!ENTITY % tei_att.datcat.attribute.valueDatcat '
 valueDatcat CDATA  #IMPLIED'>
+
+<!ENTITY % tei_att.datcat.attribute.targetDatcat '
+targetDatcat CDATA  #IMPLIED'>
 <!ENTITY % tei_att.datcat.attributes '
  %tei_att.datcat.attribute.datcat;
- %tei_att.datcat.attribute.valueDatcat;'> 
+ %tei_att.datcat.attribute.valueDatcat;
+ %tei_att.datcat.attribute.targetDatcat;'> 
 <!ENTITY % tei_att.declarable.attribute.default '
 default (true|false) "false" '>
 <!ENTITY % tei_att.declarable.attributes '
@@ -512,9 +518,17 @@ scale %teidata.numeric;  #IMPLIED'>
 url %teidata.pointer;  #REQUIRED'>
 <!ENTITY % tei_att.resourced.attributes '
  %tei_att.resourced.attribute.url;'> 
+<!ENTITY % tei_att.interpLike.attribute.type '
+type %teidata.enumerated;  #IMPLIED'>
+
+<!ENTITY % tei_att.interpLike.attribute.subtype '
+subtype %teidata.enumerated;  #IMPLIED'>
+
 <!ENTITY % tei_att.interpLike.attribute.inst '
 inst CDATA  #IMPLIED'>
-<!ENTITY % tei_att.interpLike.attributes '%tei_att.typed.attributes;
+<!ENTITY % tei_att.interpLike.attributes '
+ %tei_att.interpLike.attribute.type;
+ %tei_att.interpLike.attribute.subtype;
  %tei_att.interpLike.attribute.inst;'> 
 <!ENTITY % tei_att.measurement.attribute.unit '
 unit %teidata.enumerated;  #IMPLIED'>
@@ -821,11 +835,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.divPart_sequenceOptional "%model.lLike;?, %model.pLike;?, lg?, sp?, %model.divPart.spoken;?"> 
 <!ENTITY % model.divPart_sequenceOptionalRepeatable "%model.lLike;*, %model.pLike;*, lg*, sp*, %model.divPart.spoken;*"> 
 <!ENTITY % model.divPart_sequenceRepeatable "%model.lLike;+, %model.pLike;+, lg+, sp+, %model.divPart.spoken;+"> 
-<!ENTITY % model.persStateLike "persName |affiliation |age |education |faith |floruit |langKnowledge |nationality |occupation |persona |persPronouns |residence |sex |socecStatus |state |trait"> 
-<!ENTITY % model.persStateLike_sequence "persName, affiliation, age, education, faith, floruit, langKnowledge, nationality, occupation, persona, persPronouns, residence, sex, socecStatus, state, trait"> 
-<!ENTITY % model.persStateLike_sequenceOptional "persName?, affiliation?, age?, education?, faith?, floruit?, langKnowledge?, nationality?, occupation?, persona?, persPronouns?, residence?, sex?, socecStatus?, state?, trait?"> 
-<!ENTITY % model.persStateLike_sequenceOptionalRepeatable "persName*, affiliation*, age*, education*, faith*, floruit*, langKnowledge*, nationality*, occupation*, persona*, persPronouns*, residence*, sex*, socecStatus*, state*, trait*"> 
-<!ENTITY % model.persStateLike_sequenceRepeatable "persName+, affiliation+, age+, education+, faith+, floruit+, langKnowledge+, nationality+, occupation+, persona+, persPronouns+, residence+, sex+, socecStatus+, state+, trait+"> 
+<!ENTITY % model.persStateLike "persName |affiliation |age |education |faith |floruit |gender |langKnowledge |nationality |occupation |persona |persPronouns |residence |sex |socecStatus |state |trait"> 
+<!ENTITY % model.persStateLike_sequence "persName, affiliation, age, education, faith, floruit, gender, langKnowledge, nationality, occupation, persona, persPronouns, residence, sex, socecStatus, state, trait"> 
+<!ENTITY % model.persStateLike_sequenceOptional "persName?, affiliation?, age?, education?, faith?, floruit?, gender?, langKnowledge?, nationality?, occupation?, persona?, persPronouns?, residence?, sex?, socecStatus?, state?, trait?"> 
+<!ENTITY % model.persStateLike_sequenceOptionalRepeatable "persName*, affiliation*, age*, education*, faith*, floruit*, gender*, langKnowledge*, nationality*, occupation*, persona*, persPronouns*, residence*, sex*, socecStatus*, state*, trait*"> 
+<!ENTITY % model.persStateLike_sequenceRepeatable "persName+, affiliation+, age+, education+, faith+, floruit+, gender+, langKnowledge+, nationality+, occupation+, persona+, persPronouns+, residence+, sex+, socecStatus+, state+, trait+"> 
 <!ENTITY % model.personLike "org |person |personGrp"> 
 <!ENTITY % model.personLike_sequence "org, person, personGrp"> 
 <!ENTITY % model.personLike_sequenceOptional "org?, person?, personGrp?"> 
@@ -1011,6 +1025,11 @@ to %teidata.word;  #IMPLIED'>
 <!ENTITY % model.phrase_sequenceOptional "%model.segLike;?, %model.highlighted;?, %model.graphicLike;?, %model.pPart.edit;?, %model.ptrLike;?, %model.pPart.data;?, ruby?"> 
 <!ENTITY % model.phrase_sequenceOptionalRepeatable "%model.segLike;*, %model.highlighted;*, %model.graphicLike;*, %model.pPart.edit;*, %model.ptrLike;*, %model.pPart.data;*, ruby*"> 
 <!ENTITY % model.phrase_sequenceRepeatable "%model.segLike;+, %model.highlighted;+, %model.graphicLike;+, %model.pPart.edit;+, %model.ptrLike;+, %model.pPart.data;+, ruby+"> 
+<!ENTITY % model.paraPart "%model.gLike; |%model.lLike; |%model.global; |%model.inter; |%model.phrase; |lg"> 
+<!ENTITY % model.paraPart_sequence "%model.gLike;, %model.lLike;, %model.global;, %model.inter;, %model.phrase;, lg"> 
+<!ENTITY % model.paraPart_sequenceOptional "%model.gLike;?, %model.lLike;?, %model.global;?, %model.inter;?, %model.phrase;?, lg?"> 
+<!ENTITY % model.paraPart_sequenceOptionalRepeatable "%model.gLike;*, %model.lLike;*, %model.global;*, %model.inter;*, %model.phrase;*, lg*"> 
+<!ENTITY % model.paraPart_sequenceRepeatable "%model.gLike;+, %model.lLike;+, %model.global;+, %model.inter;+, %model.phrase;+, lg+"> 
 <!ENTITY % model.limitedPhrase "%model.hiLike; |%model.emphLike; |%model.pPart.editorial; |%model.ptrLike; |%model.pPart.data;"> 
 <!ENTITY % model.limitedPhrase_sequence "%model.hiLike;, %model.emphLike;, %model.pPart.editorial;, %model.ptrLike;, %model.pPart.data;"> 
 <!ENTITY % model.limitedPhrase_sequenceOptional "%model.hiLike;?, %model.emphLike;?, %model.pPart.editorial;?, %model.ptrLike;?, %model.pPart.data;?"> 
@@ -1342,7 +1361,9 @@ version %teidata.enumerated;  #IMPLIED'>
  %tei_att.gaijiProp.attribute.version;'> 
 <!-- start rest of patterns -->
 
-<!ENTITY % macro.paraContent '(#PCDATA|%model.gLike;|%model.phrase;|%model.inter;|%model.global;|lg|%model.lLike;)*' >
+<!ENTITY % macro.abContent '(#PCDATA|%model.paraPart;|ab)*' >
+
+<!ENTITY % macro.paraContent '(#PCDATA|%model.paraPart;)*' >
 
 <!ENTITY % macro.limitedContent '(#PCDATA|%model.limitedPhrase;|%model.inter;)*' >
 
@@ -1368,8 +1389,8 @@ version %teidata.version;  #IMPLIED >
 <!ATTLIST TEI xsi:schemaLocation CDATA #IMPLIED
  xmlns:xsi CDATA #FIXED 'http://www.w3.org/2001/XMLSchema-instance'
  >
-<!--doc:(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors] -->
-<!ELEMENT ab %macro.paraContent;>
+<!--doc:(anonymous block) contains any component-level unit of text, acting as a container for phrase or inter level elements analogous to, but without the same constraints as, a paragraph. [16.3. Blocks, Segments, and Anchors] -->
+<!ELEMENT ab %macro.abContent;>
 <!ATTLIST ab xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST ab
  %tei_att.global.attributes;
@@ -1385,7 +1406,7 @@ version %teidata.version;  #IMPLIED >
  %tei_att.typed.attribute.subtype;
 type %teidata.enumerated;  #IMPLIED >
 <!--doc:contains a summary or formal abstract prefixed to an existing source document by the encoder. [2.4.4. Abstracts] -->
-<!ELEMENT abstract (%model.pLike;|%model.listLike;)+>
+<!ELEMENT abstract (%model.pLike;|%model.listLike;|listBibl)+>
 <!ATTLIST abstract xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST abstract
  %tei_att.global.attributes; >
@@ -1617,7 +1638,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.datable.attributes; >
 <!--doc:(text body) contains the whole body of a single unitary text, excluding any front or back matter. [4. Default Text Structure] -->
-<!ELEMENT body (((%model.global;)*,((%model.divTop;),(%model.global;|%model.divTop;)*)?,((%model.divGenLike;),(%model.global;|%model.divGenLike;)*)?,(((%model.divLike;),(%model.global;|%model.divGenLike;)*)+|((_DUMMY_model.div1Like),(%model.global;|%model.divGenLike;)*)+|(((%model.common;),(%model.global;)*)+,(((%model.divLike;),(%model.global;|%model.divGenLike;)*)+|((_DUMMY_model.div1Like),(%model.global;|%model.divGenLike;)*)+)?)),((%model.divBottom;),(%model.global;)*)*))>
+<!ELEMENT body (((%model.global;)*,((%model.divTop;),(%model.global;|%model.divTop;)*)?,((%model.divGenLike;),(%model.global;|%model.divGenLike;)*)?,(((%model.divLike;),(%model.global;|%model.divGenLike;)*)+|((_DUMMY_model.div1Like),(%model.global;|%model.divGenLike;)*)+|(((schemaSpec|%model.common;),(%model.global;)*)+,(((%model.divLike;),(%model.global;|%model.divGenLike;)*)+|((_DUMMY_model.div1Like),(%model.global;|%model.divGenLike;)*)+)?)),((%model.divBottom;),(%model.global;)*)*))>
 <!ATTLIST body xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST body
  %tei_att.global.attributes;
@@ -1709,7 +1730,7 @@ target CDATA  #IMPLIED >
  %tei_att.global.attributes;
 mode (s|w|sw|ws|m|x) "x"  >
 <!--doc:(character) provides descriptive information about a character. [5.2. Markup Constructs for Representation of Characters and Glyphs] -->
-<!ELEMENT char (charName|charProp|unicodeProp|unihanProp|localProp|mapping|figure|%model.graphicLike;|%model.noteLike;|%model.descLike;)*>
+<!ELEMENT char (unicodeProp|unihanProp|localProp|mapping|figure|%model.graphicLike;|%model.noteLike;|%model.descLike;)*>
 <!ATTLIST char xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST char
  %tei_att.global.attributes; >
@@ -1718,17 +1739,6 @@ mode (s|w|sw|ws|m|x) "x"  >
 <!ATTLIST charDecl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST charDecl
  %tei_att.global.attributes; >
-<!--doc:(character name) contains the name of a character, expressed following Unicode conventions. [5.2. Markup Constructs for Representation of Characters and Glyphs] -->
-<!ELEMENT charName (#PCDATA)>
-<!ATTLIST charName xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST charName
- %tei_att.global.attributes; >
-<!--doc:(character property) provides a name and value for some property of the parent character or glyph. [5.2. Markup Constructs for Representation of Characters and Glyphs] -->
-<!ELEMENT charProp (((unicodeName|localName),value))>
-<!ATTLIST charProp xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST charProp
- %tei_att.global.attributes;
- %tei_att.typed.attributes; >
 <!--doc:(choice) groups a number of alternative encodings for the same point in a text. [3.5. Simple Editorial Changes] -->
 <!ELEMENT choice (%model.choicePart;|choice)+>
 <!ATTLIST choice xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1746,7 +1756,7 @@ mode (s|w|sw|ws|m|x) "x"  >
 <!ATTLIST citeData
  %tei_att.global.attributes;
  %tei_att.citeStructurePart.attributes;
-property CDATA #REQUIRED >
+property %teidata.pointer;  #REQUIRED >
 <!--doc:(citation structure) declares a structure and method for citing the current document. [3.11.4. Declaring Reference Systems 16.2.5.4. Citation Structures] -->
 <!ELEMENT citeStructure (((citeData)*,(citeStructure)*,(%model.descLike;)*))>
 <!ATTLIST citeStructure xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -1842,8 +1852,7 @@ type %teidata.enumerated;  #IMPLIED >
 <!ATTLIST correspContext xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST correspContext
  %tei_att.global.attributes; >
-<!--doc:(correspondence
-    description) contains a description of the actions related to one act of correspondence. [2.4.6. Correspondence Description] -->
+<!--doc:(correspondence description) contains a description of the actions related to one act of correspondence. [2.4.6. Correspondence Description] -->
 <!ELEMENT correspDesc ((%model.correspDescPart;)+|(%model.pLike;)+)>
 <!ATTLIST correspDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST correspDesc
@@ -1968,7 +1977,7 @@ social %teidata.text;  #IMPLIED >
  %tei_att.typed.attributes;
  %tei_att.datable.attributes; >
 <!--doc:(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body] -->
-<!ELEMENT div (((%model.divTop;|%model.global;)*,((((%model.divLike;|%model.divGenLike;),(%model.global;)*)+|(((%model.common;),(%model.global;)*)+,((%model.divLike;|%model.divGenLike;),(%model.global;)*)*)),((%model.divBottom;),(%model.global;)*)*)?))>
+<!ELEMENT div (((%model.divTop;|%model.global;)*,((((%model.divLike;|%model.divGenLike;),(%model.global;)*)+|(((schemaSpec|%model.common;),(%model.global;)*)+,((%model.divLike;|%model.divGenLike;),(%model.global;)*)*)),((%model.divBottom;),(%model.global;)*)*)?))>
 <!ATTLIST div xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST div
  %tei_att.global.attributes;
@@ -2121,6 +2130,7 @@ fVal %teidata.pointer;  #IMPLIED >
 <!ELEMENT fDecl (((fDescr)?,vRange,(vDefault)?))>
 <!ATTLIST fDecl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST fDecl
+ %tei_att.datcat.attributes;
  %tei_att.global.attributes;
 name %teidata.name;  #REQUIRED
 optional %teidata.truthValue;  "true"  >
@@ -2221,6 +2231,7 @@ feats CDATA  #IMPLIED >
 <!ATTLIST fsDecl xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST fsDecl
  %tei_att.global.attributes;
+ %tei_att.datcat.attributes;
 type %teidata.enumerated;  #REQUIRED
 baseTypes NMTOKENS  #IMPLIED >
 <!--doc:(feature system description (in FSD)) describes in prose what is represented by the type of feature structure declared in the enclosing fsDecl. [18.11. Feature System Declaration] -->
@@ -2278,6 +2289,15 @@ agent %teidata.enumerated;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.personal.attributes;
  %tei_att.typed.attributes; >
+<!--doc:(gender) specifies the gender identity of a person, persona, or character. [13.3.2.1. Personal Characteristics] -->
+<!ELEMENT gender %macro.phraseSeq;>
+<!ATTLIST gender xmlns CDATA "http://www.tei-c.org/ns/1.0">
+<!ATTLIST gender
+ %tei_att.global.attributes;
+ %tei_att.editLike.attributes;
+ %tei_att.datable.attributes;
+ %tei_att.typed.attributes;
+value CDATA  #IMPLIED >
 <!--doc:(geographical coordinates) contains any expression of a set of geographic coordinates, representing a point, line, or area on the surface of the earth in some notation. [13.3.4.1. Varieties of Location] -->
 <!ELEMENT geo (#PCDATA)>
 <!ATTLIST geo xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2320,14 +2340,9 @@ datum %teidata.enumerated;  "WGS84"  >
  %tei_att.pointing.attributes;
  %tei_att.cReferencing.attributes; >
 <!--doc:(character glyph) provides descriptive information about a character glyph. [5.2. Markup Constructs for Representation of Characters and Glyphs] -->
-<!ELEMENT glyph (glyphName|charProp|unicodeProp|unihanProp|localProp|mapping|figure|%model.graphicLike;|%model.noteLike;|%model.descLike;)*>
+<!ELEMENT glyph (unicodeProp|unihanProp|localProp|mapping|figure|%model.graphicLike;|%model.noteLike;|%model.descLike;)*>
 <!ATTLIST glyph xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST glyph
- %tei_att.global.attributes; >
-<!--doc:(character glyph name) contains the name of a glyph, expressed following Unicode conventions for character names. [5.2. Markup Constructs for Representation of Characters and Glyphs] -->
-<!ELEMENT glyphName (#PCDATA)>
-<!ATTLIST glyphName xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST glyphName
  %tei_att.global.attributes; >
 <!--doc:(graphic) indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it. [3.10. Graphics and Other Non-textual Components 11.1. Digital Facsimiles] -->
 <!ELEMENT graphic (%model.descLike;)*>
@@ -2336,7 +2351,8 @@ datum %teidata.enumerated;  "WGS84"  >
  %tei_att.global.attributes;
  %tei_att.media.attributes;
  %tei_att.resourced.attributes;
- %tei_att.declaring.attributes; >
+ %tei_att.declaring.attributes;
+ %tei_att.typed.attributes; >
 <!--doc:(group) contains the body of a composite text, grouping together a sequence of distinct texts (or groups of such texts) which are regarded as a unit for some purpose, for example the collected works of an author, a sequence of prose essays, etc. [4. Default Text Structure 4.3.1. Grouped Texts 15.1. Varieties of Composite Text] -->
 <!ELEMENT group (((%model.divTop;|%model.global;)*,((text|group),(text|group|%model.global;)*),(%model.divBottom;)*))>
 <!ATTLIST group xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2662,11 +2678,6 @@ ordered %teidata.truthValue;  "true"  >
 <!ATTLIST listTranspose xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listTranspose
  %tei_att.global.attributes; >
-<!--doc:(locally-defined property name) contains a locally defined name for some property. [5.2.1. Character Properties] -->
-<!ELEMENT localName (#PCDATA)>
-<!ATTLIST localName xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST localName
- %tei_att.global.attributes; >
 <!--doc:(locally defined property) provides a locally defined character (or glyph) property. [5.2.1. Character Properties] -->
 <!ELEMENT localProp  EMPTY>
 <!ATTLIST localProp xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -2709,6 +2720,7 @@ Measures] -->
  %tei_att.global.attributes;
  %tei_att.typed.attribute.subtype;
  %tei_att.measurement.attributes;
+ %tei_att.ranging.attributes;
 type %teidata.enumerated;  #IMPLIED >
 <!--doc:(measure group) contains a group of dimensional specifications which relate to the same object, for example the height and width of a manuscript page. [10.3.4. Dimensions] -->
 <!ELEMENT measureGrp (#PCDATA|%model.gLike;|%model.measureLike;)*>
@@ -2831,7 +2843,7 @@ method (silent|markup) "silent"  >
  %tei_att.typed.attributes;
  %tei_att.written.attributes;
  %tei_att.anchoring.attributes; >
-<!--doc:contains a group of notes [3.9.1.1. Encoding Grouped Notes] -->
+<!--doc:(note group) contains a group of notes [3.9.1.1. Encoding Grouped Notes] -->
 <!ELEMENT noteGrp (((desc)*,(note|noteGrp)+))>
 <!ATTLIST noteGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST noteGrp
@@ -2884,7 +2896,7 @@ parts CDATA  #IMPLIED >
  %tei_att.docStatus.attributes;
  %tei_att.canonical.attributes; >
 <!--doc:(object identifier) groups one or more identifiers or pieces of locating information concerning a single object. [13.3.5. Objects] -->
-<!ELEMENT objectIdentifier (%model.placeNamePart;|institution|repository|collection|idno|msName|objectName|altIdentifier|address)*>
+<!ELEMENT objectIdentifier (%model.placeNamePart;|institution|repository|collection|idno|msName|objectName|altIdentifier|address)+>
 <!ATTLIST objectIdentifier xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST objectIdentifier
  %tei_att.global.attributes; >
@@ -3032,6 +3044,7 @@ value NMTOKENS  #IMPLIED >
  %tei_att.sortable.attributes;
 role NMTOKENS  #IMPLIED
 sex CDATA  #IMPLIED
+gender CDATA  #IMPLIED
 age %teidata.enumerated;  #IMPLIED >
 <!--doc:(personal group) describes a group of individuals treated as a single person for analytic purposes. [15.2.2. The Participant Description] -->
 <!ELEMENT personGrp ((%model.pLike;)+|(%model.personPart;|%model.global;)*)>
@@ -3041,6 +3054,7 @@ age %teidata.enumerated;  #IMPLIED >
  %tei_att.sortable.attributes;
 role %teidata.enumerated;  #IMPLIED
 sex CDATA  #IMPLIED
+gender CDATA  #IMPLIED
 age %teidata.enumerated;  #IMPLIED
 size CDATA  #IMPLIED >
 <!--doc:provides information about one of the personalities identified for a given individual, where an individual has multiple personalities. [13.3.2. The Person Element] -->
@@ -3052,6 +3066,7 @@ size CDATA  #IMPLIED >
  %tei_att.sortable.attributes;
 role NMTOKENS  #IMPLIED
 sex CDATA  #IMPLIED
+gender CDATA  #IMPLIED
 age %teidata.enumerated;  #IMPLIED >
 <!--doc:(phrase) represents a grammatical phrase. [17.1. Linguistic Segment Categories] -->
 <!ELEMENT phr %macro.phraseSeq;>
@@ -3477,15 +3492,14 @@ reason CDATA  #IMPLIED >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.datable.attributes; >
-<!--doc:(sex) specifies the sex of a person. [13.3.2.1. Personal Characteristics] -->
+<!--doc:(sex) specifies the sex of an organism. [13.3.2.1. Personal Characteristics] -->
 <!ELEMENT sex %macro.phraseSeq;>
 <!ATTLIST sex xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST sex
  %tei_att.global.attributes;
  %tei_att.editLike.attributes;
  %tei_att.datable.attributes;
- %tei_att.typed.attribute.subtype;
-type %teidata.enumerated;  #IMPLIED
+ %tei_att.typed.attributes;
 value CDATA  #IMPLIED >
 <!--doc:(shift) marks the point at which some paralinguistic feature of a series of utterances by any one speaker changes. [8.3.6. Shifts] -->
 <!ELEMENT shift  EMPTY>
@@ -3575,10 +3589,8 @@ dim (horizontal|vertical) #IMPLIED >
 <!ATTLIST span xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST span
  %tei_att.global.attributes;
- %tei_att.interpLike.attribute.inst;
- %tei_att.typed.attribute.subtype;
+ %tei_att.interpLike.attributes;
  %tei_att.pointing.attributes;
-type %teidata.enumerated;  #IMPLIED
 from %teidata.pointer;  #IMPLIED
 to %teidata.pointer;  #IMPLIED >
 <!--doc:(span group) collects together span tags. [17.3. Spans and Interpretations] -->
@@ -3586,9 +3598,7 @@ to %teidata.pointer;  #IMPLIED >
 <!ATTLIST spanGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST spanGrp
  %tei_att.global.attributes;
- %tei_att.interpLike.attribute.inst;
- %tei_att.typed.attribute.subtype;
-type %teidata.enumerated;  #IMPLIED >
+ %tei_att.interpLike.attributes; >
 <!--doc:contains a specialized form of heading or label, giving the name of one or more speakers in a dramatic text or fragment. [3.13.2. Core Tags for Drama] -->
 <!ELEMENT speaker %macro.phraseSeq;>
 <!ATTLIST speaker xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3608,6 +3618,7 @@ type %teidata.enumerated;  #IMPLIED >
  %tei_att.ascribed.directed.attributes;
  %tei_att.global.attributes;
  %tei_att.placement.attributes;
+ %tei_att.written.attributes;
 type NMTOKENS  #IMPLIED >
 <!--doc:Functions as a container element for linked data, contextual information, and stand-off annotations embedded in a TEI document. [16.10. The standOff Container] -->
 <!ELEMENT standOff (%model.standOffPart;)+>
@@ -3683,7 +3694,7 @@ reason CDATA  #IMPLIED >
  %tei_att.typed.attributes;
 attachment %teidata.enumerated;  #IMPLIED
 flipping %teidata.truthValue;  #IMPLIED >
-<!--doc:defines any kind of useful grouping of written surfaces, for example the recto and verso of a single leaf, which the encoder wishes to treat as a single unit. [11.1. Digital Facsimiles] -->
+<!--doc:(surface group) defines any kind of useful grouping of written surfaces, for example the recto and verso of a single leaf, which the encoder wishes to treat as a single unit. [11.1. Digital Facsimiles] -->
 <!ELEMENT surfaceGrp (%model.global;|surface|surfaceGrp)+>
 <!ATTLIST surfaceGrp xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST surfaceGrp
@@ -3725,6 +3736,7 @@ cols %teidata.count;  #IMPLIED >
 <!ATTLIST tagUsage xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST tagUsage
  %tei_att.global.attributes;
+ %tei_att.datcat.attributes;
 gi %teidata.name;  #REQUIRED
 occurs %teidata.count;  #IMPLIED
 withId %teidata.count;  #IMPLIED >
@@ -3795,7 +3807,7 @@ version %teidata.version;  #IMPLIED >
  %tei_att.global.attributes;
  %tei_att.declarable.attributes; >
 <!--doc:(text language) describes the languages and writing systems identified within the bibliographic work being described, rather than its description. [3.12.2.4. Imprint, Size of a Document, and Reprint Information 10.6.6. Languages and Writing Systems] -->
-<!ELEMENT textLang %macro.phraseSeq;>
+<!ELEMENT textLang %macro.specialPara;>
 <!ATTLIST textLang xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST textLang
  %tei_att.global.attributes;
@@ -3867,7 +3879,7 @@ type %teidata.enumerated;  "main"  >
  %tei_att.naming.attributes;
  %tei_att.typed.attributes;
  %tei_att.dimensions.attributes; >
-<!--doc:describes the set of transcription conventions used, particularly for spoken material. [8.2. Documenting the Source of Transcribed Speech] -->
+<!--doc:(transcription description) describes the set of transcription conventions used, particularly for spoken material. [8.2. Documenting the Source of Transcribed Speech] -->
 <!ELEMENT transcriptionDesc (%model.labelLike;|%model.ptrLike;|%model.pLike;)*>
 <!ATTLIST transcriptionDesc xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST transcriptionDesc
@@ -3907,12 +3919,6 @@ agent %teidata.enumerated;  #IMPLIED >
  %tei_att.transcriptional.attributes;
  %tei_att.dimensions.attributes;
 target CDATA  #IMPLIED >
-<!--doc:(Unicode property name) contains the name of a registered Unicode normative or informative property. [5.2.1. Character Properties] -->
-<!ELEMENT unicodeName (#PCDATA)>
-<!ATTLIST unicodeName xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST unicodeName
- %tei_att.global.attributes;
-version %teidata.version;  #IMPLIED >
 <!--doc:(unicode property) provides a Unicode property for a character (or glyph). [5.2.1. Character Properties] -->
 <!ELEMENT unicodeProp  EMPTY>
 <!ATTLIST unicodeProp xmlns CDATA "http://www.tei-c.org/ns/1.0">
@@ -3978,11 +3984,6 @@ name %teidata.word;  #REQUIRED >
 <!ELEMENT vRange ((%model.featureVal;))>
 <!ATTLIST vRange xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST vRange
- %tei_att.global.attributes; >
-<!--doc:(value) contains a single value for some property, attribute, or other analysis. [5.2.1. Character Properties] -->
-<!ELEMENT value %macro.xtext;>
-<!ATTLIST value xmlns CDATA "http://www.tei-c.org/ns/1.0">
-<!ATTLIST value
  %tei_att.global.attributes; >
 <!--doc:(vocal) marks any vocalized but not necessarily lexical phenomenon, for example voiced pauses, non-lexical backchannels, etc. [8.3.3. Vocal, Kinesic, Incident] -->
 <!ELEMENT vocal (%model.descLike;)*>
