@@ -150,8 +150,8 @@
 	  </xsl:otherwise>
 	</xsl:choose>
       </xsl:when>
-      <!-- Local filename with extension -->
-      <xsl:when test="matches($ptr, '\.....?$')"/>
+      <!-- Local filename with extension and optional local reference -->
+      <xsl:when test="matches($ptr, '\.....?(#.+)?$')"/>
       <!-- Probably forgotten hash -->
       <xsl:otherwise>
 	<xsl:call-template name="error">
