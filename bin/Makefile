@@ -12,11 +12,14 @@ val-odd:
 PARAMS = --localsource=p5subset.xml ../tei_clarin_schema.xml
 
 schema:	val-odd
-	Stylesheets/bin/teitorelaxng    ${PARAMS} ../schema/tei_clarin.rng
+	Stylesheets/bin/oddtorng        ${PARAMS} ../schema/tei_clarin.rng
 	Stylesheets/bin/teitornc        ${PARAMS} ../schema/tei_clarin.rnc
 	Stylesheets/bin/teitodtd        ${PARAMS} ../schema/tei_clarin.dtd
 	Stylesheets/bin/teitoxsd        ${PARAMS} ../schema/tei_clarin.xsd
-	Stylesheets/bin/teitoschematron ${PARAMS} ../schema/tei_clarin.sch
+	rm ../schema/tei_clarin.rnc.rng
+	rm ../schema/tei_clarin.xsd.rng
+	rm ../schema/tei_clarin.xsd.tmp
+	#Stylesheets/bin/teitoschematron ${PARAMS} ../schema/tei_clarin.sch
 
 H = /project/corpora/TEI-schema/bin/
 docs:	val-odd
