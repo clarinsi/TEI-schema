@@ -129,7 +129,7 @@ sub sent2tei {
 	    else {$tag = 'w'}
 	}
 	if ($upos !~ /_/) {
-	    $feats = "UposTag=$upos";
+	    $feats = "UPosTag=$upos";
 	    $feats .= "|$ufeats" if $ufeats ne '_';
 	}
 	$local =~ s/NER=[A-Z-]+\|?//;   #Get rid of NER for now!
